@@ -53,7 +53,11 @@
 15. [Coding tips and tricks](#coding-tips-and-tricks)
 16. [Acknowledgments](#acknowledgments)
 
-## Project Goals
+# User Experience
+
+## Strategy
+
+### Project Goals
 
 Project Goals for intended use are:
 
@@ -69,69 +73,84 @@ My personal project goals of FeelGood Physio are:
 - To create a user-friendly application that stands out from the crowd
 - To expand my knowledge of Django, Python and Full Stack Development in general
 
-## User Goals
+### User Goals
 
 Users should be able to search for, browse lists of and view advertisements on the site.
 
-Logged in users should be able to post ads, manage posted ads and contact other users. They should also be able to view 
+Logged in users should be able to post ads, manage posted ads and contact other users. They should also be able to view and edit a personal profile.
 
-Staff should find it easy to access and modify their schedule and patient data.
+### Site Owner Goals
 
-Target Audience
+Site owners should be able to log in to an admin area, where they can review and delete ads or users that violate the site regulations.
 
-- A Physiotherapist (or their receptionist)
-- Patients
+**Target Audience**
 
+- Musicians
+- Music enthusiasts
+- Hobby musicians
+- Parents with children who play an instrument
 
 ## Structure
 
-The FeelGood Physio Booking System relies almost only on user input. There are always options displayed on the screen and users can choose what to do next.
-When an input is entered, the application takes the user to the chosen option. All functions are chained together, each depending on the users input.
+The structure of this site is simple; the heart of the site is the list of ads, depending on the search criteria. The pages are listed below. All pages contain a navbar at the top with the main logo and navigational menu, as well as a footer with navigational links, contact and copyright info.
 
-### 1. Home Screen
+### 1. Home
 
 <details>
     <summary>Click here to view the home screen</summary>
 
-![Screenshot of Home screen](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/screenshot_home.png)
+![Screenshot of Home](#)
 
 </details>
 
-This welcomes the user when they first enter the application, when the task at hand is done or when users choose to exit from whereever they are in the application. From the home screen, there are two options:
+The home screen contains a lot, but is well organized. It contains:
 
-- Book appointment - takes users to the booking process
-- Staff login - takes users to the staff area
+- A Hero Image
+- A search field
+- Links to the most popular categories
+- Three articles with various links, including to log in or signup
 
-### 2. Booking Process for Patient
+### 2. Login/Signup
 
 <details>
     <summary>Click to view image</summary>
 
-![Patient booking, month](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/patient_booking/p_booking_month.png)
+![Login/Signup](#)
 
 </details>
 
-This is a long chain of functions resulting in a new appointment and an update to the patient log, if completed. Users input their desired appoinment time and details, and get a confirmation message at the end.
+THis page contains username and password fields, as well as links to sign up and retrieve password.
 
-### 3. Staff area
+### 3. Signup
 
-To access the staff area, users need the staff password. If entered correctly, users can either view the patient log, or access the schedule.
+The signup page contains name, email, password and username fields for user to enter. Upon entering, an email confirmation is sent to user.
 
 <details>
     <summary>Click to view image</summary>
 
-![Staff area](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/staff_area/password.png)
+![Signup](#)
 
 </details>
 
-### 4. Staff Schedule
+### 4. Ads List
 
-The schedule, which shows 1 week at a time, can be edited, which also updates the linked Google Calendar.
+The heart of the site, showing the ads relevant from the users search.
 
-### 5. Patient Log
+### 5. Ad Detail
 
-The log, which is a Google Sheet, updates dynamically as users book appointments.
+The specific ad clicked on, with more detailed info, including for the seller.
 
+### 6. User Profile
+
+This contains the basic user information, and the ads that the user has published. All of which can be edited. Users can also view other users profiles and their ads.
+
+### 7. Messages Popup-Window
+
+A simple two way messages function. Users can message each other about ads on the forum.
+
+### 8. Contact
+
+On the Contact page, users can fill in a simple contact form to get in touch with the site owner.
 
 ## User Stories
 
