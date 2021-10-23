@@ -1,1 +1,1 @@
-web: gunicorn jv_instumental.wsgi
+web: gunicorn jv_instrumental.wsgi
