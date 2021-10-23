@@ -154,30 +154,35 @@ On the Contact page, users can fill in a simple contact form to get in touch wit
 
 ## User Stories
 
-As this application has such specific target users, I have adapted my user stories to patients and staff.
+1. As a user, I can perform a search so that a list of items for sale is generated
+2. As a user, I can refine my search so that the results display items in a specific location
+3. As a user, I can click on an item so that I can view its details
+4. As a user, If I am not signed in, I am prompted to sign in/up if I click on any of the links or buttons restricted to logged in users
+5. As a user, I can sign up, so that I can utilise the full functionality of the website
+6. As a registered user, i would like my login info and the ability to edit personal ads be restricted to me only
+7. As a registered user, I can receive a new password if it is forgotten, so that i can login to the site again
 
-### Patient User Stories:
+8. As a registered user, I would like to see a “Sign in/Sign Out” option, so that i can sign in or out
+9. As a user, I can clearly see my login status so that I can tell whether I am signed in or not
+10. As a logged in user, I can click on “send message”, so that I can communicate with buyers/sellers
+11. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
+12. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
+13. As a registered user, I can view other buyers or sellers profiles
+14. As a registered user, I can view other sellers ads on their profiles
+15. As a user, I would like to be able to view the ad I have clicked, so that I can view its details
+16. As a user, I can view a picture and a description of the item on the Ad Detail page
+17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ads
+18. As a registered user, I can contact seller via the ad
+19. As a logged in user, I can mark my item as sold, so that other users are aware of this
+20. As a logged in user, I have the possibility to send and recieve messages to other users via a button or link in the ad
+21. As a logged in user, i can view messages as a floating window, so that it is visible wherever I am on the website
+22. As a logged in user, I can view an option to report a certain message, so that I can report bad behaviour from other users
+23. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
+24. As a user, I can fill in a contact form, so that I can get in touch with the site owner
+25. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
+26. As a site owner, I can receive a notification if users violate the terms of use, and am able to remove their accounts and/or ads
+27. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
 
-1. I would like to be able to book an appointment at a time of my choosing, should the appointement be available
-2. I would like to be alerted if my details are saved before I enter them
-3. I would like to be well informed from the application throughout the booking process
-4. I would like to be alerted if my choice is invalid anywhere in the application, and get a chance to try again
-5. I would like to be able to confirm the booking right before it is made
-6. I would like to view a confirmation of the booking when it is made
-7. I would like to at any point cancel my booking during the booking process should I wish to do so
-
-### Staff Member User stories:
-
-8. I would like for users to only be able to book appointments on weekdays between 9 and 17, and when the schedule is free
-9. I would like appointments made by new users add a new row with their information to the Google Sheets patient log
-10. I would like the appointments made by patients dynamically update my Google Calendar
-11. I would like the changes made in the schedules edit menu to update the events on my Google Calendar
-12. I would like to be able to view the patient log
-13. I would like to view my schedule for the coming week
-14. I would like to navigate between weeks in my schedule
-15. I would like to be able to update or remove any appointment viewed in my schedule
-16. I would like to easily be able to return to the main staff area in the application
-17. I would like the staff area to be password protected
 
 ### Site Owner Goals
 
