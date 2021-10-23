@@ -152,41 +152,60 @@ A simple two way messages function. Users can message each other about ads on th
 
 On the Contact page, users can fill in a simple contact form to get in touch with the site owner.
 
-## User Stories
+## Epics and User Stories
+
+### Epic 1: Core functionality - User Stories
 
 1. As a user, I can perform a search so that a list of items for sale is generated
 2. As a user, I can refine my search so that the results display items in a specific location
 3. As a user, I can click on an item so that I can view its details
 4. As a user, If I am not signed in, I am prompted to sign in/up if I click on any of the links or buttons restricted to logged in users
+
+### Epic 2: User Authentication - User Stories
+
 5. As a user, I can sign up, so that I can utilise the full functionality of the website
 6. As a registered user, i would like my login info and the ability to edit personal ads be restricted to me only
 7. As a registered user, I can receive a new password if it is forgotten, so that i can login to the site again
+
+### Epic 3: Features for logged in users - User Stories
 
 8. As a registered user, I would like to see a “Sign in/Sign Out” option, so that i can sign in or out
 9. As a user, I can clearly see my login status so that I can tell whether I am signed in or not
 10. As a logged in user, I can click on “send message”, so that I can communicate with buyers/sellers
 11. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
+
+### Epic 4: User Profiles - User Stories
+
 12. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
 13. As a registered user, I can view other buyers or sellers profiles
 14. As a registered user, I can view other sellers ads on their profiles
+
+### Epic 5: The Ad Detail Page - User Stories
+
 15. As a user, I would like to be able to view the ad I have clicked, so that I can view its details
 16. As a user, I can view a picture and a description of the item on the Ad Detail page
 17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ads
 18. As a registered user, I can contact seller via the ad
 19. As a logged in user, I can mark my item as sold, so that other users are aware of this
+
+### Epic 6: The Message Window - User Stories
+
 20. As a logged in user, I have the possibility to send and recieve messages to other users via a button or link in the ad
 21. As a logged in user, i can view messages as a floating window, so that it is visible wherever I am on the website
 22. As a logged in user, I can view an option to report a certain message, so that I can report bad behaviour from other users
+
+### Epic 7: The Contact Page - User Stories
+
 23. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
 24. As a user, I can fill in a contact form, so that I can get in touch with the site owner
+
+### Epic 8: Admin/Site-Owner Functionality - User Stories
+
 25. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
 26. As a site owner, I can receive a notification if users violate the terms of use, and am able to remove their accounts and/or ads
 27. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
 
 
-### Site Owner Goals
-
-18. I would like for the application to contain validated Python code without returning any errors, whatever the user does
 
 ## Technical Design
 
@@ -197,7 +216,7 @@ Below is a flowchart describing the structure of the application, created with [
 <details>
     <summary>View flowchart here</summary>
 
-![Flowchart](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/flowchart.png)
+![Flowchart](#)
 
 </details>
 
