@@ -15,3 +15,6 @@ class Ad(models.model):
     created_on = models.DateTimeField(auto_now_add=True)
     sold = models.BooleanField(default=False)
     saved = models.ManyToManyField(User, related_name='saved', blank=True)
+
+    def __str__(self):
+        return self.title
