@@ -23,6 +23,8 @@ class Ad(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=200, unique=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(default='placeholder', upload_to='profile_pics')
 
     def __str__(self):

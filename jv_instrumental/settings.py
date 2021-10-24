@@ -145,7 +145,7 @@ STATIC_URL = "https://%s/static/" % (AWS_S3_CUSTOM_DOMAIN)
 AWS_DEFAULT_REGION = 'eu-north-1'
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'storage_backends.MediaStorage'
+DEFAULT_FILE_STORAGE = 'instr_main.storage_backends.MediaStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
