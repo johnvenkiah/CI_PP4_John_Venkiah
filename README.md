@@ -119,36 +119,29 @@ The home screen contains a lot, but is well organized. It contains:
 
 </details>
 
-THis page contains username and password fields, as well as links to sign up and retrieve password.
-
-### 3. Signup
-
-The signup page contains name, email, password and username fields for user to enter. Upon entering, an email confirmation is sent to user.
-
-<details>
-    <summary>Click to view image</summary>
+THis page contains username and password fields, as well as links to sign up and retrieve password. If a user clicks on Sign Up, fields appear for the user to fill in. 
 
 ![Signup](#)
 
 </details>
 
-### 4. Ads List
+### 3. Ads List
 
 The heart of the site, showing the ads relevant from the users search.
 
-### 5. Ad Detail
+### 4. Ad Detail
 
 The specific ad clicked on, with more detailed info, including for the seller.
 
-### 6. User Profile
+### 5. User Profile
 
 This contains the basic user information, and the ads that the user has published. All of which can be edited. Users can also view other users profiles and their ads.
 
-### 7. Messages Popup-Window
+### 6. Messages Popup-Window
 
 A simple two way messages function. Users can message each other about ads on the forum.
 
-### 8. Contact
+### 7. Contact
 
 On the Contact page, users can fill in a simple contact form to get in touch with the site owner.
 
