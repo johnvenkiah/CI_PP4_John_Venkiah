@@ -22,6 +22,9 @@ class Ad(models.Model):
     sold = models.BooleanField(default=False)
     saved = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ['created_on']
+
     def __str__(self):
         return self.title
 
@@ -34,6 +37,9 @@ class Profile(models.Model):
     location = map_fields.AddressField(max_length=200)
     geolocation = map_fields.GeoLocationField(max_length=100)
 
+    class Meta:
+        ordering = ['created_on']
+
     def __str__(self):
         return f'{self.user.username}: Profile'
 
@@ -42,6 +48,9 @@ class Categories(models.Model):
     title = models.CharField('title', max_length=100)
     slug = models.SlugField(max_length= 200, unique=True)
     ads = models.ForeignKey(Ad, on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        ordering = ['title']
 
     def __str__(self):
         return self.title
