@@ -1,7 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-import boto3
+from django.urls import reverse
+from django.utils.functional import cached_property
 from django_google_maps import fields as map_fields
+from django.template.defaultfilters import slugify
+import boto3
+from unidecode import unidecode
 
 
 class Ad(models.Model):
@@ -28,6 +32,42 @@ class Ad(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('django_classified:item', kwargs={
+            'pk': self.pk,
+            'slug': self.slug
+        })
+
+    @cached_property
+    def get_keywords(self):
+        return ",".join(set(self.description.split()))
+
+    @cached_property
+    def contact_phone(self):
+        return self.user.profile.phone
+
+    @cached_property
+    def image_count(self):
+        return self.image_set.count()
+
+    @cached_property
+    def featured_image(self):
+        return self.image_set.all().first()
+
+    @cached_property
+    def related_items(self):
+        queryset = Ad.objects \
+            .filter(is_active=True) \
+            .filter(group=self.group) \
+            .exclude(pk=self.pk)
+
+        return queryset
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(unidecode(self.title))
+        super(Ad, self).save(*args, **kwargs)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -46,7 +86,7 @@ class Profile(models.Model):
 
 class Categories(models.Model):
     title = models.CharField('title', max_length=100)
-    slug = models.SlugField(max_length= 200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
     ads = models.ForeignKey(Ad, on_delete=models.SET_NULL, null=True)
 
     class Meta:
@@ -54,3 +94,17 @@ class Categories(models.Model):
 
     def __str__(self):
         return self.title
+
+    @cached_property
+    def count(self):
+        return self.item_set.filter(is_active=True).count()
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(unidecode(self.title))
+        super(Categories, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse(
+            'instru_mental:group', kwargs={'pk': self.pk, 'slug': self.slug}
+        )
