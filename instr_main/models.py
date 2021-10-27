@@ -24,7 +24,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=200, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(default='placeholder')
 
     def __str__(self):
         return f'{self.user.username}: Profile'
@@ -33,7 +32,6 @@ class Profile(models.Model):
 class Category(models.Model):
     title = models.CharField('title', max_length=100)
     slug = models.SlugField(blank=True, null=True)
-    image = models.ImageField(default='placeholder')
 
     def __str__(self):
         return self.title

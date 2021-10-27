@@ -147,6 +147,8 @@ AWS_DEFAULT_REGION = 'eu-north-1'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'instr_main.storage_backends.MediaStorage'
 
+GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
