@@ -17,6 +17,10 @@ from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Categories, Profile
 
 
+class HomeView(View):
+    template_name = 'index.html'
+
+
 class FilteredListView(FormMixin, ListView):
     def get_form_kwargs(self):
         return {
@@ -67,11 +71,14 @@ class ProfileView(UpdateView):
     form_class = ProfileForm
     success_url = reverse_lazy('instru_mental:profile')
 
+    def get_queryset(self):
+        return Ad.objects.filter(user=self.request.user)
+
     def get_object(self, queryset=None):
-        return Profile.get_or_create_for_user(self.request.user)
+        return Profile.get(self.request.user)
 
     def form_valid(self, form):
-        messages.success(self.request, alert('Your profile settings was updated!'))
+        messages.success(self.request, alert('Profile updated.'))
         return super(ProfileView, self).form_valid(form)
 
     @method_decorator(login_required)
@@ -191,15 +198,6 @@ class AdCreateView(FormsetMixin, CreateView):
     form_class = AdForm
     formset_class = inlineformset_factory(Ad)
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        profile = Profile.get_or_create_for_user(self.request.user)
-        if not profile.allow_add_item():
-            messages.error(self.request, alert('You have reached the limit!'))
-            return redirect(reverse('instru_mental:user-ads'))
-
-        return super(AdCreateView, self).dispatch(*args, **kwargs)
-
     def form_valid(self, form, formset):
         form.instance.user = self.request.user
         form.save()
@@ -210,17 +208,6 @@ class AdCreateView(FormsetMixin, CreateView):
         initial = super(AdCreateView, self).get_initial()
         # initial['area'] = Area.get_for_request(self.request)
         return initial
-
-
-class MyAdsView(ListView):
-    template_name = 'instru_mental/user_ad_list.html'
-
-    def get_queryset(self):
-        return Ad.objects.filter(user=self.request.user)
-
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(MyAdsView, self).dispatch(*args, **kwargs)
 
 
 class AdDeleteView(DeleteView):
