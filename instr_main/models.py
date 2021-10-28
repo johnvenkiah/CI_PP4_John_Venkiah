@@ -7,6 +7,8 @@ from django.template.defaultfilters import slugify
 import boto3
 from unidecode import unidecode
 
+from jv_instrumental.settings import DEFAULT_FILE_STORAGE
+
 
 class Ad(models.Model):
     title = models.CharField(max_length=250, unique=True)
@@ -18,11 +20,12 @@ class Ad(models.Model):
         'Categories', on_delete=models.SET_NULL, null=True
     )
     description = models.CharField(max_length=800)
-    featured_image = models.ImageField('image', default='placeholder')
+    image_set = models.ImageField(
+        'image', default='placeholder', upload_to=DEFAULT_FILE_STORAGE
+    )
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    location = map_fields.AddressField(max_length=200)
-    geolocation = map_fields.GeoLocationField(max_length=100)
+    location = models.CharField(max_length=200)
     sold = models.BooleanField(default=False)
     saved = models.BooleanField(default=False)
 
@@ -41,10 +44,6 @@ class Ad(models.Model):
     @cached_property
     def get_keywords(self):
         return ",".join(set(self.description.split()))
-
-    @cached_property
-    def contact_phone(self):
-        return self.user.profile.phone
 
     @cached_property
     def image_count(self):
@@ -75,7 +74,6 @@ class Profile(models.Model):
     ads = models.ForeignKey(Ad, on_delete=models.SET_NULL, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     location = map_fields.AddressField(max_length=200)
-    geolocation = map_fields.GeoLocationField(max_length=100)
 
     class Meta:
         ordering = ['created_on']
@@ -87,7 +85,6 @@ class Profile(models.Model):
 class Categories(models.Model):
     title = models.CharField('title', max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
-    ads = models.ForeignKey(Ad, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         ordering = ['title']

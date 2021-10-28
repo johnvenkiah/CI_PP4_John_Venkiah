@@ -8,7 +8,7 @@ class AdAdmin(ModelAdmin):
 
     list_display = (
         'title', 'slug', 'price', 'seller', 'created_on',
-        'sold', 'location', 'category'
+        'sold', 'location', 'category', 'image_set'
         )
     search_fields = ['title', 'description']
     prepopulated_fields = {'slug': ('title',)}
@@ -27,7 +27,7 @@ class ProfileAdmin(ModelAdmin):
 @admin.register(Categories)
 class CategoriesAdmin(ModelAdmin):
 
-    list_display = ('title', 'ads')
+    list_display = ('title', )
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('title', )
