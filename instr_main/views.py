@@ -88,7 +88,7 @@ class ProfileView(UpdateView):
 
 class SearchView(FilteredListView):
     form_class = SearchForm
-    queryset = Ad.active.all()
+    queryset = Ad.all()
     paginate_by = 10
     template_name = 'instru_mental/search.html'
 
@@ -172,7 +172,7 @@ class CategoryDetail(SingleObjectMixin, ListView):
 
 
 class AdDetailView(DetailView):
-    queryset = Ad.active
+    queryset = Ad
 
 
 class AdUpdateView(FormsetMixin, UpdateView):

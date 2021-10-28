@@ -70,6 +70,10 @@ class Ad(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
     ads = models.ForeignKey(Ad, on_delete=models.SET_NULL, null=True)
     created_on = models.DateTimeField(auto_now_add=True)

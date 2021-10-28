@@ -8,7 +8,7 @@ from . import views
 app_name = 'instr_main'
 
 urlpatterns = [
-    path('', views.SectionListView.as_view(), name='index'),
+    path('', views.SectionListView.as_view(), name='home'),
     path('new/', never_cache(views.AdCreateView.as_view()), name='item-new'),
     path(
         'edit/(?P<pk>\d+)/',
@@ -28,7 +28,7 @@ urlpatterns = [
     path('search/', views.SearchView.as_view(), name='search'),
     path('user/profile/', views.ProfileView.as_view(), name='profile'),
     path(
-        'user/my/delete/(?P<pk>\d+)/',
+        'user/delete/(?P<pk>\d+)/',
         views.AdDeleteView.as_view(),
         name='delete-ad'
     ),

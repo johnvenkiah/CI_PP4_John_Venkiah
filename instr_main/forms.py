@@ -9,7 +9,7 @@ class SearchForm(forms.Form):
     #     label=_('Area'), queryset=Area.objects.all(), required=False
     # )
     category = forms.ModelChoiceField(
-        label=_('Group'), queryset=Categories.objects.all(), required=False
+        label=_('Categories'), queryset=Categories.objects.all(), required=False
     )
     query = forms.CharField(required=False, label=_('Query'),)
 
@@ -35,7 +35,7 @@ class AdForm(forms.ModelForm):
             'title',
             'category',
             'description',
-            'featured_image',
+            'image_set',
             'price',
             'location',
         )
