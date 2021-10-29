@@ -4,9 +4,7 @@ from django.urls import reverse
 from django.utils.functional import cached_property
 from django_google_maps import fields as map_fields
 from django.template.defaultfilters import slugify
-import boto3
 from unidecode import unidecode
-
 from jv_instrumental.settings import DEFAULT_FILE_STORAGE
 
 
@@ -29,38 +27,40 @@ class Ad(models.Model):
     sold = models.BooleanField(default=False)
     saved = models.BooleanField(default=False)
 
-    class Meta:
-        ordering = ['created_on']
-
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse('django_classified:item', kwargs={
-            'pk': self.pk,
-            'slug': self.slug
-        })
+    class Meta:
+        ordering = ['created_on']
 
-    @cached_property
-    def get_keywords(self):
-        return ",".join(set(self.description.split()))
+        #def __str__(self):
+        #    return self.title
 
-    @cached_property
-    def image_count(self):
-        return self.image_set.count()
+        #def get_absolute_url(self):
+        #    return reverse('django_classified:item', kwargs={
+        #        'pk': self.pk,
+        #        'slug': self.slug
+        #    })
 
-    @cached_property
-    def featured_image(self):
-        return self.image_set.all().first()
+        #@cached_property
+        #def get_keywords(self):
+        #    return ",".join(set(self.description.split()))
 
-    @cached_property
-    def related_items(self):
-        queryset = Ad.objects \
-            .filter(is_active=True) \
-            .filter(group=self.group) \
-            .exclude(pk=self.pk)
+        #@cached_property
+        #def image_count(self):
+        #    return self.image_set.count()
 
-        return queryset
+        #@cached_property
+        #def featured_image(self):
+        #    return self.image_set.all().first()
+
+        #@cached_property
+        #def related_items(self):
+        #    queryset = Ad.objects \
+        #        .filter(is_active=True) \
+        #        .filter(group=self.group) \
+        #        .exclude(pk=self.pk)
+        #    return queryset
 
     def save(self, *args, **kwargs):
         if not self.slug:

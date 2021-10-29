@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "instr_main/base.html" %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <form method="post" style="margin-top: 1.3em">
-                                {{ search_form | crispy }}
+                                {{ search_form | safe }}
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-signup btn-lg">Search Ads</button>
                             </form>

@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.forms import inlineformset_factory
 from django.urls import reverse_lazy, reverse
 from django.utils.translation import ugettext as alert
 from django.utils.decorators import method_decorator
@@ -18,7 +17,8 @@ from .models import Ad, Categories, Profile
 
 
 class HomeView(View):
-    template_name = 'index.html'
+    def get_view(self, request):
+        return render(request, "instr_main/index.html")
 
 
 class FilteredListView(FormMixin, ListView):
@@ -88,7 +88,7 @@ class ProfileView(UpdateView):
 
 class SearchView(FilteredListView):
     form_class = SearchForm
-    queryset = Ad.all()
+    queryset = Ad.objects.all()
     paginate_by = 10
     template_name = 'instru_mental/search.html'
 
@@ -179,7 +179,6 @@ class AdUpdateView(FormsetMixin, UpdateView):
     is_update_view = True
     model = Ad
     form_class = AdForm
-    formset_class = inlineformset_factory(Ad)
 
     def get_object(self, *args, **kwargs):
         obj = super(AdUpdateView, self).get_object(*args, **kwargs)
@@ -196,7 +195,6 @@ class AdCreateView(FormsetMixin, CreateView):
     is_update_view = False
     model = Ad
     form_class = AdForm
-    formset_class = inlineformset_factory(Ad)
 
     def form_valid(self, form, formset):
         form.instance.user = self.request.user
