@@ -4,12 +4,11 @@ from django.contrib.sitemaps.views import sitemap as sitemap_view
 from django.views.decorators.cache import cache_page, never_cache
 
 from . import views
-from .views import HomeView
 
 app_name = 'instr_main'
 
 urlpatterns = [
-    path('', HomeView.get_view, name='home'),
+    path('', views.HomeView.as_view(), name='home'),
     path('new/', never_cache(views.AdCreateView.as_view()), name='item-new'),
     path(
         'edit/<pk>/',

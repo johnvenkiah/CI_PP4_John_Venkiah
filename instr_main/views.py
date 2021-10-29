@@ -17,7 +17,7 @@ from .models import Ad, Categories, Profile
 
 
 class HomeView(View):
-    def get_view(self, request):
+    def get(self, request):
         return render(request, "instr_main/index.html")
 
 
