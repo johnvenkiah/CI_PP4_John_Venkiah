@@ -1,5 +1,5 @@
 {% extends "instr_main/base.html" %}
-
+{% load static %}
 {% block content %}
 
 <!-- PIANO ICON: <div>Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
@@ -13,7 +13,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 mt-3 left">
+        <div class="col-12 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -33,9 +33,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 mt-3 bg-info">Categories</div>
-                <ul class="list-inline">
-                </ul>
+                <div class="col-12 mt-3 bg-info">
+                    <h3>Categories</h3>
+                    <ul class="list-inline text-center">
+                    {% for instr, icon in category_obj.items %}
+                        <li class="col-1 list-inline-item mx-3">
+                            <p>{{ instr }}</p>
+                            <div class="rounded-circle card bg-dark text-center">
+                                <img src="{% static 'images/icons/' %}{{ icon }}.png" class="d-flex cat-icons justify-content-center" alt="{{ icon }}-icon">
+                            </div>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-4 bg-info">Feature 1</div>
