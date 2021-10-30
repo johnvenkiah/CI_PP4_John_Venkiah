@@ -6,14 +6,11 @@
     <div class="row">
         <div class="col-12 mt-3 left">
             <div class="row">
-                <div class="col-12 mt-3 bg-info">Categories</div>
-            </div>
-            <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
                             <form method="post" style="margin-top: 1.3em">
-                                {{ search_form | safe }}
+                                {{ forms.search_form | safe }}
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-signup btn-lg">Search Ads</button>
                             </form>
@@ -22,14 +19,64 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card mb-8">
-                        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fnice-france&psig=AOvVaw2zV5P2s6G_ftY7JXsIc-Bb&ust=1635513768042000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJiGrduZ7fMCFQAAAAAdAAAAABAD" alt="image">
+                        <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/107693551_2983534108412424_4619359158746219415_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=e3f864&_nc_ohc=DvnQmmBpcD4AX-H--0N&_nc_ht=scontent-arn2-1.xx&oh=3ac77778042f14876f46215e05641ae8&oe=61A30EB4" alt="image">
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 bg-info">
-
+                <div class="col-12 mt-3 bg-info">Categories</div>
+                <ul class="list-inline">
+                    <li class="list-inline-item w-10">
+                        <div class="card text-center bg-info">
+                            <span class="emojis">&#127929;</span>
+                            <p>Pianos/keyboards</p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item w-10">
+                        <div class="card text-center bg-info">
+                            <span class="emojis">&#127928;</span>
+                            <p>Guitar/Bass/Amps</p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item w-10">
+                        <div class="card text-center bg-info">
+                            <span class="emojis">&#129345;</span>
+                            <p>Drums/Symbals</p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item w-10">
+                        <div class="card text-center bg-info">
+                            <span class="emojis">&#127927;</span>
+                            <p>Woodwind</p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item w-10">
+                        <div class="card text-center bg-info">
+                            <span class="emojis">&#127930;</span>
+                            <p>Brass</p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item w-10">
+                        <div class="card text-center bg-info">
+                            <span class="emojis">&#127908; &#127911;</span>
+                            <p>Studio Equipment</p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item w-10">
+                        <div class="card text-center bg-info">
+                            <span class="emojis">&#127931;</span>
+                            <p>Bowed Instruments</p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item w-10">
+                        <div class="card text-center bg-info">
+                            <span class="emojis">&#127926;</span>
+                            <p>Other..</p>
+                        </div>
+                    </li>
+                </ul>
                 </div>
+            <div class="row">
                 <div class="col-md-4 bg-info">Feature 1</div>
                 <div class="col-md-4 bg-info">Feature 2</div>
                 <div class="col-md-4 bg-info">Feature 3</div>
