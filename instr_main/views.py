@@ -18,7 +18,21 @@ from .models import Ad, Categories, Profile
 
 class HomeView(View):
     def get(self, request):
-        return render(request, "instr_main/index.html")
+        category_obj = {
+            'Pianos/keyboards': 'grand-piano',
+            'Guitar/Bass/Amps': 'electric-guitar',
+            'Drums/Symbals': 'drum-kit',
+            'Woodwind': 'clarinet',
+            'Brass': 'trumpet',
+            'Studio Equipment': 'sound-mixer',
+            'Bowed Instruments': 'cello',
+            'Other..': 'accordion',
+        }
+        context = {
+            'category_obj': category_obj
+        }
+
+        return render(request, 'instr_main/index.html', context)
 
 
 class FilteredListView(FormMixin, ListView):
@@ -30,7 +44,7 @@ class FilteredListView(FormMixin, ListView):
         }
 
     def get(self, request, *args, **kwargs):
-        self.object_list = self.get_queryset()
+        self.object_list = self.get.objects.all()
 
         form = self.get_form(self.get_form_class())
 
@@ -39,6 +53,9 @@ class FilteredListView(FormMixin, ListView):
 
         context = self.get_context_data(form=form)
         return self.render_to_response(context)
+
+
+# ---------------------GAMMALT UNDER---------------------------------
 
 
 # class CategoryListView(TemplateView):
@@ -65,6 +82,8 @@ class FilteredListView(FormMixin, ListView):
 
 #         return context
 
+# ---------------------GAMMALT OVAN ___________________________________
+
 
 class ProfileView(UpdateView):
     template_name = 'instru_mental/profile.html'
@@ -86,7 +105,7 @@ class ProfileView(UpdateView):
         return super(ProfileView, self).dispatch(*args, **kwargs)
 
 
-class SearchView(FilteredListView):
+class SearchView(FilteredListView, ListView):
     form_class = SearchForm
     queryset = Ad.objects.all()
     paginate_by = 10
@@ -172,7 +191,7 @@ class CategoryDetail(SingleObjectMixin, ListView):
 
 
 class AdDetailView(DetailView):
-    queryset = Ad
+    queryset = Ad.active
 
 
 class AdUpdateView(FormsetMixin, UpdateView):
@@ -213,7 +232,7 @@ class AdDeleteView(DeleteView):
     success_url = reverse_lazy('instru_mental:user-ads')
 
     def get_queryset(self):
-        queryset = super(AdDeleteView, self).get_queryset()
+        queryset = super(AdDeleteView, self).get.objects.all()
 
         if not self.request.user.is_superuser:
             queryset = queryset.filter(user=self.request.user)
@@ -224,6 +243,11 @@ class AdDeleteView(DeleteView):
     def dispatch(self, *args, **kwargs):
         return super(AdDeleteView, self).dispatch(*args, **kwargs)
 
+
+
+# ____________________GAMMALT__________________________________
+
+#______________________________________________________________
 
 # class AdsList(generic.ListView):
 #     model = Ad

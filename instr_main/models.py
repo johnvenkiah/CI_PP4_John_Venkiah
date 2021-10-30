@@ -4,8 +4,14 @@ from django.urls import reverse
 from django.utils.functional import cached_property
 from django_google_maps import fields as map_fields
 from django.template.defaultfilters import slugify
+from django.utils.translation import ugettext as _
 from unidecode import unidecode
 from jv_instrumental.settings import DEFAULT_FILE_STORAGE
+
+
+class ActiveManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveManager, self).get_queryset().filter(is_active=True)
 
 
 class Ad(models.Model):
@@ -26,41 +32,46 @@ class Ad(models.Model):
     location = models.CharField(max_length=200)
     sold = models.BooleanField(default=False)
     saved = models.BooleanField(default=False)
+    is_active = models.BooleanField(_('active'), default=True, db_index=True)
+
+    objects = models.Manager()
+    active = ActiveManager()
 
     def __str__(self):
+        if not self.is_active:
+            return '[%s] %s' % (_('in active'), self.title)
         return self.title
 
     class Meta:
         ordering = ['created_on']
+        verbose_name = _('ad')
+        verbose_name_plural = _('ads')
 
-        #def __str__(self):
-        #    return self.title
+    def get_absolute_url(self):
+        return reverse('django_classified:item', kwargs={
+            'pk': self.pk,
+            'slug': self.slug
+        })
 
-        #def get_absolute_url(self):
-        #    return reverse('django_classified:item', kwargs={
-        #        'pk': self.pk,
-        #        'slug': self.slug
-        #    })
+        @cached_property
+        def get_keywords(self):
+            return ",".join(set(self.description.split()))
 
-        #@cached_property
-        #def get_keywords(self):
-        #    return ",".join(set(self.description.split()))
+        @cached_property
+        def image_count(self):
+            return self.image_set.count()
 
-        #@cached_property
-        #def image_count(self):
-        #    return self.image_set.count()
+        @cached_property
+        def featured_image(self):
+            return self.image_set.all().first()
 
-        #@cached_property
-        #def featured_image(self):
-        #    return self.image_set.all().first()
-
-        #@cached_property
-        #def related_items(self):
-        #    queryset = Ad.objects \
-        #        .filter(is_active=True) \
-        #        .filter(group=self.group) \
-        #        .exclude(pk=self.pk)
-        #    return queryset
+        @cached_property
+        def related_items(self):
+            queryset = Ad.objects \
+               .filter(is_active=True) \
+               .filter(category=self.category) \
+               .exclude(pk=self.pk)
+            return queryset
 
     def save(self, *args, **kwargs):
         if not self.slug:

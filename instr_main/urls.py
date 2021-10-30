@@ -11,27 +11,23 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('new/', never_cache(views.AdCreateView.as_view()), name='item-new'),
     path(
-        'edit/<pk>/',
+        'edit/<int:pk>/',
         never_cache(views.AdUpdateView.as_view()),
         name='ad-edit'
     ),
+    path('<int:pk><slug:slug>/', views.AdDetailView.as_view(), name='ad'),
     path(
-        '<pk>/',
-        views.AdDetailView.as_view(),
-        name='ad-detail'
-    ),
-    path(
-        'category/<pk><slug>/',
+        'category/<int:pk><slug:slug>/',
         views.CategoryDetail.as_view(),
         name='category'
     ),
     path('search/', views.SearchView.as_view(), name='search'),
     path('user/profile/', views.ProfileView.as_view(), name='profile'),
     path(
-        'user/delete/<pk/',
+        'user/delete/<int:pk>/',
         views.AdDeleteView.as_view(),
         name='delete-ad'
     ),
     path('user/logout/', LogoutView.as_view(), name='logout'),
 
-]
+ ]
