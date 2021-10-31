@@ -1,3 +1,14 @@
 .card {
     padding: 16px;
 }
+
+.small-text {
+    font-size: .9rem;
+}
+
+.navbar-toggler-icon {
+    background-size: 110%;
+}
+
+.navbar-toggler {
+    padding: .25rem .55rem;

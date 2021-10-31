@@ -12,16 +12,15 @@
     <title>InstrMental | Used Music Gear</title>
 </head>
 <body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg bg-info text-white">
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a href="{% url 'instr_main:home' %}" class="navbar-brand"><span class="logo">InstruMental</span></a>
-                <div class="collapse navbar-collapse" id="navbarText">
+                <a class="navbar-brand" href="{% url 'instr_main:home' %}">InstruMental</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-lg-0">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
                         <li>
                             <a class="btn btn-success" role="button" href="#">Post Ad</a>
                         </li>
@@ -51,10 +50,10 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col-3 left">
-                <span class="navbar-text text-muted">
+            <div class="col-lg-3 left">
+                <h2 class="navbar-text text-muted">
                     Buy and sell you music gear here!
-                </span>
+                </h2>
             </div>
         </div>
         <main class="flex-shrink-0">

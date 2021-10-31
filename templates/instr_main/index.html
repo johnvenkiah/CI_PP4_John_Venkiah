@@ -11,7 +11,7 @@
 <!-- CELLO ICON: <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
 <!-- ACCORDION ICON: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
 
-<div class="container-fluid">
+<div class="container-fluid bg-light">
     <div class="row">
         <div class="col-12 mt-3">
             <div class="row">
@@ -19,6 +19,17 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <form method="post" style="margin-top: 1.3em">
+                                <input name="search" type="text" placeholder="Search...">
+                                <select name="select-catgory" id="select-category">
+                                    {% for instr in category_obj.keys %}
+                                    <option value="{{ category }}">{{ instr }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select name="select-area" id="select-area">
+                                    {% for area in area_list %}
+                                    <option value="{{ area }}">{{ area }}</option>
+                                    {% endfor %}
+                                </select>
                                 {{ forms.search_form | safe }}
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-signup btn-lg">Search Ads</button>
@@ -33,12 +44,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 mt-3 bg-info">
+                <div class="col-12 mt-3">
                     <h3>Categories</h3>
                     <ul class="list-inline text-center">
                     {% for instr, icon in category_obj.items %}
-                        <li class="col-1 list-inline-item mx-3">
-                            <p>{{ instr }}</p>
+                        <li class="col-1 col-md-2 list-inline-item mx-3">
+                            <p class="small-text">{{ instr }}</p>
                             <div class="rounded-circle card bg-dark text-center">
                                 <img src="{% static 'images/icons/' %}{{ icon }}.png" class="d-flex cat-icons justify-content-center" alt="{{ icon }}-icon">
                             </div>
@@ -48,9 +59,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 bg-info">Feature 1</div>
-                <div class="col-md-4 bg-info">Feature 2</div>
-                <div class="col-md-4 bg-info">Feature 3</div>
+                <div class="col-md-4 card text-center">Feature 1</div>
+                <div class="col-md-4 card text-center">Feature 2</div>
+                <div class="col-md-4 card text-center">Feature 3</div>
             </div>
         </div>
     </div>

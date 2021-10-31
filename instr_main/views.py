@@ -28,8 +28,10 @@ class HomeView(View):
             'Bowed Instruments': 'cello',
             'Other..': 'accordion',
         }
+        area_list = ['here', 'there', 'everywhere']
         context = {
-            'category_obj': category_obj
+            'category_obj': category_obj,
+            'area_list': area_list,
         }
 
         return render(request, 'instr_main/index.html', context)

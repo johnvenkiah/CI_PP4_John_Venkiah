@@ -103,6 +103,7 @@ class Categories(models.Model):
 
     class Meta:
         ordering = ['title']
+        verbose_name_plural = "categories"
 
     def __str__(self):
         return self.title
@@ -118,5 +119,5 @@ class Categories(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'instru_mental:group', kwargs={'pk': self.pk, 'slug': self.slug}
+            'instru_mental:category', kwargs={'pk': self.pk, 'slug': self.slug}
         )
