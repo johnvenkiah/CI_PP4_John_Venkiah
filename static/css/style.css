@@ -24,3 +24,58 @@
     width: 40px;
     margin: 0 auto;
 }
+
+.feature {
+    height: 350px;
+}
+
+.feature-img {
+    border-radius: 5px;
+    background-size: cover;
+}
+
+#feature-img-1 {
+    background-image: url("../images/man_guitar_singing.jpg");
+}
+
+#feature-img-2 {
+    background-image: url("../images/child_ukulele.png");
+}
+
+#feature-img-3 {
+    background-image: url("../images/girl_keyboards.png");
+}
+
+.text-shadow {
+    text-shadow: 3px 3px 10px black, -3px -3px 10px black;
+}
+
+.card-footer {
+    background: transparent;
+    border-top: 0px;
+  }
+
+.btn {
+    display: block;
+    width: 100%;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(168, 119, 46, 0.3);
+    color: #fff;
+}
+
+.btn-success {
+    background-color: rgb(182, 135, 64);
+    border: rgb(167, 123, 42);
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: rgb(211, 146, 49);
+    border: rgb(139, 105, 41);
+}
+
+.svg {
+    font-size: 2em;
+}
