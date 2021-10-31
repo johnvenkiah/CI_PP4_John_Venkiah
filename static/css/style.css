@@ -1,5 +1,10 @@
-.card {
+.pad-16 {
     padding: 16px;
+}
+
+.hero-img-home {
+    background-size: cover;
+    background-position: center;
 }
 
 .small-text {
@@ -12,3 +17,10 @@
 
 .navbar-toggler {
     padding: .25rem .55rem;
+}
+
+.cat-circle {
+    height: 40px;
+    width: 40px;
+    margin: 0 auto;
+}
