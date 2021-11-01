@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy, reverse
@@ -14,6 +15,7 @@ from django.views.generic.edit import FormMixin
 
 from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Categories, Profile
+from templates import instr_main
 
 
 class HomeView(View):
@@ -28,6 +30,7 @@ class HomeView(View):
             'Bowed Instruments': 'cello',
             'Other..': 'accordion',
         }
+
         area_list = ['here', 'there', 'everywhere']
         context = {
             'category_obj': category_obj,
@@ -36,6 +39,17 @@ class HomeView(View):
 
         return render(request, 'instr_main/index.html', context)
 
+
+# class LoginView(View):
+#     def get(self, request):
+#         return render(
+#             request,
+#             'index.html',
+#             {'sign_in_form': UserCreationForm}
+#         )
+
+def sign_up(request):
+    return render(request, 'instr_main/signup.html', {'signup_form': UserCreationForm})
 
 class FilteredListView(FormMixin, ListView):
     def get_form_kwargs(self):
