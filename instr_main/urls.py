@@ -9,7 +9,7 @@ app_name = 'instr_main'
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
-    path('signup/', views.sign_up, name='signup'),
+    # path('signup/', views.sign_up, name='signup'),
     path('new/', never_cache(views.AdCreateView.as_view()), name='item-new'),
     path(
         'edit/<int:pk>/',

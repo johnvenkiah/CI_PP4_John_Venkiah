@@ -15,7 +15,6 @@ from django.views.generic.edit import FormMixin
 
 from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Categories, Profile
-from templates import instr_main
 
 
 class HomeView(View):
@@ -35,6 +34,7 @@ class HomeView(View):
         context = {
             'category_obj': category_obj,
             'area_list': area_list,
+            'signup_form': UserCreationForm,
         }
 
         return render(request, 'instr_main/index.html', context)
@@ -48,8 +48,8 @@ class HomeView(View):
 #             {'sign_in_form': UserCreationForm}
 #         )
 
-def sign_up(request):
-    return render(request, 'instr_main/signup.html', {'signup_form': UserCreationForm})
+# def sign_up(request):
+#     return render(request, 'instr_main/signup.html', {'signup_form': UserCreationForm})
 
 class FilteredListView(FormMixin, ListView):
     def get_form_kwargs(self):
