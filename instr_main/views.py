@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy, reverse
@@ -37,7 +38,23 @@ class HomeView(View):
             'signup_form': UserCreationForm,
         }
 
-        return render(request, 'instr_main/index.html', context)
+        pass_1 = request.POST.get('password1')
+        pass_2 = request.POST.get('password2')
+        username = request.POST.get('username')
+        success_or_not = {}
+
+        if request.model == "POST":
+            if pass_1 == pass_2:
+                new_user = User.objects.create_user(username, password=pass_1)
+                new_user.save()
+                success_or_not = {"Success": "new user created successfully"}
+            else:
+                success_or_not = {
+                    "Error": "The passwords do not match, try again."
+                }
+        return render(
+            request, 'instr_main/index.html', context, success_or_not
+        )
 
 
 # class LoginView(View):
