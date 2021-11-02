@@ -13,13 +13,14 @@ from django.views.generic import ListView, DeleteView, TemplateView
 from django.views import generic, View
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
+from django.db import IntegrityError
 
 from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Categories, Profile
 
 
 class HomeView(View):
-    def get(self, request):
+    def get_context_data(self):
         category_obj = {
             'Pianos/keyboards': 'grand-piano',
             'Guitar/Bass/Amps': 'electric-guitar',
@@ -37,36 +38,35 @@ class HomeView(View):
             'area_list': area_list,
             'signup_form': UserCreationForm,
         }
+        return context
 
+    def get(self, request):
+        context = self.get_context_data()
+        return render(request, 'instr_main/index.html', context)
+
+    def post(self, request):
         pass_1 = request.POST.get('password1')
         pass_2 = request.POST.get('password2')
         username = request.POST.get('username')
-        success_or_not = {}
 
-        if request.model == "POST":
-            if pass_1 == pass_2:
-                new_user = User.objects.create_user(username, password=pass_1)
+        if pass_1 == pass_2:
+            try:
+                new_user = User.objects.create_user(
+                    username, password=pass_1
+                )
                 new_user.save()
-                success_or_not = {"Success": "new user created successfully"}
-            else:
-                success_or_not = {
-                    "Error": "The passwords do not match, try again."
-                }
-        return render(
-            request, 'instr_main/index.html', context, success_or_not
-        )
+                messages.success(self.request, alert(
+                    'Account created successfully'
+                ))
 
+            except IntegrityError:
+                messages.error(self.request, alert(
+                    'Password match error, please try again'
+                ))
 
-# class LoginView(View):
-#     def get(self, request):
-#         return render(
-#             request,
-#             'index.html',
-#             {'sign_in_form': UserCreationForm}
-#         )
+        context = self.get_context_data()
+        return render(request, 'instr_main/index.html', context)
 
-# def sign_up(request):
-#     return render(request, 'instr_main/signup.html', {'signup_form': UserCreationForm})
 
 class FilteredListView(FormMixin, ListView):
     def get_form_kwargs(self):
