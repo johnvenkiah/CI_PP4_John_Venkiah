@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy, reverse
-from django.utils.translation import ugettext as alert
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, CreateView, UpdateView
 from django.views.generic import ListView, DeleteView, TemplateView
@@ -19,7 +18,7 @@ from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Categories, Profile
 
 
-class HomeView(View):
+class HomeView(TemplateView):
     def get_context_data(self):
         category_obj = {
             'Pianos/keyboards': 'grand-piano',
@@ -55,17 +54,16 @@ class HomeView(View):
                     username, password=pass_1
                 )
                 new_user.save()
-                messages.success(self.request, alert(
-                    'Account created successfully'
-                ))
+                messages.success(request, 'Account created successfully')
 
             except IntegrityError:
-                messages.error(self.request, alert(
-                    'Password match error, please try again'
-                ))
+                messages.error(request, 'Integrity Error')
+        else:
+            messages.error(request, 'Password does not match!')
 
         context = self.get_context_data()
-        return render(request, 'instr_main/index.html', context)
+        return redirect('instr_main:home')
+        # return render(request, 'instr_main/index.html', context)
 
 
 class FilteredListView(FormMixin, ListView):
@@ -130,7 +128,7 @@ class ProfileView(UpdateView):
         return Profile.get(self.request.user)
 
     def form_valid(self, form):
-        messages.success(self.request, alert('Profile updated.'))
+        messages.success(self.request, 'Profile updated.')
         return super(ProfileView, self).form_valid(form)
 
     @method_decorator(login_required)
