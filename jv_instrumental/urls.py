@@ -20,4 +20,5 @@ from instr_main import urls as instr_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(instr_urls), name='instr_urls'),
+    path('accounts/', include('allauth.urls')),
 ]

@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -35,34 +36,36 @@ class HomeView(TemplateView):
         context = {
             'category_obj': category_obj,
             'area_list': area_list,
-            'signup_form': UserCreationForm,
+            # 'signup_form': UserCreationForm,
+            # 'login_form': AuthenticationForm,
         }
+
         return context
 
     def get(self, request):
         context = self.get_context_data()
         return render(request, 'instr_main/index.html', context)
 
-    def post(self, request):
-        pass_1 = request.POST.get('password1')
-        pass_2 = request.POST.get('password2')
-        username = request.POST.get('username')
+    # def post(self, request):
+    #     pass_1 = request.POST.get('password1')
+    #     pass_2 = request.POST.get('password2')
+    #     username = request.POST.get('username')
 
-        if pass_1 == pass_2:
-            try:
-                new_user = User.objects.create_user(
-                    username, password=pass_1
-                )
-                new_user.save()
-                messages.success(request, 'Account created successfully')
+    #     if pass_1 == pass_2:
+    #         try:
+    #             new_user = User.objects.create_user(
+    #                 username, password=pass_1
+    #             )
+    #             new_user.save()
+    #             messages.success(request, 'Account created successfully')
 
-            except IntegrityError:
-                messages.error(request, 'Integrity Error')
-        else:
-            messages.error(request, 'Password does not match!')
+    #         except IntegrityError:
+    #             messages.error(request, 'Integrity Error')
+    #     else:
+    #         messages.error(request, 'Password does not match!')
 
-        context = self.get_context_data()
-        return redirect('instr_main:home')
+    #     context = self.get_context_data()
+    #     return render(request, 'instr_main/index.html', context)
         # return render(request, 'instr_main/index.html', context)
 
 
