@@ -120,15 +120,15 @@ class FilteredListView(FormMixin, ListView):
 
 
 class ProfileView(UpdateView):
-    template_name = 'instru_mental/profile.html'
+    template_name = 'instr_main/profile.html'
     form_class = ProfileForm
-    success_url = reverse_lazy('instru_mental:profile')
+    success_url = reverse_lazy('instr_main:profile')
 
     def get_queryset(self):
         return Ad.objects.filter(user=self.request.user)
 
     def get_object(self, queryset=None):
-        return Profile.get(self.request.user)
+        return Profile.get_or_create_for_user(self.request.user)
 
     def form_valid(self, form):
         messages.success(self.request, 'Profile updated.')

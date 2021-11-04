@@ -90,6 +90,13 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     location = map_fields.AddressField(max_length=200)
 
+    @staticmethod
+    def get_or_create_for_user(user):
+        if hasattr(user, 'profile'):
+            return user.profile
+        else:
+            return Profile.objects.create(user=user)
+
     class Meta:
         ordering = ['created_on']
 
