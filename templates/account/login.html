@@ -1,0 +1,110 @@
+{% extends "instr_main/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+<!-- <div class="row">
+    <div class="col-6 mt-3">
+
+
+
+        
+        <div class="row">
+            <div class="col-12 pad-16 ms-2 text-center">
+
+
+
+                <form class="login" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                    <button class="primaryAction btn btn-success" type="submit">{% trans "Sign In" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+{% block content %}
+<div class="row">
+    <div class="col p-0">
+        <div class="shadow-lg pad-16 mb-8 bg-image hero-img-home"
+            style="background-image: url('https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/107693551_2983534108412424_4619359158746219415_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=e3f864&_nc_ohc=DvnQmmBpcD4AX-H--0N&_nc_ht=scontent-arn2-1.xx&oh=3ac77778042f14876f46215e05641ae8&oe=61A30EB4');">
+            <div class="col-md-4">
+                <div class="pad-16 text-white">
+                    <h3>{% trans "Sign In" %}</h3>
+
+                    {% get_providers as socialaccount_providers %}
+    
+                    {% if socialaccount_providers %}
+                    <p>{% blocktrans with site.name as site_name %}Please sign in with one
+                        of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+                        for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+    
+                    <div class="socialaccount_ballot">
+    
+                        <ul class="socialaccount_providers">
+                            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                        </ul>
+    
+                        <div class="login-or">{% trans 'or' %}</div>
+    
+                    </div>
+    
+                    {% include "socialaccount/snippets/login_extra.html" %}
+    
+                    {% else %}
+                    <p>{% blocktrans %}Not registered? No problem - it's quick, easy, and free of charge.
+                        <a class="d-block link-light text-shadow lead" href="{{ signup_url }}"><strong>Sign up here</strong></a>.{% endblocktrans %}
+                    </p>
+                    {% endif %}
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        <div class="d-block">
+                            {{ form.as_p }}
+                        </div>
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <a class="button secondaryAction link-light" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                        <button class="primaryAction btn btn-success mt-3" type="submit">{% trans "Sign In" %}</button>
+                    </form>
+                    <!-- <form method="post">
+                        <div class="mb-3">
+                            <input class="form-control" id="search-input" name="search" type="text"
+                                placeholder="Search...">
+                        </div>
+                        <div class="mb-3">
+                            <label for="select-category" class="shadow-lg form-label">Category</label>
+                            <select class="shadow-lg form-select" name="select-catgory"
+                                id="select-category">
+                                {% for cat in category_obj.keys %}
+                                <option value="{{ category }}">{{ cat }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="select-category" class="shadow-lg form-label">Area</label>
+                            <select class="shadow-lg form-select" name="select-area" id="select-area">
+                                {% for area in area_list %}
+                                <option value="{{ area }}">{{ area }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ forms.search_form | safe }}
+                            {% csrf_token %}
+                        </div> -->
+                        <!-- <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Search Ads</button>
+                        </div>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
