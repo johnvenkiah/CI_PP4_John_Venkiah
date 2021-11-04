@@ -21,26 +21,30 @@
                         <div class="col-md-4">
                             <div class="pad-16 text-white">
                                 <form method="post">
-                                    <div class="mb-3">
-                                        <input class="form-control" id="search-input" name="search" type="text"
-                                            placeholder="Search...">
+                                    <div class="mb-3 input-container">
+                                        <label for="search-input" class="shadow-lg form-label">Search</label>
+                                        <input class="form-control input-with-icon" id="search-input" name="search" type="text"
+                                            placeholder="What are you looking for?">
+                                        <i class="input-icon fa-solid fa-magnifying-glass"></i>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 input-container">
                                         <label for="select-category" class="shadow-lg form-label">Category</label>
-                                        <select class="shadow-lg form-select" name="select-catgory"
+                                        <select class="shadow-lg form-select input-with-icon" name="select-catgory"
                                             id="select-category">
                                             {% for cat in category_obj.keys %}
                                             <option value="{{ category }}">{{ cat }}</option>
                                             {% endfor %}
                                         </select>
+                                        <i class="input-icon fa-solid fa-sort"></i>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 input-container">
                                         <label for="select-category" class="shadow-lg form-label">Area</label>
-                                        <select class="shadow-lg form-select" name="select-area" id="select-area">
+                                        <select class="shadow-lg form-select input-with-icon" name="select-area" id="select-area">
                                             {% for area in area_list %}
                                             <option value="{{ area }}">{{ area }}</option>
                                             {% endfor %}
                                         </select>
+                                        <i class="input-icon fa-solid fa-location-dot"></i>
                                         {{ forms.search_form | safe }}
                                         {% csrf_token %}
                                     </div>

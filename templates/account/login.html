@@ -35,7 +35,7 @@
         <div class="shadow-lg pad-16 mb-8 bg-image hero-img-home"
             style="background-image: url('https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/107693551_2983534108412424_4619359158746219415_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=e3f864&_nc_ohc=DvnQmmBpcD4AX-H--0N&_nc_ht=scontent-arn2-1.xx&oh=3ac77778042f14876f46215e05641ae8&oe=61A30EB4');">
             <div class="col-md-4">
-                <div class="pad-16 text-white">
+                <div class="pad-16 text-white text-shadow">
                     <h3>{% trans "Sign In" %}</h3>
 
                     {% get_providers as socialaccount_providers %}
@@ -59,7 +59,7 @@
     
                     {% else %}
                     <p>{% blocktrans %}Not registered? No problem - it's quick, easy, and free of charge.
-                        <a class="d-block link-light text-shadow lead" href="{{ signup_url }}"><strong>Sign up here</strong></a>.{% endblocktrans %}
+                        <a class="d-block link-light lead" href="{{ signup_url }}"><strong>Sign up here</strong></a>.{% endblocktrans %}
                     </p>
                     {% endif %}
                     <form class="login" method="POST" action="{% url 'account_login' %}">
