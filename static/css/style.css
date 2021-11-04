@@ -100,12 +100,11 @@ li .btn-success {
 }
 
 .alert {
-    position: absolute;
-    width: 30%;
-    margin-left: -15%;
-    left: 50%;
+    float: both;
+    margin: 0 auto;
+    width: fit-content;
     text-align: center;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .login input {
