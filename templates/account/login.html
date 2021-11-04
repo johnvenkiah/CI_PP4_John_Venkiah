@@ -59,7 +59,7 @@
     
                     {% else %}
                     <p>{% blocktrans %}Not registered? No problem - it's quick, easy, and free of charge.
-                        <a class="d-block link-light lead" href="{{ signup_url }}"><strong>Sign up here</strong></a>.{% endblocktrans %}
+                        <a class="d-block link-light lead" href="{{ signup_url }}">Sign up here</a>{% endblocktrans %}
                     </p>
                     {% endif %}
                     <form class="login" method="POST" action="{% url 'account_login' %}">

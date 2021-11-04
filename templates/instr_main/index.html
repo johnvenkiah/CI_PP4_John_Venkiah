@@ -22,14 +22,14 @@
                             <div class="pad-16 text-white">
                                 <form method="post">
                                     <div class="mb-3 input-container">
-                                        <label for="search-input" class="shadow-lg form-label">Search</label>
-                                        <input class="form-control input-with-icon" id="search-input" name="search" type="text"
+                                        <label for="search-input" class="form-label">Search</label>
+                                        <input class="shadow form-control input-with-icon" id="search-input" name="search" type="text"
                                             placeholder="What are you looking for?">
                                         <i class="input-icon fa-solid fa-magnifying-glass"></i>
                                     </div>
                                     <div class="mb-3 input-container">
-                                        <label for="select-category" class="shadow-lg form-label">Category</label>
-                                        <select class="shadow-lg form-select input-with-icon" name="select-catgory"
+                                        <label for="select-category" class="form-label">Category</label>
+                                        <select class="shadow form-select input-with-icon" name="select-catgory"
                                             id="select-category">
                                             {% for cat in category_obj.keys %}
                                             <option value="{{ category }}">{{ cat }}</option>
@@ -38,8 +38,8 @@
                                         <i class="input-icon fa-solid fa-sort"></i>
                                     </div>
                                     <div class="mb-3 input-container">
-                                        <label for="select-category" class="shadow-lg form-label">Area</label>
-                                        <select class="shadow-lg form-select input-with-icon" name="select-area" id="select-area">
+                                        <label for="select-category" class="form-label">Area</label>
+                                        <select class="shadow form-select input-with-icon" name="select-area" id="select-area">
                                             {% for area in area_list %}
                                             <option value="{{ area }}">{{ area }}</option>
                                             {% endfor %}
@@ -49,7 +49,7 @@
                                         {% csrf_token %}
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button type="submit" class="btn btn-success">Search Ads</button>
+                                        <button type="submit" class="btn btn-success shadow">Search Ads</button>
                                     </div>
                                 </form>
                             </div>

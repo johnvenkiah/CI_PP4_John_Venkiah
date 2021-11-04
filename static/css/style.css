@@ -98,7 +98,7 @@ a {
     font-weight: bold;
 }
 
-input, label .login {
+.login input {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -112,6 +112,10 @@ input, label .login {
     appearance: none;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.login label {
+    margin-bottom: .5rem;
 }
 
 #id_remember {
