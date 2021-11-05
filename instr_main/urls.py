@@ -17,11 +17,11 @@ urlpatterns = [
         name='category'
     ),
     path('post_ad/', views.AdCreateView.as_view(), name='post_ad'),
-    path(
-        'edit/<int:pk>/',
-        never_cache(views.AdUpdateView.as_view()),
-        name='ad-edit'
-    ),
+    # path(
+    #     'edit/<int:pk>/',
+    #     never_cache(views.AdUpdateView.as_view()),
+    #     name='ad-edit'
+    # ),
     path('delete/<int:pk>/', views.AdDeleteView.as_view(), name='delete-ad'),
     # path('user/logout/', LogoutView.as_view(), name='logout'),
  ]

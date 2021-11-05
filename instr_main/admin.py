@@ -8,7 +8,7 @@ class AdAdmin(ModelAdmin):
 
     list_display = (
         'title', 'slug', 'price', 'seller', 'created_on',
-        'sold', 'location', 'category', 'image_set'
+        'sold', 'location', 'category', 'image'
         )
     search_fields = ['title', 'description']
     prepopulated_fields = {'slug': ('title',)}

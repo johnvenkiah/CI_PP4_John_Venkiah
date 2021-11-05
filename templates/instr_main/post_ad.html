@@ -1,14 +1,18 @@
 {% extends "instr_main/base.html" %}
 {% load static %}
 {% block content %}
-<h1>Post Ad</h1>
 
-<div class="row">
-    <div class="col text-center">
-        <form class="d_block" method="POST">
+<div class="container">
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h3>Post Ad</h3>
+        <form class="post-ad-form" method="POST">
             {{ ad_form | safe }}
             {% csrf_token %}
+        </form>
     </div>
-    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="/static/js/post_ad.js"></script>
 </div>
 {% endblock %}

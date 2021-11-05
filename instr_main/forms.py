@@ -36,8 +36,13 @@ class AdForm(forms.ModelForm):
             'category',
             'description',
             'price',
+            'image',
             'location',
         )
+    description = forms.CharField(widget=forms.Textarea({
+        'rows': 10,
+        'class': 'textarea',
+    }))
 
 
 class ProfileForm(forms.ModelForm):

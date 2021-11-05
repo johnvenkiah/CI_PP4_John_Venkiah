@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
 from django.urls import reverse
 from django.utils.functional import cached_property
 from django_google_maps import fields as map_fields
@@ -20,13 +21,12 @@ class Ad(models.Model):
     seller = models.ForeignKey(
         User, on_delete=models.CASCADE
     )
+    image = models.ImageField(upload_to=DEFAULT_FILE_STORAGE)
     category = models.ForeignKey(
         'Categories', on_delete=models.SET_NULL, null=True
     )
     description = models.CharField(max_length=800)
-    # image_set = models.ImageField(
-    #     'image', default='placeholder', upload_to=DEFAULT_FILE_STORAGE
-    # )
+
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     location = models.CharField(max_length=200)
@@ -130,6 +130,6 @@ class Categories(models.Model):
         )
 
 
-class Image(models.Model):
-    ad = models.ForeignKey(Ad, on_delete=models.CASCADE)
-    file = models.ImageField(_('image'), upload_to=DEFAULT_FILE_STORAGE)
+# class Image(models.Model):
+#     ad = models.ForeignKey(Ad, on_delete=models.CASCADE)
+#     file = models.ImageField(_('image'), upload_to=DEFAULT_FILE_STORAGE)

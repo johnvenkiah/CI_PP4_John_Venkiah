@@ -17,7 +17,7 @@ from django.views.generic.edit import FormMixin
 from django.db import IntegrityError
 
 from .forms import AdForm, ProfileForm, SearchForm
-from .models import Ad, Categories, Profile, Image
+from .models import Ad, Categories, Profile
 
 
 class HomeView(TemplateView):
@@ -227,21 +227,21 @@ class AdDetailView(DetailView):
     queryset = Ad.active
 
 
-class AdUpdateView(FormsetMixin, UpdateView):
-    is_update_view = True
-    model = Ad
-    form_class = AdForm
-    formset_class = inlineformset_factory(Ad, Image, fields=('file', ))
+# class AdUpdateView(FormsetMixin, UpdateView):
+#     is_update_view = True
+#     model = Ad
+#     form_class = AdForm
+#     formset_class = inlineformset_factory(Ad, fields=('file', ))
 
-    def get_object(self, *args, **kwargs):
-        obj = super(AdUpdateView, self).get_object(*args, **kwargs)
-        if not obj.user == self.request.user and not self.request.user.is_superuser:
-            raise PermissionDenied
-        return obj
+#     def get_object(self, *args, **kwargs):
+#         obj = super(AdUpdateView, self).get_object(*args, **kwargs)
+#         if not obj.user == self.request.user and not self.request.user.is_superuser:
+#             raise PermissionDenied
+#         return obj
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(AdUpdateView, self).dispatch(*args, **kwargs)
+#     @method_decorator(login_required)
+#     def dispatch(self, *args, **kwargs):
+#         return super(AdUpdateView, self).dispatch(*args, **kwargs)
 
 
 class AdCreateView(View):

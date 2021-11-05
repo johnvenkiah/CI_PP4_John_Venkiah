@@ -107,7 +107,7 @@ li .btn-success {
     font-weight: 400;
 }
 
-.login input {
+.login input, .post-ad-form input, select, .textarea {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -118,7 +118,6 @@ li .btn-success {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    appearance: none;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -145,4 +144,11 @@ li .btn-success {
     left: 15px;
     top: 42px;
     color: gray;
+}
+
+#id_image {
+    background-color: #f8f9fa;
+    margin-left: 0;
+    padding: 0;
+    border: none;
 }
