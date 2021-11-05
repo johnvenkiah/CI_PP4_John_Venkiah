@@ -24,9 +24,9 @@ class Ad(models.Model):
         'Categories', on_delete=models.SET_NULL, null=True
     )
     description = models.CharField(max_length=800)
-    image_set = models.ImageField(
-        'image', default='placeholder', upload_to=DEFAULT_FILE_STORAGE
-    )
+    # image_set = models.ImageField(
+    #     'image', default='placeholder', upload_to=DEFAULT_FILE_STORAGE
+    # )
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     location = models.CharField(max_length=200)
@@ -128,3 +128,8 @@ class Categories(models.Model):
         return reverse(
             'instru_mental:category', kwargs={'pk': self.pk, 'slug': self.slug}
         )
+
+
+class Image(models.Model):
+    ad = models.ForeignKey(Ad, on_delete=models.CASCADE)
+    file = models.ImageField(_('image'), upload_to=DEFAULT_FILE_STORAGE)

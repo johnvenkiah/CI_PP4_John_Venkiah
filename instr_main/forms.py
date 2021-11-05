@@ -35,7 +35,6 @@ class AdForm(forms.ModelForm):
             'title',
             'category',
             'description',
-            'image_set',
             'price',
             'location',
         )

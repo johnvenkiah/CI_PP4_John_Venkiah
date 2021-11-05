@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.forms import inlineformset_factory
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -16,7 +17,7 @@ from django.views.generic.edit import FormMixin
 from django.db import IntegrityError
 
 from .forms import AdForm, ProfileForm, SearchForm
-from .models import Ad, Categories, Profile
+from .models import Ad, Categories, Profile, Image
 
 
 class HomeView(TemplateView):
@@ -36,8 +37,6 @@ class HomeView(TemplateView):
         context = {
             'category_obj': category_obj,
             'area_list': area_list,
-            # 'signup_form': UserCreationForm,
-            # 'login_form': AuthenticationForm,
         }
 
         return context
@@ -232,6 +231,7 @@ class AdUpdateView(FormsetMixin, UpdateView):
     is_update_view = True
     model = Ad
     form_class = AdForm
+    formset_class = inlineformset_factory(Ad, Image, fields=('file', ))
 
     def get_object(self, *args, **kwargs):
         obj = super(AdUpdateView, self).get_object(*args, **kwargs)
@@ -244,21 +244,36 @@ class AdUpdateView(FormsetMixin, UpdateView):
         return super(AdUpdateView, self).dispatch(*args, **kwargs)
 
 
-class AdCreateView(FormsetMixin, CreateView):
-    is_update_view = False
+class AdCreateView(View):
+    # is_update_view = False
     model = Ad
     form_class = AdForm
 
-    def form_valid(self, form, formset):
-        form.instance.user = self.request.user
-        form.save()
+    def get(self, request):
 
-        return super(AdCreateView, self).form_valid(form, formset)
+        return render(
+            request,
+            'instr_main/post_ad.html',
+            {
+                'ad_form': AdForm()
+            },
+        )
 
-    def get_initial(self):
-        initial = super(AdCreateView, self).get_initial()
-        # initial['area'] = Area.get_for_request(self.request)
-        return initial
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Ad.objects.all()
+        ad = get_object_or_404(queryset, slug=slug)
+
+        ad_form = AdForm(data=request.POST)  # gets data from c-form
+        if ad_form.is_valid():
+            ad_form.instance.email = request.user.email
+            ad_form.instance.name = request.user.username
+            ad = ad_form.save(commit=False)
+            ad.ad = ad  # So we know which post has been commented
+            ad.save()
+        else:
+            ad_form = AdForm()
+
+        return render(request, 'instr_main/post_ad.html', {'ad_form': AdForm()},)
 
 
 class AdDeleteView(DeleteView):
