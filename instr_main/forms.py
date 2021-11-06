@@ -44,7 +44,6 @@ class AdForm(forms.ModelForm):
         'rows': 10,
         'class': 'textarea',
     }))
-    category = forms.ChoiceField(choices=[(v, k) for k, v in category_dict.items()])
 
 
 class ProfileForm(forms.ModelForm):

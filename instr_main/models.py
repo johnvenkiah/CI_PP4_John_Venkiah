@@ -21,14 +21,14 @@ class Ad(models.Model):
     seller = models.ForeignKey(
         User, on_delete=models.CASCADE
     )
-    image = models.ImageField(upload_to=DEFAULT_FILE_STORAGE)
+    image = models.ImageField(upload_to='static/images', null=True, blank=True)
     category = models.ForeignKey(
         'Categories', on_delete=models.SET_NULL, null=True
     )
     description = models.CharField(max_length=800)
 
     created_on = models.DateTimeField(auto_now_add=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.IntegerField()
     location = models.CharField(max_length=200)
     sold = models.BooleanField(default=False)
     saved = models.BooleanField(default=False)
@@ -48,7 +48,7 @@ class Ad(models.Model):
         verbose_name_plural = _('ads')
 
     def get_absolute_url(self):
-        return reverse('django_classified:item', kwargs={
+        return reverse('instr_main:ad', kwargs={
             'pk': self.pk,
             'slug': self.slug
         })
@@ -56,14 +56,6 @@ class Ad(models.Model):
         @cached_property
         def get_keywords(self):
             return ",".join(set(self.description.split()))
-
-        @cached_property
-        def image_count(self):
-            return self.image_set.count()
-
-        @cached_property
-        def featured_image(self):
-            return self.image_set.all().first()
 
         @cached_property
         def related_items(self):

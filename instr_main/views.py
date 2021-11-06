@@ -235,38 +235,51 @@ class AdDetailView(DetailView):
 #         return super(AdUpdateView, self).dispatch(*args, **kwargs)
 
 
-class AdCreateView(View):
+class AdCreateView(CreateView):
     # is_update_view = False
     model = Ad
     form_class = AdForm
+    template_name = 'instr_main/post_ad.html'
 
-    def get(self, request):
-        context = {
-                    'category_dict': category_dict,
-                    'ad_form': AdForm(),
-                }
-        return render(request, 'instr_main/post_ad.html', context)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        print(form)
+        form.save()
+        return super(AdCreateView, self).form_valid(form)
 
-    def post(self, request, *args, **kwargs):
-        queryset = Ad.objects.all()
-        ad = get_object_or_404(queryset)
+    def form_invalid(self, form):
+        print(super(AdCreateView, self).form_invalid(form))
 
-        context = {
-            'category_dict': category_dict,
-            'ad_form': AdForm(),
-        }
+    def get_success_url(self):
+        return redirect('instr_main/profile.html')
 
-        ad_form = AdForm(data=request.POST)  # gets data from c-form
-        if ad_form.is_valid():
-            ad_form.instance.email = request.user.email
-            ad_form.instance.name = request.user.username
-            ad = ad_form.save(commit=False)
-            ad.ad = ad  # So we know which post has been commented
-            ad.save()
-        else:
-            ad_form = AdForm()
+    # def get(self, request):
+    #     context = {
+    #                 'category_dict': category_dict,
+    #                 'ad_form': AdForm(),
+    #             }
+    #     return render(request, 'instr_main/post_ad.html', context)
 
-        return render(request, 'instr_main/post_ad.html', context)
+    # def post(self, request, *args, **kwargs):
+    #     queryset = Ad.objects.all()
+    #     ad = get_object_or_404(queryset)
+
+    #     context = {
+    #         'category_dict': category_dict,
+    #         'ad_form': AdForm(),
+    #         'ad': ad,
+    #     }
+
+    #     ad_form = AdForm(data=request.POST)  # gets data from c-form
+    #     if ad_form.is_valid():
+    #         ad_form.instance.name = request.user
+    #         ad = ad_form.save(commit=False)
+    #         ad = ad
+    #         ad.save()
+    #     else:
+    #         ad_form = AdForm()
+
+    #     return redirect(request, 'instr_main/profile.html', context)
 
 
 class AdDeleteView(DeleteView):

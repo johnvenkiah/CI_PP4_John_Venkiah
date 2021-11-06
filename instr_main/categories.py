@@ -1,3 +1,5 @@
+from .models import Categories
+
 category_dict = {
     'Pianos/keyboards': 'grand-piano',
     'Guitar/Bass/Amps': 'electric-guitar',
@@ -19,3 +21,5 @@ category_dict = {
 #     'Bowed Instruments',
 #     'Other..',
 # ]
+
+
