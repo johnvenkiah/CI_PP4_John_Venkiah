@@ -7,7 +7,6 @@ from django_google_maps import fields as map_fields
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext as _
 from unidecode import unidecode
-from jv_instrumental.settings import DEFAULT_FILE_STORAGE
 
 
 class ActiveManager(models.Manager):

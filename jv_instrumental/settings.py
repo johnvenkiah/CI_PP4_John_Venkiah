@@ -35,7 +35,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = development
 
 if development:
     ALLOWED_HOSTS = ['localhost']
@@ -114,7 +114,7 @@ WSGI_APPLICATION = 'jv_instrumental.wsgi.application'
 #         }
 #     }
 
-
+# else:
 DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
@@ -177,9 +177,9 @@ else:
     AWS_DEFAULT_REGION = 'eu-north-1'
 
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    DEFAULT_FILE_STORAGE = 'instr_main.storage_backends.MediaStorage'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-DEFAULT_FILE_STORAGE = 'instr_main.storage_backends.MediaStorage'
 
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
 
