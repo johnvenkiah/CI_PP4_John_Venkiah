@@ -252,7 +252,7 @@ class AdCreateView(CreateView):
         return super(AdCreateView, self).form_invalid(form)
 
     def get_success_url(self):
-        return 'profile/'
+        return '/profile/'
 
     # def get(self, request):
     #     context = {
