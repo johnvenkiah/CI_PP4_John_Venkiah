@@ -31,16 +31,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-lg-0">
                         <li>
+                            {% if user.is_authenticated %}
                             <a class="btn btn-success" role="button" href="{% url 'instr_main:post_ad' %}">Post Ad</a>
+                            {% else %}
+                            <a class="btn btn-success" role="button" href="{% url 'account_login' %}">Post Ad</a>
+                            {% endif %}
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'instr_main:home' %}">Home</a>
                         </li>
                         <li class="nav-item">
+                            {% if user.is_authenticated %}
                             <a class="nav-link" aria-current="page" href="{% url 'instr_main:profile' %}">Profile</a>
+                            {% else %}
+                            <a class="nav-link" role="button" href="{% url 'account_login' %}">Profile</a>
+                            {% endif %}
                         </li>
                         <li class="nav-item">
+                            {% if user.is_authenticated %}
                             <a class="nav-link" aria-current="page" href="#">Messages</a>
+                            {% else %}
+                            <a class="nav-link" role="button" href="{% url 'account_login' %}">Messages</a>
+                            {% endif %}
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Contact</a>
@@ -51,14 +63,7 @@
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_login' %}">Sign In/Sign
-                                Up</a>
-                                <!-- <a class="nav-link" data-bs-toggle="modal" data-bs-target="#myModal" href=#>Sign In/Sign -->
-                            <!-- <a class="nav-link" href="#">Sign In/Sign Up</a> -->
-                            <!-- Button trigger modal -->
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                                Launch demo modal
-                            </button> -->
+                            <a class="nav-link" href="{% url 'account_login' %}">Sign In/Sign Up</a>
                         </li>
                         {% endif %}
                     </ul>
