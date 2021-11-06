@@ -242,13 +242,14 @@ class AdCreateView(CreateView):
     template_name = 'instr_main/post_ad.html'
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.seller = self.request.user
         print(form)
         form.save()
         return super(AdCreateView, self).form_valid(form)
 
     def form_invalid(self, form):
-        print(super(AdCreateView, self).form_invalid(form))
+        print(form)
+        return super(AdCreateView, self).form_invalid(form)
 
     def get_success_url(self):
         return redirect('instr_main/profile.html')
