@@ -18,20 +18,11 @@ from django.db import IntegrityError
 
 from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Categories, Profile
+from .categories import categories_list, category_obj
 
 
 class HomeView(TemplateView):
     def get_context_data(self):
-        category_obj = {
-            'Pianos/keyboards': 'grand-piano',
-            'Guitar/Bass/Amps': 'electric-guitar',
-            'Drums/Symbals': 'drum-kit',
-            'Woodwind': 'clarinet',
-            'Brass': 'trumpet',
-            'Studio Equipment': 'sound-mixer',
-            'Bowed Instruments': 'cello',
-            'Other..': 'accordion',
-        }
 
         area_list = ['here', 'there', 'everywhere']
         context = {
@@ -250,18 +241,20 @@ class AdCreateView(View):
     form_class = AdForm
 
     def get(self, request):
-
-        return render(
-            request,
-            'instr_main/post_ad.html',
-            {
-                'ad_form': AdForm()
-            },
-        )
+        context = {
+                    'category_obj': category_obj,
+                    'ad_form': AdForm(),
+                }
+        return render(request, 'instr_main/post_ad.html', context)
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Ad.objects.all()
         ad = get_object_or_404(queryset, slug=slug)
+
+        context = {
+            'category_obj': category_obj.keys,
+            'ad_form': AdForm(),
+        }
 
         ad_form = AdForm(data=request.POST)  # gets data from c-form
         if ad_form.is_valid():
@@ -273,7 +266,7 @@ class AdCreateView(View):
         else:
             ad_form = AdForm()
 
-        return render(request, 'instr_main/post_ad.html', {'ad_form': AdForm()},)
+        return render(request, 'instr_main/post_ad.html', context)
 
 
 class AdDeleteView(DeleteView):

@@ -2,6 +2,7 @@ from django import forms
 from django.utils.translation import ugettext as _
 
 from .models import Ad, Categories, Profile
+from .categories import categories_list, category_obj
 
 
 class SearchForm(forms.Form):
@@ -43,6 +44,7 @@ class AdForm(forms.ModelForm):
         'rows': 10,
         'class': 'textarea',
     }))
+    category = forms.ChoiceField(choices=category_obj.items)
 
 
 class ProfileForm(forms.ModelForm):
