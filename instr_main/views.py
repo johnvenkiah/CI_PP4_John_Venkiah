@@ -18,7 +18,7 @@ from django.db import IntegrityError
 
 from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Categories, Profile
-from .categories import categories_list, category_obj
+from .categories import category_dict
 
 
 class HomeView(TemplateView):
@@ -26,7 +26,7 @@ class HomeView(TemplateView):
 
         area_list = ['here', 'there', 'everywhere']
         context = {
-            'category_obj': category_obj,
+            'category_dict': category_dict,
             'area_list': area_list,
         }
 
@@ -242,17 +242,17 @@ class AdCreateView(View):
 
     def get(self, request):
         context = {
-                    'category_obj': category_obj,
+                    'category_dict': category_dict,
                     'ad_form': AdForm(),
                 }
         return render(request, 'instr_main/post_ad.html', context)
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Ad.objects.all()
-        ad = get_object_or_404(queryset, slug=slug)
+        ad = get_object_or_404(queryset)
 
         context = {
-            'category_obj': category_obj.keys,
+            'category_dict': category_dict,
             'ad_form': AdForm(),
         }
 

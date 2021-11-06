@@ -1,4 +1,4 @@
-category_obj = {
+category_dict = {
     'Pianos/keyboards': 'grand-piano',
     'Guitar/Bass/Amps': 'electric-guitar',
     'Drums/Symbals': 'drum-kit',
@@ -9,13 +9,13 @@ category_obj = {
     'Other..': 'accordion',
 }
 
-categories_list = (
-    ('Pianos/keyboards'),
-    ('Guitar/Bass/Amps'),
-    ('Drums/Symbals'),
-    ('Woodwind'),
-    ('Brass'),
-    ('Studio Equipment'),
-    ('Bowed Instruments'),
-    ('Other..'),
-)
+# categories_list = [
+#     'Pianos/keyboards',
+#     'Guitar/Bass/Amps',
+#     'Drums/Symbals',
+#     'Woodwind',
+#     'Brass',
+#     'Studio Equipment',
+#     'Bowed Instruments',
+#     'Other..',
+# ]

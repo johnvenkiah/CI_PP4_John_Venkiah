@@ -16,7 +16,7 @@ urlpatterns = [
         views.CategoryDetail.as_view(),
         name='category'
     ),
-    path('post_ad/<slug:slug>/', views.AdCreateView.as_view(), name='post_ad'),
+    path('post_ad/', views.AdCreateView.as_view(), name='post_ad'),
     # path(
     #     'edit/<int:pk>/',
     #     never_cache(views.AdUpdateView.as_view()),

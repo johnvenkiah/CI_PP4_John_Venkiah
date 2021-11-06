@@ -31,7 +31,7 @@
                                         <label for="select-category" class="form-label">Category</label>
                                         <select class="shadow form-select input-with-icon" name="select-catgory"
                                             id="select-category">
-                                            {% for cat in category_obj.keys %}
+                                            {% for cat in category_dict.keys %}
                                             <option value="{{ category }}">{{ cat }}</option>
                                             {% endfor %}
                                         </select>
@@ -61,7 +61,7 @@
                 <div class="col-12 mt-3 mb-3">
                     <h3>Categories</h3>
                     <ul class="list-inline text-center">
-                        {% for instr, icon in category_obj.items %}
+                        {% for instr, icon in category_dict.items %}
                         <li class="col-1 col-md-2 list-inline-item mx-3">
                             <p class="small-text">{{ instr }}</p>
                             <div class="cat-circle rounded-circle card bg-dark text-center">
