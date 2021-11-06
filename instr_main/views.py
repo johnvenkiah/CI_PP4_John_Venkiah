@@ -247,7 +247,7 @@ class AdCreateView(View):
                 }
         return render(request, 'instr_main/post_ad.html', context)
 
-    def post(self, request, slug, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         queryset = Ad.objects.all()
         ad = get_object_or_404(queryset)
 
