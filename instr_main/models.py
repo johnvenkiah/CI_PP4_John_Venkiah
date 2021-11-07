@@ -1,12 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
+<<<<<<< HEAD
+=======
+from django import forms
+>>>>>>> test-loginform
 from django.urls import reverse
 from django.utils.functional import cached_property
 from django_google_maps import fields as map_fields
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext as _
 from unidecode import unidecode
+<<<<<<< HEAD
 from jv_instrumental.settings import DEFAULT_FILE_STORAGE
+=======
+>>>>>>> test-loginform
 
 
 class ActiveManager(models.Manager):
@@ -20,15 +27,25 @@ class Ad(models.Model):
     seller = models.ForeignKey(
         User, on_delete=models.CASCADE
     )
+<<<<<<< HEAD
+=======
+    image = models.ImageField(upload_to='static/images', null=True, blank=True)
+>>>>>>> test-loginform
     category = models.ForeignKey(
         'Categories', on_delete=models.SET_NULL, null=True
     )
     description = models.CharField(max_length=800)
+<<<<<<< HEAD
     image_set = models.ImageField(
         'image', default='placeholder', upload_to=DEFAULT_FILE_STORAGE
     )
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
+=======
+
+    created_on = models.DateTimeField(auto_now_add=True)
+    price = models.IntegerField()
+>>>>>>> test-loginform
     location = models.CharField(max_length=200)
     sold = models.BooleanField(default=False)
     saved = models.BooleanField(default=False)
@@ -48,7 +65,11 @@ class Ad(models.Model):
         verbose_name_plural = _('ads')
 
     def get_absolute_url(self):
+<<<<<<< HEAD
         return reverse('django_classified:item', kwargs={
+=======
+        return reverse('instr_main:ad', kwargs={
+>>>>>>> test-loginform
             'pk': self.pk,
             'slug': self.slug
         })
@@ -58,6 +79,7 @@ class Ad(models.Model):
             return ",".join(set(self.description.split()))
 
         @cached_property
+<<<<<<< HEAD
         def image_count(self):
             return self.image_set.count()
 
@@ -66,6 +88,8 @@ class Ad(models.Model):
             return self.image_set.all().first()
 
         @cached_property
+=======
+>>>>>>> test-loginform
         def related_items(self):
             queryset = Ad.objects \
                .filter(is_active=True) \
@@ -90,6 +114,16 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     location = map_fields.AddressField(max_length=200)
 
+<<<<<<< HEAD
+=======
+    @staticmethod
+    def get_or_create_for_user(user):
+        if hasattr(user, 'profile'):
+            return user.profile
+        else:
+            return Profile.objects.create(user=user)
+
+>>>>>>> test-loginform
     class Meta:
         ordering = ['created_on']
 
@@ -121,3 +155,11 @@ class Categories(models.Model):
         return reverse(
             'instru_mental:category', kwargs={'pk': self.pk, 'slug': self.slug}
         )
+<<<<<<< HEAD
+=======
+
+
+# class Image(models.Model):
+#     ad = models.ForeignKey(Ad, on_delete=models.CASCADE)
+#     file = models.ImageField(_('image'), upload_to=DEFAULT_FILE_STORAGE)
+>>>>>>> test-loginform

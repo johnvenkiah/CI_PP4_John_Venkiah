@@ -21,6 +21,7 @@
                         <div class="col-md-4">
                             <div class="pad-16 text-white">
                                 <form method="post">
+<<<<<<< HEAD
                                     <div class="mb-3">
                                         <input class="form-control" id="search-input" name="search" type="text"
                                             placeholder="Search...">
@@ -37,15 +38,44 @@
                                     <div class="mb-3">
                                         <label for="select-category" class="shadow-lg form-label">Area</label>
                                         <select class="shadow-lg form-select" name="select-area" id="select-area">
+=======
+                                    <div class="mb-3 input-container">
+                                        <label for="search-input" class="form-label">Search</label>
+                                        <input class="shadow form-control input-with-icon" id="search-input" name="search" type="text"
+                                            placeholder="What are you looking for?">
+                                        <i class="input-icon fa-solid fa-magnifying-glass"></i>
+                                    </div>
+                                    <div class="mb-3 input-container">
+                                        <label for="select-category" class="form-label">Category</label>
+                                        <select class="shadow form-select input-with-icon" name="select-catgory"
+                                            id="select-category">
+                                            {% for cat in category_dict.keys %}
+                                            <option value="{{ category }}">{{ cat }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <i class="input-icon fa-solid fa-sort"></i>
+                                    </div>
+                                    <div class="mb-3 input-container">
+                                        <label for="select-category" class="form-label">Area</label>
+                                        <select class="shadow form-select input-with-icon" name="select-area" id="select-area">
+>>>>>>> test-loginform
                                             {% for area in area_list %}
                                             <option value="{{ area }}">{{ area }}</option>
                                             {% endfor %}
                                         </select>
+<<<<<<< HEAD
+=======
+                                        <i class="input-icon fa-solid fa-location-dot"></i>
+>>>>>>> test-loginform
                                         {{ forms.search_form | safe }}
                                         {% csrf_token %}
                                     </div>
                                     <div class="d-grid gap-2">
+<<<<<<< HEAD
                                         <button type="submit" class="btn btn-success">Search Ads</button>
+=======
+                                        <button type="submit" class="btn btn-success shadow">Search Ads</button>
+>>>>>>> test-loginform
                                     </div>
                                 </form>
                             </div>
@@ -57,7 +87,11 @@
                 <div class="col-12 mt-3 mb-3">
                     <h3>Categories</h3>
                     <ul class="list-inline text-center">
+<<<<<<< HEAD
                         {% for instr, icon in category_obj.items %}
+=======
+                        {% for instr, icon in category_dict.items %}
+>>>>>>> test-loginform
                         <li class="col-1 col-md-2 list-inline-item mx-3">
                             <p class="small-text">{{ instr }}</p>
                             <div class="cat-circle rounded-circle card bg-dark text-center">
@@ -110,5 +144,9 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> test-loginform
 
     {% endblock %}
