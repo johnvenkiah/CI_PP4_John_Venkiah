@@ -2,10 +2,7 @@ from django import forms
 from django.utils.translation import ugettext as _
 
 from .models import Ad, Categories, Profile
-<<<<<<< HEAD
-=======
 from .categories import category_dict
->>>>>>> test-loginform
 
 
 class SearchForm(forms.Form):
@@ -39,12 +36,6 @@ class AdForm(forms.ModelForm):
             'title',
             'category',
             'description',
-<<<<<<< HEAD
-            'image_set',
-            'price',
-            'location',
-        )
-=======
             'price',
             'image',
             'location',
@@ -53,7 +44,6 @@ class AdForm(forms.ModelForm):
         'rows': 10,
         'class': 'textarea',
     }))
->>>>>>> test-loginform
 
 
 class ProfileForm(forms.ModelForm):

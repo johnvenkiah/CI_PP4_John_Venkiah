@@ -50,26 +50,20 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-<<<<<<< HEAD
-=======
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
->>>>>>> test-loginform
     'django.contrib.staticfiles',
     'storages',
     'instr_main',
 ]
 
-<<<<<<< HEAD
-=======
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
->>>>>>> test-loginform
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
@@ -112,21 +106,6 @@ WSGI_APPLICATION = 'jv_instrumental.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-<<<<<<< HEAD
-if development:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
-else:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
-
-=======
 # if development:
 #     DATABASES = {
 #         'default': {
@@ -139,7 +118,6 @@ else:
 DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
->>>>>>> test-loginform
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -160,12 +138,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-<<<<<<< HEAD
-=======
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
->>>>>>> test-loginform
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -202,15 +177,9 @@ else:
     AWS_DEFAULT_REGION = 'eu-north-1'
 
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-<<<<<<< HEAD
-
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-DEFAULT_FILE_STORAGE = 'instr_main.storage_backends.MediaStorage'
-=======
     DEFAULT_FILE_STORAGE = 'instr_main.storage_backends.MediaStorage'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
->>>>>>> test-loginform
 
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
 

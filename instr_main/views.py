@@ -1,11 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
-<<<<<<< HEAD
-=======
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import AuthenticationForm
->>>>>>> test-loginform
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -21,33 +18,11 @@ from django.db import IntegrityError
 
 from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Categories, Profile
-<<<<<<< HEAD
-=======
 from .categories import category_dict
->>>>>>> test-loginform
 
 
 class HomeView(TemplateView):
     def get_context_data(self):
-<<<<<<< HEAD
-        category_obj = {
-            'Pianos/keyboards': 'grand-piano',
-            'Guitar/Bass/Amps': 'electric-guitar',
-            'Drums/Symbals': 'drum-kit',
-            'Woodwind': 'clarinet',
-            'Brass': 'trumpet',
-            'Studio Equipment': 'sound-mixer',
-            'Bowed Instruments': 'cello',
-            'Other..': 'accordion',
-        }
-
-        area_list = ['here', 'there', 'everywhere']
-        context = {
-            'category_obj': category_obj,
-            'area_list': area_list,
-            'signup_form': UserCreationForm,
-        }
-=======
 
         area_list = ['here', 'there', 'everywhere']
         context = {
@@ -55,35 +30,12 @@ class HomeView(TemplateView):
             'area_list': area_list,
         }
 
->>>>>>> test-loginform
         return context
 
     def get(self, request):
         context = self.get_context_data()
         return render(request, 'instr_main/index.html', context)
 
-<<<<<<< HEAD
-    def post(self, request):
-        pass_1 = request.POST.get('password1')
-        pass_2 = request.POST.get('password2')
-        username = request.POST.get('username')
-
-        if pass_1 == pass_2:
-            try:
-                new_user = User.objects.create_user(
-                    username, password=pass_1
-                )
-                new_user.save()
-                messages.success(request, 'Account created successfully')
-
-            except IntegrityError:
-                messages.error(request, 'Integrity Error')
-        else:
-            messages.error(request, 'Password does not match!')
-
-        context = self.get_context_data()
-        return redirect('instr_main:home')
-=======
     # def post(self, request):
     #     pass_1 = request.POST.get('password1')
     #     pass_2 = request.POST.get('password2')
@@ -104,7 +56,6 @@ class HomeView(TemplateView):
 
     #     context = self.get_context_data()
     #     return render(request, 'instr_main/index.html', context)
->>>>>>> test-loginform
         # return render(request, 'instr_main/index.html', context)
 
 
@@ -159,25 +110,15 @@ class FilteredListView(FormMixin, ListView):
 
 
 class ProfileView(UpdateView):
-<<<<<<< HEAD
-    template_name = 'instru_mental/profile.html'
-    form_class = ProfileForm
-    success_url = reverse_lazy('instru_mental:profile')
-=======
     template_name = 'instr_main/profile.html'
     form_class = ProfileForm
     success_url = reverse_lazy('instr_main:profile')
->>>>>>> test-loginform
 
     def get_queryset(self):
         return Ad.objects.filter(user=self.request.user)
 
     def get_object(self, queryset=None):
-<<<<<<< HEAD
-        return Profile.get(self.request.user)
-=======
         return Profile.get_or_create_for_user(self.request.user)
->>>>>>> test-loginform
 
     def form_valid(self, form):
         messages.success(self.request, 'Profile updated.')
@@ -277,39 +218,6 @@ class AdDetailView(DetailView):
     queryset = Ad.active
 
 
-<<<<<<< HEAD
-class AdUpdateView(FormsetMixin, UpdateView):
-    is_update_view = True
-    model = Ad
-    form_class = AdForm
-
-    def get_object(self, *args, **kwargs):
-        obj = super(AdUpdateView, self).get_object(*args, **kwargs)
-        if not obj.user == self.request.user and not self.request.user.is_superuser:
-            raise PermissionDenied
-        return obj
-
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(AdUpdateView, self).dispatch(*args, **kwargs)
-
-
-class AdCreateView(FormsetMixin, CreateView):
-    is_update_view = False
-    model = Ad
-    form_class = AdForm
-
-    def form_valid(self, form, formset):
-        form.instance.user = self.request.user
-        form.save()
-
-        return super(AdCreateView, self).form_valid(form, formset)
-
-    def get_initial(self):
-        initial = super(AdCreateView, self).get_initial()
-        # initial['area'] = Area.get_for_request(self.request)
-        return initial
-=======
 # class AdUpdateView(FormsetMixin, UpdateView):
 #     is_update_view = True
 #     model = Ad
@@ -373,7 +281,6 @@ class AdCreateView(CreateView):
     #         ad_form = AdForm()
 
     #     return redirect(request, 'instr_main/profile.html', context)
->>>>>>> test-loginform
 
 
 class AdDeleteView(DeleteView):
