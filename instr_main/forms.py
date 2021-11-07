@@ -55,3 +55,6 @@ class ProfileForm(forms.ModelForm):
             'username',
             'password',
         )
+        widgets = {
+        'password': forms.PasswordInput(),
+        }
