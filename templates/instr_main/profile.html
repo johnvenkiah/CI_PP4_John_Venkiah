@@ -12,9 +12,13 @@
         </form>
     </div>
     <h4>Ads</h4>
-    {% for ad in profile.ads %}
-    <div>{{ ad.title }}</div>
-    <div>{{ ad.description }}</div>
+    {% for ad in ads %}
+    <h4>{{ ad.title }}</h4>
+    <p>{{ ad.created_on }}</p>
+    <p>{{ ad.description }}</p>
+    <p>{{ ad.price }}</p>
+    <img src="{% static '/images/' %} {{ ad.image }}" alt="">
+    <hr>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}

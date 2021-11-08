@@ -23,7 +23,6 @@ from .categories import category_dict
 
 class HomeView(TemplateView):
     def get_context_data(self):
-
         area_list = ['here', 'there', 'everywhere']
         context = {
             'category_dict': category_dict,
@@ -109,24 +108,37 @@ class FilteredListView(FormMixin, ListView):
 # ---------------------GAMMALT OVAN ___________________________________
 
 
-class ProfileView(UpdateView):
+class ProfileView(TemplateView):
     template_name = 'instr_main/profile.html'
-    form_class = ProfileForm
+    model = Ad
+    # form_class = ProfileForm
     success_url = reverse_lazy('instr_main:profile')
 
-    def get_queryset(self):
-        return Ad.objects.filter(user=self.request.user)
+    def get_context_data(self, **kwargs):
+        context = super(ProfileView, self).get_context_data(**kwargs)
+        context['ads'] = Ad.objects.all()
+        return context
 
-    def get_object(self, queryset=None):
-        return Profile.get_or_create_for_user(self.request.user)
+    # def get_context_data(self, **kwargs):
+    #     # context = super(ProfileView, self).get_context_data(**kwargs)
+    #     ad = Ad.objects.filter(seller=self.request.user)
+    #     context = {'ad': ad}
+    #     return context
 
-    def form_valid(self, form):
-        messages.success(self.request, 'Profile updated.')
-        return super(ProfileView, self).form_valid(form)
+    # def get_queryset(self):
+    #     print('STRALDGE')
+    #     # return Ad.objects.filter(user=self.request.user)
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(ProfileView, self).dispatch(*args, **kwargs)
+    # def get_object(self, queryset=None):
+    #     return Profile.get_or_create_for_user(self.request.user)
+
+    # def form_valid(self, form):
+    #     messages.success(self.request, 'Profile updated.')
+    #     return super(ProfileView, self).form_valid(form)
+
+    # @method_decorator(login_required)
+    # def dispatch(self, *args, **kwargs):
+    #     return super(ProfileView, self).dispatch(*args, **kwargs)
 
 
 class SearchView(FilteredListView, ListView):
