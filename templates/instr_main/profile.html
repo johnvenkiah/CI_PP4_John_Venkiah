@@ -17,7 +17,7 @@
     <p>{{ ad.created_on }}</p>
     <p>{{ ad.description }}</p>
     <p>{{ ad.price }}</p>
-    <img src="{% static '/images/' %} {{ ad.image }}" alt="">
+    <img src="{{ ad.image.url }}" alt="">
     <hr>
     {% endfor %}
 </div>

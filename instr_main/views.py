@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, FormView
 from django.views.generic import ListView, DeleteView, TemplateView
 from django.views import generic, View
 from django.views.generic.detail import SingleObjectMixin
@@ -108,10 +108,10 @@ class FilteredListView(FormMixin, ListView):
 # ---------------------GAMMALT OVAN ___________________________________
 
 
-class ProfileView(TemplateView):
+class ProfileView(FormView):
     template_name = 'instr_main/profile.html'
     model = Ad
-    # form_class = ProfileForm
+    form_class = ProfileForm
     success_url = reverse_lazy('instr_main:profile')
 
     def get_context_data(self, **kwargs):
