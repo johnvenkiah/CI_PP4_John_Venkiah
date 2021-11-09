@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django import forms
 from django.urls import reverse
@@ -22,7 +23,7 @@ class Ad(models.Model):
     )
     image = models.ImageField(upload_to='static/images', null=True, blank=True)
     category = models.ForeignKey(
-        'Categories', on_delete=models.SET_NULL, null=True
+        'Category', on_delete=models.SET_NULL, null=True
     )
     description = models.CharField(max_length=800)
 
@@ -71,13 +72,13 @@ class Ad(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    username = models.CharField(max_length=100)
+    username = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
+    # password = models.OneToOneField(User.password, max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
-    ads = models.ForeignKey(Ad, on_delete=models.SET_NULL, null=True)
+    # ads = models.One(Ad, on_delete=models.SET_NULL, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     location = map_fields.AddressField(max_length=200)
 
@@ -86,16 +87,34 @@ class Profile(models.Model):
         if hasattr(user, 'profile'):
             return user.profile
         else:
-            return Profile.objects.create(user=user)
+            return Profile.objects.create(username=user)
+
+    # def createProfile(sender, **kwargs):
+    #     if kwargs['created']:
+    #         profile = Profile.objects.created(user=kwargs['instance'])
+
+    #         post_save.connect(createProfile, sender=User)
+    # def get_or_create_for_user(sender, **kwargs):
+    #     if kwargs['created']:
+    #         profile = Profile.objects.created(user=kwargs['instance'])
+
+    #         post_save.connect(createProfile, sender=User)
+
 
     class Meta:
         ordering = ['created_on']
 
     def __str__(self):
-        return f'{self.user.username}: Profile'
+        return f'{self.username}: Profile'
 
 
-class Categories(models.Model):
+# def get_or_create_for_user(sender, **kwargs):
+#     if kwargs['created']:
+#         profile = Profile.objects.created(user=kwargs['instance'])
+
+#         post_save.connect(createProfile, sender=User)
+
+class Category(models.Model):
     title = models.CharField('title', max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
 
@@ -113,7 +132,7 @@ class Categories(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(unidecode(self.title))
-        super(Categories, self).save(*args, **kwargs)
+        super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse(

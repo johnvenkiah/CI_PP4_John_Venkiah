@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
-from .models import Ad, Profile, Categories
+from .models import Ad, Profile, Category
 
 
 @admin.register(Ad)
@@ -18,14 +18,14 @@ class AdAdmin(ModelAdmin):
 @admin.register(Profile)
 class ProfileAdmin(ModelAdmin):
 
-    list_display = ('user', 'slug', 'created_on')
-    search_fields = ['user']
-    prepopulated_fields = {'slug': ('user',)}
-    list_filter = ('user', 'created_on', )
+    list_display = ('username', 'slug', 'created_on')
+    search_fields = ['username']
+    prepopulated_fields = {'slug': ('username',)}
+    list_filter = ('username', 'created_on', )
 
 
-@admin.register(Categories)
-class CategoriesAdmin(ModelAdmin):
+@admin.register(Category)
+class CategoryAdmin(ModelAdmin):
 
     list_display = ('title', )
     search_fields = ['title']

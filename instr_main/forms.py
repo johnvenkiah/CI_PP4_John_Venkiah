@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext as _
 
-from .models import Ad, Categories, Profile
+from .models import Ad, Category, Profile
 from .categories import category_dict
 
 
@@ -10,7 +10,7 @@ class SearchForm(forms.Form):
     #     label=_('Area'), queryset=Area.objects.all(), required=False
     # )
     category = forms.ModelChoiceField(
-        label=_('Categories'), queryset=Categories.objects.all(), required=False
+        label=_('Category'), queryset=Category.objects.all(), required=False
     )
     query = forms.CharField(required=False, label=_('Query'),)
 
@@ -50,10 +50,10 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = (
-            'name',
-            'email',
+            'first_name',
+            'last_name',
             'username',
-            'password',
+            'email',
         )
         widgets = {
         'password': forms.PasswordInput(),

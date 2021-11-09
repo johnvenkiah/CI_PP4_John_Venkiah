@@ -17,7 +17,7 @@ from django.views.generic.edit import FormMixin
 from django.db import IntegrityError
 
 from .forms import AdForm, ProfileForm, SearchForm
-from .models import Ad, Categories, Profile
+from .models import Ad, Category, Profile
 from .categories import category_dict
 
 
@@ -94,7 +94,7 @@ class FilteredListView(FormMixin, ListView):
 
 #         object_list = []
 #         # Prepare list of tuples with object/count
-#         for category in Categories.objects.all():
+#         for category in Category.objects.all():
 #             groups = [(group, items_qs.filter(group=group).count()) for group in section.group_set.all()]
 #             object_list.append(dict(
 #                 section=(section, items_qs.filter(group__section=section).count()),
@@ -110,13 +110,17 @@ class FilteredListView(FormMixin, ListView):
 
 class ProfileView(FormView):
     template_name = 'instr_main/profile.html'
-    model = Ad
+    model = Profile
+    # model.username = User.username
+    # model.first_name = User.first_name
+    # model.last_name = User.last_name
+    # model.email = User.email
     form_class = ProfileForm
     success_url = reverse_lazy('instr_main:profile')
 
     def get_context_data(self, **kwargs):
         context = super(ProfileView, self).get_context_data(**kwargs)
-        context['ads'] = Ad.objects.all()
+        context['ads'] = Ad.objects.filter(seller=self.request.user)
         return context
 
     # def get_context_data(self, **kwargs):
@@ -153,64 +157,64 @@ class SearchView(FilteredListView, ListView):
         return initials
 
 
-class FormsetMixin(object):
-    object = None
+# class FormsetMixin(object):
+#     object = None
 
-    def get(self, request, *args, **kwargs):
-        if getattr(self, 'is_update_view', False):
-            self.object = self.get_object()
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        formset_class = self.get_formset_class()
-        formset = self.get_formset(formset_class)
-        return self.render_to_response(self.get_context_data(form=form, formset=formset))
+#     def get(self, request, *args, **kwargs):
+#         if getattr(self, 'is_update_view', False):
+#             self.object = self.get_object()
+#         form_class = self.get_form_class()
+#         form = self.get_form(form_class)
+#         formset_class = self.get_formset_class()
+#         formset = self.get_formset(formset_class)
+#         return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
-    def post(self, request, *args, **kwargs):
-        if getattr(self, 'is_update_view', False):
-            self.object = self.get_object()
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        formset_class = self.get_formset_class()
-        formset = self.get_formset(formset_class)
-        if form.is_valid() and formset.is_valid():
-            return self.form_valid(form, formset)
-        else:
-            return self.form_invalid(form, formset)
+#     def post(self, request, *args, **kwargs):
+#         if getattr(self, 'is_update_view', False):
+#             self.object = self.get_object()
+#         form_class = self.get_form_class()
+#         form = self.get_form(form_class)
+#         formset_class = self.get_formset_class()
+#         formset = self.get_formset(formset_class)
+#         if form.is_valid() and formset.is_valid():
+#             return self.form_valid(form, formset)
+#         else:
+#             return self.form_invalid(form, formset)
 
-    def get_formset_class(self):
-        return self.formset_class
+#     def get_formset_class(self):
+#         return self.formset_class
 
-    def get_formset(self, formset_class):
-        return formset_class(**self.get_formset_kwargs())
+#     def get_formset(self, formset_class):
+#         return formset_class(**self.get_formset_kwargs())
 
-    def get_formset_kwargs(self):
-        kwargs = {
-            'instance': self.object
-        }
-        if self.request.method in ('POST', 'PUT'):
-            kwargs.update({
-                'data': self.request.POST,
-                'files': self.request.FILES,
-            })
-        return kwargs
+#     def get_formset_kwargs(self):
+#         kwargs = {
+#             'instance': self.object
+#         }
+#         if self.request.method in ('POST', 'PUT'):
+#             kwargs.update({
+#                 'data': self.request.POST,
+#                 'files': self.request.FILES,
+#             })
+#         return kwargs
 
-    def form_valid(self, form, formset):
-        self.object = form.save()
-        formset.instance = self.object
-        formset.save()
-        if hasattr(self, 'get_success_message'):
-            self.get_success_message(form)
-        return redirect(self.object.get_absolute_url())
+#     def form_valid(self, form, formset):
+#         self.object = form.save()
+#         formset.instance = self.object
+#         formset.save()
+#         if hasattr(self, 'get_success_message'):
+#             self.get_success_message(form)
+#         return redirect(self.object.get_absolute_url())
 
-    def form_invalid(self, form, formset):
-        return self.render_to_response(self.get_context_data(form=form, formset=formset))
+#     def form_invalid(self, form, formset):
+#         return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
 class CategoryDetail(SingleObjectMixin, ListView):
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
-        self.object = self.get_object(queryset=Categories.objects.all())
+        self.object = self.get_object(queryset=Category.objects.all())
         return super(CategoryDetail, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):

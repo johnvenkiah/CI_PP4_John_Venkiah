@@ -1,4 +1,4 @@
-from .models import Categories
+from .models import Category
 
 category_dict = {
     'Pianos/keyboards': 'grand-piano',
