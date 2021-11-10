@@ -11,14 +11,19 @@
             <button class="btn btn-success" href=# type="submit">Save Info</button>
         </form>
     </div>
-    <h4>Ads</h4>
-    {% for ad in ads %}
-    <h4>{{ ad.title }}</h4>
-    <p>{{ ad.created_on }}</p>
-    <p>{{ ad.description }}</p>
-    <p>{{ ad.price }}</p>
-    <img src="{{ ad.image.url }}" alt="">
-    <hr>
-    {% endfor %}
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h4>Ads</h4>
+        {% for ad in ads %}
+        <div class="card feature pad-16">
+            <h4 class="card-title">{{ ad.title }}</h4>
+            <p class="card-text">{{ ad.created_on }}</p>
+            <p class="card-text">{{ ad.description }}</p>
+            <p class="card-text">{{ ad.price }}</p>
+            <img class="feature-img" src="{{ ad.image.url }}" alt="">
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
