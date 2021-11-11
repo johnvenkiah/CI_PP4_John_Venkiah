@@ -87,7 +87,7 @@ class Profile(models.Model):
         if hasattr(user, 'profile'):
             return user.profile
         else:
-            return Profile.objects.create(username=user)
+            return Profile.objects.create(username=user, first_name=user.first_name, last_name=user.last_name, email=user.email)
 
     # def createProfile(sender, **kwargs):
     #     if kwargs['created']:
