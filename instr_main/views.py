@@ -21,12 +21,30 @@ from .models import Ad, Category, Profile
 from .categories import category_dict
 
 
+# class BaseView(View):
+#     def get_context_data(self):
+#         profile = self.request.user.Profile
+#         context = {
+#             'profile': profile,
+#         }
+
+#         return context
+
+#     def get(self, request):
+#         context = self.get_context_data()
+#         return render(request, 'instr_main/base.html', context)
+
+
 class HomeView(TemplateView):
     def get_context_data(self):
+        # profile = None
+        # if self.request.user != 'AnonymousUser':
+        #     profile = self.request.user.profile
         area_list = ['here', 'there', 'everywhere']
         context = {
             'category_dict': category_dict,
             'area_list': area_list,
+            # 'profile': profile,
         }
 
         return context
@@ -108,41 +126,76 @@ class FilteredListView(FormMixin, ListView):
 # ---------------------GAMMALT OVAN ___________________________________
 
 
-class ProfileView(FormView):
+class ProfileView(ListView):
+    model = Ad
     template_name = 'instr_main/profile.html'
-    model = Profile
-    # model.username = User.username
-    # model.first_name = User.first_name
-    # model.last_name = User.last_name
-    # model.email = User.email
-    form_class = ProfileForm
-    success_url = reverse_lazy('instr_main:profile')
 
     def get_context_data(self, **kwargs):
         context = super(ProfileView, self).get_context_data(**kwargs)
         context['ads'] = Ad.objects.filter(seller=self.request.user)
         return context
 
-    # def get_context_data(self, **kwargs):
-    #     # context = super(ProfileView, self).get_context_data(**kwargs)
-    #     ad = Ad.objects.filter(seller=self.request.user)
-    #     context = {'ad': ad}
-    #     return context
+    # def get_queryset(self):
+    #     return Ad.objects.filter(
+    #         seller=self.request.user).order_by('-created_on')
+    # def get_context_data(self, request):
+    #     slug = Profile.objects.get(username=request.user)
+    #     object_list = Ad.objects.filter(seller=Ad.request.user)
+    
+
+    # fields = ['username', 'first_name', 'last_name', 'email', 'password']
+
+    # slug_field = 'username'
+
+    # @staticmethod
+    # def get_or_create_for_user(user):
+    #     if hasattr(user, 'profile'):
+    #         return user.profile
+    #     else:
+    #         return Profile.objects.create(username=user.username, first_name=user.first_name, last_name=user.last_name, email=user.email)
+
+    # def creat(self, user, request):
+    #     user = request.user
+    #     Profile.objects.create(username=user.username, first_name=user.first_name, last_name=user.last_name, email=user.email)
+
+    # def get_success_url(self):
+    #     url = self.get_redirect_url()
+    #     return url or reverse('/profile/', kwargs={'slug': self.request.profile.slug})
+    # def get_success_url(self):
+    #     slug = self.object.slug
+    #     return reverse_lazy('/profile/', kwargs={'slug': slug})
 
     # def get_queryset(self):
-    #     print('STRALDGE')
-    #     # return Ad.objects.filter(user=self.request.user)
+    #     queryset = self.get_object()
+    #     return queryset
 
-    # def get_object(self, queryset=None):
-    #     return Profile.get_or_create_for_user(self.request.user)
+    # def get_success_url(self):
+    #     slug = 'username'
+    #     return reverse_lazy('/profile/{slug}
 
-    # def form_valid(self, form):
-    #     messages.success(self.request, 'Profile updated.')
-    #     return super(ProfileView, self).form_valid(form)
 
-    # @method_decorator(login_required)
-    # def dispatch(self, *args, **kwargs):
-    #     return super(ProfileView, self).dispatch(*args, **kwargs)
+# class ProfileView(FormView):
+#     template_name = 'instr_main/profile.html'
+#     model = User
+#     form_class = ProfileForm
+#     success_url = reverse_lazy('instr_main:profile')
+
+#     def get_context_data(self, **kwargs):
+#         context = super(ProfileView, self).get_context_data(**kwargs)
+#         context['ads'] = Ad.objects.filter(seller=self.request.user)
+#         return context
+
+#     def get_object(self, queryset=None):
+#         return Profile.get_or_create_for_user(self.request.user)
+
+#     def form_valid(self, form):
+#         form.save()
+#         messages.success(self.request, 'Profile updated.')
+#         return super(ProfileView, self).form_valid(form)
+
+#     @method_decorator(login_required)
+#     def dispatch(self, *args, **kwargs):
+#         return super(ProfileView, self).dispatch(*args, **kwargs)
 
 
 class SearchView(FilteredListView, ListView):
@@ -393,3 +446,22 @@ class AdDeleteView(DeleteView):
 #             post.likes.add(request.user)
 
 #         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+# ------------------CONTEXTS.PY #
+
+# from .models import Profile
+
+
+# def base_context(request):
+#     print('user: ', request.user)
+#     if request.user.is_authenticated:
+#         user = request.user
+#         profile = Profile.objects.get(username=user)
+#     else:
+#         profile = None
+#     context = {
+#         'profile': profile,
+#     }
+
+#     return context

@@ -76,18 +76,16 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
-    # password = models.OneToOneField(User.password, max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
-    # ads = models.One(Ad, on_delete=models.SET_NULL, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     location = map_fields.AddressField(max_length=200)
 
-    @staticmethod
-    def get_or_create_for_user(user):
-        if hasattr(user, 'profile'):
-            return user.profile
-        else:
-            return Profile.objects.create(username=user, first_name=user.first_name, last_name=user.last_name, email=user.email)
+    # @staticmethod
+    # def get_or_create_for_user(user):
+    #     if hasattr(user, 'profile'):
+    #         return user.profile
+    #     else:
+    #         return Profile.objects.create(username=user.username, first_name=user.first_name, last_name=user.last_name, email=user.email)
 
     # def createProfile(sender, **kwargs):
     #     if kwargs['created']:

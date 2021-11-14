@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-lg-0">
                         <li>
-                            {% if user.is_authenticated %}
+                            {% if request.user.is_authenticated %}
                             <a class="btn btn-success" role="button" href="{% url 'instr_main:post_ad' %}">Post Ad</a>
                             {% else %}
                             <a class="btn btn-success" role="button" href="{% url 'account_login' %}">Post Ad</a>
@@ -41,14 +41,14 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'instr_main:home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            {% if user.is_authenticated %}
+                            {% if request.user.is_authenticated %}
                             <a class="nav-link" aria-current="page" href="{% url 'instr_main:profile' %}">Profile</a>
                             {% else %}
                             <a class="nav-link" role="button" href="{% url 'account_login' %}">Profile</a>
                             {% endif %}
                         </li>
                         <li class="nav-item">
-                            {% if user.is_authenticated %}
+                            {% if request.user.is_authenticated %}
                             <a class="nav-link" aria-current="page" href="#">Messages</a>
                             {% else %}
                             <a class="nav-link" role="button" href="{% url 'account_login' %}">Messages</a>
@@ -57,7 +57,7 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Contact</a>
                         </li>
-                        {% if user.is_authenticated %}
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
                         </li>

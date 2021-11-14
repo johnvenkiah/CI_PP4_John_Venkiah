@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext as _
-
+from django.contrib.auth.models import User
 from .models import Ad, Category, Profile
 from .categories import category_dict
 
@@ -48,13 +48,45 @@ class AdForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = Profile
+        model = User
         fields = (
             'first_name',
             'last_name',
             'username',
             'email',
+            'password',
         )
+
         widgets = {
-        'password': forms.PasswordInput(),
+            'password': forms.PasswordInput(),
         }
+        # def __init__(self, *args, **kwargs):
+        #     super(ProfileForm, self).__init__(*args, **kwargs)
+        #     for field_name, field in self.fields.items():
+        #         self.fields[field_name].widget.attrs['placeholder'] = User.objects.get(field)
+
+# class ProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+
+
+#     def __init__(self, *args, **kwargs):
+#         self.fields['first_name'].widget.attrs['placeholder'] = user.first_name
+#         self.fields['last_name'].widget.attrs['placeholder'] = user.last_name
+#         self.fields['username'].widget.attrs['placeholder'] = user
+#         self.fields['email'].widget.attrs['placeholder'] = user.email
+        # super(ProfileForm, self).__init__(*args, **kwargs)
+        # # for field in self.fields:
+        # #     self.fields[field].widget.attrs.update({'placeholder': getattr(User, field)})
+
+
+
+
+
+    # def __init__(self, *args, **kwargs):
+    #     super(ProfileForm, self).__init__(*args, **kwargs)
+    #     u = User
+    #     self.fields['first_name'].widget.attrs['placeholder'] = u.first_name
+    #     self.fields['last_name'].widget.attrs['placeholder'] = u.last_name
+    #     self.fields['username'].widget.attrs['placeholder'] = u.username
+    #     self.fields['email'].widget.attrs['placeholder'] = u.email

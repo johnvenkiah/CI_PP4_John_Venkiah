@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'instr_main:profile'
 LOGOUT_REDIRECT_URL = '/'
 
 MESSAGE_TAGS = {
@@ -95,6 +95,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'instr_main.contexts.base_context'
             ],
         },
     },
@@ -136,7 +137,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
