@@ -15,13 +15,19 @@ class ActiveManager(models.Manager):
         return super(ActiveManager, self).get_queryset().filter(is_active=True)
 
 
+def user_image_folder(instance, filename):
+    return f'static/images/{instance.seller.username}/{filename}'
+
+
 class Ad(models.Model):
     title = models.CharField(max_length=250, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     seller = models.ForeignKey(
         User, on_delete=models.CASCADE
     )
-    image = models.ImageField(upload_to='static/images', null=True, blank=True)
+    image = models.ImageField(
+        upload_to=user_image_folder, null=True, blank=True
+    )
     category = models.ForeignKey(
         'Category', on_delete=models.SET_NULL, null=True
     )
