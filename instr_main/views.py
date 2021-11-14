@@ -137,28 +137,51 @@ class ProfileView(ListView):
         return context
 
 
-class EditProfileView(FormView):
-    form_class = ProfileForm
-    template_name = 'instr_main/edit_profile.html'
-    success_url = '/profile/'
+# class EditProfileView(FormView):
+#     form_class = ProfileForm
+#     template_name = 'instr_main/edit_profile.html'
+#     success_url = '/profile/'
+
+#     def form_valid(self, form):
+#         form.instance.profile = self.request.user
+#         form.save()
+#         return super(EditProfileView, self).form_valid(form)
+
+# class EditProfileView(View):
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=request.user)
+        # profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.userprofile)  # request.FILES is show the selected image or file
+
+        if form.is_valid():
+            user_form = form.save()
+            # custom_form = profile_form.save(False)
+            # custom_form.user = user_form
+            # custom_form.save()
+            return redirect('instr_main:profile')
+    else:
+        form = ProfileForm(instance=request.user)
+        # profile_form = ProfileForm(instance=request.user.userprofile)
+        args = {'form': form}
+        # args.update(csrf(request))
+        # args['form'] = form
+        # args['profile_form'] = profile_form
+        return render(request, 'instr_main/edit_profile.html', args)
+
 
     # def get_queryset(self, request):
     #     profile = self.request.user.profile
 
-    #     queryset = 
-
-    def form_valid(self, form):
-        form.instance.profile = self.request.user
-        form.save()
-        return super(EditProfileView, self).form_valid(form)
-
+    #     queryset =
     # def get_queryset(self):
     #     return Ad.objects.filter(
     #         seller=self.request.user).order_by('-created_on')
     # def get_context_data(self, request):
     #     slug = Profile.objects.get(username=request.user)
     #     object_list = Ad.objects.filter(seller=Ad.request.user)
-    
+
 
     # fields = ['username', 'first_name', 'last_name', 'email', 'password']
 

@@ -86,9 +86,9 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     location = map_fields.AddressField(max_length=200)
 
-    def save(self, *args, **kwargs):
-        if self.slug is None:
-            self.slug = slugify(self.username, self.id)
+    # def save(self, *args, **kwargs):
+    #     if self.slug is None:
+    #         self.slug = slugify(self.username, self.id)
 
     class Meta:
         ordering = ['created_on']
@@ -97,11 +97,12 @@ class Profile(models.Model):
         return f'{self.username}: Profile'
 
 
-# def get_or_create_for_user(sender, **kwargs):
-#     if kwargs['created']:
-#         profile = Profile.objects.created(user=kwargs['instance'])
+def createProfile(sender, **kwargs):
+    if kwargs['created']:
+        profile = Profile.objects.created(user=kwargs['instance'])
 
-#         post_save.connect(createProfile, sender=User)
+        post_save.connect(createProfile, sender=User)
+
 
 class Category(models.Model):
     title = models.CharField('title', max_length=100)
