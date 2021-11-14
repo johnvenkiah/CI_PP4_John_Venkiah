@@ -107,7 +107,7 @@ li .btn-success {
     font-weight: 400;
 }
 
-.login input, .post-ad-form input, select, .textarea {
+.login input, .post-ad-form input, select, .textarea, .signup input {
     display: block;
     width: 100%;
     padding: .375rem .75rem;

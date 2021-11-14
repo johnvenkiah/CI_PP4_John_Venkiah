@@ -80,24 +80,9 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     location = map_fields.AddressField(max_length=200)
 
-    # @staticmethod
-    # def get_or_create_for_user(user):
-    #     if hasattr(user, 'profile'):
-    #         return user.profile
-    #     else:
-    #         return Profile.objects.create(username=user.username, first_name=user.first_name, last_name=user.last_name, email=user.email)
-
-    # def createProfile(sender, **kwargs):
-    #     if kwargs['created']:
-    #         profile = Profile.objects.created(user=kwargs['instance'])
-
-    #         post_save.connect(createProfile, sender=User)
-    # def get_or_create_for_user(sender, **kwargs):
-    #     if kwargs['created']:
-    #         profile = Profile.objects.created(user=kwargs['instance'])
-
-    #         post_save.connect(createProfile, sender=User)
-
+    def save(self, *args, **kwargs):
+        if self.slug is None:
+            self.slug = slugify(self.username, self.id)
 
     class Meta:
         ordering = ['created_on']

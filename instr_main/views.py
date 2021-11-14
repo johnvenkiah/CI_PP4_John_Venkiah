@@ -142,10 +142,10 @@ class EditProfileView(FormView):
     template_name = 'instr_main/edit_profile.html'
     success_url = '/profile/'
 
-    def get_queryset(self, request):
-        profile = self.request.user.profile
+    # def get_queryset(self, request):
+    #     profile = self.request.user.profile
 
-        queryset = 
+    #     queryset = 
 
     def form_valid(self, form):
         form.instance.profile = self.request.user
