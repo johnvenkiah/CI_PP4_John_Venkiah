@@ -48,13 +48,11 @@ class AdForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = Profile
         fields = (
             'first_name',
             'last_name',
-            'username',
             'email',
-            'password',
         )
 
         widgets = {

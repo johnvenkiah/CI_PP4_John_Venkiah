@@ -132,8 +132,25 @@ class ProfileView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ProfileView, self).get_context_data(**kwargs)
-        context['ads'] = Ad.objects.filter(seller=self.request.user)
+        context['user_ads'] = Ad.objects.filter(seller=self.request.user)
+        context['saved_ads'] = Ad.objects.filter(saved=True)
         return context
+
+
+class EditProfileView(FormView):
+    form_class = ProfileForm
+    template_name = 'instr_main/edit_profile.html'
+    success_url = '/profile/'
+
+    def get_queryset(self, request):
+        profile = self.request.user.profile
+
+        queryset = 
+
+    def form_valid(self, form):
+        form.instance.profile = self.request.user
+        form.save()
+        return super(EditProfileView, self).form_valid(form)
 
     # def get_queryset(self):
     #     return Ad.objects.filter(
@@ -312,12 +329,10 @@ class AdCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.seller = self.request.user
-        print(form)
         form.save()
         return super(AdCreateView, self).form_valid(form)
 
     def form_invalid(self, form):
-        print(form)
         return super(AdCreateView, self).form_invalid(form)
 
     def get_success_url(self):

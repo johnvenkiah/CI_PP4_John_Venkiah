@@ -1,0 +1,11 @@
+{% extends "instr_main/base.html" %}
+{% load static %}
+{% block content %}
+
+<form class="post-ad-form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success" href=# type="submit">Save Info</button>
+</form>
+
+{% endblock %}

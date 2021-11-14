@@ -11,6 +11,7 @@ urlpatterns = [
     path('search/', views.SearchView.as_view(), name='search'),
     path('<int:pk><slug:slug>/', views.AdDetailView.as_view(), name='ad'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('edit_profile/', views.EditProfileView.as_view(), name='edit_profile'),
     path(
         'category/<int:pk><slug:slug>/',
         views.CategoryDetail.as_view(),
