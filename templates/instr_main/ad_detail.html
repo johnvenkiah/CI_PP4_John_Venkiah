@@ -1,0 +1,24 @@
+{% extends "instr_main/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="row">
+            <h2 class="h2">{{ ad.title }}</h2>
+        </div>
+        <div class="row">
+            <div class="card">
+                <img src="{{ ad.image.url }}" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <p class="card-text mt-4">{{ ad.created_on }}</p>
+            <p class="card-text mt-4">{{ ad.description }}</p>
+            <p class="card-text mt-4">{{ ad.location }}</p>
+            <p class="card-text mt-4">{{ ad.price }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

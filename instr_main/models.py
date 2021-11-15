@@ -43,38 +43,43 @@ class Ad(models.Model):
     objects = models.Manager()
     active = ActiveManager()
 
-    def __str__(self):
-        if not self.is_active:
-            return '[%s] %s' % (_('in active'), self.title)
-        return self.title
-
     class Meta:
-        ordering = ['created_on']
+        ordering = ['-created_on']
         verbose_name = _('ad')
         verbose_name_plural = _('ads')
 
-    def get_absolute_url(self):
-        return reverse('instr_main:ad', kwargs={
-            'pk': self.pk,
-            'slug': self.slug
-        })
-
-        @cached_property
-        def get_keywords(self):
-            return ",".join(set(self.description.split()))
-
-        @cached_property
-        def related_items(self):
-            queryset = Ad.objects \
-               .filter(is_active=True) \
-               .filter(category=self.category) \
-               .exclude(pk=self.pk)
-            return queryset
+    def __str__(self):
+        # if not self.is_active:
+        #     return '[%s] %s' % (_('inactive'), self.title)
+        return self.title
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(unidecode(self.title))
+            self.slug = slugify(self.title)
         super(Ad, self).save(*args, **kwargs)
+
+    # def get_absolute_url(self):
+    #     return reverse('instr_main:ad_detail', kwargs={
+    #         # 'pk': self.pk,
+    #         'slug': self.slug
+    #     })
+
+        # @cached_property
+        # def get_keywords(self):
+        #     return ",".join(set(self.description.split()))
+
+        # @cached_property
+        # def related_items(self):
+        #     queryset = Ad.objects \
+        #        .filter(is_active=True) \
+        #        .filter(category=self.category) \
+        #        .exclude(pk=self.pk)
+        #     return queryset
+
+    # def save(self, *args, **kwargs):
+    #     if not self.slug:
+    #         self.slug = slugify(unidecode(self.title))
+    #     super(Ad, self).save(*args, **kwargs)
 
 
 class Profile(models.Model):

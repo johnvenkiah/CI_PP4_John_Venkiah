@@ -324,8 +324,32 @@ class CategoryDetail(SingleObjectMixin, ListView):
 
 
 class AdDetailView(DetailView):
-    queryset = Ad.active
+    model = Ad
+    # def get_queryset(self):
+    #     return get_object_or_404(
+    #         Ad, slug=self.kwargs['slug']
+    #     )
 
+    # def get_absolute_url(self):
+    #     return reverse('instr_main:ad_detail', args=[(self.slug)])
+# class AdDetail(View):
+#     # model = Ad
+
+#     def get(self, request, slug, *args, **kwargs):
+#         queryset = Ad.objects.filter(seller=self.request.user)
+#         ad = get_object_or_404(queryset, slug=slug)
+#         saved = False
+#         if ad.saved.filter(id=self.request.user.id).exists():
+#             saved = True
+
+#         return render(
+#             request,
+#             'ad_detail.html',
+#             {
+#                 'ad': ad,
+#                 'saved': saved,
+#             },
+#         )
 
 # class AdUpdateView(FormsetMixin, UpdateView):
 #     is_update_view = True
@@ -345,7 +369,8 @@ class AdDetailView(DetailView):
 
 
 class AdCreateView(CreateView):
-    # is_update_view = False
+
+    is_update_view = False
     model = Ad
     form_class = AdForm
     template_name = 'instr_main/post_ad.html'
@@ -367,6 +392,35 @@ class AdCreateView(CreateView):
     #                 'ad_form': AdForm(),
     #             }
     #     return render(request, 'instr_main/post_ad.html', context)
+
+
+    # def post(self, request, slug, *args, **kwargs):
+    #     queryset = Ad.objects.filter(is_active=True)
+    #     ad = get_object_or_404(queryset, slug=slug)
+    #     # comments = post.comments.filter(approved=True).order_by('created_on')
+    #     saved = False
+    #     # if post.likes.filter(id=self.request.user.id).exists():
+    #     #     liked = True
+
+    #     form = AdForm(data=request.POST)  # gets data from c-form
+    #     if form.is_valid():
+    #         # form.instance.username = request.user.email
+    #         # comment_form.instance.name = request.user.username
+    #         ad = form.save
+    #         form.ad = ad  # So we know which post has been commented
+    #         ad.save()
+    #     else:
+    #         form = AdForm()
+
+    #     return render(
+    #         request,
+    #         'instr_main/post_ad.html',
+    #         {
+    #             'ad': ad,
+    #             'saved': saved,
+    #             'ad_form': AdForm()
+    #         },
+    #     )
 
     # def post(self, request, *args, **kwargs):
     #     queryset = Ad.objects.all()
