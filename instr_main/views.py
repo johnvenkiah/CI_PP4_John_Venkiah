@@ -16,10 +16,11 @@ from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
 from django.db import IntegrityError
 
+import folium
+
 from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Category, Profile
 from .categories import category_dict
-
 
 # class BaseView(View):
 #     def get_context_data(self):
@@ -162,13 +163,22 @@ def edit_profile(request):
             # custom_form.save()
             return redirect('instr_main:profile')
     else:
-        form = ProfileForm(instance=request.user)
         # profile_form = ProfileForm(instance=request.user.userprofile)
-        args = {'form': form}
+        form = ProfileForm(instance=request.user)
+
+        # Folium map object
+        m = folium.Map(location=[51.5, -0.11], zoom_start=8)
+        folium.Marker([51.509, -0.118], tooltip='Click for info', popup='London').add_to(m)
+        # Get HTML representation of map obj
+        m = m._repr_html_()
+        context = {
+            'form': form,
+            'm': m,
+        }
         # args.update(csrf(request))
         # args['form'] = form
         # args['profile_form'] = profile_form
-        return render(request, 'instr_main/edit_profile.html', args)
+        return render(request, 'instr_main/edit_profile.html', context)
 
 
     # def get_queryset(self, request):
