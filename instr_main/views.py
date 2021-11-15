@@ -17,6 +17,7 @@ from django.views.generic.edit import FormMixin
 from django.db import IntegrityError
 
 import folium
+import geocoder
 
 from .forms import AdForm, ProfileForm, SearchForm
 from .models import Ad, Category, Profile
@@ -166,9 +167,16 @@ def edit_profile(request):
         # profile_form = ProfileForm(instance=request.user.userprofile)
         form = ProfileForm(instance=request.user)
 
+        # Geocoder location
+        location = geocoder.osm('UK')
+        lat = location.lat
+        lng = location.lng
+        country = location.country
         # Folium map object
+
         m = folium.Map(location=[51.5, -0.11], zoom_start=8)
         folium.Marker([51.509, -0.118], tooltip='Click for info', popup='London').add_to(m)
+        folium.Marker([lat, lng], tooltip='Click for info', popup=country).add_to(m)
         # Get HTML representation of map obj
         m = m._repr_html_()
         context = {
