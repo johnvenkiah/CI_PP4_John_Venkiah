@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.urls import reverse
 from django.utils.functional import cached_property
-from django_google_maps import fields as map_fields
+# from django_google_maps import fields as map_fields
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext as _
 from unidecode import unidecode
@@ -89,7 +89,7 @@ class Profile(models.Model):
     email = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    location = map_fields.AddressField(max_length=200)
+    location = models.CharField(max_length=200)
 
     # def save(self, *args, **kwargs):
     #     if self.slug is None:
