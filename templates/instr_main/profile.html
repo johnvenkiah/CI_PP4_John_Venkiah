@@ -35,7 +35,7 @@
             {% if user_ads %}
             {% for ad in user_ads %}
             <div class="col-6">
-                <a class="card feature pad-16 mt-3" href="{% url 'instr_main:ad_detail' ad.slug %}">
+                <a class="card feature pad-16 mt-3" href="{% url 'instr_main:ad_detail' ad.seller ad.slug %}">
                     <h4 class="card-title">{{ ad.title }}</h4>
                     <p class="card-text">{{ ad.created_on }}</p>
                     <p class="card-text">{{ ad.description }}</p>
