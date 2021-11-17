@@ -44,6 +44,9 @@ class AdForm(forms.ModelForm):
         'rows': 10,
         'class': 'textarea',
     }))
+    # location = forms.CharField(widget=forms.TextInput({
+    #     'initial': instance.user.profile.location,
+    # }))
 
 
 class ProfileForm(forms.ModelForm):

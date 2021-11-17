@@ -378,6 +378,15 @@ class AdCreateView(CreateView):
     form_class = AdForm
     template_name = 'instr_main/post_ad.html'
 
+    def get_initial(self):
+        initial = super(AdCreateView, self).get_initial()
+        initial.update(
+            {
+                'location': self.request.user.profile.location,
+            }
+        )
+        return initial
+
     def form_valid(self, form):
         form.instance.seller = self.request.user
         form.save()
