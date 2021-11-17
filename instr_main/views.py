@@ -132,9 +132,12 @@ class EditProfileView(UpdateView):
     def get_object(self, queryset=None):
         # get the existing object or created a new one
         profile, created = Profile.objects.get_or_create(username=self.request.user)
-        request.user.first_name = profile.first_name
-        request.user.last_name = profile.last_name
-        request.user.email = profile.email
+        
+        # for-loop here
+        self.request.user.first_name = profile.first_name
+        self.request.user.last_name = profile.last_name
+        self.request.user.email = profile.email
+        self.request.user.save()
 
         # location = geocoder.osm('UK')
         # lat = location.lat
