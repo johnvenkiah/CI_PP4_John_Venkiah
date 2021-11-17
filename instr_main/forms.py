@@ -53,12 +53,23 @@ class ProfileForm(forms.ModelForm):
             'first_name',
             'last_name',
             'email',
-            'location'
+            'location',
         )
 
-        widgets = {
-            'password': forms.PasswordInput(),
-        }
+
+# class LocationForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = (
+#             'location',
+#         )
+
+
+
+
+
+
+
         # def __init__(self, *args, **kwargs):
         #     super(ProfileForm, self).__init__(*args, **kwargs)
         #     for field_name, field in self.fields.items():

@@ -55,28 +55,6 @@ class HomeView(TemplateView):
         context = self.get_context_data()
         return render(request, 'instr_main/index.html', context)
 
-    # def post(self, request):
-    #     pass_1 = request.POST.get('password1')
-    #     pass_2 = request.POST.get('password2')
-    #     username = request.POST.get('username')
-
-    #     if pass_1 == pass_2:
-    #         try:
-    #             new_user = User.objects.create_user(
-    #                 username, password=pass_1
-    #             )
-    #             new_user.save()
-    #             messages.success(request, 'Account created successfully')
-
-    #         except IntegrityError:
-    #             messages.error(request, 'Integrity Error')
-    #     else:
-    #         messages.error(request, 'Password does not match!')
-
-    #     context = self.get_context_data()
-    #     return render(request, 'instr_main/index.html', context)
-        # return render(request, 'instr_main/index.html', context)
-
 
 class FilteredListView(FormMixin, ListView):
     def get_form_kwargs(self):
@@ -139,6 +117,99 @@ class ProfileView(ListView):
         return context
 
 
+class EditProfileView(UpdateView):
+    # specify a custom ModelForm
+    form_class = ProfileForm
+    # or simply specify the Model
+    model = Profile
+    template_name = 'instr_main/edit_profile.html'
+    success_url = '/profile/'
+
+    # context = {
+    #     'm': m,
+    # }
+
+    def get_object(self, queryset=None):
+        # get the existing object or created a new one
+        profile, created = Profile.objects.get_or_create(username=self.request.user)
+        request.user.first_name = profile.first_name
+        request.user.last_name = profile.last_name
+        request.user.email = profile.email
+
+        # location = geocoder.osm('UK')
+        # lat = location.lat
+        # lng = location.lng
+        # country = location.country
+
+        # m = folium.Map(location=[51.5, -0.11], zoom_start=8)
+        # folium.Marker([51.509, -0.118], tooltip='Click for info', popup='London').add_to(m)
+        # folium.Marker([lat, lng], tooltip='Click for info', popup=country).add_to(m)
+        # m = m._repr_html_()
+        # m = {
+        #     'm': m,
+        # }
+
+        return profile
+
+
+# class EditProfileView(View):
+#     user = User
+#     form_class = ProfileForm
+#     initial = {
+#         'first_name': '',
+#         'last_name': '',
+#         'email': '',
+#     }
+#     template_name = 'edit_profile'
+
+#     def get(self, request, *args, **kwargs):
+#         form = self.form_class(initial=self.initial)
+#         location_form = LocationForm()
+#         return render(
+#             request,
+#             'instr_main/edit_profile.html',
+#             {
+#                 'form': form,
+#                 'location_form': location_form,
+#             }
+#         )
+
+
+
+    # def post(self, request, *args, **kwargs):
+    #     form = self.form_class(request.POST)
+    #     location_form = LocationForm(request.POST)
+    #     if form.is_valid() and location_form.is_valid():
+    #         form = form.save()
+    #         custom_form = location_form.save(False)
+    #         custom_form.user = form
+    #         custom_form.save()
+    #         profile = Profile.get_or_create_for_user(self.request.user)
+    #         return redirect('instr_main:profile')
+
+    #     return render(
+    #         request,
+    #         'instr_main/edit_profile.html',
+    #         {
+    #             'form': form,
+    #             'location_form': location_form,
+    #         }
+    #     )
+
+    # def post(self, request, *args, **kwargs):
+    #     form = ProfileForm(request.POST, instance=request.user)
+    #     form.save()
+    #     location_form = LocationForm(request.POST, instance=request.user.profile)
+
+    #     if form.is_valid() and location_form.is_valid():
+    #         user_form = form.save()
+    #         custom_form = location_form.save(False)
+    #         custom_form.user = user_form
+    #         profile, created = Profile.objects.get_or_create(**custom_form.cleaned_data)
+    #         custom_form.save()
+    #         return redirect('instr_main:profile')
+
+
 # class EditProfileView(FormView):
 #     form_class = ProfileForm
 #     template_name = 'instr_main/edit_profile.html'
@@ -149,111 +220,22 @@ class ProfileView(ListView):
 #         form.save()
 #         return super(EditProfileView, self).form_valid(form)
 
-# class EditProfileView(View):
 
-@login_required
-def edit_profile(request):
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=request.user)
-        # profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.userprofile)  # request.FILES is show the selected image or file
+# @login_required
+# def edit_profile(request):
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, instance=request.user)
+#         profile = Profile(request.user)
 
-        if form.is_valid():
-            user_form = form.save()
-            # custom_form = profile_form.save(False)
-            # custom_form.user = user_form
-            # custom_form.save()
-            return redirect('instr_main:profile')
-    else:
-        # profile_form = ProfileForm(instance=request.user.userprofile)
-        form = ProfileForm(instance=request.user)
-
-        # Geocoder location
-        location = geocoder.osm('UK')
-        lat = location.lat
-        lng = location.lng
-        country = location.country
-        # Folium map object
-
-        m = folium.Map(location=[51.5, -0.11], zoom_start=8)
-        folium.Marker([51.509, -0.118], tooltip='Click for info', popup='London').add_to(m)
-        folium.Marker([lat, lng], tooltip='Click for info', popup=country).add_to(m)
-        # Get HTML representation of map obj
-        m = m._repr_html_()
-        context = {
-            'form': form,
-            'm': m,
-        }
-        # args.update(csrf(request))
-        # args['form'] = form
-        # args['profile_form'] = profile_form
-        return render(request, 'instr_main/edit_profile.html', context)
+#         if form.is_valid():
+#             form = form.save()
+#             messages.success(request, 'Profile updated.')
+#             return redirect('instr_main:profile')
+#     else:
+#         form = ProfileForm(instance=request.user)
 
 
-    # def get_queryset(self, request):
-    #     profile = self.request.user.profile
-
-    #     queryset =
-    # def get_queryset(self):
-    #     return Ad.objects.filter(
-    #         seller=self.request.user).order_by('-created_on')
-    # def get_context_data(self, request):
-    #     slug = Profile.objects.get(username=request.user)
-    #     object_list = Ad.objects.filter(seller=Ad.request.user)
-
-
-    # fields = ['username', 'first_name', 'last_name', 'email', 'password']
-
-    # slug_field = 'username'
-
-    # @staticmethod
-    # def get_or_create_for_user(user):
-    #     if hasattr(user, 'profile'):
-    #         return user.profile
-    #     else:
-    #         return Profile.objects.create(username=user.username, first_name=user.first_name, last_name=user.last_name, email=user.email)
-
-    # def creat(self, user, request):
-    #     user = request.user
-    #     Profile.objects.create(username=user.username, first_name=user.first_name, last_name=user.last_name, email=user.email)
-
-    # def get_success_url(self):
-    #     url = self.get_redirect_url()
-    #     return url or reverse('/profile/', kwargs={'slug': self.request.profile.slug})
-    # def get_success_url(self):
-    #     slug = self.object.slug
-    #     return reverse_lazy('/profile/', kwargs={'slug': slug})
-
-    # def get_queryset(self):
-    #     queryset = self.get_object()
-    #     return queryset
-
-    # def get_success_url(self):
-    #     slug = 'username'
-    #     return reverse_lazy('/profile/{slug}
-
-
-# class ProfileView(FormView):
-#     template_name = 'instr_main/profile.html'
-#     model = User
-#     form_class = ProfileForm
-#     success_url = reverse_lazy('instr_main:profile')
-
-#     def get_context_data(self, **kwargs):
-#         context = super(ProfileView, self).get_context_data(**kwargs)
-#         context['ads'] = Ad.objects.filter(seller=self.request.user)
-#         return context
-
-#     def get_object(self, queryset=None):
-#         return Profile.get_or_create_for_user(self.request.user)
-
-#     def form_valid(self, form):
-#         form.save()
-#         messages.success(self.request, 'Profile updated.')
-#         return super(ProfileView, self).form_valid(form)
-
-#     @method_decorator(login_required)
-#     def dispatch(self, *args, **kwargs):
-#         return super(ProfileView, self).dispatch(*args, **kwargs)
+#         return render(request, 'instr_main/edit_profile.html', context)
 
 
 class SearchView(FilteredListView, ListView):

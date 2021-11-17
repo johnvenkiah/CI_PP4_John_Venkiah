@@ -38,15 +38,15 @@ class Ad(models.Model):
     location = models.CharField(max_length=200)
     sold = models.BooleanField(default=False)
     saved = models.BooleanField(default=False)
-    is_active = models.BooleanField(_('active'), default=True, db_index=True)
+    is_active = models.BooleanField('active', default=True, db_index=True)
 
     objects = models.Manager()
     active = ActiveManager()
 
     class Meta:
         ordering = ['-created_on']
-        verbose_name = _('ad')
-        verbose_name_plural = _('ads')
+        verbose_name = 'ad'
+        verbose_name_plural = 'ads'
 
     def __str__(self):
         # if not self.is_active:
@@ -87,26 +87,34 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True)
+    # slug = models.SlugField(max_length=200, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=200)
 
-    # def save(self, *args, **kwargs):
-    #     if self.slug is None:
-    #         self.slug = slugify(self.username, self.id)
+    # @staticmethod
+    # def get_or_create_for_user(user):
+    #     if hasattr(user, 'profile'):
+    #         return user.profile
+    #     else:
+    #         return Profile.objects.create(user=user)
+
+    def __str__(self):
+        return f'{self.username}'
 
     class Meta:
         ordering = ['created_on']
 
-    def __str__(self):
-        return f'{self.username}: Profile'
+    def save(self, *args, **kwargs):
+        # if not self.slug:
+        #     self.slug = slugify(self.pk)
+        super(Profile, self).save(*args, **kwargs)
 
 
-def createProfile(sender, **kwargs):
-    if kwargs['created']:
-        profile = Profile.objects.created(user=kwargs['instance'])
+# def createProfile(sender, **kwargs):
+#     if kwargs['created']:
+#         profile = Profile.objects.created(user=kwargs['instance'])
 
-        post_save.connect(createProfile, sender=User)
+#         post_save.connect(createProfile, sender=User)
 
 
 class Category(models.Model):
