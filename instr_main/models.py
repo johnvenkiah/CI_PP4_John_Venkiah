@@ -109,7 +109,19 @@ class Profile(models.Model):
         #     self.slug = slugify(self.pk)
         super(Profile, self).save(*args, **kwargs)
 
-
+    # def save(self, *args, **kwargs):
+    #     try:
+    #         user = User.objects.get(
+    #             username=self.user.username,
+    #         )
+    #         if self.first_name is None:
+    #             user.first_name = self.first_name
+    #             user.last_name = self.last_name
+    #             user.email = self.email
+    #             user.save()
+    #     except Exception as e:
+    #         print(e)
+    #     super(Profile, self).save(*args, **kwargs)
 # def createProfile(sender, **kwargs):
 #     if kwargs['created']:
 #         profile = Profile.objects.created(user=kwargs['instance'])

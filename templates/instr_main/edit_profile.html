@@ -6,6 +6,10 @@
         <form class="post-ad-form" method="post">
             {% csrf_token %}
             {{ form.as_p }}
+            <p>
+            <label for="location">Location:</label>
+            <input type="text" id="location", value="{{ profile.location }}">
+        </p>
             <button class="btn btn-success" href=# type="submit">Save Info</button>
         </form>
     </div>

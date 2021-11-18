@@ -116,28 +116,82 @@ class ProfileView(ListView):
         context['saved_ads'] = Ad.objects.filter(saved=True)
         return context
 
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy('instr_main:profile', args=[self.kwargs['username']])
+
 
 class EditProfileView(UpdateView):
     # specify a custom ModelForm
     form_class = ProfileForm
-    # or simply specify the Model
     model = Profile
+    # second_form_class = LocationForm
+    # second_model = Profile
+    # or simply specify the Model
     template_name = 'instr_main/edit_profile.html'
     success_url = '/profile/'
-
-    # context = {
-    #     'm': m,
-    # }
 
     def get_object(self, queryset=None):
         # get the existing object or created a new one
         profile, created = Profile.objects.get_or_create(username=self.request.user)
-        
-        # for-loop here
+
+        # self.request.profile.location = self.request.POST.get('location')
         self.request.user.first_name = profile.first_name
         self.request.user.last_name = profile.last_name
         self.request.user.email = profile.email
         self.request.user.save()
+
+        return profile
+
+        # success_url = reverse_lazy('profile')
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(EditProfileView, self).get_context_data(**kwargs)
+    #     context['profile'] = Profile.objects.get(username=self.request.user)
+    #     context['location_form'] = self.form_class(
+    #             initial={
+    #                 'location': context['profile'].location
+    #             }
+    #     )
+    #     context['username'] = User.objects.get(
+    #         username=self.request.user,
+    #         # initial={
+    #         #     'first_name': context['user'].first_name,
+    #         #     'last_name': context['user'].last_name,
+    #         #     'email': context['user'].email,
+    #         # }
+    #     )
+
+    #     return context
+
+    # def get_object(self, queryset=None):
+    #     # get the existing object or created a new one
+    #     profile, created = Profile.objects.get_or_create(username=self.request.user)
+    #     # email = self.request.POST.get('email')
+    #     return profile
+
+    # def post(self, request, *args, **kwargs):
+    #     form = self.form_class(request.POST)
+    #     location_form = LocationForm(request.POST)
+    #     if form.is_valid() and location_form.is_valid():
+    #         form = form.save()
+    #         custom_form = location_form.save(False)
+    #         custom_form.user = form
+    #         custom_form.save()
+    #         profile = Profile.get_or_create_for_user(self.request.user)
+    #         return redirect('instr_main:profile')
+
+    #     return render(
+    #         request,
+    #         'instr_main/edit_profile.html',
+    #         {
+    #             'form': form,
+    #             'location_form': location_form,
+    #         }
+    #     )
+    # def post(self, request):
+    #     # email = Profile.username.email
+    #     email = request.POST.get('email')
+    #     return email
 
         # location = geocoder.osm('UK')
         # lat = location.lat
@@ -151,8 +205,6 @@ class EditProfileView(UpdateView):
         # m = {
         #     'm': m,
         # }
-
-        return profile
 
 
 # class EditProfileView(View):
