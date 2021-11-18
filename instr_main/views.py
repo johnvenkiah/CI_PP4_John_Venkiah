@@ -15,6 +15,7 @@ from django.views import generic, View
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
 from django.db import IntegrityError
+from django.template.defaultfilters import slugify
 
 import folium
 import geocoder
@@ -121,26 +122,44 @@ class ProfileView(ListView):
 
 
 class EditProfileView(UpdateView):
-    # specify a custom ModelForm
     form_class = ProfileForm
-    model = Profile
-    # second_form_class = LocationForm
-    # second_model = Profile
-    # or simply specify the Model
     template_name = 'instr_main/edit_profile.html'
+    model = User
     success_url = '/profile/'
 
-    def get_object(self, queryset=None):
-        # get the existing object or created a new one
-        profile, created = Profile.objects.get_or_create(username=self.request.user)
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy('instr_main:profile')
 
-        # self.request.profile.location = self.request.POST.get('location')
-        self.request.user.first_name = profile.first_name
-        self.request.user.last_name = profile.last_name
-        self.request.user.email = profile.email
-        self.request.user.save()
+    def form_valid(self, form):
+        user = form.save(commit=True)
+        user.save()
+        return HttpResponseRedirect(reverse('instr_main:profile', args=[user.username]))
+        # return redirect('profile', slug=user.username)
+    
+    def get_object(self):
+        return self.request.user
 
-        return profile
+# class EditProfileView(UpdateView):
+#     # specify a custom ModelForm
+#     form_class = ProfileForm
+#     model = Profile
+#     # second_form_class = LocationForm
+#     # second_model = Profile
+#     # or simply specify the Model
+#     template_name = 'instr_main/edit_profile.html'
+#     success_url = '/profile/'
+
+#     def get_object(self, queryset=None):
+#         # get the existing object or created a new one
+#         profile, created = Profile.objects.get_or_create(username=self.request.user)
+
+#         self.request.profile.location = self.request.POST.get('location')
+#         self.request.user.first_name = profile.first_name
+#         self.request.user.last_name = profile.last_name
+#         self.request.user.email = profile.email
+#         self.request.user.save()
+
+#         return profile
 
         # success_url = reverse_lazy('profile')
 
@@ -449,63 +468,6 @@ class AdCreateView(CreateView):
 
     def get_success_url(self):
         return '/profile/'
-
-    # def get(self, request):
-    #     context = {
-    #                 'category_dict': category_dict,
-    #                 'ad_form': AdForm(),
-    #             }
-    #     return render(request, 'instr_main/post_ad.html', context)
-
-
-    # def post(self, request, slug, *args, **kwargs):
-    #     queryset = Ad.objects.filter(is_active=True)
-    #     ad = get_object_or_404(queryset, slug=slug)
-    #     # comments = post.comments.filter(approved=True).order_by('created_on')
-    #     saved = False
-    #     # if post.likes.filter(id=self.request.user.id).exists():
-    #     #     liked = True
-
-    #     form = AdForm(data=request.POST)  # gets data from c-form
-    #     if form.is_valid():
-    #         # form.instance.username = request.user.email
-    #         # comment_form.instance.name = request.user.username
-    #         ad = form.save
-    #         form.ad = ad  # So we know which post has been commented
-    #         ad.save()
-    #     else:
-    #         form = AdForm()
-
-    #     return render(
-    #         request,
-    #         'instr_main/post_ad.html',
-    #         {
-    #             'ad': ad,
-    #             'saved': saved,
-    #             'ad_form': AdForm()
-    #         },
-    #     )
-
-    # def post(self, request, *args, **kwargs):
-    #     queryset = Ad.objects.all()
-    #     ad = get_object_or_404(queryset)
-
-    #     context = {
-    #         'category_dict': category_dict,
-    #         'ad_form': AdForm(),
-    #         'ad': ad,
-    #     }
-
-    #     ad_form = AdForm(data=request.POST)  # gets data from c-form
-    #     if ad_form.is_valid():
-    #         ad_form.instance.name = request.user
-    #         ad = ad_form.save(commit=False)
-    #         ad = ad
-    #         ad.save()
-    #     else:
-    #         ad_form = AdForm()
-
-    #     return redirect(request, 'instr_main/profile.html', context)
 
 
 class AdDeleteView(DeleteView):

@@ -48,18 +48,18 @@ class AdForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = Profile
+        model = User
+        # exclude = ('user_ptr_id',)
         fields = (
             'first_name',
             'last_name',
             'email',
-            'location',
         )
 
 
-# class LocationForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         fields = (
-#             'location',
-#         )
+class LocationForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = (
+            'location',
+        )

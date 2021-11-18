@@ -84,9 +84,9 @@ class Ad(models.Model):
 
 class Profile(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
+    # first_name = models.CharField(max_length=100)
+    # last_name = models.CharField(max_length=100)
+    # email = models.CharField(max_length=100)
     # slug = models.SlugField(max_length=200, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=200)
@@ -98,15 +98,15 @@ class Profile(models.Model):
     #     else:
     #         return Profile.objects.create(user=user)
 
-    def __str__(self):
-        return f'{self.username}'
-
     class Meta:
         ordering = ['created_on']
 
+    def __str__(self):
+        return f'{self.username}'
+
     def save(self, *args, **kwargs):
-        # if not self.slug:
-        #     self.slug = slugify(self.pk)
+        if not self.slug:
+            self.slug = slugify(self.username)
         super(Profile, self).save(*args, **kwargs)
 
     # def save(self, *args, **kwargs):
