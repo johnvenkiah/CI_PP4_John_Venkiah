@@ -125,10 +125,10 @@ class EditProfileView(UpdateView):
     form_class = ProfileForm
     template_name = 'instr_main/edit_profile.html'
     model = User
-    success_url = '/profile/'
+    # success_url = reverse('instr_main:profile')
 
-    def get_success_url(self, *args, **kwargs):
-        return reverse_lazy('instr_main:profile')
+    # def get_success_url(self, *args, **kwargs):
+    #     return reverse_lazy('instr_main:profile')
 
     def form_valid(self, form):
         user = form.save(commit=True)
@@ -136,6 +136,9 @@ class EditProfileView(UpdateView):
         return HttpResponseRedirect(reverse('instr_main:profile', args=[user.username]))
         # return redirect('profile', slug=user.username)
     
+    def form_invalid(self, form):
+        return super(EditProfileView, self).form_invalid(form)
+
     def get_object(self):
         return self.request.user
 
