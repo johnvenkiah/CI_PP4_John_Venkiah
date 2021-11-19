@@ -46,10 +46,10 @@ class AdForm(forms.ModelForm):
     }))
 
 
-class ProfileForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(ProfileForm, self).__init__(*args, **kwargs)
-        self.fields['email'].required = True
+class UserForm(forms.ModelForm):
+    # def __init__(self, *args, **kwargs):
+    #     super(ProfileForm, self).__init__(*args, **kwargs)
+    #     self.fields['email'].required = True
 
     class Meta:
         model = User
@@ -61,7 +61,7 @@ class ProfileForm(forms.ModelForm):
         )
 
 
-class LocationForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = (

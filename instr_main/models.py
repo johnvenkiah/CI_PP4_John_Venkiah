@@ -84,10 +84,7 @@ class Ad(models.Model):
 
 class Profile(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE)
-    # first_name = models.CharField(max_length=100)
-    # last_name = models.CharField(max_length=100)
-    # email = models.CharField(max_length=100)
-    # slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=200)
 

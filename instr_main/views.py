@@ -20,7 +20,7 @@ from django.template.defaultfilters import slugify
 import folium
 import geocoder
 
-from .forms import AdForm, ProfileForm, SearchForm
+from .forms import AdForm, ProfileForm, SearchForm, UserForm
 from .models import Ad, Category, Profile
 from .categories import category_dict
 
@@ -121,28 +121,49 @@ class ProfileView(ListView):
         return reverse_lazy('instr_main:profile', args=[self.kwargs['username']])
 
 
-class EditProfileView(UpdateView):
-    form_class = ProfileForm
-    template_name = 'instr_main/edit_profile.html'
-    model = User
-    # success_url = reverse('instr_main:profile')
+# class EditProfileView(UpdateView):
+#     form_class = UserForm
+#     template_name = 'instr_main/edit_profile.html'
+#     model = User
+#     # success_url = reverse('instr_main:profile')
 
-    # def get_success_url(self, *args, **kwargs):
-    #     return reverse_lazy('instr_main:profile')
+#     # def get_success_url(self, *args, **kwargs):
+#     #     return reverse_lazy('instr_main:profile')
 
-    def form_valid(self, form):
-        user = form.save(commit=True)
-        user.save()
-        messages.success(self.request, 'User info saved')
-        return HttpResponseRedirect(reverse('instr_main:profile', args=[user.username]))
-        # return redirect('profile', slug=user.username)
+#     def form_valid(self, form):
+#         user = form.save(commit=True)
+#         user.save()
+#         messages.success(self.request, 'User info saved')
+#         return HttpResponseRedirect(reverse('instr_main:profile', args=[user.username]))
+#         # return redirect('profile', slug=user.username)
     
-    def form_invalid(self, form):
-        return super(EditProfileView, self).form_invalid(form)
+#     def form_invalid(self, form):
+#         return super(EditProfileView, self).form_invalid(form)
 
-    def get_object(self):
-        return self.request.user
+#     def get_object(self):
+#         return self.request.user
 
+
+@login_required
+def edit_profile(request):
+
+    u_form = UserForm(instance=request.user)
+    p_form = ProfileForm(instance=request.user.profile)
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+    if request.method == 'POST':
+        u_form = UserForm(request.POST, instance=request.user)
+        p_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+    if u_form.is_valid() and p_form.is_valid():
+        u_form.save()
+        p_form.save()
+        messages.success(request, 'Your Profile has been Updated Successfully')
+        return redirect(reverse('instr_main:profile', args=[request.user.username]))
+
+    return render(request, 'instr_main/edit_profile.html', context)
 
 
 class SearchView(FilteredListView, ListView):

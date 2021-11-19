@@ -5,7 +5,8 @@
     <div class="col-6 mx-auto">
         <form class="post-ad-form" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ u_form.as_p }}
+            {{ p_form.as_p }}
             <!-- <p>
             <label for="location">Location:</label>
             <input type="text" id="location", value="{{ profile.location }}">
