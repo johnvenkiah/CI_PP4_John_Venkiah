@@ -30,6 +30,13 @@ class SearchForm(forms.Form):
 
 
 class AdForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['location'].widget.attrs.update(
+            {
+                'required': ''
+            }
+        )
     class Meta:
         model = Ad
         fields = (

@@ -23,6 +23,7 @@ import geocoder
 from .forms import AdForm, ProfileForm, SearchForm, UserForm
 from .models import Ad, Category, Profile
 from .categories import category_dict
+from jv_instrumental.settings import GOOGLE_API_KEY
 
 # class BaseView(View):
 #     def get_context_data(self):
@@ -302,6 +303,7 @@ class AdCreateView(CreateView):
     model = Ad
     form_class = AdForm
     template_name = 'instr_main/post_ad.html'
+    google_api_key = GOOGLE_API_KEY
 
     def get_initial(self):
         initial = super(AdCreateView, self).get_initial()
@@ -311,6 +313,11 @@ class AdCreateView(CreateView):
             }
         )
         return initial
+
+    def get_context_data(self, **kwargs):
+        ctx = super(AdCreateView, self).get_context_data(**kwargs)
+        ctx['google_api_key'] = self.google_api_key
+        return ctx
 
     def form_valid(self, form):
         form.instance.seller = self.request.user
