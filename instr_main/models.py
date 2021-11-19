@@ -25,9 +25,7 @@ class Ad(models.Model):
     seller = models.ForeignKey(
         User, on_delete=models.CASCADE
     )
-    image = models.ImageField(
-        upload_to=user_image_folder, null=True, blank=True
-    )
+    image = models.ImageField(upload_to=user_image_folder, blank=False)
     category = models.ForeignKey(
         'Category', on_delete=models.SET_NULL, null=True
     )
@@ -105,25 +103,6 @@ class Profile(models.Model):
         if not self.slug:
             self.slug = slugify(self.username)
         super(Profile, self).save(*args, **kwargs)
-
-    # def save(self, *args, **kwargs):
-    #     try:
-    #         user = User.objects.get(
-    #             username=self.user.username,
-    #         )
-    #         if self.first_name is None:
-    #             user.first_name = self.first_name
-    #             user.last_name = self.last_name
-    #             user.email = self.email
-    #             user.save()
-    #     except Exception as e:
-    #         print(e)
-    #     super(Profile, self).save(*args, **kwargs)
-# def createProfile(sender, **kwargs):
-#     if kwargs['created']:
-#         profile = Profile.objects.created(user=kwargs['instance'])
-
-#         post_save.connect(createProfile, sender=User)
 
 
 class Category(models.Model):

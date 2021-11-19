@@ -160,7 +160,7 @@ def edit_profile(request):
     if u_form.is_valid() and p_form.is_valid():
         u_form.save()
         p_form.save()
-        messages.success(request, 'Your Profile has been Updated Successfully')
+        messages.success(request, 'Profile Updated Successfully')
         return redirect(reverse('instr_main:profile', args=[request.user.username]))
 
     return render(request, 'instr_main/edit_profile.html', context)
@@ -321,6 +321,7 @@ class AdCreateView(CreateView):
         return super(AdCreateView, self).form_invalid(form)
 
     def get_success_url(self):
+        messages.success(self.request, 'Your Ad is now posted')
         return '/profile/'
 
 
