@@ -169,16 +169,16 @@ def edit_profile(request):
     return render(request, 'instr_main/edit_profile.html', context)
 
 
-class SearchView(FilteredListView, ListView):
-    form_class = SearchForm
-    queryset = Ad.objects.all()
-    paginate_by = 10
-    template_name = 'instru_mental/search.html'
+class SearchView(ListView):
+    model = Ad
+    # queryset = Ad.objects.all()
+    # paginate_by = 10
+    template_name = 'instr_main/search.html'
 
-    def get_initial(self):
-        initials = super(SearchView, self).get_initial()
-        # initials['area'] = Area.get_for_request(self.request)
-        return initials
+    # def get_initial(self):
+    #     initials = super(SearchView, self).get_initial()
+    #     initials['ads'] = Ad.get_for_request(self.request)
+    #     return initials
 
 
 # class FormsetMixin(object):
