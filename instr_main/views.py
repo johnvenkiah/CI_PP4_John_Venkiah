@@ -16,6 +16,7 @@ from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
 from django.db import IntegrityError
 from django.template.defaultfilters import slugify
+from localflavor.gb.gb_regions import GB_REGION_CHOICES
 
 import folium
 import geocoder
@@ -44,7 +45,8 @@ class HomeView(TemplateView):
         # profile = None
         # if self.request.user != 'AnonymousUser':
         #     profile = self.request.user.profile
-        area_list = ['here', 'there', 'everywhere']
+        area_tuple = GB_REGION_CHOICES
+        area_list = [area[0] for area in GB_REGION_CHOICES]
         context = {
             'category_dict': category_dict,
             'area_list': area_list,
