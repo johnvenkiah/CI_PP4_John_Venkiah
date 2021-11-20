@@ -16,7 +16,6 @@ from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
 from django.db import IntegrityError
 from django.template.defaultfilters import slugify
-from localflavor.gb.gb_regions import GB_REGION_CHOICES
 
 import folium
 import geocoder
@@ -25,17 +24,23 @@ from .forms import AdForm, ProfileForm, SearchForm, UserForm
 from .models import Ad, Category, Profile
 from .categories import category_dict
 from jv_instrumental.settings import GOOGLE_API_KEY
+from .map_utils import get_lat_long_by_address
 
 
 class HomeView(TemplateView):
     def get_context_data(self):
-
-        area_tuple = GB_REGION_CHOICES
-        area_list = [area[0] for area in GB_REGION_CHOICES]
+        ads = Ad.objects.all()
+        coords = [get_lat_long_by_address(item.location) for item in ads]
+        area_list = [
+            geocoder.google(
+                [
+                    coord[0], coord[1]
+                ], method='reverse'
+            ).city for coord in coords
+        ]
         context = {
             'category_dict': category_dict,
-            'area_list': area_list,
-            # 'profile': profile,
+            'area_list': set(area_list),
         }
 
         return context
