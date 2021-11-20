@@ -1,7 +1,6 @@
 {% extends "instr_main/base.html" %}
 {% load static %}
 {% block content %}
-
 <div class="container">
 <div class="row justify-content-center">
     <div class="col-md-6">
@@ -15,5 +14,10 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="/static/js/post_ad.js"></script>
+<script src="/static/js/autocomplete_location.js"></script>
+<script
+src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&callback=initAutocomplete&libraries=places&v=weekly"
+async
+></script>
 </div>
 {% endblock %}

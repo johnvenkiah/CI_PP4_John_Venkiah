@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = 'instr_main:profile'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 MESSAGE_TAGS = {
@@ -119,6 +119,8 @@ WSGI_APPLICATION = 'jv_instrumental.wsgi.application'
 DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
+
+# AUTH_PROFILE_MODULE = 'models.Profile'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

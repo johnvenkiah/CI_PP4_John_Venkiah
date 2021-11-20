@@ -18,10 +18,10 @@ class AdAdmin(ModelAdmin):
 @admin.register(Profile)
 class ProfileAdmin(ModelAdmin):
 
-    list_display = ('username', 'slug', 'created_on')
+    list_display = ('username', 'created_on', 'location')
     search_fields = ['username']
-    prepopulated_fields = {'slug': ('id',)}
-    list_filter = ('username', 'created_on', )
+    # prepopulated_fields = {'slug': ('id',)}
+    list_filter = ('username', 'created_on', 'location')
 
 
 @admin.register(Category)

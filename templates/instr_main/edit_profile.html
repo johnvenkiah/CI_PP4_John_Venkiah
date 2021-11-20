@@ -1,11 +1,23 @@
 {% extends "instr_main/base.html" %}
 {% load static %}
 {% block content %}
-
-<form class="post-ad-form" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-success" href=# type="submit">Save Info</button>
-</form>
-
+<div class="row">
+    <div class="col-6 mx-auto">
+        <form class="post-ad-form" method="post">
+            {% csrf_token %}
+            {{ u_form.as_p }}
+            {{ p_form.as_p }}
+            <!-- <p>
+            <label for="location">Location:</label>
+            <input type="text" id="location", value="{{ profile.location }}">
+        </p> -->
+            <button class="btn btn-success" href=# type="submit">Save Info</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 mt-4 mx-auto">
+        {{ m | safe }}
+    </div>
+</div>
 {% endblock %}

@@ -45,11 +45,9 @@
                                             {% endfor %}
                                         </select>
                                         <i class="input-icon fa-solid fa-location-dot"></i>
-                                        {{ forms.search_form | safe }}
-                                        {% csrf_token %}
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button type="submit" class="btn btn-success shadow">Search Ads</button>
+                                        <a href="{% url 'instr_main:search' %}" type="submit" class="btn btn-success shadow">Search Ads</a>
                                     </div>
                                 </form>
                             </div>
