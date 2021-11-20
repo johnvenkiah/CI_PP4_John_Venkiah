@@ -26,25 +26,10 @@ from .models import Ad, Category, Profile
 from .categories import category_dict
 from jv_instrumental.settings import GOOGLE_API_KEY
 
-# class BaseView(View):
-#     def get_context_data(self):
-#         profile = self.request.user.Profile
-#         context = {
-#             'profile': profile,
-#         }
-
-#         return context
-
-#     def get(self, request):
-#         context = self.get_context_data()
-#         return render(request, 'instr_main/base.html', context)
-
 
 class HomeView(TemplateView):
     def get_context_data(self):
-        # profile = None
-        # if self.request.user != 'AnonymousUser':
-        #     profile = self.request.user.profile
+
         area_tuple = GB_REGION_CHOICES
         area_list = [area[0] for area in GB_REGION_CHOICES]
         context = {
@@ -80,36 +65,6 @@ class FilteredListView(FormMixin, ListView):
         return self.render_to_response(context)
 
 
-# ---------------------GAMMALT UNDER---------------------------------
-
-
-# class CategoryListView(TemplateView):
-#     template_name = 'instru_mental/category_list.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super(CategoryListView, self).get_context_data(**kwargs)
-
-#         ad_qs = Ad.active
-#         # area = Area.get_for_request(self.request)
-#         # if area:
-#         #     ad_qs = ad_qs.filter(area=area)
-
-#         object_list = []
-#         # Prepare list of tuples with object/count
-#         for category in Category.objects.all():
-#             groups = [(group, items_qs.filter(group=group).count()) for group in section.group_set.all()]
-#             object_list.append(dict(
-#                 section=(section, items_qs.filter(group__section=section).count()),
-#                 groups=groups
-#             ))
-
-#         context['object_list'] = object_list
-
-#         return context
-
-# ---------------------GAMMALT OVAN ___________________________________
-
-
 class ProfileView(ListView):
     model = Ad
     template_name = 'instr_main/profile.html'
@@ -121,30 +76,9 @@ class ProfileView(ListView):
         return context
 
     def get_success_url(self, *args, **kwargs):
-        return reverse_lazy('instr_main:profile', args=[self.kwargs['username']])
-
-
-# class EditProfileView(UpdateView):
-#     form_class = UserForm
-#     template_name = 'instr_main/edit_profile.html'
-#     model = User
-#     # success_url = reverse('instr_main:profile')
-
-#     # def get_success_url(self, *args, **kwargs):
-#     #     return reverse_lazy('instr_main:profile')
-
-#     def form_valid(self, form):
-#         user = form.save(commit=True)
-#         user.save()
-#         messages.success(self.request, 'User info saved')
-#         return HttpResponseRedirect(reverse('instr_main:profile', args=[user.username]))
-#         # return redirect('profile', slug=user.username)
-    
-#     def form_invalid(self, form):
-#         return super(EditProfileView, self).form_invalid(form)
-
-#     def get_object(self):
-#         return self.request.user
+        return reverse_lazy(
+            'instr_main:profile', args=[self.kwargs['username']]
+        )
 
 
 @login_required
@@ -158,13 +92,19 @@ def edit_profile(request):
     }
     if request.method == 'POST':
         u_form = UserForm(request.POST, instance=request.user)
-        p_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        p_form = ProfileForm(
+            request.POST, request.FILES, instance=request.user.profile
+        )
 
     if u_form.is_valid() and p_form.is_valid():
         u_form.save()
         p_form.save()
         messages.success(request, 'Profile Updated Successfully')
-        return redirect(reverse('instr_main:profile', args=[request.user.username]))
+        return redirect(
+            reverse(
+                'instr_main:profile', args=[request.user.username]
+            )
+        )
 
     return render(request, 'instr_main/edit_profile.html', context)
 
@@ -179,59 +119,6 @@ class SearchView(ListView):
     #     initials = super(SearchView, self).get_initial()
     #     initials['ads'] = Ad.get_for_request(self.request)
     #     return initials
-
-
-# class FormsetMixin(object):
-#     object = None
-
-#     def get(self, request, *args, **kwargs):
-#         if getattr(self, 'is_update_view', False):
-#             self.object = self.get_object()
-#         form_class = self.get_form_class()
-#         form = self.get_form(form_class)
-#         formset_class = self.get_formset_class()
-#         formset = self.get_formset(formset_class)
-#         return self.render_to_response(self.get_context_data(form=form, formset=formset))
-
-#     def post(self, request, *args, **kwargs):
-#         if getattr(self, 'is_update_view', False):
-#             self.object = self.get_object()
-#         form_class = self.get_form_class()
-#         form = self.get_form(form_class)
-#         formset_class = self.get_formset_class()
-#         formset = self.get_formset(formset_class)
-#         if form.is_valid() and formset.is_valid():
-#             return self.form_valid(form, formset)
-#         else:
-#             return self.form_invalid(form, formset)
-
-#     def get_formset_class(self):
-#         return self.formset_class
-
-#     def get_formset(self, formset_class):
-#         return formset_class(**self.get_formset_kwargs())
-
-#     def get_formset_kwargs(self):
-#         kwargs = {
-#             'instance': self.object
-#         }
-#         if self.request.method in ('POST', 'PUT'):
-#             kwargs.update({
-#                 'data': self.request.POST,
-#                 'files': self.request.FILES,
-#             })
-#         return kwargs
-
-#     def form_valid(self, form, formset):
-#         self.object = form.save()
-#         formset.instance = self.object
-#         formset.save()
-#         if hasattr(self, 'get_success_message'):
-#             self.get_success_message(form)
-#         return redirect(self.object.get_absolute_url())
-
-#     def form_invalid(self, form, formset):
-#         return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
 class CategoryDetail(SingleObjectMixin, ListView):
@@ -256,31 +143,7 @@ class CategoryDetail(SingleObjectMixin, ListView):
 
 class AdDetailView(DetailView):
     model = Ad
-    # def get_queryset(self):
-    #     return get_object_or_404(
-    #         Ad, slug=self.kwargs['slug']
-    #     )
 
-    # def get_absolute_url(self):
-    #     return reverse('instr_main:ad_detail', args=[(self.slug)])
-# class AdDetail(View):
-#     # model = Ad
-
-#     def get(self, request, slug, *args, **kwargs):
-#         queryset = Ad.objects.filter(seller=self.request.user)
-#         ad = get_object_or_404(queryset, slug=slug)
-#         saved = False
-#         if ad.saved.filter(id=self.request.user.id).exists():
-#             saved = True
-
-#         return render(
-#             request,
-#             'ad_detail.html',
-#             {
-#                 'ad': ad,
-#                 'saved': saved,
-#             },
-#         )
 
 # class AdUpdateView(FormsetMixin, UpdateView):
 #     is_update_view = True
@@ -290,7 +153,8 @@ class AdDetailView(DetailView):
 
 #     def get_object(self, *args, **kwargs):
 #         obj = super(AdUpdateView, self).get_object(*args, **kwargs)
-#         if not obj.user == self.request.user and not self.request.user.is_superuser:
+#         if not obj.user == self.request.user and \
+#            not self.request.user.is_superuser:
 #             raise PermissionDenied
 #         return obj
 
@@ -317,9 +181,9 @@ class AdCreateView(CreateView):
         return initial
 
     def get_context_data(self, **kwargs):
-        ctx = super(AdCreateView, self).get_context_data(**kwargs)
-        ctx['google_api_key'] = self.google_api_key
-        return ctx
+        context = super(AdCreateView, self).get_context_data(**kwargs)
+        context['google_api_key'] = self.google_api_key
+        return context
 
     def form_valid(self, form):
         form.instance.seller = self.request.user
@@ -349,101 +213,3 @@ class AdDeleteView(DeleteView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(AdDeleteView, self).dispatch(*args, **kwargs)
-
-
-
-# ____________________GAMMALT__________________________________
-
-#______________________________________________________________
-
-# class AdsList(generic.ListView):
-#     model = Ad
-#     queryset = Ad.objects.filter(status=1).order_by('created_on')
-#     template_name = 'ads_list.html'
-#     paginate_by = 10  # Posts per page, dj auto adds new page if more posts
-
-
-# class AdDetail(View):
-
-#     def display_ad(self, request, slug, *args, **kwargs):
-#         queryset = Ad.objects.filter(status=1)
-#         ad = get_object_or_404(queryset, slug=slug)
-#         saved = False
-#         if ad.saved.filter(id=self.request.user.id).exists():
-#             saved = True
-
-#         return render(
-#             request,
-#             'ad_detail.html',
-#             {
-#                 'title': ad.title,
-#                 'seller': ad.seller,
-#                 'created_on': ad.created_on,
-#                 'location': ad.location,
-#                 'description': ad.description,
-#                 'image': ad.image,
-#                 'price': ad.price,
-#                 'category': ad.category,
-#             },
-#         )
-
-#     def post_ad(self, request, slug, *args, **kwargs):
-#         queryset = Ad.objects.filter(status=1)
-#         post = get_object_or_404(queryset, slug=slug)
-#         saved = False
-#         if ad.saved.filter(id=self.request.user.id).exists():
-#             saved = True
-
-#         edit_ad_form = EditAdForm(data=request.POST)  # gets data from c-form
-#         if edit_ad_form.is_valid():
-#             edit_ad_form.instance.email = request.user.email
-#             edit_ad_form.instance.name = request.user.username
-#             ad = edit_ad_form.save(commit=False)
-#             ad.post = post  # So we know which post has been commented
-#             ad.save()
-#         else:
-#             edit_ad_form = EditAdForm()
-
-#         return render(
-#             request,
-#             'ad_detail.html',
-#             {
-#                 'post': post,
-#                 'comments': comments,
-#                 'commented': True,
-#                 'liked': liked,
-#                 'comment_form': CommentForm()
-#             },
-#         )
-
-
-# class PostLike(View):
-
-#     def post(self, request, slug):
-#         post = get_object_or_404(Post, slug=slug)
-
-#         if post.likes.filter(id=self.request.user.id).exists():
-#             post.likes.remove(request.user)
-#         else:
-#             post.likes.add(request.user)
-
-#         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
-
-# ------------------CONTEXTS.PY #
-
-# from .models import Profile
-
-
-# def base_context(request):
-#     print('user: ', request.user)
-#     if request.user.is_authenticated:
-#         user = request.user
-#         profile = Profile.objects.get(username=user)
-#     else:
-#         profile = None
-#     context = {
-#         'profile': profile,
-#     }
-
-#     return context
