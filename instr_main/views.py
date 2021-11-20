@@ -20,7 +20,7 @@ from django.template.defaultfilters import slugify
 import folium
 import geocoder
 
-from .forms import AdForm, ProfileForm, SearchForm, UserForm
+from .forms import AdForm, ProfileForm, UserForm
 from .models import Ad, Category, Profile
 from .categories import category_dict
 from jv_instrumental.settings import GOOGLE_API_KEY
@@ -116,14 +116,20 @@ def edit_profile(request):
 
 class SearchView(ListView):
     model = Ad
-    # queryset = Ad.objects.all()
-    # paginate_by = 10
     template_name = 'instr_main/search.html'
 
-    # def get_initial(self):
-    #     initials = super(SearchView, self).get_initial()
-    #     initials['ads'] = Ad.get_for_request(self.request)
-    #     return initials
+    def get_context_data(self, **kwargs):
+        context = super(SearchView, self).get_context_data(**kwargs)
+        search = self.request.GET.get('search')
+        category = self.request.GET.get('select-category')
+        location = self.request.GET.get('select-area')
+        context['ads'] = Ad.objects.all()
+        return context
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy(
+            'instr_main:search'
+        )
 
 
 class CategoryDetail(SingleObjectMixin, ListView):

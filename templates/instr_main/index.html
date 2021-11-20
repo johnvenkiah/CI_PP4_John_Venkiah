@@ -20,7 +20,7 @@
                         style="background-image: url('https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/107693551_2983534108412424_4619359158746219415_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=e3f864&_nc_ohc=DvnQmmBpcD4AX-H--0N&_nc_ht=scontent-arn2-1.xx&oh=3ac77778042f14876f46215e05641ae8&oe=61A30EB4');">
                         <div class="col-md-4">
                             <div class="pad-16 text-white">
-                                <form method="post">
+                                <form method="get" action="{% url 'instr_main:search' %}">
                                     <div class="mb-3 input-container">
                                         <label for="search-input" class="form-label">Search</label>
                                         <input class="shadow form-control input-with-icon" id="search-input" name="search" type="text"
@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="mb-3 input-container">
                                         <label for="select-category" class="form-label">Category</label>
-                                        <select class="shadow form-select input-with-icon" name="select-catgory"
+                                        <select class="shadow form-select input-with-icon" name="select-category"
                                             id="select-category">
                                             {% for cat in category_dict.keys %}
                                             <option value="{{ category }}">{{ cat }}</option>
@@ -47,7 +47,7 @@
                                         <i class="input-icon fa-solid fa-location-dot"></i>
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <a href="{% url 'instr_main:search' %}" type="submit" class="btn btn-success shadow">Search Ads</a>
+                                        <button href="{% url 'instr_main:search' %}" type="submit" class="btn btn-success shadow">Search Ads</button>
                                     </div>
                                 </form>
                             </div>

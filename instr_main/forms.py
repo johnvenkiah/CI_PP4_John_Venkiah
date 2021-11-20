@@ -5,30 +5,6 @@ from .models import Ad, Category, Profile
 from .categories import category_dict
 
 
-class SearchForm(forms.Form):
-    # area = forms.ModelChoiceField(
-    #     label=_('Area'), queryset=Area.objects.all(), required=False
-    # )
-    category = forms.ModelChoiceField(
-        label=_('Category'), queryset=Category.objects.all(), required=False
-    )
-    query = forms.CharField(required=False, label=_('Query'),)
-
-    def filter_by(self):
-        # TODO search using more than one field
-        # TODO split query string and make seaprate search by words
-        filters = {}
-        if self.cleaned_data['category']:
-            filters['category'] = self.cleaned_data['category']
-
-        # if self.cleaned_data['area']:
-        #     filters['area'] = self.cleaned_data['area']
-
-        filters['description__icontains'] = self.cleaned_data['query']
-
-        return filters
-
-
 class AdForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
