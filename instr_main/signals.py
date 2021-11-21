@@ -12,13 +12,3 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
     instance.profile.save()
-
-
-# @receiver(post_save, sender=Profile)
-# def update_user(sender, instance, created, **kwargs):
-#     parent = instance.username
-#     # user = Profile.objects.get(username=parent)
-#     parent.first_name = sender.first_name
-#     parent.last_name = sender.last_name
-#     parent.email = sender.email
-#     parent.save()

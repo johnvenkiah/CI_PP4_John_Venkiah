@@ -10,16 +10,3 @@ category_dict = {
     'Bowed Instruments': 'cello',
     'Other..': 'accordion',
 }
-
-# categories_list = [
-#     'Pianos/keyboards',
-#     'Guitar/Bass/Amps',
-#     'Drums/Symbals',
-#     'Woodwind',
-#     'Brass',
-#     'Studio Equipment',
-#     'Bowed Instruments',
-#     'Other..',
-# ]
-
-

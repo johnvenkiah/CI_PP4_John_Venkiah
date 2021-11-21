@@ -1,32 +1,6 @@
 from django import forms
-from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
-from .models import Ad, Category, Profile
-from .categories import category_dict
-
-
-class AdForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['location'].widget.attrs.update(
-            {
-                'required': ''
-            }
-        )
-    class Meta:
-        model = Ad
-        fields = (
-            'title',
-            'category',
-            'description',
-            'price',
-            'image',
-            'location',
-        )
-    description = forms.CharField(widget=forms.Textarea({
-        'rows': 10,
-        'class': 'textarea',
-    }))
+from .models import Profile
 
 
 class UserForm(forms.ModelForm):
