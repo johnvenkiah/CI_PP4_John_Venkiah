@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
-from .models import Ad, Category
+from .models import Ad
 
 
 @admin.register(Ad)
@@ -13,12 +13,3 @@ class AdAdmin(ModelAdmin):
     search_fields = ['title', 'description']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('sold', 'created_on', )
-
-
-@admin.register(Category)
-class CategoryAdmin(ModelAdmin):
-
-    list_display = ('title', )
-    search_fields = ['title']
-    prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('title', )

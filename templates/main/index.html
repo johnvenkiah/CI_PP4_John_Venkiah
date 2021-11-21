@@ -1,4 +1,4 @@
-{% extends "instr_main/base.html" %}
+{% extends "main/base.html" %}
 {% load static %}
 {% block content %}
 
@@ -20,7 +20,7 @@
                         style="background-image: url('https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/107693551_2983534108412424_4619359158746219415_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=e3f864&_nc_ohc=DvnQmmBpcD4AX-H--0N&_nc_ht=scontent-arn2-1.xx&oh=3ac77778042f14876f46215e05641ae8&oe=61A30EB4');">
                         <div class="col-md-4">
                             <div class="pad-16 text-white">
-                                <form method="get" action="{% url 'instr_main:search' %}">
+                                <form method="get" action="{% url 'search:search' %}">
                                     <div class="mb-3 input-container">
                                         <label for="search-input" class="form-label">Search</label>
                                         <input class="shadow form-control input-with-icon" id="search-input" name="search" type="text"
@@ -47,7 +47,7 @@
                                         <i class="input-icon fa-solid fa-location-dot"></i>
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button href="{% url 'instr_main:search' %}" type="submit" class="btn btn-success shadow">Search Ads</button>
+                                        <button href="{% url 'search:search' %}" type="submit" class="btn btn-success shadow">Search Ads</button>
                                     </div>
                                 </form>
                             </div>

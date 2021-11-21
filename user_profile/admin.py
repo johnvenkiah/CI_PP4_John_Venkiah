@@ -8,5 +8,4 @@ class ProfileAdmin(ModelAdmin):
 
     list_display = ('username', 'created_on', 'location')
     search_fields = ['username']
-    # prepopulated_fields = {'slug': ('id',)}
     list_filter = ('username', 'created_on', 'location')

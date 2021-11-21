@@ -56,7 +56,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django.contrib.staticfiles',
     'storages',
-    'instr_main',
+    'main',
+    'user_profile',
+    'search',
+    'ads',
+    'contact',
 ]
 
 SITE_ID = 1
@@ -95,7 +99,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'instr_main.contexts.base_context'
             ],
         },
     },
@@ -183,7 +186,7 @@ else:
     AWS_DEFAULT_REGION = 'eu-north-1'
 
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    DEFAULT_FILE_STORAGE = 'instr_main.storage_backends.MediaStorage'
+    DEFAULT_FILE_STORAGE = 'main.storage_backends.MediaStorage'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 

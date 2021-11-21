@@ -6,17 +6,11 @@ from . import views
 app_name = 'ads'
 
 urlpatterns = [
-    path('search/', views.SearchView.as_view(), name='search'),
     path('post_ad/', views.AdCreateView.as_view(), name='post_ad'),
     path(
         '<slug:seller>/<slug:slug>/',
         views.AdDetailView.as_view(),
         name='ad_detail'
-    ),
-    path(
-        'category/<int:pk><slug:slug>/',
-        views.CategoryDetail.as_view(),
-        name='category'
     ),
     path(
         'edit/<int:pk>/',

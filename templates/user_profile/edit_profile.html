@@ -1,4 +1,4 @@
-{% extends "instr_main/base.html" %}
+{% extends "main/base.html" %}
 {% load static %}
 {% block content %}
 <div class="row">
@@ -19,5 +19,7 @@
     <div class="col-6 mt-4 mx-auto">
         {{ m | safe }}
     </div>
+<script src="/static/js/autocomplete_location.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&callback=initAutocomplete&libraries=places&v=weekly" async></script>
 </div>
 {% endblock %}
