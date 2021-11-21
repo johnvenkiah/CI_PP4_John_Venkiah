@@ -3,15 +3,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView
-from django.views import View
 
-import folium
 import geocoder
 
-from .forms import AdForm, ProfileForm, UserForm
-from .models import Ad, Category, Profile
+from .forms import ProfileForm, UserForm
+from .models import Ad
 from .categories import category_dict
-from jv_instrumental.settings import GOOGLE_API_KEY
 from .map_utils import get_lat_long_by_address
 
 
@@ -80,4 +77,3 @@ def edit_profile(request):
         )
 
     return render(request, 'instr_main/edit_profile.html', context)
-

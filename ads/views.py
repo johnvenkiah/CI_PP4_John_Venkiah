@@ -1,6 +1,4 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect
 from django.forms import inlineformset_factory
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
@@ -8,19 +6,13 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, CreateView, UpdateView
 from django.views.generic import ListView, DeleteView
-from django.views import View
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
 
 
-import folium
-import geocoder
-
-from .forms import AdForm, ProfileForm, UserForm
-from .models import Ad, Category, Profile
-from .categories import category_dict
+from .forms import AdForm
+from .models import Ad, Category
 from jv_instrumental.settings import GOOGLE_API_KEY
-from .map_utils import get_lat_long_by_address
 
 
 class FilteredListView(FormMixin, ListView):
@@ -85,22 +77,22 @@ class AdDetailView(DetailView):
     model = Ad
 
 
-# class AdUpdateView(FormsetMixin, UpdateView):
-#     is_update_view = True
-#     model = Ad
-#     form_class = AdForm
-#     formset_class = inlineformset_factory(Ad, fields=('file', ))
+class AdUpdateView(UpdateView):
+    is_update_view = True
+    model = Ad
+    form_class = AdForm
+    formset_class = inlineformset_factory(Ad, fields=('file', ))
 
-#     def get_object(self, *args, **kwargs):
-#         obj = super(AdUpdateView, self).get_object(*args, **kwargs)
-#         if not obj.user == self.request.user and \
-#            not self.request.user.is_superuser:
-#             raise PermissionDenied
-#         return obj
+    def get_object(self, *args, **kwargs):
+        obj = super(AdUpdateView, self).get_object(*args, **kwargs)
+        if not obj.user == self.request.user and \
+           not self.request.user.is_superuser:
+            raise PermissionDenied
+        return obj
 
-#     @method_decorator(login_required)
-#     def dispatch(self, *args, **kwargs):
-#         return super(AdUpdateView, self).dispatch(*args, **kwargs)
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(AdUpdateView, self).dispatch(*args, **kwargs)
 
 
 class AdCreateView(CreateView):

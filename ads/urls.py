@@ -18,10 +18,10 @@ urlpatterns = [
         views.CategoryDetail.as_view(),
         name='category'
     ),
-    # path(
-    #     'edit/<int:pk>/',
-    #     never_cache(views.AdUpdateView.as_view()),
-    #     name='ad-edit'
-    # ),
+    path(
+        'edit/<int:pk>/',
+        never_cache(views.AdUpdateView.as_view()),
+        name='ad-edit'
+    ),
     path('delete/<int:pk>/', views.AdDeleteView.as_view(), name='delete-ad'),
  ]

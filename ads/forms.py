@@ -10,6 +10,7 @@ class AdForm(forms.ModelForm):
                 'required': ''
             }
         )
+
     class Meta:
         model = Ad
         fields = (

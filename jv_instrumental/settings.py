@@ -14,10 +14,10 @@ import os
 from pathlib import Path
 import dj_database_url
 from django.contrib.messages import constants as messages
-import boto3
-import storages
+import boto3  # noqa
+import storages  # noqa
 if os.path.isfile('env.py'):
-    import env
+    import env  # noqa
 
 
 development = os.environ.get('DEVELOPMENT')
@@ -127,16 +127,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': ('django.contrib.auth.'
+                 'password_validation.UserAttributeSimilarityValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': ('django.contrib.auth.'
+                 'password_validation.MinimumLengthValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': ('django.contrib.auth.'
+                 'password_validation.CommonPasswordValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': ('django.contrib.auth.'
+                 'password_validation.NumericPasswordValidator'),
     },
 ]
 
