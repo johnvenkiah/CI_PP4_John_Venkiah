@@ -16,8 +16,8 @@ def SearchView(request):
         ads = ads.filter(
             Q(title__icontains=search) | Q(description__icontains=search)
         )
-    # if category != '- All Categories -' and category is not None:
-    #     ads = ads.filter(Q(category=category))
+    if category != '- All Categories -':
+        ads = ads.filter(Q(category=category))
 
     if area != '- All of Great Britain -':
         ads = ads.filter(Q(city=area))

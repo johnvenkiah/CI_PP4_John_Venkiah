@@ -31,8 +31,8 @@
                                         <label for="select-category" class="form-label">Category</label>
                                         <select class="shadow form-select input-with-icon" name="select-category"
                                             id="select-category">
-                                            {% for cat in category_dict.keys %}
-                                            <option value="{{ category }}">{{ cat }}</option>
+                                            {% for category in categories %}
+                                            <option value="{{ category }}">{{ category }}</option>
                                             {% endfor %}
                                         </select>
                                         <i class="input-icon fa-solid fa-sort"></i>
