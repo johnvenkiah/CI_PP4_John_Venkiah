@@ -22,9 +22,10 @@ class HomeView(TemplateView):
                 ], method='reverse'
             ).city for coord in coords
         ]
+        area_list += ['- All of Great Britain -']
         context = {
             'category_dict': category_dict,
-            'area_list': set(area_list),
+            'area_list': sorted(set(area_list)),
         }
 
         return context
