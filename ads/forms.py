@@ -31,7 +31,7 @@ class AdForm(forms.ModelForm):
         )
     )
     category = forms.ChoiceField(
-        choices=zip(category_dict.values(), category_dict.keys()),
+        choices=zip(category_dict.keys(), category_dict.keys()),
         widget=forms.Select(
             attrs={
                 'class': 'form-control m-b',

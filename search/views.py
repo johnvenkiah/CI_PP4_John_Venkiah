@@ -9,6 +9,7 @@ from django.views.generic import DetailView, CreateView, UpdateView
 from django.views.generic import ListView, DeleteView
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
+from django.db.models import Q
 
 from ads.models import Ad
 from jv_instrumental.settings import GOOGLE_API_KEY
@@ -42,8 +43,8 @@ class SearchView(ListView):
         context = super(SearchView, self).get_context_data(**kwargs)
         search = self.request.GET.get('search')
         category = self.request.GET.get('select-category')
-        location = self.request.GET.get('select-area')
-        context['ads'] = Ad.objects.all()
+        area = self.request.GET.get('select-area')
+        context['ads'] = Ad.objects.filter(Q(city=area) | Q(category=category))
         return context
 
     def get_success_url(self, *args, **kwargs):
