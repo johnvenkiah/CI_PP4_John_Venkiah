@@ -16,9 +16,12 @@
                     <h4>User Info</h4>
                     <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
                     <p>Email: {{ user.email }}</p>
+                    <p>Location: {{ user.profile.location }}</p>
+                    {% if user == request.user %}
                     <div class="col-6">
                         <a class="btn btn-success" href="{% url 'user_profile:edit_profile' %}">Edit Info</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-12">
