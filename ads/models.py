@@ -5,6 +5,8 @@ from django.utils.functional import cached_property
 from django.template.defaultfilters import slugify
 from unidecode import unidecode
 
+from main.map_utils import get_lat_long_by_address, get_city_by_lat_long
+
 
 def user_image_folder(instance, filename):
     return f'static/images/{instance.seller.username}/{filename}'
@@ -20,6 +22,7 @@ class Ad(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.IntegerField()
     location = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
     sold = models.BooleanField(default=False)
     saved = models.BooleanField(default=False)
 
@@ -34,4 +37,8 @@ class Ad(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        if not self.city:
+            coords = [get_lat_long_by_address(self.location)]
+            city = (''.join(get_city_by_lat_long(coords)))
+            self.city = city
         super(Ad, self).save(*args, **kwargs)
