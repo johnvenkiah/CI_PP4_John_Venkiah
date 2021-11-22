@@ -29,7 +29,7 @@ class ProfileView(TemplateView, BaseDetailView, SelectRelatedMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['user'] = self.get_object()
-        context['user_ads'] = Ad.objects.filter(seller=self.request.user)
+        context['user_ads'] = Ad.objects.filter(seller=self.get_object())
         context['saved_ads'] = Ad.objects.filter(saved=True)
         return context
 
