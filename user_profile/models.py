@@ -18,4 +18,7 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.username)
+        loc = self.location
+        loc = ''.join(c for c in loc if not c.isdigit())
+        self.location = loc
         super(Profile, self).save(*args, **kwargs)
