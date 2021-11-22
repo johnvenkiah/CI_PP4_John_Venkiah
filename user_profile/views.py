@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView
+from django.contrib.auth.models import User
 
 from .forms import ProfileForm, UserForm
 from ads.models import Ad
+from user_profile.models import Profile
 from jv_instrumental.settings import GOOGLE_API_KEY
 
 
@@ -14,9 +16,11 @@ class ProfileView(ListView):
     template_name = 'user_profile/profile.html'
 
     def get_context_data(self, **kwargs):
+        user = User.objects.get(username=self.request.user.username)
         context = super(ProfileView, self).get_context_data(**kwargs)
         context['user_ads'] = Ad.objects.filter(seller=self.request.user)
         context['saved_ads'] = Ad.objects.filter(saved=True)
+        context['user'] = User.objects.get([self.kwargs['username']])
         return context
 
     def get_success_url(self, *args, **kwargs):

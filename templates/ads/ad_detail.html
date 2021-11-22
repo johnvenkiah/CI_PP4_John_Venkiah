@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <p class="card-text mt-4">{{ ad.created_on }}</p>
-            <p class="card-text mt-4">{{ ad.seller }}</p>
+            <a class="card-text mt-4" href="{% url 'user_profile:profile' ad.seller %}">{{ ad.seller }}</a>
             <p class="card-text mt-4">{{ ad.description }}</p>
             <p class="card-text mt-4">{{ ad.location }}</p>
             <p class="card-text mt-4">{{ ad.price }}</p>
