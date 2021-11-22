@@ -10,6 +10,7 @@ class AdAdmin(ModelAdmin):
         'title', 'slug', 'price', 'seller', 'created_on',
         'sold', 'location', 'category', 'image'
         )
+
     search_fields = ['title', 'description']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('sold', 'created_on', )
