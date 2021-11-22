@@ -15,42 +15,61 @@ from ads.models import Ad
 from jv_instrumental.settings import GOOGLE_API_KEY
 
 
-class FilteredListView(FormMixin, ListView):
-    def get_form_kwargs(self):
-        return {
-            'initial': self.get_initial(),
-            'prefix': self.get_prefix(),
-            'data': self.request.GET or None
-        }
+def SearchView(request):
+    ads = Ad.objects.all()
+    search = request.GET.get('search')
+    category = request.GET.get('select-category')
+    area = request.GET.get('select-area')
 
-    def get(self, request, *args, **kwargs):
-        self.object_list = self.get.objects.all()
-
-        form = self.get_form(self.get_form_class())
-
-        if form.is_valid():
-            self.object_list = self.object_list.filter(**form.filter_by())
-
-        context = self.get_context_data(form=form)
-        return self.render_to_response(context)
-
-
-class SearchView(ListView):
-    model = Ad
-    template_name = 'search/search.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(SearchView, self).get_context_data(**kwargs)
-        search = self.request.GET.get('search')
-        category = self.request.GET.get('select-category')
-        area = self.request.GET.get('select-area')
-        context['ads'] = Ad.objects.filter(Q(city=area) | Q(category=category))
-        return context
-
-    def get_success_url(self, *args, **kwargs):
-        return reverse_lazy(
-            'search:search'
+    if search != '' and search is not None:
+        ads = ads.filter(
+            Q(title__icontains=search) | Q(description__icontains=search) |
+            Q(category=category) | Q(city=area)
         )
+
+    context = {
+        'ads': ads
+    }
+    return render(request, 'search/search.html', context)
+
+# class SearchView(ListView):
+#     model = Ad
+#     template_name = 'search/search.html'
+
+#     def get_queryset(self):
+#         qs = super(SearchView).get_queryset()
+#         search = self.request.GET.get('search')
+#         category = self.request.GET.get('select-category')
+#         area = self.request.GET.get('select-area')
+#         return qs.filter(Ad.objects.all())
+
+#     def get_context_data(self, **kwargs):
+#         context = self.get_queryset
+#         context
+#         return context
+
+#     def get_success_url(self, *args, **kwargs):
+#         return reverse_lazy(
+#             'search:search'
+#         )
+
+
+# class SearchView(ListView):
+#     model = Ad
+#     template_name = 'search/search.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super(SearchView, self).get_context_data(**kwargs)
+#         search = self.request.GET.get('search')
+#         category = self.request.GET.get('select-category')
+#         area = self.request.GET.get('select-area')
+#         context['ads'] = Ad.objects.filter(Q(city=area) | Q(category=category))
+#         return context
+
+#     def get_success_url(self, *args, **kwargs):
+#         return reverse_lazy(
+#             'search:search'
+#         )
 
 
 class CategoryDetail(SingleObjectMixin, ListView):
