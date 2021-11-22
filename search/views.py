@@ -1,18 +1,9 @@
 from django.shortcuts import render
-from django.contrib import messages
-from django.forms import inlineformset_factory
-from django.contrib.auth.decorators import login_required
-from django.core.exceptions import PermissionDenied
-from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views.generic import DetailView, CreateView, UpdateView
-from django.views.generic import ListView, DeleteView
+from django.views.generic import ListView
 from django.views.generic.detail import SingleObjectMixin
-from django.views.generic.edit import FormMixin
 from django.db.models import Q
 
 from ads.models import Ad
-from jv_instrumental.settings import GOOGLE_API_KEY
 
 
 def SearchView(request):
@@ -23,13 +14,20 @@ def SearchView(request):
 
     if search != '' and search is not None:
         ads = ads.filter(
-            Q(title__icontains=search) | Q(description__icontains=search) |
-            Q(category=category) | Q(city=area)
+            Q(title__icontains=search) | Q(description__icontains=search)
         )
+    # if category != '- All Categories -' and category is not None:
+    #     ads = ads.filter(Q(category=category))
 
+    if area != '- All of Great Britain -':
+        ads = ads.filter(Q(city=area))
+    print(search)
+    print(category)
+    print(area)
     context = {
-        'ads': ads
+        'ads': ads,
     }
+
     return render(request, 'search/search.html', context)
 
 # class SearchView(ListView):
@@ -63,7 +61,9 @@ def SearchView(request):
 #         search = self.request.GET.get('search')
 #         category = self.request.GET.get('select-category')
 #         area = self.request.GET.get('select-area')
-#         context['ads'] = Ad.objects.filter(Q(city=area) | Q(category=category))
+#         context['ads'] = Ad.objects.filter(
+#           Q(city=area) | Q(category=category)
+#         )
 #         return context
 
 #     def get_success_url(self, *args, **kwargs):

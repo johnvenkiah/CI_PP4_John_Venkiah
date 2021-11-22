@@ -1,10 +1,5 @@
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, TemplateView
-
-import geocoder
+from django.views.generic import TemplateView
+from django.shortcuts import render
 
 from ads.models import Ad
 from .categories import category_dict
