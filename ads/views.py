@@ -27,12 +27,18 @@ class AdUpdateView(UpdateView):
     template_name = 'ads/ad_update.html'
     model = Ad
     form_class = AdForm
+    google_api_key = GOOGLE_API_KEY
 
     def get_object(self, *args, **kwargs):
         obj = super(AdUpdateView, self).get_object(*args, **kwargs)
         if not obj.seller == self.request.user:
             raise PermissionDenied
         return obj
+
+    def get_context_data(self, **kwargs):
+        context = super(AdUpdateView, self).get_context_data(**kwargs)
+        context['google_api_key'] = self.google_api_key
+        return context
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
