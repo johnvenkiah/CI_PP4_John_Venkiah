@@ -123,8 +123,6 @@ DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
-# AUTH_PROFILE_MODULE = 'models.Profile'
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -189,6 +187,14 @@ else:
     DEFAULT_FILE_STORAGE = 'main.storage_backends.MediaStorage'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+# Gmail Settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('USER_HOST_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('USER_HOST_PASSWORD')
 
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
 

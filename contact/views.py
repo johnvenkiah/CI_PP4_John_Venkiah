@@ -3,6 +3,9 @@ from django.views.generic import FormView
 from .forms import ContactForm
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from jv_instrumental.settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_BACKEND
+
 
 
 class ContactView(FormView):
@@ -11,13 +14,22 @@ class ContactView(FormView):
     form_class = ContactForm
     success_url = '/'
 
-    def get_queryset(self):
-        self.object = User.objects.get(self.request.user)
+    # def get_queryset(self):
+    #     self.object = User.objects.get(self.request.user)
 
     def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        form.send_email()
+        # print(self.request.POST)
+        # subject = form.subject
+
+        send_mail(
+            form.cleaned_data['subject'],
+            form.cleaned_data['message'],
+            form.cleaned_data['email'],
+            [EMAIL_HOST_USER],
+            fail_silently=False
+            # auth_user=EMAIL_HOST_USER, auth_password=EMAIL_HOST_PASSWORD
+        )
+
         messages.success(self.request, 'Email sent, please await your reply')
 
         return super().form_valid(form)
