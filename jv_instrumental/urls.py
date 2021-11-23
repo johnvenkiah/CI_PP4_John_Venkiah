@@ -24,5 +24,5 @@ urlpatterns = [
     path('', include('ads.urls'), name='ad_urls'),
     path('', include('search.urls'), name='search_urls'),
     path('', include('user_profile.urls'), name='user_profile_urls'),
-    path('', include('contact.urls'), name='contac_urls'),
+    path('', include('contact.urls'), name='contact_urls'),
 ]

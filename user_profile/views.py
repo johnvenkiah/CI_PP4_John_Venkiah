@@ -23,6 +23,7 @@ class ProfileView(TemplateView, BaseDetailView, SelectRelatedMixin):
         return super().get(request, *args, **kwargs)
 
     def get_object(self):
+        print(self.get_queryset().get(username=self.kwargs['user']))
         return self.get_queryset().get(username=self.kwargs['user'])
 
     def get_context_data(self, **kwargs):
