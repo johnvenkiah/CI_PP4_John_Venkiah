@@ -175,28 +175,25 @@ On the Contact page, users can fill in a simple contact form to get in touch wit
 
 ### Epic 5: The Ad Detail Page - User Stories
 
-15. As a user, I would like to be able to view the ad I have clicked, so that I can view its details
-16. As a user, I can view a picture and a description of the item on the Ad Detail page
-17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ads
-18. As a registered user, I can contact seller via the ad
-19. As a logged in user, I can mark my item as sold, so that other users are aware of this
+15. As a user, I can view a picture and a description of the item on the Ad Detail page
+16. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ads
+17. As a registered user, I can contact seller via the ad
+18. As a logged in user, I can mark my item as sold, so that other users are aware of this
 
 ### Epic 6: The Message Window - User Stories
 
-20. As a logged in user, I have the possibility to send and recieve messages to other users via a button or link in the ad
-21. As a logged in user, i can view messages as a floating window, so that it is visible wherever I am on the website
-22. As a logged in user, I can view an option to report a certain message, so that I can report bad behaviour from other users
+19. As a logged in user, i can view messages as a floating window, so that it is visible wherever I am on the website
+20. As a logged in user, I can view an option to report a certain message, so that I can report bad behaviour from other users
 
 ### Epic 7: The Contact Page - User Stories
 
-23. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
-24. As a user, I can fill in a contact form, so that I can get in touch with the site owner
+21. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
 
 ### Epic 8: Admin/Site-Owner Functionality - User Stories
 
-25. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
-26. As a site owner, I can receive a notification if users violate the terms of use, and am able to remove their accounts and/or ads
-27. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
+22. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
+23. As a site owner, I can receive a notification if users violate the terms of use, and am able to remove their accounts and/or ads
+24. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
 
 
 
