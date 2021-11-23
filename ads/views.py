@@ -24,22 +24,23 @@ class AdDetailView(DetailView):
 
 
 class AdUpdateView(UpdateView):
-    pass
-    # is_update_view = True
-    # model = Ad
-    # form_class = AdForm
-    # formset_class = inlineformset_factory(Ad, fields=('file', ))
+    template_name = 'ads/ad_update.html'
+    model = Ad
+    form_class = AdForm
 
-    # def get_object(self, *args, **kwargs):
-    #     obj = super(AdUpdateView, self).get_object(*args, **kwargs)
-    #     if not obj.user == self.request.user and \
-    #        not self.request.user.is_superuser:
-    #         raise PermissionDenied
-    #     return obj
+    def get_object(self, *args, **kwargs):
+        obj = super(AdUpdateView, self).get_object(*args, **kwargs)
+        if not obj.seller == self.request.user:
+            raise PermissionDenied
+        return obj
 
-    # @method_decorator(login_required)
-    # def dispatch(self, *args, **kwargs):
-    #     return super(AdUpdateView, self).dispatch(*args, **kwargs)
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(AdUpdateView, self).dispatch(*args, **kwargs)
+
+    def get_success_url(self):
+        messages.success(self.request, 'Your Ad is updated')
+        return f'/{self.request.user.username}'
 
 
 class AdCreateView(CreateView):

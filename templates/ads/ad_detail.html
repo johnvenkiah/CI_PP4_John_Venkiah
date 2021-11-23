@@ -22,6 +22,7 @@
             <p class="card-text mt-4">{{ ad.city }}</p>
             <p class="card-text mt-4">{{ ad.price }}</p>
             {% if user == request.user %}
+            <a class="btn btn-success"href="{% url 'ads:ad_update' ad.seller ad.slug %}">Update Ad</a>
             <a class="btn btn-danger"href="{% url 'ads:delete_ad' ad.seller ad.slug %}">Delete Ad</a>
             {% endif %}
         </div>
