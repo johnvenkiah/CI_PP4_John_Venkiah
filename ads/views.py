@@ -7,6 +7,7 @@ from django.views.generic import DetailView, CreateView, UpdateView
 from django.views.generic import ListView, DeleteView
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
+from search.searchlog import searchlog
 
 
 from .forms import AdForm
@@ -16,6 +17,10 @@ from jv_instrumental.settings import GOOGLE_API_KEY
 
 class AdDetailView(DetailView):
     model = Ad
+    def get_context_data(self, **kwargs):
+        context = super(AdDetailView, self).get_context_data(**kwargs)
+        context['log_request'] = searchlog.get_request()
+        return context
 
 
 class AdUpdateView(UpdateView):

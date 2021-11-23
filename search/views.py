@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.detail import SingleObjectMixin
+from django.urls import reverse
 from django.db.models import Q
-
+from .searchlog import searchlog
 from ads.models import Ad
 
 
@@ -24,6 +25,9 @@ def SearchView(request):
     context = {
         'ads': ads,
     }
+
+    searchlog.search_log = request.get_full_path()
+    print('SEARCHLOG: ', searchlog.search_log)
 
     return render(request, 'search/search.html', context)
 
