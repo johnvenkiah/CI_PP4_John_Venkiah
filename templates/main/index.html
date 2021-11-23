@@ -59,13 +59,15 @@
                 <div class="col-12 mt-3 mb-3">
                     <h3>Categories</h3>
                     <ul class="list-inline text-center">
-                        {% for instr, icon in category_dict.items %}
+                        {% for category in db.cat %}
                         <li class="col-1 col-md-2 list-inline-item mx-3">
-                            <p class="small-text">{{ instr }}</p>
-                            <div class="cat-circle rounded-circle card bg-dark text-center">
-                                <img src="{% static 'images/icons/' %}{{ icon }}.png"
-                                    class="d-flex cat-icons justify-content-center" alt="{{ icon }}-icon">
-                            </div>
+                            <a href="/search/{{ category.url }}">
+                            <p class="small-text">{{ category.name }}</p>
+                                <div class="cat-circle rounded-circle card bg-dark text-center">
+                                    <img src="{% static 'images/icons/' %}{{ category.image }}.png"
+                                    class="d-flex cat-icons justify-content-center" alt="{{ category.image }}-icon">
+                                </div>
+                            </a>
                         </li>
                         {% endfor %}
                     </ul>

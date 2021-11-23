@@ -3,7 +3,6 @@ from django.views.generic import ListView
 from django.views.generic.detail import SingleObjectMixin
 from django.db.models import Q
 
-from .category_urls import category_urls_dict
 from .searchlog import searchlog
 from ads.models import Ad
 
