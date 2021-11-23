@@ -21,9 +21,6 @@ def SearchView(request):
 
     if area != '- All of Great Britain -':
         ads = ads.filter(Q(city=area))
-    print(search)
-    print(category)
-    print(area)
     context = {
         'ads': ads,
     }
