@@ -1,5 +1,5 @@
 from django.urls import path
-from django.views.decorators.cache import never_cache
+# from django.views.decorators.cache import never_cache
 
 from . import views
 
@@ -12,8 +12,12 @@ urlpatterns = [
         views.AdDetailView.as_view(),
         name='ad_detail'
     ),
-    path('ad_update/<slug:seller>/<slug:slug>/', views.AdUpdateView.as_view(), name='ad_update'),
     path(
-        'delete/<slug:seller>/<slug:slug>/', views.AdDeleteView.as_view(), name='delete_ad'
+        'ad_update/<slug:seller>/<slug:slug>/',
+        views.AdUpdateView.as_view(), name='ad_update'
+    ),
+    path(
+        'delete/<slug:seller>/<slug:slug>/',
+        views.AdDeleteView.as_view(), name='delete_ad'
     ),
  ]

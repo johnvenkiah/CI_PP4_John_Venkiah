@@ -1,12 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, CreateView, UpdateView
-from django.views.generic import ListView, DeleteView
-from django.views.generic.detail import SingleObjectMixin
-from django.views.generic.edit import FormMixin
+from django.views.generic import DeleteView
 from search.searchlog import searchlog
 
 
@@ -17,6 +15,7 @@ from jv_instrumental.settings import GOOGLE_API_KEY
 
 class AdDetailView(DetailView):
     model = Ad
+
     def get_context_data(self, **kwargs):
         context = super(AdDetailView, self).get_context_data(**kwargs)
         context['log_request'] = searchlog.get_request()

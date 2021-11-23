@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, TemplateView
+from django.views.generic import TemplateView
 from django.views.generic.detail import BaseDetailView
 from django.contrib.auth.models import User
 
@@ -10,7 +10,6 @@ from braces.views import SelectRelatedMixin
 
 from .forms import ProfileForm, UserForm
 from ads.models import Ad
-from user_profile.models import Profile
 from jv_instrumental.settings import GOOGLE_API_KEY
 
 
@@ -36,22 +35,7 @@ class ProfileView(TemplateView, BaseDetailView, SelectRelatedMixin):
     def get_success_url(self, *args, **kwargs):
         return reverse_lazy(
             'user_profile:profile', args=[self.kwargs['username']]
-
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(ProfileView, self).get_context_data(**kwargs)
-    #     context['user_ads'] = Ad.objects.filter(seller=self.request.user)
-    #     context['saved_ads'] = Ad.objects.filter(saved=True)
-    #     context['user'] = self.get_object()
-    #     return context
         )
-    # model = Ad
-    # template_name = 'user_profile/profile.html'
-    # select_related = ('profile')
-
-    # def get_object(self):
-    #     return self.get_queryset().get(user=self.kwargs['username'])
-
 
 
 @login_required

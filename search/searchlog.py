@@ -5,4 +5,5 @@ class SearchLog():
     def get_request(self):
         return self.search_log
 
+
 searchlog = SearchLog()
