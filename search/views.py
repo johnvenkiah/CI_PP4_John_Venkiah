@@ -7,7 +7,7 @@ from .searchlog import searchlog
 from ads.models import Ad
 
 
-def SearchView(request):
+def search_view(request):
     ads = Ad.objects.all()
     search = request.GET.get('search')
     category = request.GET.get('select-category')
