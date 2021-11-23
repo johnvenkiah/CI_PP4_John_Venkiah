@@ -59,21 +59,16 @@
                 <div class="col-12 mt-3 mb-3">
                     <h3>Categories</h3>
                     <ul class="list-inline text-center">
-                        {% for key, valu in category_urls_dict.items %}
-                            <li class="col-1 col-md-2 list-inline-item mx-3">
-                                <a href="{{ value }}">
-                                    <p class="small-text">{{ key }}</p>
-                                {% endfor %}
-                                </a>
-                                {% for key, value in category_dict.items %}
-                                    <p>{{ key }}</p>
-                                    <div class="cat-circle rounded-circle card bg-dark text-center">
-                                        <img src="{% static 'images/icons/' %}{{ value }}.png"
-                                        class="d-flex cat-icons justify-content-center" alt="{{ value }}-icon">
-                                    </div>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                        {% for instr, icon in category_dict.items %}
+                        <li class="col-1 col-md-2 list-inline-item mx-3">
+                            <p class="small-text">{{ instr }}</p>
+                            <div class="cat-circle rounded-circle card bg-dark text-center">
+                                <img src="{% static 'images/icons/' %}{{ icon }}.png"
+                                    class="d-flex cat-icons justify-content-center" alt="{{ icon }}-icon">
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
             <div class="row mt-3">
