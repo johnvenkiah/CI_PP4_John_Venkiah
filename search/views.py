@@ -27,47 +27,6 @@ def SearchView(request):
 
     return render(request, 'search/search.html', context)
 
-# class SearchView(ListView):
-#     model = Ad
-#     template_name = 'search/search.html'
-
-#     def get_queryset(self):
-#         qs = super(SearchView).get_queryset()
-#         search = self.request.GET.get('search')
-#         category = self.request.GET.get('select-category')
-#         area = self.request.GET.get('select-area')
-#         return qs.filter(Ad.objects.all())
-
-#     def get_context_data(self, **kwargs):
-#         context = self.get_queryset
-#         context
-#         return context
-
-#     def get_success_url(self, *args, **kwargs):
-#         return reverse_lazy(
-#             'search:search'
-#         )
-
-
-# class SearchView(ListView):
-#     model = Ad
-#     template_name = 'search/search.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super(SearchView, self).get_context_data(**kwargs)
-#         search = self.request.GET.get('search')
-#         category = self.request.GET.get('select-category')
-#         area = self.request.GET.get('select-area')
-#         context['ads'] = Ad.objects.filter(
-#           Q(city=area) | Q(category=category)
-#         )
-#         return context
-
-#     def get_success_url(self, *args, **kwargs):
-#         return reverse_lazy(
-#             'search:search'
-#         )
-
 
 class CategoryDetail(SingleObjectMixin, ListView):
     paginate_by = 10

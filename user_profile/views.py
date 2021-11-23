@@ -35,7 +35,7 @@ class ProfileView(TemplateView, BaseDetailView, SelectRelatedMixin):
 
     def get_success_url(self, *args, **kwargs):
         return reverse_lazy(
-            'instr_main:profile', args=[self.kwargs['username']]
+            'user_profile:profile', args=[self.kwargs['username']]
 
 
     # def get_context_data(self, **kwargs):

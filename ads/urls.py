@@ -13,9 +13,11 @@ urlpatterns = [
         name='ad_detail'
     ),
     path(
+        'delete/<slug:seller>/<slug:slug>/', views.AdDeleteView.as_view(), name='delete_ad'
+    ),
+    path(
         'edit/<int:pk>/',
         never_cache(views.AdUpdateView.as_view()),
         name='ad-edit'
     ),
-    path('delete/<int:pk>/', views.AdDeleteView.as_view(), name='delete-ad'),
  ]

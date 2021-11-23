@@ -73,18 +73,10 @@ class AdCreateView(CreateView):
 
 
 class AdDeleteView(DeleteView):
-    pass
-    # model = Ad
-    # success_url = reverse_lazy('ads:profile')
+    model = Ad
 
-    # def get_queryset(self):
-    #     queryset = super(AdDeleteView, self).get.objects.all()
-
-    #     if not self.request.user.is_superuser:
-    #         queryset = queryset.filter(user=self.request.user)
-
-    #     return queryset
-
-    # @method_decorator(login_required)
-    # def dispatch(self, *args, **kwargs):
-    #     return super(AdDeleteView, self).dispatch(*args, **kwargs)
+    def get_success_url(self, *args, **kwargs):
+        messages.success(self.request, 'Your Ad is now deleted')
+        return reverse_lazy(
+            'user_profile:profile', args=[self.kwargs['seller']]
+        )
