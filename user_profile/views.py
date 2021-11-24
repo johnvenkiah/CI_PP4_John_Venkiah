@@ -23,14 +23,17 @@ class ProfileView(TemplateView, BaseDetailView, SelectRelatedMixin):
         return super().get(request, *args, **kwargs)
 
     def get_object(self):
-        print(self.get_queryset().get(username=self.kwargs['user']))
         return self.get_queryset().get(username=self.kwargs['user'])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['user'] = self.get_object()
         context['user_ads'] = Ad.objects.filter(seller=self.get_object())
-        context['saved_ads'] = Ad.objects.filter(saved=True)
+        context['saved_ads'] = Ad.objects.filter(
+            saved=True
+            ).exclude(
+                seller=self.get_object()
+        )
         return context
 
     def get_success_url(self, *args, **kwargs):

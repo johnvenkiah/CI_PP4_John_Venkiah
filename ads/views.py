@@ -52,7 +52,7 @@ class AdSave(View):
 
     def post(self, request, slug):
         ad = get_object_or_404(Ad, slug=slug)
-
+        print(ad.seller)
         if ad.saved.filter(id=self.request.user.id).exists():
             ad.saved.remove(request.user)
         else:

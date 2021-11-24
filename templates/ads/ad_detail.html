@@ -28,11 +28,11 @@
             <form class="d-inline" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
                 {% csrf_token %}
                 {% if saved %}
-                <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn-like">
+                <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn">
                     <i class="fas fa-heart"></i>
                 </button>
                 {% else %}
-                <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn-like">
+                <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn">
                     <i class="far fa-heart"></i>
                 </button>
                 {% endif %}
