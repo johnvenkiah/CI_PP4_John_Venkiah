@@ -17,6 +17,10 @@ h2 {
     color: #636363;
 }
 
+.fade-up {
+    background: linear-gradient(transparent, #7a766e);
+}
+
 a {
     color: #412f1c;
     text-decoration: none;
@@ -53,6 +57,7 @@ a {
 }
 
 .hero-img-home {
+    background-image: url('../images/main_background.jpeg');
     background-size: cover;
     background-position: center;
 }
