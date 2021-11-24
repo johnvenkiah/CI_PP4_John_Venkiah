@@ -32,21 +32,8 @@ class AdDetailView(DetailView):
             {
                 'ad': ad,
                 'saved': saved,
-                'log_request': searchlog.get_request(),
             },
         )
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(AdDetailView, self).get_context_data(**kwargs)
-    #     # saved = False
-    #     # queryset = Ad.objects.all()
-    #     # ad = get_object_or_404(queryset, slug=self.request.ad.slug)
-    #     # if ad.saved.filter(id=self.request.user.id).exists():
-    #     #     saved = True
-    #     context['saved'] = saved
-    #     context['log_request'] = searchlog.get_request()
-    #     return context
-
 
 class AdSave(View):
 

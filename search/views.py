@@ -26,7 +26,7 @@ def search_view(request):
         'ads': ads,
     }
 
-    searchlog.search_log = request.get_full_path()
+    # searchlog.search_log = request.get_full_path()
 
     return render(request, 'search/search.html', context)
 

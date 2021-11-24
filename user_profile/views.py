@@ -29,11 +29,9 @@ class ProfileView(TemplateView, BaseDetailView, SelectRelatedMixin):
         context = super().get_context_data(**kwargs)
         context['user'] = self.get_object()
         context['user_ads'] = Ad.objects.filter(seller=self.get_object())
-        context['saved_ads'] = Ad.objects.filter(
-            saved=True
-            ).exclude(
-                seller=self.get_object()
-        )
+        context['saved_ads'] = list(Ad.objects.filter(
+            saved=self.get_object()
+            ))
         return context
 
     def get_success_url(self, *args, **kwargs):
