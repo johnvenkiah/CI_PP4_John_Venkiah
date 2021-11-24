@@ -1,5 +1,3 @@
-setTimeout(() => {
-    let messages = document.getElementById("alert");
-    let alert = new bootstrap.Alert(messages);
-    alert.close();
-}, 3000);
+$(".alert").delay(2800).slideUp(200, function() {
+    $(this).alert('close');
+});
