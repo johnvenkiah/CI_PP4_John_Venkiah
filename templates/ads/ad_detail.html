@@ -25,18 +25,20 @@
             <a class="btn btn-success"href="{% url 'ads:ad_update' ad.seller ad.slug %}">Edit Ad</a>
             {% endif %}
             {% if user.is_authenticated %}
-            <form class="d-inline" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
-                {% csrf_token %}
-                {% if saved %}
-                <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn">
-                    <i class="fas fa-heart"></i>
-                </button>
-                {% else %}
-                <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn">
-                    <i class="far fa-heart"></i>
-                </button>
+                {% if request.user.username != ad.seller.username %}
+                <form class="d-inline" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if saved %}
+                    <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    {% else %}
+                    <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </form>
                 {% endif %}
-            </form>
+                {% endif %}
             {% else %}
             <span class="text-secondary"><i class="far fa-heart"></i></span>
             {% endif %}

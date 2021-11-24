@@ -45,17 +45,17 @@ function fillInAddress() {
             }
 
             case "route": {
-                address1 += `${component.long_name}`;
+                address1 += `${component.long_name},`;
                 break;
             }
 
             case "postal_town": {
-                address1 += ` ${component.long_name}, `;
+                address1 += ` ${component.long_name}`;
                 break;
             }
 
             case "country": {
-                address1 += `${component.long_name}${country}`;
+                address1 += ` ${component.long_name}${country}`;
                 break
             }
         }

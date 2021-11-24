@@ -100,7 +100,7 @@ li .btn-success {
 }
 
 .alert {
-    float: both;
+    position: absolute;
     margin: 0 auto;
     width: fit-content;
     text-align: center;
