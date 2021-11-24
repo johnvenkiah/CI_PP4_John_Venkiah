@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-6">
+        <h2>Messages</h2>
+    </div>
+    <div class="col-6">
+        <ul>
+            <li class="recieved">
+                <p>Time :{{ recipient.created_on }}</p>
+                <p>User :{{ recipient.user }}</p>
+                <p>Message :{{ recipient.message }}</p>
+            </li>
+            <li class="sent">
+                <p>Time :{{ sender.created_on }}</p>
+                <p>User :{{ sender.user }}</p>
+                <p>Message :{{ sender.message }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-8">
+        <form method="post" action="">
+            {% csrf_token %}
+            <label for="msg">Message</label>
+            <input type="text" name="message" id="message" value="test_msg">
+            <br>
+            <label for="msg">Recipient</label>
+            <input type="text" name="recipient" id="recipient" value="test_user">
+            <br>
+            <label for="msg">Time</label>
+            <input type="text" name="created_on" id="created_on" value="00:00, Tuesday Nov 14th">
+        <div class="col-4">
+            <button type="submit">Send</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

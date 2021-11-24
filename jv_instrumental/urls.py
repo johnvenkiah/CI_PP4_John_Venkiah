@@ -25,5 +25,6 @@ urlpatterns = [
     path('', include('ads.urls'), name='ad_urls'),
     path('', include('search.urls'), name='search_urls'),
     path('', include('contact.urls'), name='contact_urls'),
+    path('', include('msg.urls'), name='msg_urls'),
     path('', include('user_profile.urls'), name='user_profile_urls'),
 ]

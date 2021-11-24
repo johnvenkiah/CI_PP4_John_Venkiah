@@ -285,3 +285,11 @@ li .btn-main {
         position: relative;
         top: 1px;
       }
+
+.sent {
+    background: royalblue;
+}
+
+.recieved {
+    background: red;
+}
