@@ -14,9 +14,13 @@
             <div class="col-6">
                 <div>
                     <h4>User Info</h4>
+                    {% if request.user.is_authenticated %}
                     <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
                     <p>Email: {{ user.email }}</p>
                     <p>Location: {{ user.profile.location }}</p>
+                    {% else %}
+                    <h5>Log in to see user details</h5>
+                    {% endif %}
                     {% if user == request.user %}
                     <div class="col-6">
                         <a class="btn btn-success" href="{% url 'user_profile:edit_profile' %}">Edit Info</a>
@@ -41,6 +45,7 @@
             </div>
             {% endfor %}
             {% endif %}
+            {% if user == request.user %}
             <div class="col-12">
                 <h4 class="mt-4">Saved Ads</h4>
             </div>
@@ -58,6 +63,7 @@
             {% endfor %}
             {% else %}
             <h4 class="h4 mt-4">No Ads Saved</h4>
+            {% endif %}
             {% endif %}
 
         </div>
