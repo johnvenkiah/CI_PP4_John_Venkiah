@@ -20,4 +20,5 @@ urlpatterns = [
         'delete/<slug:seller>/<slug:slug>/',
         views.AdDeleteView.as_view(), name='delete_ad'
     ),
+    path('save/<slug:slug>/', views.AdSave.as_view(), name='ad_save'),
  ]

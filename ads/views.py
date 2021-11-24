@@ -1,10 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
+from django.views import View
 from django.views.generic import DetailView, CreateView, UpdateView
 from django.views.generic import DeleteView
+from django.http import HttpResponseRedirect
 from search.searchlog import searchlog
 
 
@@ -16,10 +19,53 @@ from jv_instrumental.settings import GOOGLE_API_KEY
 class AdDetailView(DetailView):
     model = Ad
 
-    def get_context_data(self, **kwargs):
-        context = super(AdDetailView, self).get_context_data(**kwargs)
-        context['log_request'] = searchlog.get_request()
-        return context
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Ad.objects.all()
+        ad = get_object_or_404(queryset, slug=slug)
+        saved = False
+        if ad.saved.filter(id=self.request.user.id).exists():
+            saved = True
+
+        return render(
+            request,
+            'ads/ad_detail.html',
+            {
+                'ad': ad,
+                'saved': saved,
+                'log_request': searchlog.get_request(),
+            },
+        )
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(AdDetailView, self).get_context_data(**kwargs)
+    #     # saved = False
+    #     # queryset = Ad.objects.all()
+    #     # ad = get_object_or_404(queryset, slug=self.request.ad.slug)
+    #     # if ad.saved.filter(id=self.request.user.id).exists():
+    #     #     saved = True
+    #     context['saved'] = saved
+    #     context['log_request'] = searchlog.get_request()
+    #     return context
+
+
+class AdSave(View):
+
+    def post(self, request, slug):
+        ad = get_object_or_404(Ad, slug=slug)
+
+        if ad.saved.filter(id=self.request.user.id).exists():
+            ad.saved.remove(request.user)
+        else:
+            ad.saved.add(request.user)
+
+        return HttpResponseRedirect(
+            reverse(
+                'ads:ad_detail', kwargs={
+                    'seller': self.request.user.username,
+                    'slug': slug
+                    }
+                )
+            )
 
 
 class AdUpdateView(UpdateView):

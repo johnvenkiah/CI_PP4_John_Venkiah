@@ -24,7 +24,7 @@ class Ad(models.Model):
     location = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     sold = models.BooleanField(default=False)
-    saved = models.BooleanField(default=False)
+    saved = models.ManyToManyField(User, related_name='ad_saves', blank=True)
 
     class Meta:
         ordering = ['-created_on']
