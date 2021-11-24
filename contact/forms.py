@@ -9,7 +9,7 @@ class ContactForm(forms.Form):
             self.fields[field].required = True
 
     name = forms.CharField(label='Full Name', max_length=100)
-    email = forms.EmailField(label='Email Address', max_length=100)
+    from_email = forms.EmailField(label='Email Address', max_length=100)
     subject = forms.CharField(label='Subject', max_length=100)
     message = forms.CharField(
                             label='Message',

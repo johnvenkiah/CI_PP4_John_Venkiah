@@ -4,8 +4,7 @@ from .forms import ContactForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from jv_instrumental.settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_BACKEND
-
+from jv_instrumental.settings import EMAIL_HOST_USER
 
 
 class ContactView(FormView):
@@ -14,22 +13,21 @@ class ContactView(FormView):
     form_class = ContactForm
     success_url = '/'
 
-    # def get_queryset(self):
-    #     self.object = User.objects.get(self.request.user)
-
     def form_valid(self, form):
-        # print(self.request.POST)
-        # subject = form.subject
+        msg1 = f"Mail from {form.cleaned_data['from_email']}\n\n"
+        msg2 = '\n\nForm sent from InstruMental through Django'
+        cleaned_msg = f'{msg1}{form.cleaned_data["message"]}{msg2}'
 
         send_mail(
             form.cleaned_data['subject'],
-            form.cleaned_data['message'],
-            form.cleaned_data['email'],
+            cleaned_msg,
+            form.cleaned_data['from_email'],
             [EMAIL_HOST_USER],
             fail_silently=False
-            # auth_user=EMAIL_HOST_USER, auth_password=EMAIL_HOST_PASSWORD
         )
 
-        messages.success(self.request, 'Email sent, please await your reply')
+        messages.success(
+            self.request, 'Thanks for contacting us, we will reply shortly.'
+        )
 
         return super().form_valid(form)
