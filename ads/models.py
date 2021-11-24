@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
-from django.utils.functional import cached_property
 from django.template.defaultfilters import slugify
-from unidecode import unidecode
 
 from main.map_utils import get_lat_long_by_address, get_city_by_lat_long
 
