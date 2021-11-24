@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'search',
     'ads',
     'contact',
+    'user_account',
 ]
 
 SITE_ID = 1

@@ -13,6 +13,9 @@
         </p> -->
             <button class="btn btn-success" href=# type="submit">Save Info</button>
         </form>
+        <div class="post-ad-form">
+            <a href="{% url 'user_account:remove_account' request.user.id %}" class="btn btn-danger">Remove account</a>
+        </div>
     </div>
 </div>
 <div class="row">

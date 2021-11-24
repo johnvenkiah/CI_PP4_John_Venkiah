@@ -8,7 +8,7 @@ app_name = 'ads'
 urlpatterns = [
     path('post_ad/', views.AdCreateView.as_view(), name='post_ad'),
     path(
-        '<slug:seller>/<slug:slug>/',
+        'ad_detail/<slug:seller>/<slug:slug>/',
         views.AdDetailView.as_view(),
         name='ad_detail'
     ),
