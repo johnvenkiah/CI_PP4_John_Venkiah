@@ -4,7 +4,7 @@ from .models import Msg
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-
+from datetime import datetime
 
 
 class MsgView(View):
@@ -23,14 +23,15 @@ class MsgView(View):
             'recipient': self._message('user_2', 'message2', 'created_on2'),
         }
         return render(request, 'msg/msg.html', context)
-    
+
     @csrf_exempt
     def post(self, request):
 
         sender = request.user
         message = request.POST.get('message')
         recipient = request.POST.get('recipient')
-        created_on = request.POST.get('created_on')
+        # created_on = request.POST.get('created_on')
+        created_on = datetime.now().strftime('%H:%M, %d %b %Y%Z')
 
         new_message = Msg(
             sender=sender,
@@ -43,4 +44,4 @@ class MsgView(View):
         context = {
             'sender': self._message(sender, message, created_on)
         }
-        return render(request, csrf_exempt('msg/msg.html'), context)
+        return render(request, 'msg/msg.html', context)
