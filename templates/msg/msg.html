@@ -22,9 +22,9 @@
         </ul>
     </div>
 </div>
-<div class="row g-0">
-    <div class="col-8 mx-auto">
-        <form class="post-ad-form" method="post" action="">
+<div class="row g-0 mb-0">
+    <div class="col mx-auto">
+        <form class="post-ad-form msg-form" method="post" action="">
             {% csrf_token %}
             <label for="msg">Message</label>
             <input type="text" name="message" id="message" value="test_msg">
@@ -32,12 +32,17 @@
             <label for="msg">Recipient</label>
             <input type="text" name="recipient" id="recipient" value="test_user">
             <br>
-            <label for="msg">Time</label>
-            <input type="text" name="created_on" id="created_on" value="00:00, Tuesday Nov 14th">
-        <div class="col-4">
-            <button type="submit">Send</button>
+            <div class="row mx-auto">
+            <div class="col-8">
+                <label for="msg">Time</label>
+                <input type="text" name="created_on" id="created_on" value="00:00, Tuesday Nov 14th">
+            </div>
+            <div class="col">
+                <button class="btn btn-main btn-send" type="submit">Send</button>
+            </div>
         </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 {% endblock %}

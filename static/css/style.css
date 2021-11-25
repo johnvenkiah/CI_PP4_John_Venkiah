@@ -325,3 +325,15 @@ top: 1px;
 	margin-top: -0.453em;
 	margin-left: -0.906em;
 }
+
+.btn-send {
+    margin-top: 40px;
+}
+
+.msg-form {
+    margin: 1rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 95%;
+}
