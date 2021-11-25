@@ -3,6 +3,8 @@ from django.views import View
 from .models import Msg
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 class MsgView(View):
@@ -21,7 +23,8 @@ class MsgView(View):
             'recipient': self._message('user_2', 'message2', 'created_on2'),
         }
         return render(request, 'msg/msg.html', context)
-
+    
+    @csrf_exempt
     def post(self, request):
 
         sender = request.user
@@ -40,4 +43,4 @@ class MsgView(View):
         context = {
             'sender': self._message(sender, message, created_on)
         }
-        return render(request, 'msg/msg.html', context)
+        return render(request, csrf_exempt('msg/msg.html'), context)
