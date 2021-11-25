@@ -17,7 +17,7 @@ class Ad(models.Model):
     category = models.CharField(max_length=250)
     description = models.CharField(max_length=800)
     created_on = models.DateTimeField(auto_now_add=True)
-    price = models.IntegerField()
+    price = models.IntegerField(max_length=14)
     location = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     sold = models.BooleanField(default=False)

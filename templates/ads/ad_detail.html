@@ -22,7 +22,7 @@
             {% else %}
             <p class="card-text mt-4">{{ ad.city }}</p>
             {% endif %}
-            <p class="card-text mt-4">{{ ad.price }}</p>
+            <p class="card-text mt-4">£{{ ad.price }}</p>
             {% if request.user.username == ad.seller.username %}
             <a class="btn btn-success"href="{% url 'ads:ad_update' ad.seller ad.slug %}">Edit Ad</a>
             {% endif %}

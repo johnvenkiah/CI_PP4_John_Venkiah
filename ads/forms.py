@@ -11,6 +11,7 @@ class AdForm(forms.ModelForm):
                 'required': ''
             }
         )
+        self.fields['price'].widget.attrs['placeholder'] = '£0.00'
 
     class Meta:
         model = Ad
