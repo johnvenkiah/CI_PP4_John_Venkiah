@@ -16,17 +16,21 @@
             </div>
         </div>
         <div class="col-8">
-            <p class="pt-2">{{ user.first_name }} {{ user.last_name }}</p>
             {% if request.user.is_authenticated %}
-            <p class="">
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <p>
                 <i class="fas fa-map-marker-alt"></i>
                 {{ user.profile.location }}
+            </p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i>
+                {{ user.email }}
             </p>
             {% else %}
             <h5 class="p-2">Log in to see user details</h5>
             {% endif %}
             {% if user == request.user %}
-            <a class="btn btn-main" href="{% url 'user_profile:edit_profile' %}">Edit Info</a>
+            <a class="btn btn-main mb-2" href="{% url 'user_profile:edit_profile' %}">Edit Info</a>
             {% endif %}
         </div>
     </div>
@@ -39,36 +43,36 @@
         {% for ad in user_ads %}
     <div class="row g-0">
         <div class="col">
-            <a class="card mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
+            <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
                 <div class="row">
                     <div class="col-3">
-                    <img class="thmbn-img" src="{{ ad.image.url }}" alt="">
-                </div>
-                <div class="col-6">
-                        <h4 class="card-title">{{ ad.title }}</h4>
-                        <small class="text-small ms-auto">Posted on {{ ad.created_on }}</small>
-                            <div class="elips-container">
-                                <small class="card-text elips-text">
-                                    {{ ad.description }}
-                                    I'm trying to make inner div with fluid width and ... when overflow (using ellipsis).
-        
-                                    Requirements:
-        
-                                    .container has fixed known width 200px
-                                    .badge could be any width but max is 30px. This is because this div contains a number (from 0 to 999). This must stay right (float right).
-                                    .content and .badge must be in same line
-                                    .content will have ellipsis and nowrap. Must stay left
-                                    Key important: .content's width = .container's width - .badge's width
-                                    I could not get #5 above to happen. Any pointer?
-        
-                                    My code below either made the .badge to wrap in second line or the .content just doesn't expand its width.
-        
-                                    HTML:
-                                </small>
-                            </div>
-                            <p class="card-text">{{ ad.price }}</p>
+                        <img class="thmbn-img" src="{{ ad.image.url }}" alt="">
                     </div>
-                </div>
+                    <div class="col-9">
+                        <small class="text-small ms-auto">Posted on {{ ad.created_on }}</small>
+                            <p class="card-title">{{ ad.title }}</p>
+                                <div class="elips-container">
+                                    <small class="card-text elips-text">
+                                        {{ ad.description }}
+                                        I'm trying to make inner div with fluid width and ... when overflow (using ellipsis).
+            
+                                        Requirements:
+            
+                                        .container has fixed known width 200px
+                                        .badge could be any width but max is 30px. This is because this div contains a number (from 0 to 999). This must stay right (float right).
+                                        .content and .badge must be in same line
+                                        .content will have ellipsis and nowrap. Must stay left
+                                        Key important: .content's width = .container's width - .badge's width
+                                        I could not get #5 above to happen. Any pointer?
+            
+                                        My code below either made the .badge to wrap in second line or the .content just doesn't expand its width.
+            
+                                        HTML:
+                                    </small>
+                                </div>
+                            <p class="card-text">{{ ad.price }}</p>
+                        </div>
+                    </div>
             </a>
         </div>
     </div>
