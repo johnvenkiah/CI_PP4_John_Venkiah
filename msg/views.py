@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views import View
-from .models import Msg
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
+from .models import Msg
 
 
 class MsgView(View):
@@ -17,11 +17,13 @@ class MsgView(View):
         }
 
     def get(self, request):
-
+        msg = Msg.objects.all()
         context = {
             'sender': self._message('user_1', 'message1', 'created_on1'),
             'recipient': self._message('user_2', 'message2', 'created_on2'),
+            'messages': msg,
         }
+
         return render(request, 'msg/msg.html', context)
 
     @csrf_exempt
