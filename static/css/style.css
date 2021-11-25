@@ -178,7 +178,7 @@ li .btn-main {
     text-align: center;
 }
 
-.btn-close {
+.alert .btn-close {
     position: absolute;
     top: 8px!important;
     left: 250px;
@@ -421,4 +421,28 @@ top: 1px;
 .bg-creme {
     background-color: #f3eee4;
     border: none;
+}
+
+.share-div a {
+    font-size: .8rem;
+}
+
+.share-div button {
+    text-align: center;
+}
+
+.fa-facebook {
+    color: #139bf6;
+}
+
+.fa-reddit {
+    color: #fb6515;
+}
+
+.fa-whatsapp {
+    color: #4dcb5a;
+}
+
+.btn-light {
+    box-shadow: 0 0 10px, rgb(136, 136, 136);
 }

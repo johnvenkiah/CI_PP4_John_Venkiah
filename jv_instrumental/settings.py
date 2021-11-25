@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django.contrib.staticfiles',
     'storages',
+    'django_social_share',
     'main',
     'user_profile',
     'search',
@@ -156,10 +157,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
-
-TIME_INPUT_FORMATS = [
-    '%H:%M',
-]
 
 USE_I18N = True
 

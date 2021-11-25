@@ -1,5 +1,6 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load social_share %}
 {% block content %}
 
 <div class="container-fluid justify-content-center">
@@ -66,10 +67,47 @@
             {% endif %}
         </div>
         <div class="col-6 mx-auto">
-            <button class="btn btn-light save-share-link">
+            <button type="button" class="btn btn-light save-share-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Share Ad
                 <i class="fas fa-share-square"></i>
-            </button>
+              </button>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Share this page</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row share-div">
+                            <div class="col-4">
+                                <button class="btn btn-light">
+                                    {% post_to_facebook object_or_url "Facebook" %}
+                                    <i class="fab fa-facebook"></i>
+                                </button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-light">
+                                    {% post_to_facebook object_or_url "WhatsApp" %}
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-light">
+                                    {% post_to_facebook object_or_url "Reddit" %}
+                                    <i class="fab fa-reddit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
     </div>
 </div>
