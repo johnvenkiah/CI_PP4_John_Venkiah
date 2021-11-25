@@ -2,48 +2,74 @@
 {% load static %}
 {% block content %}
 
-<div class="row justify-content-center">
-    <div class="col-8">
-        <div class="row">
-            <h2 class="h2">{{ ad.title }}</h2>
-        </div>
-        <div class="row">
-            <div class="card">
+<div class="container-fluid justify-content-center">
+    <div class="row">
+        <div class="col">
+            <div class="card my-4">
                 <img src="{{ ad.image.url }}" alt="">
             </div>
         </div>
-        <div class="row">
-            <p class="card-text mt-4">{{ ad.created_on }}</p>
-            <a class="card-text mt-4" href="{% url 'user_profile:profile' ad.seller %}">{{ ad.seller }}</a>
-            <p class="card-text mt-4">{{ ad.description }}</p>
-            <p class="card-text mt-4">{{ ad.category }}</p>
+    </div>
+    <div class="row">
+        <div class="col-6 align-top">
+            <h2 class="h2">{{ ad.title }}</h2>
             {% if request.user.username == ad.seller.username %}
-            <p class="card-text mt-4">{{ ad.location }}</p>
+            <p class="card-text mt-4"><i class="fas fa-map-marker-alt"></i><small> {{ ad.location }}</small></p>
             {% else %}
-            <p class="card-text mt-4">{{ ad.city }}</p>
+            <p class="card-text mt-1"><i class="fas fa-map-marker-alt"></i><small> {{ ad.city }}</small></p>
             {% endif %}
-            <p class="card-text mt-4">£{{ ad.price }}</p>
+            <p class="card-text mt-1">£{{ ad.price }}</p>
+        </div>
+
+        <div class="col-6">
+            <p><small class="mt-1">{{ ad.created_on }}<small></p>
+            <small>Seller:</small>
+            <a class="card-text mt-1" href="{% url 'user_profile:profile' ad.seller %}">
+                <strong>{{ ad.seller }}</strong>
+            </a>
+            <p class="card-text mt-1">{{ ad.category }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-creme">
+                <p class="card-text m-2">{{ ad.description }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             {% if request.user.username == ad.seller.username %}
             <a class="btn btn-success"href="{% url 'ads:ad_update' ad.seller ad.slug %}">Edit Ad</a>
             {% endif %}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-6 mx-auto">
             {% if user.is_authenticated %}
                 {% if request.user.username != ad.seller.username %}
                 <form class="d-inline" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
                     {% csrf_token %}
-                    {% if saved %}
-                    <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn">
+                    <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn btn-light save-share-link">
+                        Save to My Ads
+                        {% if saved %}
                         <i class="fas fa-heart"></i>
-                    </button>
-                    {% else %}
-                    <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn">
+                        {% else %}
                         <i class="far fa-heart"></i>
                     </button>
-                    {% endif %}
-                    {% endif %}
+                        {% endif %}
+                        {% endif %}
                 </form>
             {% else %}
-            <span class="text-secondary"><i class="far fa-heart"></i></span>
+            <p>Please log in to save ads.</p>
+            <!-- <span class="text-secondary"><i class="far fa-heart"></i></span> -->
             {% endif %}
+        </div>
+        <div class="col-6 mx-auto">
+            <button class="btn btn-light save-share-link">
+                Share Ad
+                <i class="fas fa-share-square"></i>
+            </button>
         </div>
     </div>
 </div>

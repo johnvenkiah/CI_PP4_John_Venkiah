@@ -124,7 +124,6 @@ a {
 
 .card {
     overflow: hidden;
-    z-index: -1;
 }
 
 .card-footer {
@@ -405,4 +404,21 @@ top: 1px;
 
 .fa-ul {
     text-align: right;
+}
+
+.fa-heart {
+    color: red;
+}
+
+.fa-heart, .fa-share-square {
+    cursor: pointer;
+}
+
+.save-share-link {
+    font-size: .6rem;
+}
+
+.bg-creme {
+    background-color: #f3eee4;
+    border: none;
 }

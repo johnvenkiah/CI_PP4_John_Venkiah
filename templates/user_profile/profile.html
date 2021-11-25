@@ -53,20 +53,6 @@
                     <div class="elips-container">
                         <small class="card-text elips-text">
                             {{ ad.description }}
-                            I'm trying to make inner div with fluid width and ... when overflow (using ellipsis).
-
-                            Requirements:
-
-                            .container has fixed known width 200px
-                            .badge could be any width but max is 30px. This is because this div contains a number (from 0 to 999). This must stay right (float right).
-                            .content and .badge must be in same line
-                            .content will have ellipsis and nowrap. Must stay left
-                            Key important: .content's width = .container's width - .badge's width
-                            I could not get #5 above to happen. Any pointer?
-
-                            My code below either made the .badge to wrap in second line or the .content just doesn't expand its width.
-
-                            HTML:
                         </small>
                     </div>
                     <p class="card-text">£{{ ad.price }}</p>

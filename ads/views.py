@@ -50,9 +50,9 @@ class AdSave(View):
                 'ads:ad_detail', kwargs={
                     'seller': self.request.user.username,
                     'slug': slug
-                    }
-                )
+                }
             )
+        )
 
 
 class AdUpdateView(UpdateView):
