@@ -71,7 +71,7 @@ a {
 
 .hero-img-home {
     background-image: url('../images/main_background.jpeg');
-    height: 100vh;
+    height: 80vh;
     background-size: cover;
     background-position: center;
 }

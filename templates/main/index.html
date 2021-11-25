@@ -12,12 +12,11 @@
 <!-- ACCORDION ICON: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
 
 
-    <div class="row">
-        <div class="col-12">
-            <div class="row">
-                <div class="col p-0">
-                    <div class="shadow-lg pad-16 mb-8 bg-image hero-img-home">
-                        <div class="col-md-4">
+
+            <div class="row g-0">
+                <div class="col">
+                    <div class="pad-16 mb-8 hero-img-home">
+                        <div class="col">
                             <div class="pad-16 text-white">
                                 <form method="get" action="{% url 'search:search' %}">
                                     <div class="mb-3 input-container">
@@ -55,7 +54,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 mt-3 mb-3">
+                <div class="col my-3">
                     <h3>Categories</h3>
                     <ul class="list-inline text-center">
                         {% for category in db.cat %}
@@ -111,8 +110,5 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
 
     {% endblock %}
