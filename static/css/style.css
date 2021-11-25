@@ -124,6 +124,7 @@ a {
 
 .card {
     overflow: hidden;
+    z-index: -1;
 }
 
 .card-footer {
@@ -167,11 +168,23 @@ li .btn-main {
 }
 
 .alert {
-    position: absolute;
-    margin: 0 auto;
-    width: fit-content;
+    position: fixed;
+    width: 100vw;
+    border-radius: 0;
+    font-size: .7rem;
+    padding: 5px 0;
+    left: 0;
+    top: 16%;
+    opacity: .7;
     text-align: center;
-    font-weight: 400;
+}
+
+.btn-close {
+    position: absolute;
+    top: 8px!important;
+    left: 250px;
+    right: 0;
+    padding: 0 0 0 100px!important;
 }
 
 .login input, .post-ad-form input, select, .textarea, .signup input {
