@@ -3,39 +3,37 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col banner">
-            <h2 class="custom-text-shadow pt-2">Profile</h3>
+    <div class="row align-bottom">
+        <div class="row">
+            <div class="col banner">
+                <h2 class="custom-text-shadow pt-2">Profile</h3>
+            </div>
         </div>
-    </div>
-    <div class="row pt-2">
-        <div class="col-4">
-            <h3 class="p-2">{{ user }}</h3>
-            <div class="col bg-dark-lg card m-3">
+        <div class="row pt-2">
+            <div class="col-3">
+                <h3 class="text-secondary h5">{{ user }}</h3>
+            <div class="fade-up profile-card mt-4">
                 <i class="fas fa-user user-icon py-3"></i>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-9">
             {% if request.user.is_authenticated %}
-            <p>{{ user.first_name }} {{ user.last_name }}</p>
-            <p>
-                <i class="fas fa-map-marker-alt"></i>
-                {{ user.profile.location }}
-            </p>
-            <p>
-                <i class="fas fa-map-marker-alt"></i>
-                {{ user.email }}
-            </p>
+            <ul class="fa-ul">
+                <li><span class="fa-li"><i class="fas fa-star-of-life"></i></span><small class="pull-end">{{ user.first_name }} {{ user.last_name }}</small></li>
+                <li><span class="fa-li"><i class="fas fa-map-marker-alt"></i></span><small>{{ user.profile.location }}</small></li>
+                <li><span class="fa-li"><i class="fas fa-envelope"></i></span><small>{{ user.email }}</small></li>
+              </ul>
             {% else %}
             <h5 class="p-2">Log in to see user details</h5>
             {% endif %}
             {% if user == request.user %}
-            <a class="btn btn-main mb-2" href="{% url 'user_profile:edit_profile' %}">Edit Info</a>
+            <a class="btn btn-main" href="{% url 'user_profile:edit_profile' %}">Edit Info</a>
             {% endif %}
         </div>
     </div>
+</div>
     <div class="row">
-        <div class="col banner-2">
+        <div class="col banner-2 mt-2">
             <h4 class="custom-text-shadow pt-2">My Ads</h4>
         </div>
     </div>
@@ -46,7 +44,7 @@
             <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
                 <div class="row">
                     <div class="col-3">
-                        <img class="thmbn-img" src="{{ ad.image.url }}" alt="">
+                        <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">
                     </div>
                     <div class="col-9">
                         <small class="text-small ms-auto">Posted on {{ ad.created_on }}</small>
