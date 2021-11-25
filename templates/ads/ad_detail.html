@@ -45,6 +45,17 @@
             {% endif %}
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <form action="{% url 'msg:init' %}" method="post">{% csrf_token %}
+                <input type="text" name="ad_slug" id="ad_slug" value="{{ ad.slug }}">
+                <button type="submit">Send Message</button>
+            </form>
+            <!-- <a href="" class="btn btn-main">
+                Send message
+            </a> -->
+        </div>
+    </div>
     <div class="row mt-4">
         <div class="col-6 mx-auto">
             {% if user.is_authenticated %}

@@ -7,6 +7,26 @@ from datetime import datetime
 from .models import Msg
 
 
+
+class InBoxView(View):
+    def get(self, request):
+
+        dialog = {
+            'recipient': 'John Doe',
+            'ad': 'Large Piano',
+            'href': 'recipient/sender/',
+        }
+
+        dialogs = [
+            dialog
+        ]
+
+        context = {
+            'dialogs': dialogs,
+        }
+        return render(request, 'msg/inbox.html', context)
+
+
 class MsgView(View):
 
     def _message(self, user, message, created_on):
@@ -18,8 +38,11 @@ class MsgView(View):
 
     def get(self, request):
         msg = Msg.objects.all()
+        
         context = {
             'messages': msg,
+            'ad': 'ad',
+            'dialog': 'dialog',
         }
 
         return render(request, 'msg/msg.html', context)
@@ -44,4 +67,13 @@ class MsgView(View):
             'sender': self._message(sender, message, created_on),
             'messages': msg,
         }
+        return render(request, 'msg/msg.html', context)
+
+
+class InitMsgView(View):
+    def post(self, request):
+        context = {
+            'ad': request.POST.get('ad_slug'),
+        }
+        print(request.POST)
         return render(request, 'msg/msg.html', context)

@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="row">
+    <h2>INBOX</h2>
+    <div class="col">
+        {% for dialog in dialogs %}
+        <a href="{{ dialog.href }}">TJENE
+            <div class="row">
+                <p>{{ dialog.recipient }}</p>
+                <p>{{ dialog.ad }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
