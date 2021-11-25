@@ -18,7 +18,7 @@ h2 {
 }
 
 .fade-up {
-    background: linear-gradient(transparent, #7a766e);
+    background: linear-gradient(transparent, #a19377);
 }
 
 a {
@@ -28,20 +28,21 @@ a {
 
 .banner {
     width: 100%;
-    height: 10px;
     background:rgba(168, 119, 46, 0.3);
     box-shadow: rgba(168, 119, 46, 0.3);
+    background: linear-gradient(
+    45deg, rgb(0 0 0 / 13%), transparent);
 }
 
 .navbar-brand, h1 {
     font-family: 'Comforter Brush', cursive;
     font-size: 2rem;
     padding: .8rem .3rem 0;
-    text-shadow: -2px -1px 15px #7e5414;
+    text-shadow: -2px -1px 12px #b78539;
 }
 
 .custom-text-shadow {
-    text-shadow: 0 0 15px #178fc191, 0px 0px 15px #adb5bd00;
+    text-shadow: 0 0 15px #6a7b8391, 0px 0px 15px #adb5bd00;
 }
 
 .link-light {
@@ -58,6 +59,7 @@ a {
 
 .hero-img-home {
     background-image: url('../images/main_background.jpeg');
+    height: 100vh;
     background-size: cover;
     background-position: center;
 }
@@ -80,9 +82,7 @@ a {
 }
 
 .cat-circle {
-    height: 40px;
-    width: 40px;
-    margin: 0 auto;
+    border-radius: .8rem;
 }
 
 .feature {
@@ -90,7 +90,7 @@ a {
 }
 
 .feature-img {
-    border-radius: 5px;
+    width: 100%;
     background-size: cover;
 }
 
@@ -278,6 +278,7 @@ top: 1px;
 
 .msg-sent {
 	background: #b68740;
+    border: 1px solid #6b4c28;
 }
 
 .msg-sent, .msg-recieved {
@@ -286,7 +287,6 @@ top: 1px;
     padding: 1em;
     margin: 25px auto;
     color: white;
-    border: 1px solid #262020;
     box-shadow: 0 0 10px darkslategrey;
     text-shadow: 0 0 5px black
 }
@@ -294,6 +294,7 @@ top: 1px;
 .msg-recieved {
     background: #554e44;
     margin: 25px 50px 25px -25px;
+    border: 1px solid #262020;
 }
 
 .msg-sent:after {
@@ -327,13 +328,16 @@ top: 1px;
 }
 
 .btn-send {
-    margin-top: 40px;
+    margin-top: 2.1rem;
 }
 
 .msg-form {
-    margin: 1rem;
-    position: absolute;
+    /* position: fixed;
     bottom: 0;
     right: 0;
-    width: 95%;
+    padding: 7px; */
+}
+
+.msg-form label {
+    margin-top: 0;
 }
