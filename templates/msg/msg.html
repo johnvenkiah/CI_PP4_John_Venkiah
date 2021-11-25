@@ -13,28 +13,18 @@
             {% for message in messages %}
             {% if message.sender == request.user %}
             <li class="msg-sent message">
-                <p>Time :{{ message.created_on }}</p>
-                <p>User :{{ message.sender }}</p>
-                <p>Message :{{ message.message }}</p>
+                <p>Time:{{ message.created_on }}</p>
+                <p>User:{{ message.sender }}</p>
+                <p>Message:{{ message.message }}</p>
             </li>
             {% else %}
             <li class="msg-recieved message">
-                <p>Time :{{ message.created_on }}</p>
-                <p>User :{{ message.sender }}</p>
-                <p>Message :{{ message.message }}</p>
+                <p>Time:{{ message.created_on }}</p>
+                <p>User:{{ message.sender }}</p>
+                <p>Message:{{ message.message }}</p>
             </li>
             {% endif %}
             {% endfor %}
-            <li class="msg-recieved">
-                <p>Time :{{ recipient.created_on }}</p>
-                <p>User :{{ recipient.user }}</p>
-                <p>Message :{{ recipient.message }}</p>
-            </li>
-            <li class="msg-sent">
-                <p>Time :{{ sender.created_on }}</p>
-                <p>User :{{ sender.user }}</p>
-                <p>Message :{{ sender.message }}</p>
-            </li>
         </ul>
     </div>
 </div>
@@ -44,16 +34,6 @@
             {% csrf_token %}
             <label for="msg">Message</label>
             <input type="text" name="message" id="message" value="test_msg">
-            <br>
-            <label for="msg">Recipient</label>
-            <input type="text" name="recipient" id="recipient" value="test_user">
-            <br>
-            <div class="row mx-auto">
-            <div class="col-8">
-                <label for="msg">Time</label>
-                <time datetime="1914-12-20T08:00" name="created_on" id="time_created_on">1914-12-20T08:00</time>
-                <input type="text" name="created_on" id="created_on" value="00:00, Tuesday Nov 14th">
-            </div>
             <div class="col">
                 <button class="btn btn-main btn-send" type="submit">Send</button>
             </div>

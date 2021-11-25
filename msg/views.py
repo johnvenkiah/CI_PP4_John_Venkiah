@@ -19,8 +19,6 @@ class MsgView(View):
     def get(self, request):
         msg = Msg.objects.all()
         context = {
-            'sender': self._message('user_1', 'message1', 'created_on1'),
-            'recipient': self._message('user_2', 'message2', 'created_on2'),
             'messages': msg,
         }
 
@@ -28,11 +26,9 @@ class MsgView(View):
 
     @csrf_exempt
     def post(self, request):
-
         sender = request.user
         message = request.POST.get('message')
         recipient = request.POST.get('recipient')
-        # created_on = request.POST.get('created_on')
         created_on = datetime.now().strftime('%H:%M, %d %b %Y%Z')
 
         new_message = Msg(
@@ -42,8 +38,10 @@ class MsgView(View):
             created_on=created_on,
         )
         new_message.save()
+        msg = Msg.objects.all()
 
         context = {
-            'sender': self._message(sender, message, created_on)
+            'sender': self._message(sender, message, created_on),
+            'messages': msg,
         }
         return render(request, 'msg/msg.html', context)
