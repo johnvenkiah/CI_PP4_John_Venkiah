@@ -26,12 +26,24 @@ a {
     text-decoration: none;
 }
 
-.banner {
+.banner, .banner-2, .banner-3 {
+    box-shadow: 0 0 10px #ffeed485;
     width: 100%;
-    background:rgba(168, 119, 46, 0.3);
-    box-shadow: rgba(168, 119, 46, 0.3);
+}
+
+.banner {
     background: linear-gradient(
     45deg, #dff3ef, transparent);
+}
+
+.banner-2 {
+    background: linear-gradient(
+    45deg, #e7f3df, transparent);
+}
+
+.banner-3 {
+    background: linear-gradient(
+    45deg, #f3dfdf, transparent);
 }
 
 .navbar-brand, h1 {
@@ -108,6 +120,10 @@ a {
 
 .text-shadow {
     text-shadow: 2px 2px 10px black, -2px -2px 10px black;
+}
+
+.card {
+    overflow: hidden;
 }
 
 .card-footer {
@@ -350,4 +366,20 @@ top: 1px;
 
 .user-icon {
     font-size: 2rem;
+}
+
+.elips-container {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.elips-text {
+    max-width: 30px;
+}
+
+.thmbn-img {
+    height: 10%;
+    width: auto;
+    background-size: cover;
 }
