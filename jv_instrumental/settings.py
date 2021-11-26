@@ -167,36 +167,71 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if not development:
+    # Cache control
+    # AWS_S3_OBJECT_PARAMETERS = {
+    #     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    #     'CacheControl': 'max-age=94608000',
+    # }
+
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'instru-mental-content'
+    AWS_S3_REGION_NAME = 'eu-north-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-MEDIA_DIR = BASE_DIR / 'media'
-MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/media/'
 
-if development:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'    
-else:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-    AWS_STORAGE_BUCKET_NAME = 'instru-mental-content'
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    AWS_S3_FILE_OVERWRITE = False
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-    AWS_LOCATION = 'static'
-    STATIC_URL = "https://%s/static/" % (AWS_S3_CUSTOM_DOMAIN)
-    AWS_DEFAULT_REGION = 'eu-north-1'
+# if not development:
+# # STATIC_URL = '/static/'
+# # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    DEFAULT_FILE_STORAGE = 'main.storage_backends.MediaStorage'
+#     AWS_S3_OBJECT_PARAMETERS = {
+#         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+#         'CacheControl': 'max-age=94608000',
+#     }
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+#     AWS_STORAGE_BUCKET_NAME = 'instru-mental-content'
+#     AWS_S3_REGION_NAME = 'eu-north-1'
+#     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+#     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+#     # Static and media files
+#     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+#     STATICFILES_LOCATION = 'static'
+#     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+#     MEDIAFILES_LOCATION = 'media'
+
+#     # Override static and media URLs in production
+#     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+#     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+# DEFAULT_FILE_STORAGE = 'main.storage_backends.MediaStorage'
 
 # Gmail Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

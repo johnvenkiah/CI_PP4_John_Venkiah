@@ -45,7 +45,7 @@
                                         <i class="input-icon fa-solid fa-location-dot"></i>
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button href="{% url 'search:search' %}" type="submit" class="btn btn-main shadow">Search Ads</button>
+                                        <button href="{% url 'search:search' %}" type="submit" class="mt-4 btn btn-main shadow">Search Ads</button>
                                     </div>
                                 </form>
                             </div>
@@ -62,7 +62,7 @@
                             <a href="/search/{{ category.url }}">
                                 <div class="mt-2 p-4 cat-card card bg-dark text-light shadow text-center">
                                     <p class="small-text">{{ category.name }}</p>
-                                    <img src="{% static 'media/images/icons/' %}{{ category.image }}.png"
+                                    <img src="{% static 'media/icons/' %}{{ category.image }}.png"
                                     class="d-flex cat-icons justify-content-center" alt="{{ category.image }}-icon">
                                 </div>
                             </a>
