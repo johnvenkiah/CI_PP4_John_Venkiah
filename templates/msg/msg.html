@@ -5,7 +5,6 @@
 <div class="row mx-auto">
     <div class="col banner">
         <h2 class="custom-text-shadow p-2">Ad: {{ ad }}</h2>
-        <h2 class="custom-text-shadow p-2">Dialog: {{ dialog }}</h2>
     </div>
 </div>
 <div class="row mx-auto">
@@ -34,7 +33,9 @@
         <form class="post-ad-form msg-form" method="post" action="">
             {% csrf_token %}
             <label for="msg">Message</label>
-            <input type="text" name="message" id="message" value="test_msg">
+            <input type="text" name="message" id="message" value="">
+            <input type="text" name="ad" id="ad" value="{{ ad }}">
+            <input type="text" name="recipient" id="recipient" value="{{ ad.seller }}">
             <div class="col">
                 <button class="btn btn-main btn-send" type="submit">Send</button>
             </div>

@@ -8,12 +8,18 @@
     <h2>INBOX</h2>
     <div class="col">
         {% for dialog in dialogs %}
-        <a href="{{ dialog.href }}">TJENE
+        <p>{{ dialog.recipient }}</p>
+        <form action="{% url 'msg:msg' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="recipient" id="recipient" value="{{ dialog.recipient }}">
+            <input type="text" name="message" id="message" value="{{ dialog.message }}">
+            <input type="text" name="created_on" id="created_on" value="{{ dialog.created_on }}">
+            <button type="submit">View Message</button>
+        </form>
             <div class="row">
                 <p>{{ dialog.recipient }}</p>
                 <p>{{ dialog.ad }}</p>
             </div>
-        </a>
         {% endfor %}
     </div>
 </div>

@@ -47,8 +47,10 @@
     </div>
     <div class="row">
         <div class="col">
-            <form action="{% url 'msg:init' %}" method="post">{% csrf_token %}
+            <form action="{% url 'msg:msg' %}" method="post">{% csrf_token %}
+                <input type="text" name="recipient" id="recipient" value="{{ ad.seller }}">
                 <input type="text" name="ad_slug" id="ad_slug" value="{{ ad.slug }}">
+                <input type="text" name="message" id="message" value="message">
                 <button type="submit">Send Message</button>
             </form>
             <!-- <a href="" class="btn btn-main">

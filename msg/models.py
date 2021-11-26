@@ -8,6 +8,7 @@ class Msg(models.Model):
     recipient = models.CharField(max_length=100)
     message = models.CharField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
+    ad = models.CharField(max_length=500, null=True, blank=True)
 
     class Meta:
         ordering = ['created_on']

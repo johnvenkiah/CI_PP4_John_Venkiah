@@ -22,9 +22,9 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('main.urls'), name='main_urls'),
     path('', include('user_account.urls'), name='user_account_urls'),
+    path('', include('ads.urls'), name='ad_urls'),
     path('', include('search.urls'), name='search_urls'),
     path('', include('contact.urls'), name='contact_urls'),
-    path('', include('ads.urls'), name='ad_urls'),
     path('', include('msg.urls'), name='msg_urls'),
     path('', include('user_profile.urls'), name='user_profile_urls'),
 ]

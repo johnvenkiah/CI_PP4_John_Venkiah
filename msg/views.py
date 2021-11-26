@@ -5,21 +5,14 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 from .models import Msg
+from ads.models import Ad
 
 
 
 class InBoxView(View):
     def get(self, request):
-
-        dialog = {
-            'recipient': 'John Doe',
-            'ad': 'Large Piano',
-            'href': 'recipient/sender/',
-        }
-
-        dialogs = [
-            dialog
-        ]
+        user = request.user
+        dialogs = Msg.objects.filter(sender=user)
 
         context = {
             'dialogs': dialogs,
@@ -27,7 +20,7 @@ class InBoxView(View):
         return render(request, 'msg/inbox.html', context)
 
 
-class MsgView(View):
+class MsgRedundantView(View):
 
     def _message(self, user, message, created_on):
         return {
@@ -70,10 +63,47 @@ class MsgView(View):
         return render(request, 'msg/msg.html', context)
 
 
-class InitMsgView(View):
-    def post(self, request):
-        context = {
-            'ad': request.POST.get('ad_slug'),
+class MsgView(View):
+
+    def _message(self, user, message, created_on):
+        return {
+            'message': message,
+            'user': user,
+            'created_on': created_on,
         }
-        print(request.POST)
+
+    def get(self, request):
+        ad = request.POST.get('ad_slug')
+        msg = Msg.objects.filter(ad=ad)
+        
+        context = {
+            'messages': msg,
+            'ad': ad,
+        }
+
+        return render(request, 'msg/msg.html', context)
+
+    @csrf_exempt
+    def post(self, request):
+        sender = request.user
+        message = request.POST.get('message')
+        created_on = datetime.now().strftime('%H:%M, %d %b %Y%Z')
+        ad = request.POST.get('ad_slug'),
+        recipient = Ad.objects.filter(slug=ad)
+
+        new_message = Msg(
+            sender=sender,
+            recipient=recipient,
+            message=message,
+            created_on=created_on,
+            ad=ad,
+        )
+
+        new_message.save()
+        msg = Msg.objects.filter(ad=ad)
+        context = {
+            'ad': ad,
+            'sender': self._message(sender, message, created_on),
+            'messages': msg,
+        }
         return render(request, 'msg/msg.html', context)
