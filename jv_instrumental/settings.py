@@ -171,6 +171,7 @@ USE_TZ = True
 if development:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    DEFAULT_FILE_STORAGE = 'images/'
 
 else:
     STATIC_URL = '/static/'
