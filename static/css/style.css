@@ -74,7 +74,7 @@ a {
 }
 
 .hero-img-home {
-    background-image: url('../media/main_background.jpeg');
+    background-image: url('/media/main_background.jpeg');
     height: 80vh;
     background-size: cover;
     background-position: center;
@@ -114,15 +114,15 @@ a {
 }
 
 #feature-img-1 {
-    background-image: url("../media/man_guitar_singing.jpg");
+    background-image: url("/media/man_guitar_singing.jpg");
 }
 
 #feature-img-2 {
-    background-image: url("../media/child_ukulele.png");
+    background-image: url("/media/child_ukulele.png");
 }
 
 #feature-img-3 {
-    background-image: url("../media/girl_keyboards.png");
+    background-image: url("/media/girl_keyboards.png");
 }
 
 .text-shadow {
