@@ -29,6 +29,7 @@ class ProfileView(TemplateView, BaseDetailView, SelectRelatedMixin):
         context = super().get_context_data(**kwargs)
         context['user'] = self.get_object()
         context['user_ads'] = Ad.objects.filter(seller=self.get_object())
+        print(ad.image.url for ad in context['user_ads'])
         context['saved_ads'] = list(Ad.objects.filter(
             saved=self.get_object()
             ))
