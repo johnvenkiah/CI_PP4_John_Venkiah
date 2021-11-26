@@ -4,7 +4,7 @@ html, body {
 }
 
 .main-container {
-    background: linear-gradient(45deg, #ffe0c0, #e991ff42);
+    background: linear-gradient(45deg, #fff7f0, #fbeaff42);
 }
 
 p, span, a, h2, h3, h4, h5 {
@@ -12,7 +12,6 @@ p, span, a, h2, h3, h4, h5 {
 }
 
 p, span, a {
-    font-size: 1rem;
     font-weight: 400;
 }
 
@@ -88,7 +87,7 @@ a {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: linear-gradient(#ffffff, #fff3da, transparent);
+    background: linear-gradient(#ffffff, #fff3da, #fef9fa80);
     padding: 0 .5rem;
 }
 
@@ -100,8 +99,21 @@ a {
     padding: .25rem .55rem;
 }
 
+.nav-link {
+    font-weight: bold;
+}
+
 .cat-circle {
     border-radius: .8rem;
+}
+
+.cat-icons {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.cat-card {
+    margin: 0 auto;
 }
 
 .feature {
@@ -126,7 +138,7 @@ a {
 }
 
 .text-shadow {
-    text-shadow: 2px 2px 10px rgb(100, 100, 100), -2px -2px 10px rgb(73, 73, 73);
+    text-shadow: 1px 1px 10px rgb(100 100 100), -2x -1px 10px rgb(73 73 73);
 }
 
 .card {
