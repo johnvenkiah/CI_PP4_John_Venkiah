@@ -3,6 +3,10 @@ html, body {
     padding: 0;
 }
 
+.main-container {
+    background: linear-gradient(45deg, #ffe0c0, #e991ff42);
+}
+
 p, span, a, h2, h3, h4, h5 {
     font-family: 'PT Sans', sans-serif;
 }
@@ -18,7 +22,7 @@ h2 {
 }
 
 .fade-up {
-    background: linear-gradient(transparent, #f3eee4);
+    /* background: linear-gradient(#f3eee4, transparent); */
 }
 
 a {
@@ -81,7 +85,10 @@ a {
 }
 
 .navbar {
-    background: linear-gradient(#fffaf0, transparent);
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    background: linear-gradient(#ffffff, #fff3da, transparent);
     padding: 0 .5rem;
 }
 
