@@ -37,7 +37,7 @@
                             {% if request.user.is_authenticated %}
                             <a class="btn btn-main" role="button" href="{% url 'ads:post_ad' %}">Post Ad</a>
                             {% else %}
-                            <a class="btn btn-main" role="button" href="{% url 'account_login' %}">Login to Post Ad</a>
+                            <a class="btn btn-main" role="button" href="{% url 'account_login' %}">Post Ad</a>
                             {% endif %}
                         </li>
                         <li class="nav-item">
