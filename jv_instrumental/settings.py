@@ -115,7 +115,7 @@ WSGI_APPLICATION = 'jv_instrumental.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if development:
+if 'USE_AWS' not in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
