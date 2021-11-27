@@ -22,6 +22,8 @@ h2 {
 
 footer {
     background: linear-gradient(transparent, #bba68f);
+    position: absolute;
+    width: 100%;
 }
 
 a {
@@ -484,6 +486,7 @@ top: 1px;
 
 .btn-light {
     box-shadow: 0 0 10px, rgb(136, 136, 136);
+    border: 1px solid rgb(228, 172, 68);
 }
 
 .fa-instagram {
