@@ -6,7 +6,7 @@
 
 **InstruMental - a forum for users to buy and sell used musical instruments and gear.**
 
-[Click here](#) to visit the deployed site.
+[Click here](https://instru-mental.herokuapp.com/) to visit the deployed site.
 
 ## Contents
 
@@ -119,7 +119,7 @@ The home screen contains a lot, but is well organized. It contains:
 
 </details>
 
-THis page contains username and password fields, as well as links to sign up and retrieve password. If a user clicks on Sign Up, fields appear for the user to fill in. 
+This page contains username and password fields, as well as links to sign up and retrieve password. If a user clicks on Sign Up, fields appear for the user to fill in. 
 
 ![Signup](#)
 
@@ -135,22 +135,22 @@ The specific ad clicked on, with more detailed info, including for the seller.
 
 ### 5. User Profile
 
-This contains the basic user information, and the ads that the user has published. All of which can be edited. Users can also view other users profiles and their ads.
+This contains the basic user information, and the ads that the user has published. All of which can be edited. Users can also view other users profiles and their ads, and remove their profile if desired.
 
 ### 6. Messages Popup-Window
 
-A simple two way messages function. Users can message each other about ads on the forum.
+A simple two way messages function. Users can message each other about ads on the forum. This feature is not yet fully functionnal and is displayed to show the functionality in coming versions of the site.
 
 ### 7. Contact
 
-On the Contact page, users can fill in a simple contact form to get in touch with the site owner.
+On the Contact page, users can fill in a simple contact form, sending an email to the site owner via the Django email service.
 
 ## Epics and User Stories
 
 ### Epic 1: Core functionality - User Stories
 
 1. As a user, I can perform a search so that a list of items for sale is generated
-2. As a user, I can refine my search so that the results display items in a specific location
+2. As a user, I can refine my search so that the results display items in a specific location or category.
 3. As a user, I can click on an item so that I can view its details
 4. As a user, If I am not signed in, I am prompted to sign in/up if I click on any of the links or buttons restricted to logged in users
 
@@ -176,37 +176,79 @@ On the Contact page, users can fill in a simple contact form to get in touch wit
 ### Epic 5: The Ad Detail Page - User Stories
 
 15. As a user, I can view a picture and a description of the item on the Ad Detail page
-16. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ads
-17. As a registered user, I can contact seller via the ad
-18. As a logged in user, I can mark my item as sold, so that other users are aware of this
+16. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
+17. As a logged in user, I can mark my item as sold, so that other users are aware of this
 
 ### Epic 6: The Message Window - User Stories
 
-19. As a logged in user, i can view messages as a floating window, so that it is visible wherever I am on the website
-20. As a logged in user, I can view an option to report a certain message, so that I can report bad behaviour from other users
+18. As a registered user, I can contact seller via the ad (Not fully functional yet)
 
 ### Epic 7: The Contact Page - User Stories
-
-21. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
+19. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
 
 ### Epic 8: Admin/Site-Owner Functionality - User Stories
 
-22. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
-23. As a site owner, I can receive a notification if users violate the terms of use, and am able to remove their accounts and/or ads
-24. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
+20. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
+21. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
 
 
 
 ## Technical Design
 
-### Flowchart
+### Code Structure
 
-Below is a flowchart describing the structure of the application, created with [Lucidchart](https://lucid.co/product/lucidchart).
+As usually is the case with Django projects, InstruMental is devided into apps. The apps are listed below.
+
+* user_profile - This caters for users personal profile, edit and remove functionality for that.
+
+* ads - is responsible for all functionality regarding posting, editing, iewing and removing ads.
+
+* contact - A simple page where users can contact the site owner.
+
+* main - This app caters for showing the home or index page, and includes the python code responsible for autogenerating adresses in the area/location fields.
+
+* msg - the message app (under development), caters for messages between users.
+
+* search - responsible for making queries to generate the desired list of ads.
+
+* user_account - A simple app solely responsible for removing a user from the site's database if they desire.
+
+#### Other Directories
+
+* jv_instrumental - the project directory, contains settings and configurations for the entire project.
+
+* docs - documetation, screenshots etc
+
+* media
+
+* static
+
+
+
+rugby_shop: Containing settings.py(Settings) and urls.py(Website urls) for example
+templates: Containing the base.html, allauth(django authentication) and includes html files
+util: Utility for generic pagination reusable code
+static: Base css and Javascript files(toast and send_email) There is some javascript in some html files, but I have tried to minimise that
+manage.py: Main python file for starting the website
+README.md: Readme documentation
+TESTING.md: Testing documentation
+custom_storage.py: AWS Boto3 configuration
+Procfile: To run the application
+Requirements.txt: Containing the python libraries installed Note: Environment variable values are not exposed in the source code, they are stored locally in env.py that is not checked in(and listed in .gitignore, and on Heroku in app settings
+Database
+The website is a data-centric one with html, javascript, css used with the bootstrap(version 5) framework as a frontend
+The backend consists of Python built with the Django framework with a database of a Postgres for the deployed Heroku version(production)
+Postgres is a powerful, open source object-relational database system (https://www.postgresql.org/)
+A SQLLite database was used for local development (https://www.sqlite.org/index.html)
+
+### Schema of models
+
+Below is a schema describing the structure of the application, created with [Lucidchart](https://lucid.co/product/lucidchart).
 
 <details>
     <summary>View flowchart here</summary>
 
-![Flowchart](#)
+![Flowchart](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/schemas/db_schema_model.png)
 
 </details>
 

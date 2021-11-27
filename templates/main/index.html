@@ -45,7 +45,7 @@
                                         <i class="input-icon fa-solid fa-location-dot"></i>
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button href="{% url 'search:search' %}" type="submit" class="btn btn-main shadow">Search Ads</button>
+                                        <button href="{% url 'search:search' %}" type="submit" class="mt-4 btn btn-main shadow">Search Ads</button>
                                     </div>
                                 </form>
                             </div>
@@ -53,16 +53,18 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row g-0 fade-up">
                 <div class="col my-3">
+                    <div class="row banner pt-1">
                     <h3>Categories</h3>
+                    </div>
                     <ul class="list-inline text-center">
                         {% for category in db.cat %}
                         <li class="col-5 col-md-3 list-inline-item">
                             <a href="/search/{{ category.url }}">
-                                <div class="mt-2 p-4 cat-card card bg-dark text-light shadow text-center">
+                                <div class="mt-2 p-2 cat-card card shadow text-center">
                                     <p class="small-text">{{ category.name }}</p>
-                                    <img src="{% static 'images/icons/' %}{{ category.image }}.png"
+                                    <img src="{{ MEDIA_URL }}icons/{{ category.image }}.png"
                                     class="d-flex cat-icons justify-content-center" alt="{{ category.image }}-icon">
                                 </div>
                             </a>
@@ -71,7 +73,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="row mt-3 g-0">
+            <div class="row g-0">
                 <div class="col-sm-4">
                     <div class="card text-white feature">
                         <div class="card-body pad-16 feature-img d-flex align-items-center flex-column"

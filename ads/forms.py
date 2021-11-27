@@ -22,6 +22,7 @@ class AdForm(forms.ModelForm):
             'price',
             'image',
             'location',
+            'sold',
         )
     description = forms.CharField(
         widget=forms.Textarea(
@@ -31,5 +32,6 @@ class AdForm(forms.ModelForm):
             }
         )
     )
+    # sold = forms.BooleanField()
     category = forms.ChoiceField(
             choices=zip(category_dict.keys(), category_dict.keys()))

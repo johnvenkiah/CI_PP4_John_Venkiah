@@ -1,24 +1,22 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-<div class="container-fluid">
     <div class="col p-0">
         <div class="row justify-content-center shadow-lg pad-16 mb-8 bg-image hero-img-home"
         style="background-image: url('https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/107693551_2983534108412424_4619359158746219415_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=e3f864&_nc_ohc=DvnQmmBpcD4AX-H--0N&_nc_ht=scontent-arn2-1.xx&oh=3ac77778042f14876f46215e05641ae8&oe=61A30EB4');">
-        <div class="col-4">
-            <div class="pad-16 text-white text-shadow">
+        <div class="col-md-4">
+            <div class="card bg-dark pad-16 text-white mt-5">
 
-                <h1>Remove account</h1>
-                <p>Do youwant to delete this account?</p>
-                    <form method="post">
+                <h2 class="text-white text-shadow">Remove account</h2>
+                <p class="text-shadow">Are you sure you want to delete your account?</p>
+                    <form method="post" class="d-grid">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button class="btn btn-success mt-3" type="submit">Remove Account</button>
+                        <button class="btn btn-danger mt-3 shadow" type="submit">Remove Account</button>
                     </form>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

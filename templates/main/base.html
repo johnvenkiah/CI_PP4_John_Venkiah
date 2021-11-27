@@ -15,12 +15,12 @@
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" class="css">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'media/favicon.ico' %}" type="image/x-icon">
     <title>InstrMental | Used Music Gear</title>
 </head>
 
 <body>
-    <div class="d-flex flex-column min-vh-100">
+    <div class="d-flex main-container flex-column min-vh-100">
         <nav class="navbar autohide navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <h1>
@@ -41,7 +41,7 @@
                             {% endif %}
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'main:home' %}">Home</a>
+                            <a class="nav-link" aria-current="page" href="{% url 'main:home' %}">Home</a>
                         </li>
                         <li class="nav-item">
                             {% if request.user.is_authenticated %}
@@ -75,7 +75,7 @@
             </div>
         </nav>
         <div class="row g-0">
-            <div class="col fade-up">
+            <div class="col">
                 <p class="text-secondary p-2">
                     Used Musical Instruments Across the UK
                 </p>
@@ -99,12 +99,12 @@
     <!-- Footer -->
         <footer class="footer mt-auto">
             <p class="mt-4 text-center text-dark svg">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-instagram ms-3"></i>
-                <i class="fab fa-twitter ms-3"></i>
-                <i class="fab fa-youtube ms-3"></i>
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/"><i class="fab fa-instagram ms-3"></i></a>
+                <a href="https://www.twitter.com/"><i class="fab fa-twitter ms-3"></i></a>
+                <a href="https://www.youtube.com/"><i class="fab fa-youtube ms-3"></i></a>
             </p>
-            <p class="mt-4 text-center text-dark">© 2021 John Venkiah</p>
+            <p class="text-center mb-0 text-dark">© 2021 John Venkiah</p>
         </footer>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"

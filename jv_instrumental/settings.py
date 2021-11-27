@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+<<<<<<< HEAD
 import sys
+=======
+>>>>>>> deploytest
 from pathlib import Path
 import dj_database_url
 from django.contrib.messages import constants as messages
@@ -25,7 +28,12 @@ development = os.environ.get('DEVELOPMENT')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+<<<<<<< HEAD
 BASE_DIR = Path(__file__).resolve().parent.parent
+=======
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+>>>>>>> deploytest
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
@@ -36,7 +44,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 DEBUG = development
+=======
+DEBUG = True
+>>>>>>> deploytest
 
 if development:
     ALLOWED_HOSTS = ['localhost']
@@ -100,6 +112,10 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+<<<<<<< HEAD
+=======
+                'django.template.context_processors.media',
+>>>>>>> deploytest
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -111,6 +127,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'jv_instrumental.wsgi.application'
 
 
+<<<<<<< HEAD
 if development:
 
     DATABASES = {
@@ -124,12 +141,23 @@ if development:
             'TEST': {
                 'NAME': os.environ.get('DEV_DB_NAME'),
             }
+=======
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+if 'USE_AWS' not in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+>>>>>>> deploytest
         }
     }
 
 else:
 
     DATABASES = {
+<<<<<<< HEAD
         'default': {
             'ENGINE': os.environ.get('DB_ENGINE'),
             'NAME': os.environ.get('DB_NAME'),
@@ -143,6 +171,12 @@ else:
         }
     }
 
+=======
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+
+
+>>>>>>> deploytest
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -182,6 +216,7 @@ USE_L10N = True
 USE_TZ = True
 
 
+<<<<<<< HEAD
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -207,6 +242,75 @@ else:
     DEFAULT_FILE_STORAGE = 'main.storage_backends.MediaStorage'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+=======
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'instru-mental-content'
+    AWS_S3_REGION_NAME = 'eu-north-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # STATIC_ROOT = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# if not development:
+# # STATIC_URL = '/static/'
+# # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#     AWS_S3_OBJECT_PARAMETERS = {
+#         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+#         'CacheControl': 'max-age=94608000',
+#     }
+
+#     AWS_STORAGE_BUCKET_NAME = 'instru-mental-content'
+#     AWS_S3_REGION_NAME = 'eu-north-1'
+#     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+#     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+#     # Static and media files
+#     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+#     STATICFILES_LOCATION = 'static'
+#     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+#     MEDIAFILES_LOCATION = 'media'
+
+#     # Override static and media URLs in production
+#     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+#     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+# DEFAULT_FILE_STORAGE = 'main.storage_backends.MediaStorage'
+>>>>>>> deploytest
 
 # Gmail Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
