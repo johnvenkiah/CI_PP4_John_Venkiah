@@ -548,3 +548,7 @@ font-size: 3rem;
 .card.bg-dark {
     opacity: .8;
 }
+
+input.bg-secondary:hover {
+    color: white;
+}
