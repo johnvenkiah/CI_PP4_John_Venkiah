@@ -39,30 +39,29 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col mt-3">
             {% if request.user.username == ad.seller.username %}
-            <a class="btn btn-success"href="{% url 'ads:ad_update' ad.seller ad.slug %}">Edit Ad</a>
+            <a class="btn btn-main" href="{% url 'ads:ad_update' ad.seller ad.slug %}">Edit Ad</a>
             {% endif %}
         </div>
     </div>
+    {% if user.is_authenticated and request.user.username != ad.seller.username %}
     <div class="row">
-        <div class="col">
-            <form action="{% url 'msg:msg' %}" method="post">{% csrf_token %}
-                <input type="text" name="recipient" id="recipient" value="{{ ad.seller }}">
-                <input type="text" name="ad_slug" id="ad_slug" value="{{ ad.slug }}">
-                <input type="text" name="message" id="message" value="message">
-                <button type="submit">Send Message</button>
+            <form class="col mt-3 d-grid" action="{% url 'msg:msg' %}" method="post">{% csrf_token %}
+                <input type="hidden" name="recipient" id="recipient" value="{{ ad.seller }}">
+                <input type="hidden" name="ad_slug" id="ad_slug" value="{{ ad.slug }}">
+                <input type="hidden" name="message" id="message" value="message">
+                <button class="btn btn-main" type="submit">Send Message</button>
             </form>
             <!-- <a href="" class="btn btn-main">
                 Send message
             </a> -->
-        </div>
     </div>
-    <div class="row mt-4">
-        <div class="col-6 mx-auto">
+    {% endif %}
+    <div class="row mx-auto mt-3">
             {% if user.is_authenticated %}
                 {% if request.user.username != ad.seller.username %}
-                <form class="d-inline" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
+                <form class="d-grid" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
                     {% csrf_token %}
                     <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn btn-light save-share-link">
                         Save to My Ads
@@ -78,8 +77,6 @@
             <p>Please log in to save ads.</p>
             <!-- <span class="text-secondary"><i class="far fa-heart"></i></span> -->
             {% endif %}
-        </div>
-        <div class="col-6 mx-auto">
             <button type="button" class="btn btn-light save-share-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Share Ad
                 <i class="fas fa-share-square"></i>
@@ -122,7 +119,6 @@
                 </div>
               </div>
         </div>
-    </div>
 </div>
 
 {% endblock %}
