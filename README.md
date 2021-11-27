@@ -213,12 +213,17 @@ As usually is the case with Django projects, InstruMental is devided into apps. 
 
 * user_account - A simple app solely responsible for removing a user from the site's database if they desire.
 
+#### Other Directories
 
-home (part of the original Boutique Ado project): This app contains functionality regarding the users home page
-news: A newly written app, that allows admin users to publish news items, and allows regular users to view and comment on the news items
-products (part of the original Boutique Ado project): This app contains functionality regarding a product. I added functionality for adding/removing a rating/comment to a product
-profiles (part of the original Boutique Ado project): This app contains functionality regarding a users profile and order history
-To complement the apps there are
+* jv_instrumental - the project directory, contains settings and configurations for the entire project.
+
+* docs - documetation, screenshots etc
+
+* media
+
+* static
+
+
 
 rugby_shop: Containing settings.py(Settings) and urls.py(Website urls) for example
 templates: Containing the base.html, allauth(django authentication) and includes html files
