@@ -2,60 +2,63 @@
 {% load static %}
 {% block content %}
 
-{% if not ads %}
-<div class="row g-0">
-    <div class="col banner mt-2">
-        <h4 class="custom-text-shadow pt-2">Sorry, no results for {{ search_query }}</h4>
+<div class="container-fluid">
+    {% if not ads %}
+    <div class="row">
+        <div class="col banner mt-2">
+            <h4 class="custom-text-shadow pt-2">Sorry, no results for {{ search_query }}</h4>
+        </div>
     </div>
-</div>
-<div class="row g-0">
-    <div class="col mt-5">
-        <a class="btn btn-main m-4" href="{% url 'main:home' %}">Try a New Search</a>
+    <div class="row">
+        <div class="col mt-5">
+            <a class="btn btn-main m-4" href="{% url 'main:home' %}">Try a New Search</a>
+        </div>
     </div>
-</div>
-{% else %}
-<div class="row g-0">
-    <div class="col banner mt-2">
-        <p class="custom-text-shadow pt-2">Search results for {{ search_query }}</p>
+    {% else %}
+    <div class="row">
+        <div class="col banner mt-2">
+            <p class="custom-text-shadow pt-2">Search results for {{ search_query }}</p>
+        </div>
     </div>
-</div>
-{% for ad in ads %}
-<div class="row">
-    <div class="col">
-        <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
-            <div class="row">
-                <div class="col-4">
-                    <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">
-                </div>
-                <div class="col-8">
-                    <small class="text-small ms-auto">Posted on {{ ad.created_on }}</small>
-                    <p class="card-title">{{ ad.title }}</p>
-                    <div class="elips-container">
-                        <small class="card-text elips-text">
-                            {{ ad.description }}
-                        </small>
+    {% for ad in ads %}
+    <div class="row">
+        <div class="col">
+            <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
+                <div class="row">
+                    <div class="col-4">
+                        <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">
+                    </div>
+                    <div class="col-8">
+                        <small class="text-small ms-auto">Posted on {{ ad.created_on }}</small>
+                        <p class="card-title">{{ ad.title }}</p>
+                        <div class="elips-container">
+                            <small class="card-text elips-text">
+                                {{ ad.description }}
+                            </small>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% if ad.sold %}
-            <div class="row">
-                <div class="col-4">
-                    <p class="card-text sold my-1">£{{ ad.price }}</p>
+                {% if ad.sold %}
+                <div class="row">
+                    <div class="col-4">
+                        <p class="card-text sold my-1">£{{ ad.price }}</p>
+                    </div>
+                    <div class="col-8">
+                        <p class="card-text text-danger mt-1">SOLD</p>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <p class="card-text text-danger mt-1">SOLD</p>
+                {% else %}
+                <div class="row">
+                    <div class="col">
+                        <p class="card-text my-1">£{{ ad.price }}</p>
+                    </div>
                 </div>
-            </div>
-            {% else %}
-            <div class="row">
-                <div class="col">
-                    <p class="card-text my-1">£{{ ad.price }}</p>
-                </div>
-            </div>
-            {% endif %}
-        </a>
+                {% endif %}
+            </a>
+        </div>
     </div>
+
+    {% endfor %}
+    {% endif %}
 </div>
-{% endfor %}
-{% endif %}
 {% endblock %}
