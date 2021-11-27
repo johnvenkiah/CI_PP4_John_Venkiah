@@ -2,6 +2,23 @@
 {% load static %}
 {% block content %}
 
+{% if not ads %}
+<div class="row g-0">
+    <div class="col banner mt-2">
+        <h4 class="custom-text-shadow pt-2">Sorry, no results for {{ search_query }}</h4>
+    </div>
+</div>
+<div class="row g-0">
+    <div class="col mt-5">
+        <a class="btn btn-main m-4" href="{% url 'main:home' %}">Try a New Search</a>
+    </div>
+</div>
+{% else %}
+<div class="row g-0">
+    <div class="col banner mt-2">
+        <h4 class="custom-text-shadow pt-2">earch results for {{ search_query }}</h4>
+    </div>
+</div>
 {% for ad in ads %}
 <div class="col-10 mx-auto">
     <a class="card feature pad-16 mt-3" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
@@ -14,4 +31,5 @@
     </a>
 </div>
 {% endfor %}
+{% endif %}
 {% endblock %}

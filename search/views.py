@@ -12,6 +12,7 @@ def search_view(request):
     search = request.GET.get('search')
     category = request.GET.get('select-category')
     area = request.GET.get('select-area')
+    search_query = f'{search} in {category}, {area}'
 
     if search != '' and search is not None:
         ads = ads.filter(
@@ -24,6 +25,7 @@ def search_view(request):
         ads = ads.filter(Q(city=area))
     context = {
         'ads': ads,
+        'search_query': search_query,
     }
 
     # searchlog.search_log = request.get_full_path()

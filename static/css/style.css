@@ -20,8 +20,8 @@ h2 {
     color: #636363;
 }
 
-.fade-up {
-    /* background: linear-gradient(#f3eee4, transparent); */
+footer {
+    background: linear-gradient(transparent, #bba68f);
 }
 
 a {
@@ -32,11 +32,13 @@ a {
 .banner, .banner-2, .banner-3 {
     box-shadow: 0 0 10px #ffeed485;
     width: 100%;
+    margin: 0 auto;
 }
 
 .banner {
     background: linear-gradient(
-    45deg, #dff3ef, transparent);
+    45deg, #edf3df, transparent);
+    padding-left: 2%;
 }
 
 .banner-2 {
@@ -101,6 +103,7 @@ a {
 
 .nav-link {
     font-weight: bold;
+    text-shadow: 1px 1px 10px rgb(158 140 104 / 72%);
 }
 
 .cat-circle {
@@ -152,7 +155,7 @@ a {
 
 .btn {
     display: block;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .btn-outline-light:hover {
