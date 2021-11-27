@@ -500,3 +500,8 @@ top: 1px;
 .fa-youtube {
     color: #ff0100;
 }
+
+
+.sold {
+    text-decoration: line-through;
+  }

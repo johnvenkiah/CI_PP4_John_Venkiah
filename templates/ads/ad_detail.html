@@ -19,9 +19,7 @@
             {% else %}
             <p class="card-text mt-1"><i class="fas fa-map-marker-alt"></i><small> {{ ad.city }}</small></p>
             {% endif %}
-            <p class="card-text mt-1">£{{ ad.price }}</p>
         </div>
-
         <div class="col-6">
             <p><small class="mt-1">{{ ad.created_on }}<small></p>
             <small>Seller:</small>
@@ -31,6 +29,22 @@
             <p class="card-text mt-1">{{ ad.category }}</p>
         </div>
     </div>
+    {% if ad.sold %}
+    <div class="row">
+        <div class="col-6">
+            <p class="card-text my-1">£{{ ad.price }}</p>
+        </div>
+        <div class="col-6">
+            <p class="card-text sold text-danger mt-1">SOLD</p>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col">
+            <p class="card-text my-1">£{{ ad.price }}</p>
+        </div>
+    </div>
+    {% endif %}
     <div class="row">
         <div class="col-12">
             <div class="card bg-creme">
