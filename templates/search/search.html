@@ -16,19 +16,45 @@
 {% else %}
 <div class="row g-0">
     <div class="col banner mt-2">
-        <h4 class="custom-text-shadow pt-2">earch results for {{ search_query }}</h4>
+        <h4 class="custom-text-shadow pt-2">Search results for {{ search_query }}</h4>
     </div>
 </div>
 {% for ad in ads %}
-<div class="col-10 mx-auto">
-    <a class="card feature pad-16 mt-3" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
-        <h4 class="card-title">{{ ad.title }}</h4>
-        <p class="card-text">{{ ad.created_on }}</p>
-        <p class="card-text">{{ ad.category }}</p>
-        <p class="card-text">{{ ad.description }}</p>
-        <p class="card-text">£{{ ad.price }}</p>
-        <img class="feature-img" src="{{ ad.image.url }}" alt="">
-    </a>
+<div class="row">
+    <div class="col">
+        <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
+            <div class="row">
+                <div class="col-4">
+                    <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">
+                </div>
+                <div class="col-8">
+                    <small class="text-small ms-auto">Posted on {{ ad.created_on }}</small>
+                    <p class="card-title">{{ ad.title }}</p>
+                    <div class="elips-container">
+                        <small class="card-text elips-text">
+                            {{ ad.description }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+            {% if ad.sold %}
+            <div class="row">
+                <div class="col-4">
+                    <p class="card-text sold my-1">£{{ ad.price }}</p>
+                </div>
+                <div class="col-8">
+                    <p class="card-text text-danger mt-1">SOLD</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col">
+                    <p class="card-text my-1">£{{ ad.price }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </a>
+    </div>
 </div>
 {% endfor %}
 {% endif %}
