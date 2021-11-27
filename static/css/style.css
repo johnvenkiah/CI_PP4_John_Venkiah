@@ -89,7 +89,7 @@ a {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: linear-gradient(#ffffff, #fff3da, #fef9fa80);
+    background: linear-gradient(#ffcfdb, #fff8ea, #fef9fa80);
     padding: 0 .5rem;
 }
 
@@ -141,7 +141,7 @@ a {
 }
 
 .text-shadow {
-    text-shadow: 1px 1px 10px rgb(100 100 100), -2x -1px 10px rgb(73 73 73);
+    text-shadow: 1px 1px 10px rgb(158 140 104 / 72%);
 }
 
 .card {
