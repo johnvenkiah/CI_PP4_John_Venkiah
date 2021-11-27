@@ -12,7 +12,23 @@ def search_view(request):
     search = request.GET.get('search')
     category = request.GET.get('select-category')
     area = request.GET.get('select-area')
-    search_query = f'{search} in {category}, {area}'
+
+    if search != '':
+        search_string = f'{search}'
+    else:
+        search_string = 'all Ads'
+
+    if category != '- All Categories -':
+        cat_string = f'{category}'
+    else:
+        cat_string = 'all Categories'
+
+    if area != '- All of Great Britain -':
+        area_string = f'{area}'
+    else:
+        area_string = ' all of Great Britain'
+
+    search_query = f'{search_string} in {cat_string}, {area_string}'
 
     if search != '' and search is not None:
         ads = ads.filter(
@@ -23,12 +39,11 @@ def search_view(request):
 
     if area != '- All of Great Britain -':
         ads = ads.filter(Q(city=area))
+
     context = {
         'ads': ads,
         'search_query': search_query,
     }
-
-    # searchlog.search_log = request.get_full_path()
 
     return render(request, 'search/search.html', context)
 
@@ -47,7 +62,4 @@ class CategoryDetail(SingleObjectMixin, ListView):
 
     def get_queryset(self, **kwargs):
         ad_qs = self.object.ad_set.filter(is_active=True)
-        # area = Area.get_for_request(self.request)
-        # if area:
-        #     return item_qs.filter(area=area)
         return ad_qs
