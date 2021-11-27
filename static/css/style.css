@@ -22,8 +22,8 @@ h2 {
 
 footer {
     background: linear-gradient(transparent, #bba68f);
-    position: absolute;
-    width: 100%;
+    /* position: absolute;
+    width: 100%; */
 }
 
 a {
@@ -504,4 +504,27 @@ top: 1px;
 
 .sold {
     text-decoration: line-through;
-  }
+}
+
+label[for="id_sold"] {
+display: inline;
+text-align: left;
+width: fit-content;
+border: none;
+}
+
+#id_sold {
+width: fit-content;
+display: inline;
+margin-top: 18%;
+font-size: 3rem;
+}
+
+.hide-sold label[for="id_sold"], .hide-sold label[for="id_sold"] #id_sold {
+    display: none;
+}
+
+.post-ad-form p:nth-child(8) {
+    margin: 0 auto 0 0;
+    align-self: flex-start;
+}

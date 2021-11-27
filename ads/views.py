@@ -35,6 +35,7 @@ class AdDetailView(DetailView):
             },
         )
 
+
 class AdSave(View):
 
     def post(self, request, slug):
@@ -70,6 +71,8 @@ class AdUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(AdUpdateView, self).get_context_data(**kwargs)
         context['google_api_key'] = self.google_api_key
+        # context['sold_form'] = self.sold_form
+
         return context
 
     @method_decorator(login_required)
