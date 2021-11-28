@@ -261,23 +261,9 @@ li .btn-main {
 }
 
 .alert {
-    position: fixed;
-    width: 100vw;
-    border-radius: 0;
-    font-size: .7rem;
-    padding: 5px 0;
-    left: 0;
-    top: 16%;
-    opacity: .7;
+    padding: 15px;
     text-align: center;
-}
-
-.alert .btn-close {
-    position: absolute;
-    top: 8px!important;
-    left: 250px;
-    right: 0;
-    padding: 0 0 0 100px!important;
+    background-color: rgba(125, 192, 0, 0.39);
 }
 
 .login input, .post-ad-form input, select, .textarea, .signup input {
@@ -622,18 +608,6 @@ input.bg-secondary:hover {
         width: 30%;
     }
 
-    .alert {
-        border-radius: 5px;
-        padding: 5px 0;
-        left: 50vw;
-        margin-left: -25vw;
-        top: 9%;
-    }
-
-    .alert .btn-close {
-        left: 310px;
-    }
-
     .profile-card {
         height: 90%;
     }
@@ -656,15 +630,5 @@ input.bg-secondary:hover {
     .profile-card {
         height:60%;
         padding: 20px 0 0;
-    }
-
-    .alert {
-        left: 50%;
-        margin-left: -50%;
-        width: 100%;
-    }
-
-    .alert .btn-close {
-        left: 80%;
     }
 }
