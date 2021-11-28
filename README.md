@@ -144,6 +144,8 @@ On the Contact page, users can fill in a simple contact form, sending an email t
 
 ### Epic 1: Core functionality - User Stories
 
+1. As a user, I can easily navigate to anywhere of relevance on the site by scrolling to the top of the page and clicking a link
+
 1. As a user, I can perform a search so that a list of items for sale is generated
 
 2. As a user, I can refine my search so that the results display items in a specific location or category.
@@ -152,18 +154,18 @@ On the Contact page, users can fill in a simple contact form, sending an email t
 
 4. As a user, If I am not signed in, I am redirected to sign in/up if I click on any of the links or buttons restricted to logged in users
 
+5. As a user, I get direct confirmation of my actions made on the website
+
 ### Epic 2: User Authentication - User Stories
 
-5. As a user, I can sign up, so that I can utilise the full functionality of the website
+6. As a user, I can sign up, so that I can utilise the full functionality of the website
 
-6. As a registered user, i would like my login info and the ability to edit my personal ads be restricted to me only
+7. As a registered user, i would like my login info and the ability to edit my personal ads be restricted to me only
 7. As a registered user, I can receive a new password if it is forgotten, so that i can login to the site again
 
 ### Epic 3: Features for logged in users - User Stories
 
 8. As a registered user, I would like to see a “Sign in/Sign Out” option, so that i can sign in or out
-
-9. . As a logged in user, I can click on “send message”, so that I can communicate with buyers/sellers
 
 10. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
 
@@ -171,7 +173,7 @@ On the Contact page, users can fill in a simple contact form, sending an email t
 
 11. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
 
-12. As a registered user, I can view other buyers or sellers profiles
+12. As a registered user, I can view other sellers profiles
 
 13. As a registered user, I can view other sellers ads on their profiles
 
@@ -302,106 +304,185 @@ This is the means in which users can make their way around the website. From her
 
 ![Navbar](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/docs/screenshots/features/navbar.png)
 
-This is always visible at the top of the page, once scrolled up. I chose not to retain it as a 'sticky' navbar, so that the smallest of screens can 
+This is always visible at the top of the page, once scrolled up. I chose not to retain it as a 'sticky' navbar, so that the smallest of screens can view as much content as possible.
+
+**User stories/site-owner goals covered:**
+
+1. Easily navigate the websites pages via the menu or links provided
+
+3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+
+4. Get responses and confirmation from the website by my interactions with it
+
+15. Display a menu in a navigation bar or popout menu at the top of the page
+
+___
+#### Feature 2: The Home Page
+
+![Home Page](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_two_desktop.png)
+
+The Home page has three big buttons, each containing a main feature of the site; Quiz, Learn and Play. Due to the simple nature of this site, there is little more here to distract, only the main logo, the contact link at the bottom and the footer.
+
+**User stories/site-owner goals covered:**
+
+1. Easily navigate the websites pages via the menu or links provided
+
+2. Be presented with a well designed, user-friendly interface
+
+3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens.
 
 
-**Patient user stories covered:**
+#### Feature 3: The Quiz
 
-1. I would like to be able to book an appointment at a time of my choosing, should the appointement be available
-2. I would like to be alerted if my details are saved before I enter them
-3. I would like to be well informed from the application throughout the booking process
-4. I would like to be alerted if my choice is invalid anywhere in the application, and get a chance to try again
-5. I would like to be able to confirm the booking right before it is made
-6. I would like to view a confirmation of the booking when it is made
-7. I would like to at any point cancel my booking during the booking process should I wish to do so
+![The Quiz](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_3_quiz_mobile.png)
 
-**Staff member user stories covered**
+The quiz is a seemingly simple feature, but with a lot of functionality. The user has 60 seconds to answer the most questions correctly.
 
-8. I would like for users to only be able to book appointments on weekdays between 9 and 17, and when the schedule is free
-9. I would like appointments made by new users add a new row with their information to the Google Sheets patient log
-10. I would like the appointments made by patients dynamically update my Google Calendar
-11. I would like the changes made in the application to update the events on my Google Calendar
+The quiz has several sub-features of its own:
 
-**Site owner goals covered**
+- The staffbox
 
-18. I would like for the application to contain validated Python code without returning any errors, whatever the user does
+![Staffbox](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/staffbox.png)
+
+Displays an image of the note in question for the user to answer. When answered, the image is updated to display the next note in question.
+
+- The answers box
 
 
-### Feature 2: The Schedule
 
-The Schedule is accessed via the staff area, which only users with a password can access. Here, users are initially shown the schedule from the current time and 7 days forward. The appointments are retrieved by an API request to FeelGood Physio's Google Calender, and can be edited and removed, by user inputting number displayed within the appointment.
+On opening the page, the answers box contains one button: "Lets Play!"
 
-The user can navigate with keys "n" for next and "b" for back, which will respectively retrieve the schedule for the next or previous week. New numbers are displayed for the user to modify specific appointments. If the user enters "e" for edit, the user gets several choices to edit below:
+Clicking on this starts the quiz and displays four buttons, with three incorrect and one correct answer. The value of these buttons are updated for each question answered.
 
-- Time: edit the date and time of the appointment
-- Name: Change the name given in the appointment
-- Details: Change the patient's email adress or symptoms description
+If the user clicks on the incorrect answer button, the user is alerted that this was incorrect by sounds and animation, and the user is informed of the correct answer.
 
-Upon changing these parameters and confirming the changes, the appointments are updated in the Google Calendar. The user is notified of this and can return to the staff menu or exit.
+If the user clicks on the correct answer-button, the user is greeted with a different sound and animation, and and the score above is incremented.
+
+- The Timer
+
+This keeps track of the time, once the user has clicked "Let's Play!"; the timer counts down from 60 to 0.
+
+- The Score
+
+Once a user has answered a question correctly, the score is incremented with 10 points. The score is then displayed in an end game modal.
+
+- The End Game Modal
+
+This is displayed once the 60 seconds are up, covering the screen. The user is greeted with one of five different greetings, depending on the score they have achieved.
+
+The modal window also displays two buttons with choices for the user; "Play Again" and "Close".
+
+**User stories/site-owner goals covered:**
+
+2. Be presented with a well designed, user-friendly interface
+
+3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+
+4. Get responses and confirmation from the website by my interactions with it
+
+5. Be able to play a quiz on note names, symbols and note lengths
+
+6. Get points if I answer a question right
+
+7. See a timer ticking down from one minute
+
+8. See an end game screen alerting me of my score and how the quiz went
+
+9. Be able to choose to close the end game screen or play again
+
+16. Display a menu in a navigation bar or popout menu at the top of the page
+
+17. Display a quiz for users to test their knowledge
+
+21. Have a website that contains validated HTML, CSS and JavaScript
 
 
-<details>
-    <summary>Click to view images of feature 2</summary>
+#### Feature 4: The Piano (Play Page)
 
-*The schedule*
-![The Schedule](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/schedule/schedule.png)
+![The Piano](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_4_piano_desktop.png)
 
-*The edit menu*
-![The edit menu](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/schedule/edit_apntmnt.png)
+The play page has two sub-features, a miniature piano and a stave showing both the bass clef and treble clef. When the user clicks a key, the relevant note displays on the stave together with the note name. The correct note is also heard when clicking it.
 
-</details>
+**User stories/site-owner goals covered:**
 
-**Staff member goals covered**
+2. Be presented with a well designed, user-friendly interface
 
-11. I would like the changes made in the application edit menu to update the events on my Google Calendar
-13. I would like to view my schedule for the coming week
-14. I would like to navigate between weeks in my schedule
-15. I would like to be able to update or remove any appointment viewed in my schedule
-16. I would like to easily be able to return to the main staff area in the application
-17. I would like the staff area to be password protected
+3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
 
-**Site owner goals covered**
+4. Get responses and confirmation from the website by my interactions with it
 
-18. I would like for the application to contain validated Python code without returning any errors, whatever the user does
+10. Be able to play notes on a piano on the screen and see which tone is being played
+
+11. Be able to play the notes on the computer keyboard
+
+19. Display a page where users can play the piano and view the note played
+
+21. Have a website that contains validated HTML, CSS and JavaScript
 
 
-### Feature 3: The Patient Log
+#### Feature 5: The Learn Page
 
-This is where staff can access data from patients that have booked via the booking system. The system lets users know before initiating the booking that their data will be logged, and after a successful booking the datails are logged in the Google Sheet via the API as a new entry. If the user already exists, their symptoms are the only thing that will be updated.
 
-Even though the same details are kept in the Google Calendar, the patient log is a way to consolidate information if staff are looking for a specific patient.
 
-<details>
-    <summary>Click to view images of feature 3</summary>
+Here, the user can navigate through a list of videos generated a search by the YouTube API, updating the list dynamically.
+In the list, title, thumbnail and decription data is displayed for each video in the list.
 
-*The patient log*
-![Patient Log](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/patient_log/patient_log.png)
+Users can click on a video and view it in the main viewing window, located either to the left of the screen or at the top for mobile devices in portrait mode.
 
-*The patient log with an existing patient*
-![Old patient books new appointment](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/patient_log/patient_log_old_patient.png)
+**User stories/site-owner goals covered:**
 
-*The updated details*
-![The Google Sheet with the updated details](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/patient_log/sheet_update_sympt.png)
+2. Be presented with a well designed, user-friendly interface
 
-</details>
+3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
 
-**Staff member goals covered:**
+4. Get responses and confirmation from the website by my interactions with it
 
-9. I would like appointments made by new users add a new row with their information to the Google Sheets patient log
-12. I would like to be able to view the patient log
-16. I would like to easily be able to return to the main staff area in the application
-17. I would like the staff area to be password protected
+12. View videos to learn about music theory and sight reading
 
-**Site owner goals covered**
+18. Display a learn page containing the results of a YouTube search dynamically updated, using YouTube API
 
-18. I would like for the application to contain validated Python code without returning any errors, whatever the user does
+21. Have a website that contains validated HTML, CSS and JavaScript
+
+
+#### Feature 6: The Contact Page
+
+![Contact Page](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_6_contact_mobile.png)
+
+The "contact" page contains a simple form, where the user can fill in their name, email address and message, which they can send by clicking the submit-button.
+
+The form is validated by the contact.js JavaScript file, and sent via the Email web service [EmailJS](https://www.emailjs.com/) to my email inbox.
+
+**User stories/site-owner goals covered:**
+
+3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+
+4. Get responses and confirmation from the website by my interactions with it
+
+13. Get in touch with the site owner
+
+20. Be able to be contacted should the user wish to do so, through an emailing service to my private email address
+
+21. Have a website that contains validated HTML, CSS and JavaScript
+
+
+#### Feature 7: The 404-error Page
+
+The 404-error page is displayed when a user enters an invalid link within the website. From here, users can easily navigate to the other pages of the website.
+
+**User stories/site-owner goals covered:**
+
+3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+
+14. View an errors page if I have entered an invalid url within the website
+
+21. Have a website that contains validated HTML, CSS and JavaScript
+
 
 
 ### Features to be implemented
+___
 
-There are endless possibilities with an application like this. If the clinic were to hire more than one therapist, they could each have their own calendar and log. Patients could have the possibility to add a user account with which they log in to the system, and can reschedule or cancel their appointment.
-
-An important feature that the log now lacks is the possibility for staff to edit entries; this will be implemented at a later stage.
+This is a basic web application but could be expanded with all kinds of sections and functions. For example, there could be a play-by-ear section, where notes are played and the user has to answer which note. There could also be a chords-section, introducing chords and their uses in music. Users could create a profile, save videos they like, compete in high scores and a lot more.
 
 
 ## Technologies used
