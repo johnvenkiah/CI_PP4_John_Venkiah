@@ -59,16 +59,6 @@
             {% endif %}
         </div>
     </div>
-    {% if user.is_authenticated and request.user.username != ad.seller.username %}
-    <div class="row">
-            <form class="col mt-3 d-grid" action="{% url 'msg:msg' %}" method="post">{% csrf_token %}
-                <input type="hidden" name="recipient" id="recipient" value="{{ ad.seller }}">
-                <input type="hidden" name="ad_slug" id="ad_slug" value="{{ ad.slug }}">
-                <input type="hidden" name="message" id="message" value="message">
-                <button class="btn btn-main" type="submit">Send Message</button>
-            </form>
-    </div>
-    {% endif %}
     <div class="row mt-3">
             {% if user.is_authenticated %}
                 {% if request.user.username != ad.seller.username %}

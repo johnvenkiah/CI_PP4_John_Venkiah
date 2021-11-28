@@ -38,7 +38,7 @@
 {% if user_ads %}
     <div class="row">
         <div class="col banner mt-2">
-            <h4 class="custom-text-shadow pt-2">My Ads</h4>
+            <h4 class="custom-text-shadow pt-2">{{ user }}'s' Ads</h4>
         </div>
     </div>
         {% for ad in user_ads %}
@@ -124,7 +124,7 @@
             </div>
         </div>
         {% endfor %}
-        {% else %}
+        {% elif request.user.username == ad.seller.username %}
     <div class="row">
         <div class="col banner-3 mt-2">
             <h4 class="custom-text-shadow pt-2">No Ads Saved</h4>
