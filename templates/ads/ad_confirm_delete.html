@@ -3,10 +3,14 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div class="col mx-auto">
+    <div class="col col-md-8 mx-auto">
+        <h2>Delete</h2>
         <form method="post" class="d-grid">{% csrf_token %}
-            <h2 class="my-3">Are you sure you want to delete "{{ object }}"?</h2>
-            <input class="btn btn-danger mt-5" type="submit" value="Confirm">
+            <p class="my-3">Are you sure you want to delete your ad "{{ object }}"?</p>
+            <div class="card my-4">
+                <img src="{{ MEDIA_URL }}{{ object.image }}" alt="{{ object.image }}" class="feature-img col col-md-5 card">
+            </div>
+            <input class="btn btn-danger mt-2" type="submit" value="Confirm">
         </form>
     </div>
 </div>
