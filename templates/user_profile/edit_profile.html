@@ -2,7 +2,8 @@
 {% load static %}
 {% block content %}
 <div class="row">
-    <div class="col-10 mt-4 mx-auto">
+    <div class="col-10 col-lg-6 mt-4 mx-auto">
+        <h2>Edit Profile</h2>
         <form class="post-ad-form d-grid" method="post">
             {% csrf_token %}
             {{ u_form.as_p }}
@@ -13,13 +14,13 @@
         </p> -->
             <button class="btn btn-main" href=# type="submit">Save Info</button>
         </form>
-        <div class="mt-4">
+        <div class="my-5">
             <a href="{% url 'user_account:remove_account' request.user.id %}" class="btn btn-danger">Remove account</a>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-6 mt-4 mx-auto">
+    <div class="col-6 mt-5 mx-auto">
         {{ m | safe }}
     </div>
 <script src="/static/js/autocomplete_location.js"></script>

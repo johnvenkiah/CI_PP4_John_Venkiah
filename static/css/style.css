@@ -623,7 +623,6 @@ input.bg-secondary:hover {
     }
 
     .alert {
-        width: 50vw;
         border-radius: 5px;
         padding: 5px 0;
         left: 50vw;
@@ -659,4 +658,13 @@ input.bg-secondary:hover {
         padding: 20px 0 0;
     }
 
+    .alert {
+        left: 50%;
+        margin-left: -50%;
+        width: 100%;
+    }
+
+    .alert .btn-close {
+        left: 80%;
+    }
 }
