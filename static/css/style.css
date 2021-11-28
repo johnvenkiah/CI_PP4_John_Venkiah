@@ -611,3 +611,8 @@ input.bg-secondary:hover {
 .profile-card {
     height: 90%;
 }
+
+.modal-body .btn {
+    box-shadow: none;
+    height: 100%;
+}
