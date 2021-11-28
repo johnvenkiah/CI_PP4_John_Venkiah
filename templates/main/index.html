@@ -13,10 +13,10 @@
 
 
 
-            <div class="row g-0">
-                <div class="col">
+            <div class="row g-0 justify-content-center fade-down">
+                <div class="col col-lg-10">
                     <div class="pad-16 mb-8 hero-img-home">
-                        <div class="col col-md-6">
+                        <div class="col col-md-6 col-lg-3">
                             <div class="pad-16 text-white">
                                 <form method="get" action="{% url 'search:search' %}">
                                     <div class="mb-3 input-container">
@@ -54,27 +54,29 @@
                 </div>
             </div>
             <div class="row g-0 fade-up">
-                <div class="col my-3">
+                <div class="col col-lg-10 my-3 mx-auto">
                     <div class="row banner pt-1">
                     <h3>Categories</h3>
                     </div>
                     <ul class="list-inline g-0 text-center">
                         {% for category in db.cat %}
-                        <li class="m-0 col-6 col-md-3 list-inline-item">
-                            <a href="/search/{{ category.url }}">
-                                <div class="mt-2 text-center">
+                        <li class="m-0 col-6 col-md-3 col-lg-1 list-inline-item">
+                            <div class="mt-2 text-center">
+                                <a href="/search/{{ category.url }}">
                                     <p class="small-text">{{ category.name }}</p>
                                     <img src="{{ MEDIA_URL }}icons/{{ category.image }}.png"
                                     class="d-flex cat-icons justify-content-center" alt="{{ category.image }}-icon">
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
-            <div class="row g-0">
-                <div class="col-sm-4">
+            <div class="row justify-content-center"></div>
+            <div class="col col-lg-10 mx-auto">
+            <div class="row g-0 mx-auto">
+                <div class="col-md-4">
                     <div class="card text-white feature">
                         <div class="card-body pad-16 feature-img d-flex align-items-center flex-column"
                             id="feature-img-1">
@@ -90,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <div class="card text-white feature">
                         <div class="card-body pad-16 feature-img d-flex align-items-center flex-column"
                             id="feature-img-2">
@@ -102,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <div class="card text-white feature">
                         <div class="card-body pad-16 feature-img d-flex align-items-center flex-column"
                             id="feature-img-3">
@@ -116,5 +118,6 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+        </div>
     {% endblock %}

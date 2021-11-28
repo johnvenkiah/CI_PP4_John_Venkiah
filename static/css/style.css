@@ -11,6 +11,7 @@ p, span, a, h2, h3, h4, h5 {
     font-family: 'PT Sans', sans-serif;
 }
 
+
 p, span, a {
     font-weight: 400;
 }
@@ -18,6 +19,14 @@ p, span, a {
 h2 {
     font-size: calc(1.3rem + .8vw);
     color: #636363;
+}
+
+a:active {
+    color:rgb(141, 96, 0)
+}
+
+a:hover {
+    color:rgb(175, 120, 0)
 }
 
 footer {
@@ -32,7 +41,6 @@ a {
 }
 
 .banner, .banner-2, .banner-3 {
-    box-shadow: 0 0 10px #ffeed485;
     width: 100%;
     margin: 0 auto;
 }
@@ -86,7 +94,6 @@ a {
 
 .small-text {
     font-size: .9rem;
-    color: white;
     overflow: hidden;
     overflow-wrap: initial;
     text-overflow: ellipsis;
@@ -107,7 +114,11 @@ a {
 }
 
 .fade-up {
-    background: linear-gradient(rgb(82, 67, 50), transparent);
+    background: linear-gradient(rgb(233, 201, 164), transparent);
+}
+
+.fade-down {
+    background: linear-gradient(transparent, rgb(233, 201, 164));
 }
 
 .soft-fade-up {
@@ -134,6 +145,7 @@ a {
 .cat-icons {
     width: 50%;
     margin: 0 auto;
+    transition: transform 250ms ease-out
 }
 
 .cat-card {
@@ -615,4 +627,9 @@ input.bg-secondary:hover {
 .modal-body .btn {
     box-shadow: none;
     height: 100%;
+}
+
+.cat-icons:hover {
+    transform: scale(1.1);
+    transform-origin: center;
 }
