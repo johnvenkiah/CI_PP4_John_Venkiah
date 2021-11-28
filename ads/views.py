@@ -80,7 +80,11 @@ class AdUpdateView(UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Your Ad is updated')
-        return f'/{self.request.user.username}'
+        return reverse(
+            'user_profile:profile', kwargs={
+                'user': self.object.seller
+            }
+        )
 
 
 class AdCreateView(CreateView):
@@ -115,14 +119,19 @@ class AdCreateView(CreateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Your Ad is now posted')
-        return f'/{self.request.user.username}'
-
+        return reverse(
+            'user_profile:profile', kwargs={
+                'user': self.object.seller
+            }
+        )
 
 class AdDeleteView(DeleteView):
     model = Ad
 
     def get_success_url(self, *args, **kwargs):
         messages.success(self.request, 'Your Ad is now deleted')
-        return reverse_lazy(
-            'user_profile:profile', args=[self.kwargs['seller']]
+        return reverse(
+            'user_profile:profile', kwargs={
+                'user': self.object.seller
+            }
         )

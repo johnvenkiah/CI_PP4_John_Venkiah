@@ -2,9 +2,13 @@
 {% load static %}
 {% block content %}
 
-<form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm">
-</form>
+<div class="container-fluid">
+    <div class="col mx-auto">
+        <form method="post" class="d-grid">{% csrf_token %}
+            <h2 class="my-3">Are you sure you want to delete "{{ object }}"?</h2>
+            <input class="btn btn-danger mt-5" type="submit" value="Confirm">
+        </form>
+    </div>
+</div>
 
 {% endblock %}
