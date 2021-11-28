@@ -3,16 +3,11 @@
 {% block content %}
 <div class="container">
 <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-10">
         <h3 class="mt-3 mb-3">Update Ad</h3>
         <form class="d-grid post-ad-form" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <hr>
-            <div class="row align-bottom mx-auto">
-                {% csrf_token %}
-                {{ sold_form }}
-            </div>
             <button class="btn btn-main mt-3" type="submit">Update Ad</button>
             <a class="btn btn-danger mt-3"href="{% url 'ads:delete_ad' ad.seller ad.slug %}">Delete Ad</a>
         </form>
