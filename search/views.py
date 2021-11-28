@@ -33,6 +33,7 @@ def search_view(request):
         ads = ads.filter(
             Q(title__icontains=search) | Q(description__icontains=search)
         )
+
     if category != '- All Categories -':
         ads = ads.filter(Q(category=category))
 
