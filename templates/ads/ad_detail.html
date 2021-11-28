@@ -4,7 +4,8 @@
 {% block content %}
 
 <div class="container-fluid justify-content-center col-md-10">
-    <div class="row">
+    <div class="col col-lg-8 mx-auto">
+    <div class="row justify-content-center">
         <div class="col">
             <h2>Ad Detail</h2>
             <div class="card my-4">
@@ -12,9 +13,9 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-6 align-top">
-            <h3 class="h2">{{ ad.title }}</h3>
+            <h3 class="h3">{{ ad.title }}</h3>
             {% if request.user.username == ad.seller.username %}
             <p class="card-text mt-4"><i class="fas fa-map-marker-alt"></i><small> {{ ad.location }}</small></p>
             {% else %}
@@ -31,7 +32,7 @@
         </div>
     </div>
     {% if ad.sold %}
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-6">
             <p class="card-text sold my-1">£{{ ad.price }}</p>
         </div>
@@ -129,6 +130,7 @@
                 </div>
               </div>
         </div>
+    </div>
 </div>
 
 {% endblock %}
