@@ -2,7 +2,7 @@
 
 ## A classified ads site for used music related items.
 
-![Screenshot of Home screen](#)
+![Mockup of Instrumental](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/mockup.png)
 
 **InstruMental - a forum for users to buy and sell used musical instruments and gear.**
 
@@ -98,7 +98,7 @@ The structure of this site is simple; the heart of the site is the list of ads, 
 <details>
     <summary>Click here to view the home screen</summary>
 
-![Screenshot of Home](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/screenshots/home_1.png)
+![Screenshot of Home](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/home_1.png)
 
 </details>
 
@@ -109,18 +109,18 @@ The home screen contains a lot, but is well organized. It contains:
 - Links to categories of all ads posted
 - Three feature cards mostly for design purposes, including an external link
 
-### 2. Login/Signup
+### 2. Sign In/Sign Up
 
 <details>
     <summary>Click to view image</summary>
 
-![Login/Signup](#)
+![Login/Signup](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/sign_in.png)
 
 </details>
 
 This page contains username and password fields, as well as links to sign up and retrieve password. If a user clicks on Sign Up, fields appear for the user to fill in. 
 
-![Signup](#)
+![Signup](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/signup.png)
 
 </details>
 
