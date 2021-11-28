@@ -600,7 +600,7 @@ input.bg-secondary:hover {
 }
 
 .logos {
-    width: 70px;
+    width: 90px;
 }
 
 .django-logo {
@@ -625,11 +625,15 @@ input.bg-secondary:hover {
         font-size: 4rem;
     }
 
+    .navbar .btn {
+        margin-top: ;
+    }
+
 }
 
 @media only screen and (min-width: 1024px) {
     .navbar .btn {
-        margin-top: 7px;
+        margin-top: 9px;
     }
 
     .banner h2, h4 {

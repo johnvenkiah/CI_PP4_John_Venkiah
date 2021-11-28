@@ -294,50 +294,16 @@ Here are the main colors, which I think give a good feel to the website. The des
 
 Color palette here was generated using [canva.com]https://www.canva.com/colors/color-palette-generator/
 
-## Features
+## Existing Features
 
-### Feature 1: The Patient Booking System
+### Feature 1: The Navbar
 
-This is the main feature of the application, getting patient information to make a booking and make a patient log entry.
+This is the means in which users can make their way around the website. From here they can navigate to all pages of relevance, Home, Post Ad, Profile, Contact, and Sign In/Sign Up.
 
-The patient booking system consists of several steps after the welcome screen. The user can exit the booking process at any time.
+![Navbar](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/docs/screenshots/features/navbar.png)
 
-1. The patient is made aware that their details are saved and have to take action to continue
+This is always visible at the top of the page, once scrolled up. I chose not to retain it as a 'sticky' navbar, so that the smallest of screens can 
 
-2. The patient is prompted to choose month of the appointment (if the month chosen is june, and it is july at the point of booking, the application will change the year to next year)
-
-3. The patient is informed of the month chosen and get to choose date. The date must corrrespond with the days in that month, made sure by the month_dict dictionary.
-
-4. The patient is notified of the date chosen and can choose the time of the appointment, 9 - 17. The time must be a weekday and between 9 and 17. After validation, the first API request is made. The application gets data through the Google API if the chosen time slot is available in the Google calendar, and, if so, notifies the user. If the slot is not available, the user has to choose another time.
-
-5. If the timeslot is available, the user is prompted to enter their full name. A single name or name with digits is not accepted.
-
-6. The user is, if the name is accepted, prompted to enter their email adress, which is validated with a simple regular expression.
-
-7. If the email input is correct, the patient is prompted to shortly describe their symptoms. This must b at least 8 characters long, so the user cannot enter nothing or a short word.
-
-8. The user is shown the appointment and must confirm the booking.
-
-9. If the booking is confirmed by the user, two requests are made with the users input; one to push the information to FeelGood Physio's Google calendar and one to make an entry in the Google sheets patient log on Google Drive, all with the help of the Google API.
-
-If the user with the same name already exists in the patient log, the patients symptoms are unpdated instead of a row being added. The patient is then notified that the booking has been made and can return to the home screen again.
-
-<details>
-  <summary>Click to view images of feature 1</summary>
-
-*Entering month*
-![Patient Booking System](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/patient_booking/p_booking_month.png)
-
-*Booking confirmation*
-![Confirm patient booking](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/patient_booking/p_booking_done.png)
-
-*Google Calendar entry*
-![Google calendar entry](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/google_cal/g_cal_new.png)
-
-*Entry in Google Sheets*
-![Google sheets](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/images/patient_log/g_sheets_new.png)
-
-</details>
 
 **Patient user stories covered:**
 
