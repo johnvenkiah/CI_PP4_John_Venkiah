@@ -144,7 +144,7 @@ On the Contact page, users can fill in a simple contact form, sending an email t
 
 ### Epic 1: Core functionality - User Stories
 
-1. As a user, I can easily navigate to anywhere of relevance on the site by scrolling to the top of the page and clicking a link
+1. As a user, I can easily navigate to the main site pages by scrolling to the top of the page and clicking a link
 
 2. As a user, I can perform a search so that a list of items for sale is generated
 
@@ -161,6 +161,7 @@ On the Contact page, users can fill in a simple contact form, sending an email t
 7. As a user, I can sign up, so that I can utilise the full functionality of the website
 
 8. As a registered user, i would like my login info and the ability to edit my personal ads be restricted to me only
+
 9. As a registered user, I can receive a new password if it is forgotten, so that i can login to the site again
 
 ### Epic 3: Features for logged in users - User Stories
@@ -171,26 +172,36 @@ On the Contact page, users can fill in a simple contact form, sending an email t
 
 12. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
 
+### Epic 4: The Location Field
+
+13. As a logged in user, I can add a street to the location field in my profile and it will automatically appear as my default location when I post a new ad
+
+14. As a logged in user, as I enter a street, the location field fills in an actual adress for me to choose.
+
+15. As a registered user, my city but not my street is saved on my public profile, so that others cannot see my exact address
+
 ### Epic 4: User Profiles - User Stories
 
-13. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
+16. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
 
-14. As a registered user, I can view other sellers ads on their profiles
+17. As a registered user, I can view other sellers ads on their profiles
 
 ### Epic 5: The Ad Detail Page - User Stories
 
-15. As a user, I can view a picture and a description of the item on the Ad Detail page
+18. As a user, I can view a picture and a description of the item on the Ad Detail page
 
-17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
-18. As a logged in user, I can mark my item as sold, so that other users are aware of this
+19. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
+20. As a logged in user, I can mark my item as sold, so that other users are aware of this
+
+21. As a user, I can click a share button in the ad detail page, so that I can share it on social media platforms
 
 ### Epic 6: The Contact Page - User Stories
 
-19. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
+22. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
 
 ### Epic 7: Admin/Site-Owner Functionality - User Stories
-20. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
-21. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
+23. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
+24. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
 
 
 
@@ -306,7 +317,7 @@ This is the means in which users can make their way around the website. From her
 
 This is always visible at the top of the page, once scrolled up. I chose not to retain it as a 'sticky' navbar, so that the smallest of screens can view as much content as possible.
 
-**User stories/site-owner goals covered:**
+**User stories goals covered:**
 
 1. As a user, I can easily navigate to anywhere of relevance on the site by scrolling to the top of the page and clicking a link
 
@@ -314,182 +325,174 @@ This is always visible at the top of the page, once scrolled up. I chose not to 
 
 6. As a user, I get direct response and confirmation of my actions made on the website
 
-___
-#### Feature 2: The Home Page
 
-![Home Page](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_two_desktop.png)
+### Feature 2: The Home Page / Search
 
-The Home page consists of a search form, a hero image, links for the different categories and three feature cards.
+![Home Page](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/features/search.png)
 
-In the search form, I 
+The Home page consists of a search form, which is its main functionality. The purpose is that users can make their search straight away when they visit the website - whether they are logged in or not.
 
-**User stories/site-owner goals covered:**
+a hero image, links for the different categories and three feature cards.
 
-1. Easily navigate the websites pages via the menu or links provided
+In the search form, users can query a location, category and free search text, and get results that are relevant for those criteria.
 
-2. Be presented with a well designed, user-friendly interface
+**User stories covered:**
 
-3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens.
+2. As a user, I can perform a search so that a list of items for sale is generated
 
+3. As a user, I can refine my search so that the results display items in a specific location or category.
 
-#### Feature 3: The Quiz
+### Feature 3: The User Profile
 
-![The Quiz](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_3_quiz_mobile.png)
+![The User Profile](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/features/profile.png)
 
-The quiz is a seemingly simple feature, but with a lot of functionality. The user has 60 seconds to answer the most questions correctly.
+The User Profile is the users own space in this application. This is where the user adds their personal data, can modify, mark as sold, or remove their ads. The users saved ads will appear here also. Users can click on the username in the ad and view others profiles, and the ads they have posted, aswell as I chose a simple design to bring focus to the ads.
 
-The quiz has several sub-features of its own:
-
-- The staffbox
-
-![Staffbox](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/staffbox.png)
-
-Displays an image of the note in question for the user to answer. When answered, the image is updated to display the next note in question.
-
-- The answers box
-
-
-
-On opening the page, the answers box contains one button: "Lets Play!"
-
-Clicking on this starts the quiz and displays four buttons, with three incorrect and one correct answer. The value of these buttons are updated for each question answered.
-
-If the user clicks on the incorrect answer button, the user is alerted that this was incorrect by sounds and animation, and the user is informed of the correct answer.
-
-If the user clicks on the correct answer-button, the user is greeted with a different sound and animation, and and the score above is incremented.
-
-- The Timer
-
-This keeps track of the time, once the user has clicked "Let's Play!"; the timer counts down from 60 to 0.
-
-- The Score
-
-Once a user has answered a question correctly, the score is incremented with 10 points. The score is then displayed in an end game modal.
-
-- The End Game Modal
-
-This is displayed once the 60 seconds are up, covering the screen. The user is greeted with one of five different greetings, depending on the score they have achieved.
-
-The modal window also displays two buttons with choices for the user; "Play Again" and "Close".
+If a user desires, they can remove their user account completely.
 
 **User stories/site-owner goals covered:**
 
-2. Be presented with a well designed, user-friendly interface
+4. As a user, I can click on an item so that I can view its details
 
-3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+5. As a user, If I am not signed in, I am redirected to sign in/up if I click on any of the links or buttons restricted to logged in users
 
-4. Get responses and confirmation from the website by my interactions with it
+8. As a registered user, i would like my login info and the ability to edit my personal ads be restricted to me only
 
-5. Be able to play a quiz on note names, symbols and note lengths
+11. As a logged in user, I can view other sellers profiles
 
-6. Get points if I answer a question right
+12. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
 
-7. See a timer ticking down from one minute
+13. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
 
-8. See an end game screen alerting me of my score and how the quiz went
+14. As a registered user, I can view other sellers ads on their profiles
 
-9. Be able to choose to close the end game screen or play again
+### Feature 5: Ad Post, Edit and Remove
 
-16. Display a menu in a navigation bar or popout menu at the top of the page
+![Ads](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/features/post_ad.png)
 
-17. Display a quiz for users to test their knowledge
+The ad functionality is the heart of the site, and it it super simple to post, edit and delete ads.
 
-21. Have a website that contains validated HTML, CSS and JavaScript
+The Post Ad button is visible in the navbar throughuot the site and users just have to fill in a form with the ad title, pick a category, add a description, price, upload an image, and finally add a location. When the user clicks Post Ad the ad is visible in the search on the home page, as well as on the users profile.
 
+The Edit Ad page is visible through the Ad detail page, and from there users can modify all fields of the ad, as well as delete it.
 
-#### Feature 4: The Piano (Play Page)
+**User stories covered:**
 
-![The Piano](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_4_piano_desktop.png)
+6. As a user, I get direct response and confirmation of my actions made on the website
 
-The play page has two sub-features, a miniature piano and a stave showing both the bass clef and treble clef. When the user clicks a key, the relevant note displays on the stave together with the note name. The correct note is also heard when clicking it.
+8. As a registered user, i would like my login info and the ability to edit my personal ads be restricted to me only
 
-**User stories/site-owner goals covered:**
+11. As a logged in user, I can view other sellers profiles
 
-2. Be presented with a well designed, user-friendly interface
+13. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
 
-3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+14. As a registered user, I can view other sellers ads on their profiles
 
-4. Get responses and confirmation from the website by my interactions with it
+17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
+18. As a logged in user, I can mark my item as sold, so that other users are aware of this
 
-10. Be able to play notes on a piano on the screen and see which tone is being played
+### Feature 5: The Ad Detail Page
 
-11. Be able to play the notes on the computer keyboard
+![Ad Detail](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/features/ad_detail.png)
 
-19. Display a page where users can play the piano and view the note played
+The Ad Detail is where the user can view a sellers contact details, a larger picture of the ad and save the ad to their Saved Ads list. Here they can view a location of the ad, but not the exact street for security purposes.
 
-21. Have a website that contains validated HTML, CSS and JavaScript
+**User stories covered:**
 
+6. As a user, I get direct response and confirmation of my actions made on the website
 
-#### Feature 5: The Learn Page
+12. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
 
+15. As a user, I can view a picture and a description of the item on the Ad Detail page
 
+17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
+18. As a logged in user, I can mark my item as sold, so that other users are aware of this
 
-Here, the user can navigate through a list of videos generated a search by the YouTube API, updating the list dynamically.
-In the list, title, thumbnail and decription data is displayed for each video in the list.
-
-Users can click on a video and view it in the main viewing window, located either to the left of the screen or at the top for mobile devices in portrait mode.
-
-**User stories/site-owner goals covered:**
-
-2. Be presented with a well designed, user-friendly interface
-
-3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
-
-4. Get responses and confirmation from the website by my interactions with it
-
-12. View videos to learn about music theory and sight reading
-
-18. Display a learn page containing the results of a YouTube search dynamically updated, using YouTube API
-
-21. Have a website that contains validated HTML, CSS and JavaScript
+21. As a user, I can click a share button in the ad detail page, so that I can share it on social media platforms
 
 
-#### Feature 6: The Contact Page
+### Feature 6: The Location Field
 
-![Contact Page](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_6_contact_mobile.png)
-
-The "contact" page contains a simple form, where the user can fill in their name, email address and message, which they can send by clicking the submit-button.
-
-The form is validated by the contact.js JavaScript file, and sent via the Email web service [EmailJS](https://www.emailjs.com/) to my email inbox.
+![Location Field](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/features/ad_detail.png)
 
 **User stories/site-owner goals covered:**
 
-3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+13. As a logged in user, I can add a street to the location field in my profile and it will automatically appear as my default location when I post a new ad
 
-4. Get responses and confirmation from the website by my interactions with it
+14. As a logged in user, as I enter a street, the location field fills in an actual adress for me to choose.
 
-13. Get in touch with the site owner
-
-20. Be able to be contacted should the user wish to do so, through an emailing service to my private email address
-
-21. Have a website that contains validated HTML, CSS and JavaScript
+15. As a registered user, my city but not my street is saved on my public profile, so that others cannot see my exact address
 
 
-#### Feature 7: The 404-error Page
+### Feature 7: The Contact Page
 
-The 404-error page is displayed when a user enters an invalid link within the website. From here, users can easily navigate to the other pages of the website.
+![Contact Page](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/features/contact.png)
+
+The "contact" page contains a simple form, where the user can fill in their name, email address subject and message, which they can send by clicking the submit-button.
+
+The form is validated and sent by Django and the site owner recieves an email straight away.
 
 **User stories/site-owner goals covered:**
 
-3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+22. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
 
-14. View an errors page if I have entered an invalid url within the website
+24. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
 
-21. Have a website that contains validated HTML, CSS and JavaScript
+#### Feature 8: The Admin Page
+
+The admin page is where site owners can access all users data, and modify or remove anything they like. A discreet link to the admin page is visible in the page footer.
+
+**User stories/site-owner goals covered:**
+
+23. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
 
 
 
 ### Features to be implemented
-___
 
-This is a basic web application but could be expanded with all kinds of sections and functions. For example, there could be a play-by-ear section, where notes are played and the user has to answer which note. There could also be a chords-section, introducing chords and their uses in music. Users could create a profile, save videos they like, compete in high scores and a lot more.
+This application is of the simplest sort, when it comes to classified ads sites, burt the most important things are in place. Here are some features that could be implemented in a future version.
+
+* A chat or messaging app, to communicate with others
+
+* The ability to add several pictures to an ad
+
+* Ad posts for buyers also
+
+* Notifications if an ad is posted that matches a users query
 
 
 ## Technologies used
 
 ### Languages
 
-- [Python 3](https://www.python.org/) - Was used solely to create this project.
+- [Python 3.8](https://www.python.org/) was used for backend programming
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5) was used for building all web pages
+
+- I used [CSS3](https://en.wikipedia.org/wiki/CSS) for styling the website
+
+- A little [JavaScript](https://en.wikipedia.org/wiki/JavaScript) for alert and location fnunctionality
+
+### Applications, Libraries and Platforms
+
+This project is built solely through the framework [Django](https://www.djangoproject.com/), and I have tried to make use of its many powerfiul features.
+
+I have used [Bootstrap 5](https://getbootstrap.com/) as a framework for styling for efficiency purposes, although that wasn't always the case.
+
+A few lines of [JQuery](https://jquery.com/) for autodissapear of alerts
+
+- [Font Awesome](https://fontawesome.com/) fonts were used for all fonts and icons in this project.
+
+- [Git](https://git-scm.com/) - Version control system used to commit and push to Github via Gitpod.
+
+- [Github](https://github.com/) - The projects repository and all its branches were commited, pushed and deployed to Github.
+
+- [Gitpod](https://gitpod.com/) - All code was written and tested with the Gitpod web-based IDE.
+
+- [Balsamiq](https://balsamiq.com/wireframes/) - Balsamiq Wireframes was used to create wireframe images of the website which you can view [here](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/wireframes/all_wireframes_musical_minds.pdf).
+
+## Validation
+
 
 
 ### Applications, Platforms and Libraries
