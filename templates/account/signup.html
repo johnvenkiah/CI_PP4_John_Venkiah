@@ -8,11 +8,7 @@
 <div class="container-fluid">
     <div class="col mx-auto">
                     <h2>{% trans "Sign Up" %}</h2>
-
-                    <p class="my-4">{% blocktrans %}Already have an account?</p>
-
-                        <a class="btn btn-main" href="{{ login_url }}">Sign In Here</a>.{% endblocktrans %}
-
+                    
                     <form class="signup post-ad-form d-grid" id="signup_form" method="post" action="{% url 'account_signup' %}">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -21,7 +17,9 @@
                         {% endif %}
                         <button class="btn btn-success mt-3" type="submit">{% trans "Sign Up" %} &raquo;</button>
                     </form>
-                    </form>
+                
+                    <p class="my-4">{% blocktrans %}Already have an account?</p>
+                    <a class="btn btn-main" href="{{ login_url }}">Sign In Here</a>.{% endblocktrans %}
                 </div>
             </div>
         </div>

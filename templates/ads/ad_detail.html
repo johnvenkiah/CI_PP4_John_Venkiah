@@ -69,30 +69,35 @@
             </form>
     </div>
     {% endif %}
-    <div class="row mx-auto mt-3">
+    <div class="row mt-3">
             {% if user.is_authenticated %}
                 {% if request.user.username != ad.seller.username %}
-                <form class="d-grid" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn btn-light save-share-link">
-                        Save to My Ads
-                        {% if saved %}
-                        <i class="fas fa-heart"></i>
-                        {% else %}
-                        <i class="far fa-heart"></i>
-                    </button>
-                        {% endif %}
-                        {% endif %}
-                </form>
+                <div class="col-6">
+                    <form class="d-grid" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn btn-light save-share-link">
+                            Save to My Ads
+                            {% if saved %}
+                            <i class="fas fa-heart"></i>
+                            {% else %}
+                            <i class="far fa-heart"></i>
+                        </button>
+                            {% endif %}
+                            {% endif %}
+                    </form>
+                </div>
             {% else %}
-            <p>Please log in to save ads.</p>
+            <div class="col-6">
+                <p>Please log in to save ads.</p>
+            </div>
             <!-- <span class="text-secondary"><i class="far fa-heart"></i></span> -->
             {% endif %}
-            <button type="button" class="btn btn-light save-share-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Share Ad
-                <i class="fas fa-share-square"></i>
-              </button>
-              
+            <div class="col-6 d-grid">
+                <button type="button" class="btn btn-light save-share-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Share Ad
+                    <i class="fas fa-share-square"></i>
+                </button>
+            </div>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
