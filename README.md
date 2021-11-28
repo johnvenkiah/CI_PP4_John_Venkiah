@@ -259,16 +259,40 @@ This schema describes the structure of the application, and was created with [Lu
 
 </details>
 
-### User interface
+## Skeleton
 
-I find it important to be clear to the user on displaying information, especially on an interface where styling is limited. As this project focuses solely on the Python language, I decided not to try to implement graphics and focus on funcionality, even though it was tempting.
+### Wireframes
 
-I have, however, put lots of time in displaying the information to the user as correctly and as clearly as possible. Each message or piece of data displayed to the user has space around it, separating it from the previous one, for optimal readability.
+![Wireframes](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/wireframes/wf_instru_mental_home_desktop.png)
 
-Some simple formatting has also been done, for example when displaying date time, the time format converter converts it into a format that is easier and more pleasing to read.
-Also, when displaying the patient log, I have removed curly braces and apostophes before the patient data is printed to the screen, only needed when managing it.
+Wireframes haev been made for each of the pages and cak be found here: [Wireframes](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/wireframes)
 
-Messages to clarify what has and has not been done, and what the user's choices are have carefully been created to make the user experience as straightforward as possible.
+
+## Surface
+
+I wanted an artistic and not so perfect design this time, and chose shades of beige and orange mostly. I wanted it to feel a little like a second hand store.
+
+### Typography
+
+found these two fonts on Google Fonts that were perfect for this project.
+
+* Comforter Brush:
+
+![Comforter Brush](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/typography/conforter_brush.png)
+
+This is solely used for the main heading, and I think it makes a big impression for that
+
+* PT Sans
+
+![PT Sans](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/typography/pt_sans.png)
+
+### Color Palette
+
+![Color Palette](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/color_palette.png)
+
+Here are the main colors, which I think give a good feel to the website. The design is simple, and the subtle colours complement each other.
+
+Color palette here was generated using [canva.com]https://www.canva.com/colors/color-palette-generator/
 
 ## Features
 
