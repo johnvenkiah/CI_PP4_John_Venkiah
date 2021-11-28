@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div class="row align-bottom">
+    <div class="row align-bottom d-flex">
         <div class="row">
             <div class="col banner">
                 <h2 class="custom-text-shadow pt-2">Profile: {{ user }}</h3>
@@ -11,31 +11,31 @@
         </div>
         <div class="row pt-2">
             <div class="col-3 col-md-4">
-            <div class="col-md-3 soft-fade-up profile-card mt-4">
-                <i class="fas fa-user user-icon py-3"></i>
+                <div class="col-md-3 soft-fade-up profile-card mt-auto">
+                    <i class="fas fa-user user-icon py-3"></i>
+                </div>
+            </div>
+            <div class="col-9 col-md-4">
+                {% if request.user.is_authenticated %}
+                <ul class="fa-ul">
+                    {% if user.first_name or user.last_name %}
+                    <li><span class="fa-li"><i class="fas fa-star-of-life"></i></span><small class="pull-end">{{ user.first_name }} {{ user.last_name }}</small></li>
+                    {% endif %}
+                    {% if user.profile.location %}
+                    <li><span class="fa-li"><i class="fas fa-map-marker-alt"></i></span><small>{{ user.profile.location }}</small></li>
+                    {% endif %}
+                    <li><span class="fa-li"><i class="fas fa-envelope"></i></span><small>{{ user.email }}</small></li>
+                </ul>
+                {% else %}
+                <h5 class="p-2">Log in to see user details</h5>
+                {% endif %}
+                {% if user == request.user %}
+                <a class="btn ms-3 btn-main mt-auto" href="{% url 'user_profile:edit_profile' %}">Edit Info</a>
+                {% endif %}
             </div>
         </div>
-        <div class="col-9 col-md-4">
-            {% if request.user.is_authenticated %}
-            <ul class="fa-ul">
-                {% if user.first_name or user.last_name %}
-                <li><span class="fa-li"><i class="fas fa-star-of-life"></i></span><small class="pull-end">{{ user.first_name }} {{ user.last_name }}</small></li>
-                {% endif %}
-                {% if user.profile.location %}
-                <li><span class="fa-li"><i class="fas fa-map-marker-alt"></i></span><small>{{ user.profile.location }}</small></li>
-                {% endif %}
-                <li><span class="fa-li"><i class="fas fa-envelope"></i></span><small>{{ user.email }}</small></li>
-              </ul>
-            {% else %}
-            <h5 class="p-2">Log in to see user details</h5>
-            {% endif %}
-            {% if user == request.user %}
-            <a class="btn ms-3 btn-main" href="{% url 'user_profile:edit_profile' %}">Edit Info</a>
-            {% endif %}
-        </div>
     </div>
-</div>
-{% if user_ads %}
+    {% if user_ads %}
     <div class="row">
         <div class="col banner mt-2">
             <h4 class="custom-text-shadow pt-2">{{ user }}'s' Ads</h4>
