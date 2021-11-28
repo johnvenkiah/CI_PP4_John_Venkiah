@@ -8,7 +8,6 @@ from django.views import View
 from django.views.generic import DetailView, CreateView, UpdateView
 from django.views.generic import DeleteView
 from django.http import HttpResponseRedirect
-from search.searchlog import searchlog
 
 
 from .forms import AdForm
@@ -34,6 +33,7 @@ class AdDetailView(DetailView):
                 'saved': saved,
             },
         )
+
 
 class AdSave(View):
 

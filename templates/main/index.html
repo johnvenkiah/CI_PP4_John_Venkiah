@@ -20,13 +20,13 @@
                             <div class="pad-16 text-white">
                                 <form method="get" action="{% url 'search:search' %}">
                                     <div class="mb-3 input-container">
-                                        <label for="search-input" class="form-label">Search</label>
+                                        <label for="search-input" class="dark-text-shadow form-label">Search</label>
                                         <input class="shadow form-control input-with-icon" id="search-input" name="search" type="text"
                                             placeholder="What are you looking for?">
                                         <i class="input-icon fa-solid fa-magnifying-glass"></i>
                                     </div>
                                     <div class="mb-3 input-container">
-                                        <label for="select-category" class="form-label">Category</label>
+                                        <label for="select-category" class="form-label dark-text-shadow">Category</label>
                                         <select class="shadow form-select input-with-icon" name="select-category"
                                             id="select-category">
                                             {% for category in categories %}
@@ -36,7 +36,7 @@
                                         <i class="input-icon fa-solid fa-sort"></i>
                                     </div>
                                     <div class="mb-3 input-container">
-                                        <label for="select-category" class="form-label">Area</label>
+                                        <label for="select-category" class="dark-text-shadow form-label">Area</label>
                                         <select class="shadow form-select input-with-icon" name="select-area" id="select-area">
                                             {% for area in area_list %}
                                             <option value="{{ area }}">{{ area }}</option>
@@ -84,7 +84,7 @@
                                 {% if request.user.is_authenticated %}
                                 <a class="btn btn-outline-light text-shadow btn-lg" role="button" href="{% url 'ads:post_ad' %}">Post Ad</a>
                                 {% else %}
-                                <a class="btn btn-main" role="button" href="{% url 'account_login' %}">Post Ad</a>
+                                <a class="btn btn-outline-light" role="button" href="{% url 'account_login' %}">Post Ad</a>
                                 {% endif %}
                             </div>
                         </div>

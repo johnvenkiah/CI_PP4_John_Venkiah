@@ -3,22 +3,15 @@ html, body {
     padding: 0;
 }
 
-<<<<<<< HEAD
-=======
 .main-container {
     background: linear-gradient(45deg, #fff7f0, #fbeaff42);
 }
 
->>>>>>> deploytest
 p, span, a, h2, h3, h4, h5 {
     font-family: 'PT Sans', sans-serif;
 }
 
 p, span, a {
-<<<<<<< HEAD
-    font-size: 1rem;
-=======
->>>>>>> deploytest
     font-weight: 400;
 }
 
@@ -27,15 +20,10 @@ h2 {
     color: #636363;
 }
 
-<<<<<<< HEAD
-.fade-up {
-    background: linear-gradient(transparent, #f3eee4);
-=======
 footer {
     background: linear-gradient(transparent, #bba68f);
     /* position: absolute;
     width: 100%; */
->>>>>>> deploytest
 }
 
 a {
@@ -46,20 +34,13 @@ a {
 .banner, .banner-2, .banner-3 {
     box-shadow: 0 0 10px #ffeed485;
     width: 100%;
-<<<<<<< HEAD
-=======
     margin: 0 auto;
->>>>>>> deploytest
 }
 
 .banner {
     background: linear-gradient(
-<<<<<<< HEAD
-    45deg, #dff3ef, transparent);
-=======
     45deg, #ffffff, transparent);
     padding-left: 2%;
->>>>>>> deploytest
 }
 
 .banner-2 {
@@ -96,11 +77,7 @@ a {
 }
 
 .hero-img-home {
-<<<<<<< HEAD
-    background-image: url('../images/main_background.jpeg');
-=======
     background-image: url('/media/main_background.jpeg');
->>>>>>> deploytest
     height: 80vh;
     background-size: cover;
     background-position: center;
@@ -108,13 +85,6 @@ a {
 
 .small-text {
     font-size: .9rem;
-<<<<<<< HEAD
-}
-
-.navbar {
-    background: linear-gradient(#fffaf0, transparent);
-    padding: 0 .5rem;
-=======
     color: white;
     overflow: hidden;
     overflow-wrap: initial;
@@ -129,15 +99,12 @@ a {
     background: linear-gradient(#ffcfdb, #fff8ea, #fef9fa80);
     padding: 0 .5rem;
     z-index: 1;
->>>>>>> deploytest
 }
 
 .navbar-toggler-icon {
     background-size: 110%;
 }
 
-<<<<<<< HEAD
-=======
 .fade-up {
     background: linear-gradient(rgb(82, 67, 50), transparent);
 }
@@ -146,13 +113,10 @@ a {
     background: linear-gradient(20deg, rgb(233, 216, 196), rgb(255, 242, 227));
 }
 
->>>>>>> deploytest
 .navbar-toggler {
     padding: .25rem .55rem;
 }
 
-<<<<<<< HEAD
-=======
 .navbar-light .navbar-toggler {
     border-color: rgba(0, 0, 0, .25);
 }
@@ -162,13 +126,10 @@ a {
     /* text-shadow: 1px 1px 10px rgb(158 140 104 / 72%); */
 }
 
->>>>>>> deploytest
 .cat-circle {
     border-radius: .8rem;
 }
 
-<<<<<<< HEAD
-=======
 .cat-icons {
     width: 50%;
     margin: 0 auto;
@@ -180,7 +141,6 @@ a {
 
 }
 
->>>>>>> deploytest
 .feature {
     height: 350px;
 }
@@ -191,21 +151,6 @@ a {
 }
 
 #feature-img-1 {
-<<<<<<< HEAD
-    background-image: url("../images/man_guitar_singing.jpg");
-}
-
-#feature-img-2 {
-    background-image: url("../images/child_ukulele.png");
-}
-
-#feature-img-3 {
-    background-image: url("../images/girl_keyboards.png");
-}
-
-.text-shadow {
-    text-shadow: 2px 2px 10px rgb(100, 100, 100), -2px -2px 10px rgb(73, 73, 73);
-=======
     background-image: url("/media/man_guitar_singing.jpg");
 }
 
@@ -217,9 +162,12 @@ a {
     background-image: url("/media/girl_keyboards.png");
 }
 
-.text-shadow {
-    text-shadow: 1px 1px 10px rgb(158 140 104 / 72%);
->>>>>>> deploytest
+.orange-text-shadow {
+    text-shadow: 1px 1px 10px #9e8c68b8;
+}
+
+.dark-text-shadow {
+    text-shadow: -6px 3px 13px #000000f2, 5px -3px 13px #382b45;
 }
 
 .card {
@@ -233,11 +181,15 @@ a {
 
 .btn {
     display: block;
-<<<<<<< HEAD
-    width: 100%;
-=======
     /* width: 100%; */
->>>>>>> deploytest
+}
+
+.btn-success {
+    background-color: #6a991e;
+}
+
+.btn:active, button:active, .btn:hover {
+    color: white;
 }
 
 .btn-outline-light:hover {
@@ -249,9 +201,6 @@ a {
     background-color: rgb(182, 135, 64);
     border: rgb(167, 123, 42);
     color: #fff;
-<<<<<<< HEAD
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4), 0px 0px 10px rgba(0, 0, 0, 0.4);
-=======
     
 }
 
@@ -261,18 +210,17 @@ a {
 
 .btn:hover {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(0, 0, 0, 0.4);
->>>>>>> deploytest
 }
 
 .btn-main:hover {
     background-color: rgb(211, 146, 49);
     border: rgb(139, 105, 41);
     font-weight: 500;
-<<<<<<< HEAD
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(0, 0, 0, 0.4);
-=======
     
->>>>>>> deploytest
+}
+
+.post-ad-form .bg-secondary {
+    border: none;
 }
 
 li .btn-main {
@@ -284,6 +232,11 @@ li .btn-main {
 
 .svg {
     font-size: 2em;
+}
+
+.fa-ul svg {
+    font-size: .8em;
+    color:rgb(139, 105, 41);
 }
 
 .alert {
@@ -334,6 +287,10 @@ li .btn-main {
 
 .post-ad-form label {
     margin: .5rem auto;
+}
+
+.login label {
+    text-shadow: 0 0 15px #6a7b8391, 0px 0px 15px #adb5bd00;
 }
 
 #id_remember {
@@ -570,10 +527,7 @@ top: 1px;
 
 .btn-light {
     box-shadow: 0 0 10px, rgb(136, 136, 136);
-<<<<<<< HEAD
-=======
     border: 1px solid rgb(228, 172, 68);
->>>>>>> deploytest
 }
 
 .fa-instagram {
@@ -587,8 +541,6 @@ top: 1px;
 .fa-youtube {
     color: #ff0100;
 }
-<<<<<<< HEAD
-=======
 
 
 .sold {
@@ -625,4 +577,3 @@ font-size: 3rem;
 input.bg-secondary:hover {
     color: white;
 }
->>>>>>> deploytest
