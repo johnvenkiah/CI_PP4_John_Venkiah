@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row align-bottom">
         <div class="row justify-content-center">
-            <div class="col banner ps-md-5">
+            <div class="col col-lg-8 mx-lg-auto banner ps-md-5">
                 <h2 class="custom-text-shadow pt-2">Profile: {{ user }}</h3>
             </div>
         </div>
@@ -77,15 +77,15 @@
     </div>
     {% endfor %}
     {% else %}
-    <div class="row">
-        <div class="col banner-3 mt-2 ps-md-5">
+    <div class="row justify-content-center">
+        <div class="col col-lg-8 banner-3 mt-2 ps-md-5">
             <h4 class="custom-text-shadow pt-2">No Ads Posted</h4>
         </div>
     </div>
     {% endif %}
     {% if saved_ads %}
-    <div class="row">
-        <div class="col banner mt-2 ps-md-5">
+    <div class="row justify-content-center">
+        <div class="col col-lg-8 banner mt-2 ps-md-5">
             <h4 class="custom-text-shadow pt-2">Saved Ads</h4>
         </div>
     </div>
@@ -124,7 +124,7 @@
             </div>
         </div>
         {% endfor %}
-        {% elif request.user.username == ad.seller.username %}
+        {% else %}
     <div class="row">
         <div class="col banner-3 mt-2 ps-md-5">
             <h4 class="custom-text-shadow pt-2">No Ads Saved</h4>
