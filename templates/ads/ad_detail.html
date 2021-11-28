@@ -3,9 +3,10 @@
 {% load social_share %}
 {% block content %}
 
-<div class="container-fluid justify-content-center">
+<div class="container-fluid justify-content-center col-md-10">
     <div class="row">
         <div class="col">
+            <h2>Ad Detail</h2>
             <div class="card my-4">
                 <img src="{{ ad.image.url }}" alt="">
             </div>
@@ -13,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-6 align-top">
-            <h2 class="h2">{{ ad.title }}</h2>
+            <h3 class="h2">{{ ad.title }}</h3>
             {% if request.user.username == ad.seller.username %}
             <p class="card-text mt-4"><i class="fas fa-map-marker-alt"></i><small> {{ ad.location }}</small></p>
             {% else %}
@@ -47,13 +48,13 @@
     {% endif %}
     <div class="row">
         <div class="col-12">
-            <div class="card bg-creme">
+            <div class="card bg-creme my-md-5">
                 <p class="card-text m-2">{{ ad.description }}</p>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col mt-3">
+        <div class="col mt-3 col-md-6 mx-auto">
             {% if request.user.username == ad.seller.username %}
             <a class="btn btn-main" href="{% url 'ads:ad_update' ad.seller ad.slug %}">Edit Ad</a>
             {% endif %}
