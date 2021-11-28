@@ -498,6 +498,8 @@ top: 1px;
 
 .save-share-link {
     font-size: .6rem;
+    border: 1px solid rgb(141, 96, 0);
+    box-shadow: none;
 }
 
 .bg-creme {
@@ -561,7 +563,7 @@ margin-top: 18%;
 font-size: 3rem;
 }
 
-.hide-sold label[for="id_sold"], .hide-sold label[for="id_sold"] #id_sold {
+.hide-sold label[for="id_sold"], .hide-sold label[for="id_sold"], #id_sold {
     display: none;
 }
 
