@@ -75,11 +75,14 @@
                 <div class="col-6">
                     <form class="d-grid" action="{% url 'ads:ad_save' ad.slug %}" method="POST">
                         {% csrf_token %}
+                        {% if saved %}
+                        <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn btn-light save-share-link">
+                            Saved to My Ads
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        {% else %}
                         <button type="submit" name="ad_id" value="{{ ad.slug }}" class="btn btn-light save-share-link">
                             Save to My Ads
-                            {% if saved %}
-                            <i class="fas fa-heart"></i>
-                            {% else %}
                             <i class="far fa-heart"></i>
                         </button>
                             {% endif %}
