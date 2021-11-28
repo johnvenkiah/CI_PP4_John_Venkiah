@@ -136,11 +136,7 @@ The specific ad clicked on, with more detailed info, including for the seller.
 
 This contains the basic user information, and the ads that the user has published. All of which can be edited. Users can also view other users profiles and their ads, and remove their profile if desired.
 
-### 6. Messages Popup-Window
-
-A simple two way messages function. Users can message each other about ads on the forum. This feature is not yet fully functionnal and is displayed to show the functionality in coming versions of the site.
-
-### 7. Contact
+### 6. Contact
 
 On the Contact page, users can fill in a simple contact form, sending an email to the site owner via the Django email service.
 
@@ -149,46 +145,50 @@ On the Contact page, users can fill in a simple contact form, sending an email t
 ### Epic 1: Core functionality - User Stories
 
 1. As a user, I can perform a search so that a list of items for sale is generated
+
 2. As a user, I can refine my search so that the results display items in a specific location or category.
+
 3. As a user, I can click on an item so that I can view its details
-4. As a user, If I am not signed in, I am prompted to sign in/up if I click on any of the links or buttons restricted to logged in users
+
+4. As a user, If I am not signed in, I am redirected to sign in/up if I click on any of the links or buttons restricted to logged in users
 
 ### Epic 2: User Authentication - User Stories
 
 5. As a user, I can sign up, so that I can utilise the full functionality of the website
-6. As a registered user, i would like my login info and the ability to edit personal ads be restricted to me only
+
+6. As a registered user, i would like my login info and the ability to edit my personal ads be restricted to me only
 7. As a registered user, I can receive a new password if it is forgotten, so that i can login to the site again
 
 ### Epic 3: Features for logged in users - User Stories
 
 8. As a registered user, I would like to see a “Sign in/Sign Out” option, so that i can sign in or out
-9. As a user, I can clearly see my login status so that I can tell whether I am signed in or not
-10. As a logged in user, I can click on “send message”, so that I can communicate with buyers/sellers
-11. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
+
+9. . As a logged in user, I can click on “send message”, so that I can communicate with buyers/sellers
+
+10. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
 
 ### Epic 4: User Profiles - User Stories
 
-12. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
-13. As a registered user, I can view other buyers or sellers profiles
-14. As a registered user, I can view other sellers ads on their profiles
+11. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
+
+12. As a registered user, I can view other buyers or sellers profiles
+
+13. As a registered user, I can view other sellers ads on their profiles
 
 ### Epic 5: The Ad Detail Page - User Stories
 
-15. As a user, I can view a picture and a description of the item on the Ad Detail page
-16. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
-17. As a logged in user, I can mark my item as sold, so that other users are aware of this
+14. As a user, I can view a picture and a description of the item on the Ad Detail page
 
-### Epic 6: The Message Window - User Stories
+15. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
+16. As a logged in user, I can mark my item as sold, so that other users are aware of this
 
-18. As a registered user, I can contact seller via the ad (Not fully functional yet)
+### Epic 6: The Contact Page - User Stories
 
-### Epic 7: The Contact Page - User Stories
-19. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
+17. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
 
-### Epic 8: Admin/Site-Owner Functionality - User Stories
-
-20. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
-21. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
+### Epic 7: Admin/Site-Owner Functionality - User Stories
+18. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
+22. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
 
 
 
@@ -206,8 +206,6 @@ As usually is the case with Django projects, InstruMental is devided into apps. 
 
 * main - This app caters for showing the home or index page, and includes the python code responsible for autogenerating adresses in the area/location fields.
 
-* msg - the message app (under development), caters for messages between users.
-
 * search - responsible for making queries to generate the desired list of ads.
 
 * user_account - A simple app solely responsible for removing a user from the site's database if they desire.
@@ -216,58 +214,50 @@ As usually is the case with Django projects, InstruMental is devided into apps. 
 
 * jv_instrumental - the project directory, contains settings and configurations for the entire project.
 
-* docs - documetation, screenshots etc
+* docs - documetation, screenshots, testing, etc are included here.
 
-* media
+* media - images on the site and uploaded by users
 
-* static
+* static - CSS and JavaScript files
+
+* templates - The html code with built in python / django logic to work with data to and from from the database
+
+* Various other files - various setting files for core functionality.
 
 
+### Database
 
-rugby_shop: Containing settings.py(Settings) and urls.py(Website urls) for example
-templates: Containing the base.html, allauth(django authentication) and includes html files
-util: Utility for generic pagination reusable code
-static: Base css and Javascript files(toast and send_email) There is some javascript in some html files, but I have tried to minimise that
-manage.py: Main python file for starting the website
-README.md: Readme documentation
-TESTING.md: Testing documentation
-custom_storage.py: AWS Boto3 configuration
-Procfile: To run the application
-Requirements.txt: Containing the python libraries installed Note: Environment variable values are not exposed in the source code, they are stored locally in env.py that is not checked in(and listed in .gitignore, and on Heroku in app settings
-Database
-The website is a data-centric one with html, javascript, css used with the bootstrap(version 5) framework as a frontend
-The backend consists of Python built with the Django framework with a database of a Postgres for the deployed Heroku version(production)
-Postgres is a powerful, open source object-relational database system (https://www.postgresql.org/)
-A SQLLite database was used for local development (https://www.sqlite.org/index.html)
+This is a datacentric website using HTML, Javascript and CSS, including libraries Jquery and Bootstrap.
+Python and the Django framework was used for the backend, with SQLite3 as a development backend and Postgre for the deployed version.
 
-### Schema of models
+Read more about them here.
 
-Below is a schema describing the structure of the application, created with [Lucidchart](https://lucid.co/product/lucidchart).
+* PostGres: (https://www.postgresql.org/)
 
-<details>
-    <summary>View flowchart here</summary>
-
-![Flowchart](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/schemas/db_schema_model.png)
-
-</details>
+* SQLLite: (https://www.sqlite.org/index.html)
 
 ### Data models
 
-I have chosen to use several data models in this project, but rely mainly on dictionaries for managing data. For variation, I have created two classes for this project, and use lists aswell.
+AS the standard goes working with databases, I have learned to use the Data model and have three in this project, including the built in User model that Django provides. You can see the fields 
 
-Dictionaries have attributes that fit perfectly for this project; for example, I can easily pair a patient number with an ID that Google uses for the specific event. Another example is appointment dictionary, given its values by the user and pushed to the Google Calendar.
+* User - As authorisation is accounted for by Django automattically, it seemed daft to not take advantage of that.
 
-Here are the most important objects:
+* Profile - As the user model has limited data fields, I expanded them using my own Profile model as a complimentary one. Together they have all the fields necessary for the application.
 
-- The appointment list(cal_mod.apt_list) that stores dictionaries of appointments, to be read or edited and then passed through the Google API to the Calendar
+* Ad - The data model for a users ad, with fields linking it to the user.
 
-- The IncDecWeek class, used to increment the the number of days ahead or in the past to display the schedule from.
-- The time format converter class (TimeFConverter), created in four instances for each ty p of conversion it makes.
+Below is a detailed image of the models and their relation to each other.
 
-- The appointment dictionary (app_dict), created in the print_appointment function to pair the Google events specific ID together with numbers, that the user can input to edit that appointment. New numbers from 1 upwards are created each time the function is called.
-- apntmnt_to_edit, a dictionary of a single event that the edit_appntmnt function gets from Google Calendar, to edit and then push back to Google with new values.
-- The month dictionary (month_dict), used to pair the months three letter abbreviations with their corresponding number of days, accessed when getting date details from user.
-- The patient dictionary helps the Google Sheets patient log keep track of patients that have booked appointments, keeping their details as values and assigning (with the help of the get_p_nr function) a unique patient ID. These details can then be displayed to the staff user.
+### Schema of models
+
+This schema describes the structure of the application, and was created with [Lucidchart](https://lucid.co/product/lucidchart).
+
+<details>
+    <summary>View schema here</summary>
+
+![Schema](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/schemas/db_schema_models.png)
+
+</details>
 
 ### User interface
 

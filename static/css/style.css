@@ -610,7 +610,7 @@ input.bg-secondary:hover {
 
 @media only screen and (min-width: 768px) {
     .hero-img-home {
-        height: 40vh;
+        height: 50vh;
     }
 
     .cat-icons {
