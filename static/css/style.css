@@ -145,7 +145,10 @@ a {
 .cat-icons {
     width: 50%;
     margin: 0 auto;
-    transition: transform 250ms ease-out
+}
+
+footer svg, .cat-icons {
+    transition: transform 200ms ease-in-out;
 }
 
 .cat-card {
@@ -598,6 +601,18 @@ input.bg-secondary:hover {
     color: white;
 }
 
+.modal-body .btn {
+    box-shadow: none;
+    height: 100%;
+}
+
+.cat-icons:hover, footer svg:hover {
+    transform: scale(1.1);
+    transform-origin: center;
+}
+
+
+
 @media only screen and (min-width: 768px) {
     .hero-img-home {
         height: 40vh;
@@ -616,20 +631,16 @@ input.bg-secondary:hover {
         top: 9%;
     }
 
-    .alert .btn-close 
+    .alert .btn-close {
         left: 310px;
-}
+    }
 
-.profile-card {
-    height: 90%;
-}
+    .profile-card {
+        height: 90%;
+    }
 
-.modal-body .btn {
-    box-shadow: none;
-    height: 100%;
-}
+   .navbar-brand {
+        font-size: 4rem;
+    }
 
-.cat-icons:hover {
-    transform: scale(1.1);
-    transform-origin: center;
 }
