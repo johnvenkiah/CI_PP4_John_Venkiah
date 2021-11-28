@@ -168,7 +168,7 @@ a {
 }
 
 .dark-text-shadow {
-    text-shadow: -6px 3px 13px #000000f2, 5px -3px 13px #382b45;
+    text-shadow: -2px 2px 10px #000000f2, 2px -3px 10px #382b45;
 }
 
 .card {
@@ -579,4 +579,26 @@ font-size: 3rem;
 
 input.bg-secondary:hover {
     color: white;
+}
+
+@media only screen and (min-width: 768px) {
+    .hero-img-home {
+        height: 40vh;
+    }
+
+    .cat-icons {
+        width: 30%;
+    }
+
+    .alert {
+        width: 50vw;
+        border-radius: 5px;
+        padding: 5px 0;
+        left: 50vw;
+        margin-left: -25vw;
+        top: 9%;
+    }
+
+    .alert .btn-close 
+        left: 310px;
 }
