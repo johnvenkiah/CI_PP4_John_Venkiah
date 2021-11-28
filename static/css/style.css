@@ -79,6 +79,7 @@ a {
 .hero-img-home {
     background-image: url('/media/main_background.jpeg');
     height: 80vh;
+    margin-top: 5px;
     background-size: cover;
     background-position: center;
 }
