@@ -23,7 +23,7 @@
     {% for ad in ads %}
     <div class="row">
         <div class="col col-md-8 mx-auto">
-            <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
+            <a class="card mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
                 <div class="row">
                     <div class="col-4">
                         <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">

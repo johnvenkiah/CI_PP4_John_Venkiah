@@ -146,51 +146,51 @@ On the Contact page, users can fill in a simple contact form, sending an email t
 
 1. As a user, I can easily navigate to anywhere of relevance on the site by scrolling to the top of the page and clicking a link
 
-1. As a user, I can perform a search so that a list of items for sale is generated
+2. As a user, I can perform a search so that a list of items for sale is generated
 
-2. As a user, I can refine my search so that the results display items in a specific location or category.
+3. As a user, I can refine my search so that the results display items in a specific location or category.
 
-3. As a user, I can click on an item so that I can view its details
+4. As a user, I can click on an item so that I can view its details
 
-4. As a user, If I am not signed in, I am redirected to sign in/up if I click on any of the links or buttons restricted to logged in users
+5. As a user, If I am not signed in, I am redirected to sign in/up if I click on any of the links or buttons restricted to logged in users
 
-5. As a user, I get direct confirmation of my actions made on the website
+6. As a user, I get direct response and confirmation of my actions made on the website
 
 ### Epic 2: User Authentication - User Stories
 
-6. As a user, I can sign up, so that I can utilise the full functionality of the website
+7. As a user, I can sign up, so that I can utilise the full functionality of the website
 
-7. As a registered user, i would like my login info and the ability to edit my personal ads be restricted to me only
-7. As a registered user, I can receive a new password if it is forgotten, so that i can login to the site again
+8. As a registered user, i would like my login info and the ability to edit my personal ads be restricted to me only
+9. As a registered user, I can receive a new password if it is forgotten, so that i can login to the site again
 
 ### Epic 3: Features for logged in users - User Stories
 
-8. As a registered user, I would like to see a “Sign in/Sign Out” option, so that i can sign in or out
+10. As a registered user, I would like to see a “Sign in/Sign Out” option, so that i can sign in or out
 
-10. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
+11. As a logged in user, I can view other sellers profiles
+
+12. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
 
 ### Epic 4: User Profiles - User Stories
 
-11. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
+13. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
 
-12. As a registered user, I can view other sellers profiles
-
-13. As a registered user, I can view other sellers ads on their profiles
+14. As a registered user, I can view other sellers ads on their profiles
 
 ### Epic 5: The Ad Detail Page - User Stories
 
-14. As a user, I can view a picture and a description of the item on the Ad Detail page
+15. As a user, I can view a picture and a description of the item on the Ad Detail page
 
-15. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
-16. As a logged in user, I can mark my item as sold, so that other users are aware of this
+17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
+18. As a logged in user, I can mark my item as sold, so that other users are aware of this
 
 ### Epic 6: The Contact Page - User Stories
 
-17. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
+19. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not
 
 ### Epic 7: Admin/Site-Owner Functionality - User Stories
-18. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
-22. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
+20. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary
+21. As a site owner, I receive an email when users submit the contact form, so that I can reply to them
 
 
 
@@ -308,20 +308,20 @@ This is always visible at the top of the page, once scrolled up. I chose not to 
 
 **User stories/site-owner goals covered:**
 
-1. Easily navigate the websites pages via the menu or links provided
+1. As a user, I can easily navigate to anywhere of relevance on the site by scrolling to the top of the page and clicking a link
 
-3. Experience the same quality in design, user interaction and structure on small mobile devices, tablets as on larger screens
+5. As a user, If I am not signed in, I am redirected to sign in/up if I click on any of the links or buttons restricted to logged in users
 
-4. Get responses and confirmation from the website by my interactions with it
-
-15. Display a menu in a navigation bar or popout menu at the top of the page
+6. As a user, I get direct response and confirmation of my actions made on the website
 
 ___
 #### Feature 2: The Home Page
 
 ![Home Page](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/screenshots/features/feature_two_desktop.png)
 
-The Home page has three big buttons, each containing a main feature of the site; Quiz, Learn and Play. Due to the simple nature of this site, there is little more here to distract, only the main logo, the contact link at the bottom and the footer.
+The Home page consists of a search form, a hero image, links for the different categories and three feature cards.
+
+In the search form, I 
 
 **User stories/site-owner goals covered:**
 

@@ -44,7 +44,7 @@
         {% for ad in user_ads %}
     <div class="row">
         <div class="col col-md-8 mx-md-auto">
-            <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
+            <a class="card mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
                 <div class="row">
                     <div class="col-4">
                         <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">
@@ -92,7 +92,7 @@
         {% for ad in saved_ads %}
         <div class="row">
             <div class="col col-md-8 mx-md-auto">
-                <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
+                <a class="card mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
                     <div class="row">
                         <div class="col-4">
                             <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">
