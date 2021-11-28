@@ -5,13 +5,13 @@
 <div class="container-fluid">
     <div class="row align-bottom d-flex">
         <div class="row">
-            <div class="col banner">
+            <div class="col banner ps-md-5">
                 <h2 class="custom-text-shadow pt-2">Profile: {{ user }}</h3>
             </div>
         </div>
-        <div class="row pt-2">
+        <div class="row pt-2 justify-content-center align-bottom">
             <div class="col-3 col-md-4">
-                <div class="col-md-3 soft-fade-up profile-card mt-auto">
+                <div class="col-md-4 soft-fade-up profile-card mt-auto shadow">
                     <i class="fas fa-user user-icon py-3"></i>
                 </div>
             </div>
@@ -37,7 +37,7 @@
     </div>
     {% if user_ads %}
     <div class="row">
-        <div class="col banner mt-2">
+        <div class="col banner mt-2 ps-md-5">
             <h4 class="custom-text-shadow pt-2">{{ user }}'s' Ads</h4>
         </div>
     </div>
@@ -78,20 +78,20 @@
     {% endfor %}
     {% else %}
     <div class="row">
-        <div class="col banner-3 mt-2">
+        <div class="col banner-3 mt-2 ps-md-5">
             <h4 class="custom-text-shadow pt-2">No Ads Posted</h4>
         </div>
     </div>
     {% endif %}
     {% if saved_ads %}
     <div class="row">
-        <div class="col banner mt-2">
+        <div class="col banner mt-2 ps-md-5">
             <h4 class="custom-text-shadow pt-2">Saved Ads</h4>
         </div>
     </div>
         {% for ad in saved_ads %}
         <div class="row">
-            <div class="col">
+            <div class="col col-md-8 mx-md-auto">
                 <a class="card ad mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
                     <div class="row">
                         <div class="col-4">
@@ -126,7 +126,7 @@
         {% endfor %}
         {% elif request.user.username == ad.seller.username %}
     <div class="row">
-        <div class="col banner-3 mt-2">
+        <div class="col banner-3 mt-2 ps-md-5">
             <h4 class="custom-text-shadow pt-2">No Ads Saved</h4>
         </div>
     </div>

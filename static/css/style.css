@@ -240,6 +240,11 @@ li .btn-main {
     color:rgb(139, 105, 41);
 }
 
+.user-icon {
+    color: #b9881d;
+    height: 35%;
+}
+
 .alert {
     position: fixed;
     width: 100vw;
@@ -601,4 +606,8 @@ input.bg-secondary:hover {
 
     .alert .btn-close 
         left: 310px;
+}
+
+.profile-card {
+    height: 90%;
 }
