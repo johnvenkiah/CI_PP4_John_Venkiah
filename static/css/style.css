@@ -644,3 +644,14 @@ input.bg-secondary:hover {
     }
 
 }
+
+@media only screen and (min-width: 1024px) {
+    .navbar .btn {
+        margin-top: 7px;
+    }
+
+    .banner h2, h4 {
+        padding-left: 15%;
+    }
+
+}
