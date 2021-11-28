@@ -487,10 +487,6 @@ top: 1px;
     height: 100%;
 }
 
-.ad {
-
-}
-
 .fa-ul {
     text-align: right;
 }
@@ -597,7 +593,14 @@ input.bg-secondary:hover {
     transform-origin: center;
 }
 
+.logos {
+    width: 70px;
+}
 
+.django-logo {
+    mix-blend-mode: multiply;
+    width: 45px;
+}
 
 @media only screen and (min-width: 768px) {
     .hero-img-home {
@@ -632,3 +635,4 @@ input.bg-secondary:hover {
         padding: 20px 0 0;
     }
 }
+
