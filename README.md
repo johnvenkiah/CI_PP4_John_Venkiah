@@ -64,8 +64,7 @@ Project Goals for intended use are:
 - Creating a forum where users can buy and sell items
 - The main features of the forum are members only
 - Signing up is easy, secure and fast
-- The users can manage their ads and communicate via the forum
-- Admins can review and remove ads that violate the terms
+- The users can manage their ads and themselves as users
 
 
 My personal project goals of FeelGood Physio are:
@@ -77,7 +76,7 @@ My personal project goals of FeelGood Physio are:
 
 Users should be able to search for, browse lists of and view advertisements on the site.
 
-Logged in users should be able to post ads, manage posted ads and contact other users. They should also be able to view and edit a personal profile.
+Logged in users should be able to post ads, manage posted ads and view other users contact details. They should also be able to view and edit a personal profile.
 
 ### Site Owner Goals
 
@@ -99,7 +98,7 @@ The structure of this site is simple; the heart of the site is the list of ads, 
 <details>
     <summary>Click here to view the home screen</summary>
 
-![Screenshot of Home](#)
+![Screenshot of Home](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/screenshots/home_1.png)
 
 </details>
 
@@ -107,8 +106,8 @@ The home screen contains a lot, but is well organized. It contains:
 
 - A Hero Image
 - A search field
-- Links to the most popular categories
-- Three articles with various links, including to log in or signup
+- Links to categories of all ads posted
+- Three feature cards mostly for design purposes, including an external link
 
 ### 2. Login/Signup
 
