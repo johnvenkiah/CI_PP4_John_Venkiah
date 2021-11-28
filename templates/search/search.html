@@ -38,22 +38,19 @@
                         </div>
                     </div>
                 </div>
-                {% if ad.sold %}
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col">
+                {% if ad.sold %}
                         <p class="card-text sold my-1">£{{ ad.price }}</p>
                     </div>
                     <div class="col-8">
                         <p class="card-text text-danger mt-1">SOLD</p>
                     </div>
-                </div>
-                {% else %}
-                <div class="row">
-                    <div class="col">
+                    {% else %}
                         <p class="card-text my-1">£{{ ad.price }}</p>
                     </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </a>
         </div>
     </div>

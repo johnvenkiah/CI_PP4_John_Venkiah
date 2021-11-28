@@ -71,6 +71,7 @@ class AdUpdateView(UpdateView):
         context = super(AdUpdateView, self).get_context_data(**kwargs)
         context['google_api_key'] = self.google_api_key
 
+
         return context
 
     @method_decorator(login_required)

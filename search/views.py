@@ -44,6 +44,7 @@ def search_view(request):
         'ads': ads,
         'search_query': search_query,
     }
+    print(ads.filter(saved=True))
 
     return render(request, 'search/search.html', context)
 
