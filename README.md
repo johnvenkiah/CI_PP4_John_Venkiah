@@ -481,43 +481,27 @@ I have used [Bootstrap 5](https://getbootstrap.com/) as a framework for styling 
 
 A few lines of [JQuery](https://jquery.com/) for autodissapear of alerts
 
-- [Font Awesome](https://fontawesome.com/) fonts were used for all fonts and icons in this project.
+- [Font Awesome](https://fontawesome.com/) fonts were used for all icons in this project.
+
+- [Google Fonts](https://fonts.google.com/) - Were used for all fonts and icons in this project.
 
 - [Git](https://git-scm.com/) - Version control system used to commit and push to Github via Gitpod.
 
-- [Github](https://github.com/) - The projects repository and all its branches were commited, pushed and deployed to Github.
-
-- [Gitpod](https://gitpod.com/) - All code was written and tested with the Gitpod web-based IDE.
-
-- [Balsamiq](https://balsamiq.com/wireframes/) - Balsamiq Wireframes was used to create wireframe images of the website which you can view [here](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/wireframes/all_wireframes_musical_minds.pdf).
-
-## Validation
-
-
-
-### Applications, Platforms and Libraries
-
-
-#### Applications and Platforms
-
-- [Git](https://git-scm.com/) - Version control system used to commit and push to Github via Gitpod.
-
-- [Github](https://github.com/) - The projects repository and all its branches were commited, pushed and deployed to Github.
-
-- [Gitpod](https://gitpod.com/) - All code was written and tested using the Gitpod web-based IDE.
+- [Github](https://github.com/) - The projects repository and all its branches were commited,
+and pushed to Github.
 
 - [Heroku](https://www.heroku.com) - Used to deploy the application.
 
-- [Lucidchart](https://lucid.co/product/lucidchart) - Lucidchart was used to create the [flowchart](#flowchart) of the project.
+- [Gitpod](https://gitpod.com/) - All code was written and tested with the Gitpod web-based IDE.
 
-- [Google Calendar](https://calendar.google.com/) - The users input data creates and edits events on Google Calendar
+- - [Google Cloud Platform](https://console.cloud.google.com/) was used for the location autocomplete functionality via the Google Javascript and Google Geocoding API's.
 
-- [Google Sheets](https://calendar.google.com/) - - The users input data creates and edits content on Google Sheets
+- [Balsamiq Wireframes](https://balsamiq.com/wireframes/) was used to create wireframe images of the website which you can view [here](https://github.com/johnvenkiah/CI_MS2_John_Venkiah/blob/master/docs/wireframes/all_wireframes_musical_minds.pdf).
 
-- [Google Cloud Platform](https://console.cloud.google.com/) - All data send and received with the help of the Google API, through the Google Cloud Platform
+- [Lucidchart](https://lucid.co/product/lucidchart) was used to create the visual [data schema](#data_schema) of the project.
 
 
-#### Python Libraries
+#### Python and Django Libraries
 
 I have used these third party libraries and Python libraries for this project:
 

@@ -26,6 +26,7 @@ Each add will generate the following fields:
 """
 
 import faker.providers
+import wikipedia
 from django.core.management.base import BaseCommand
 from faker import Faker
 from datetime import datetime
@@ -69,7 +70,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         number_of_ads = kwargs.get('number_of_ads')[0]
-        print(number_of_ads)
+        
+        print(wikipedia.search("Pianos"))
+        print(wikipedia.page('Piano Brands').content)
+
         fake = Faker(["sv_SE"])
         fake.add_provider(Provider)
         for p in range(number_of_ads):
