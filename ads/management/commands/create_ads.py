@@ -1,5 +1,8 @@
 """
-This command is exectued in the terminal.
+This command is exectued in the terminal, and is a test to create dummy users.
+Although it wasn't usable for production,
+this could be devloped further in the future.
+
 EXAMPLE: python3 manage.py create_ads
 
 This command generates an ads.json which in turn
@@ -145,12 +148,15 @@ class Command(BaseCommand):
                 return items[outer]
 
     def get_image_url(self, title):
-        res = requests.get('https://api.creativecommons.engineering/v1/images?q=test', headers={'Authorization': 'access_token Bearer h2XUajejV5SM6f9rsHXk6QMRMTnxoZ'})
+        res = requests.get(
+            'https://api.creativecommons.engineering/v1/images?q=test',
+            headers={'Authorization': """access_token Bearer
+            h2XUajejV5SM6f9rsHXk6QMRMTnxoZ"""})
         r = res.json()
         results = r['results']
         index = random.randint(0, len(results))
         target = results[index]
-        
+
         urllib.request.urlretrieve(
             target['url'], "./media/" + target['url'].split("/")[-1])
         return target['url'].split("/")[-1]
@@ -167,37 +173,37 @@ class Command(BaseCommand):
                 'items': fake.wikipedia_search_pianos()
             },
             {
-                'category': 'Guitar/Bass/Amps', 
+                'category': 'Guitar/Bass/Amps',
                 'items': fake.wikipedia_search_guitars()
             },
             {
-                'category': 'Drums/Symbals', 
+                'category': 'Drums/Symbals',
                 'items': fake.wikipedia_search_drums()
             },
             {
-                'category': 'Woodwind', 
+                'category': 'Woodwind',
                 'items': fake.wikipedia_search_woodwind()
             },
             {
-                'category': 'Brass', 
+                'category': 'Brass',
                 'items': fake.wikipedia_search_brass()
             },
             {
-                'category': 'Studio Equipment', 
+                'category': 'Studio Equipment',
                 'items': fake.wikipedia_search_studio()
             },
             {
-                'category': 'Bowed Instruments', 
+                'category': 'Bowed Instruments',
                 'items': fake.wikipedia_search_bowed()
             },
             {
-                'category': 'Other..', 
+                'category': 'Other..',
                 'items': fake.wikipedia_search_other()
             },
         ]
 
-        start_date = datetime.date(year=2019, month=2, day=2)
-        
+        start_date = datetime.date(year=2019, month=2, day=2)  # noqa
+
         pk = 12
         new_ads = []
         for p in range(number_of_ads):

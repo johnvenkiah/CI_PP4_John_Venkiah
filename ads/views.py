@@ -14,6 +14,11 @@ from .forms import AdForm
 from .models import Ad
 from jv_instrumental.settings import GOOGLE_API_KEY
 
+"""
+All ad related views are here, ad detail, ad save for users saved ads,
+edit ad, delete and create.
+"""
+
 
 class AdDetailView(DetailView):
     model = Ad

@@ -7,6 +7,9 @@ from jv_instrumental.settings import EMAIL_HOST_USER
 
 
 class ContactView(FormView):
+    """
+    View for contact page
+    """
     template_name = 'contact/contact.html'
     model = User
     form_class = ContactForm

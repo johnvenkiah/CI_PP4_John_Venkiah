@@ -7,6 +7,9 @@ from main.map_utils import get_lat_long_by_address, get_city_by_lat_long
 
 
 class Ad(models.Model):
+    """
+    The Ad model, connecting to the User wit the seller fk field.
+    """
     title = models.CharField(max_length=250, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     seller = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -2,6 +2,10 @@ from django.urls import path
 
 from . import views
 
+"""
+Contact page url
+"""
+
 app_name = 'contact'
 
 urlpatterns = [

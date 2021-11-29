@@ -238,7 +238,7 @@ footer svg, .cat-icons {
 }
 
 .btn-main:hover {
-    background-color: rgb(211, 146, 49);
+    background-color: rgb(139, 96, 31);
     border: rgb(139, 105, 41);
     font-weight: 500
 }
@@ -274,7 +274,7 @@ li .btn-main {
 
 .alert {
     position: absolute;
-    padding: 1rem 1rem;
+    padding: 1rem 2rem 1rem 0;
     top: 10%;
     left: 50%;
     width: fit-content;

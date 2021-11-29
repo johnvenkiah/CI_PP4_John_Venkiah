@@ -2,6 +2,9 @@ from django import forms
 
 
 class ContactForm(forms.Form):
+    """
+    The contact form from which users send emails to the site owner.
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 

@@ -4,6 +4,9 @@ from main.categories import category_dict
 
 
 class AdForm(forms.ModelForm):
+    """
+    The ad form, used to create and edit ads by users.
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['location'].widget.attrs.update(
