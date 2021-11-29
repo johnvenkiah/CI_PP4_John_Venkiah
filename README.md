@@ -362,11 +362,11 @@ If a user desires, they can remove their user account completely.
 
 12. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
 
-13. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
+16. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
 
-14. As a registered user, I can view other sellers ads on their profiles
+17. As a registered user, I can view other sellers ads on their profiles
 
-### Feature 5: Ad Post, Edit and Remove
+### Feature 4: Ad Post, Edit and Remove
 
 ![Ads](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/features/post_ad.png)
 
@@ -384,12 +384,12 @@ The Edit Ad page is visible through the Ad detail page, and from there users can
 
 11. As a logged in user, I can view other sellers profiles
 
-13. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
+16. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info
 
-14. As a registered user, I can view other sellers ads on their profiles
+17. As a registered user, I can view other sellers ads on their profiles
 
-17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
-18. As a logged in user, I can mark my item as sold, so that other users are aware of this
+19. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
+20. As a logged in user, I can mark my item as sold, so that other users are aware of this
 
 ### Feature 5: The Ad Detail Page
 
@@ -403,10 +403,10 @@ The Ad Detail is where the user can view a sellers contact details, a larger pic
 
 12. As a logged in user, i can save ads to a “saved” list so that I can easily view them later
 
-15. As a user, I can view a picture and a description of the item on the Ad Detail page
+18. As a user, I can view a picture and a description of the item on the Ad Detail page
 
-17. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
-18. As a logged in user, I can mark my item as sold, so that other users are aware of this
+19. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad
+20. As a logged in user, I can mark my item as sold, so that other users are aware of this
 
 21. As a user, I can click a share button in the ad detail page, so that I can share it on social media platforms
 

@@ -34,6 +34,7 @@ import json
 from django.core.management.base import BaseCommand
 from faker import Faker
 import requests
+import urllib.request
 
 GenAdsVars = {
     "TITLE": "",
@@ -149,7 +150,10 @@ class Command(BaseCommand):
         results = r['results']
         index = random.randint(0, len(results))
         target = results[index]
-        return target['url']
+        
+        urllib.request.urlretrieve(
+            target['url'], "./media/" + target['url'].split("/")[-1])
+        return target['url'].split("/")[-1]
 
     def handle(self, *args, **kwargs):
         number_of_ads = kwargs.get('number_of_ads')[0]
@@ -192,16 +196,16 @@ class Command(BaseCommand):
             },
         ]
 
-        start_date = datetime.date(year=2015, month=1, day=1)
+        start_date = datetime.date(year=2019, month=2, day=2)
         
-        pk = 20
+        pk = 12
         new_ads = []
         for p in range(number_of_ads):
             category = fake.app_category()
             title = self.create_ad_title(category, searches_db)
             slug = title.replace(" ", "-")
             seller = 11
-            price = random.randint(100, 1000000)
+            price = random.randint(100, 1000)
             created_on = fake.iso8601()
             sold = bool(random.getrandbits(1))
             location = fake.address()
@@ -215,7 +219,8 @@ class Command(BaseCommand):
                         "seller": seller,
                         "image": f"{image}",
                         "category": f"{category}",
-                        "description": "Great guitar for kids.Nice color.",
+                        "description": fake.paragraph(
+                            nb_sentences=random.randint(2, 5)),
                         "created_on": f"{created_on}",
                         "price": price,
                         "location": f"{location}",
