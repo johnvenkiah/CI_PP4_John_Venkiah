@@ -6,10 +6,6 @@ from django.core.validators import MaxValueValidator
 from main.map_utils import get_lat_long_by_address, get_city_by_lat_long
 
 
-# def user_image_folder(instance, filename):
-#     return f'static/images/{instance.seller.username}/{filename}'
-
-
 class Ad(models.Model):
     title = models.CharField(max_length=250, unique=True)
     slug = models.SlugField(max_length=200, unique=True)

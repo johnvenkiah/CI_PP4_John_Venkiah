@@ -8,7 +8,7 @@ from .models import Profile
 
 class TestProfileModel(TestCase):
     """
-    Detta 
+    Detta
     """
     def setUp(self):
         """
@@ -21,7 +21,6 @@ class TestProfileModel(TestCase):
             created_on=datetime.now().strftime('%H:%M, %d %b %Y%Z'),
             location='46 Courtman Road, London UK'
         )
-
 
     def tearDown(self):
         """

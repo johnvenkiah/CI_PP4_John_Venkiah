@@ -32,6 +32,5 @@ class AdForm(forms.ModelForm):
             }
         )
     )
-    # sold = forms.BooleanField()
     category = forms.ChoiceField(
             choices=zip(category_dict.keys(), category_dict.keys()))

@@ -524,85 +524,38 @@ I have used these third party libraries and Python libraries for this project:
 
 ## Validation
 
-All Python files passed the [PEP8](http://pep8online.com/) and [Pylint](https://www.pylint.org/) tests with 0 errors.
+All Python files passed the [PEP8](http://pep8online.com/) and [Pylint](https://www.pylint.org/) tests with 0 errors and the following result on all files.
 
-Click [here](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/validation/validation.md) to view them.
+![PEP8 Validation](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/validation/pep8.png)
 
+All Javascript files passed JSHint validation with 0 errors
 
+![JSHint Validation](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/validation/jshint.png)
 
-## Testing of Patient User Stories
+### HTML Validation
 
-User stories are tested with the features that cover them. All user stories passed the tests.
+All pages passed the [W3C HTML Validation](https://validator.w3.org/) tests with 0 errors, and can be viewed [here](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/validation/w3c/html)
 
+### CSS Validation
 
-### Testing of user story 1
+The CSS on the website passed the [W3C CSS Jigsaw](https://jigsaw.w3.org/css-validator/) validation with 0 errors:
 
-**"I would like to be able to book an appointment at a time of my choosing, should the appointement be available"**
-
-
-**Covered by feature 1: The Patient Booking System**
-
-<details>
-    <summary>View image of initial steps of the booking</summary>
-
-![User story 1, 1](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/testing_user_stories/user_story_1_1.png)
-
-</details>
-
-- **Actions**:
-
-    * *User hits "b" to begin*
-    * *User enters "1" to agree on the application logging the patient data*
-    * *User enters desired month of the appointment (Three letters)*
-    * *User enters desired date (one or two figure numbers both work)*
-    * *User is notified if the date is bookable*
-    * *User enters desired hour of the appointment*
-    * *User is notified if the timeslot is free or not*
-    * *User enters their name*
-    * *User enters their email*
-    * *User enters their symptoms*
-    * *User confirms by hitting "y"*
-    * *User is greeted with their newly made booking*
-    * *User can choose to go back to the beginning*
-
-<details>
-    <summary>View image of date validation here</summary>
-
-![User story 1, 2](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/testing_user_stories/user_story_1_2.png)
-
-</details>
-
-<details>
-    <summary>View image of booking confirmation here</summary>
-
-![User story 1, 3](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/testing_user_stories/user_story_1_3.png)
-
-</details>
-
- - Expected result: *To Make a successful booking at an available time*
-
- - Actual result: *Works as intended*
+![Results from CSS-validation](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/validation/jigsaw_w3c.png)
 
 
-### Testing of user story 2
+### Performance/Accessibility
 
-**"I would like to be alerted if my details are saved before I enter them"**
+[Google Chromes Lighthouse](https://developers.google.com/web/tools/lighthouse) was used for testing the performance and accessibility of the website, which passed the tests on both desktop and mobile simulator. You can see the results [here](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/validation/lighthouse)
+
+### Devices
+
+Testing was done using a MacBook Pro and Google Chromes device simulator for smartphone (iPhoneSE), Tablet (iPad) and desktop views. All devices were successful in display and functionality.
+
+## Testing of User Stories
+
+User stories are tested with the features that cover them. All user stories passed the tests and can be viewed [here](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/tree/main/docs/TESTING_USER_STORIES.md)
 
 
-**Covered by feature 1: The Patient Booking System**
-
-- **Action** - *In the welcome screen, user hits "b" to get to the booking screen*
-
-- **Expected Result** - *Application displays message about storing data and user needs to confirm this to carry on*
-
-- **Actual Result** - *Works as intended*
-
-<details>
-    <summary>View image here</summary>
-
-![User story 2](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/testing_user_stories/user_story_2.png)
-
-</details>
 
 ### Testing of user story 3
 
@@ -622,7 +575,7 @@ This user story is tested in the steps needed to make an appointment.
 <details>
     <summary>View image here</summary>
 
-![User story 1, 3](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/testing_user_stories/user_story_3_1.png)
+![User story 1, 3](https://github.com/johnvenkiah/CI_PP3_John_Venkiah/blob/main/docs/testing/testing_user_stories/user_story_3_1.png)
 
 </details>
 

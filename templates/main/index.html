@@ -11,8 +11,6 @@
 <!-- CELLO ICON: <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
 <!-- ACCORDION ICON: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
 
-
-
             <div class="row g-0 justify-content-center fade-down">
                 <div class="col col-lg-10">
                     <div class="pad-16 mb-8 hero-img-home">
@@ -45,7 +43,7 @@
                                         <i class="input-icon fa-solid fa-location-dot"></i>
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button href="{% url 'search:search' %}" type="submit" class="mt-4 btn btn-main shadow">Search Ads</button>
+                                        <button action="{% url 'search:search' %}" type="submit" class="mt-4 btn btn-main shadow">Search Ads</button>
                                     </div>
                                 </form>
                             </div>
@@ -118,6 +116,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
     {% endblock %}

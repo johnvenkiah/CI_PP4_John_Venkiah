@@ -38,9 +38,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 if development:
-    ALLOWED_HOSTS = ['localhost']
+    ALLOWED_HOSTS = ['localhost', 'wave.webaim.org']
 else:
-    ALLOWED_HOSTS = ['instru-mental.herokuapp.com']
+    ALLOWED_HOSTS = ['instru-mental.herokuapp.com', 'wave.webaim.org']
 
 # Application definition
 

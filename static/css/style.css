@@ -454,13 +454,6 @@ top: 1px;
     margin-top: 2.1rem;
 }
 
-.msg-form {
-    /* position: fixed;
-    bottom: 0;
-    right: 0;
-    padding: 7px; */
-}
-
 .msg-form label {
     margin-top: 0;
 }
@@ -537,7 +530,7 @@ top: 1px;
 }
 
 .btn-light {
-    box-shadow: 0 0 10px, rgb(136, 136, 136);
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.733);
     border: 1px solid rgb(228, 172, 68);
 }
 
@@ -624,11 +617,6 @@ input.bg-secondary:hover {
    .navbar-brand {
         font-size: 4rem;
     }
-
-    .navbar .btn {
-        margin-top: ;
-    }
-
 }
 
 @media only screen and (min-width: 1024px) {
@@ -645,4 +633,3 @@ input.bg-secondary:hover {
         padding: 20px 0 0;
     }
 }
-

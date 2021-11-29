@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
 from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -71,7 +71,6 @@ class AdUpdateView(UpdateView):
         context = super(AdUpdateView, self).get_context_data(**kwargs)
         context['google_api_key'] = self.google_api_key
 
-
         return context
 
     @method_decorator(login_required)
@@ -124,6 +123,7 @@ class AdCreateView(CreateView):
                 'user': self.object.seller
             }
         )
+
 
 class AdDeleteView(DeleteView):
     model = Ad

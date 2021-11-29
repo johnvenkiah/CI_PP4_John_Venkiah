@@ -1,0 +1,170 @@
+[
+{
+  "model": "ads.ad",
+  "pk": 1,
+  "fields": {
+    "title": "Prophet 12",
+    "slug": "prophet-12",
+    "seller": 10,
+    "image": "Screenshot_2021-11-09_at_21.28.03.png",
+    "category": "Pianos/keyboards",
+    "description": "Great keyboard, lovely sound.",
+    "created_on": "2021-11-28T00:38:37.421Z",
+    "price": 1500,
+    "location": "Crouch Hill, London",
+    "city": "London",
+    "sold": false,
+    "saved": [
+      12
+    ]
+  }
+},
+{
+  "model": "ads.ad",
+  "pk": 2,
+  "fields": {
+    "title": "Nice guitar",
+    "slug": "nice-guitar",
+    "seller": 11,
+    "image": "C.F.Martin_Tour-19-3_wKlxqD1.jpg",
+    "category": "Guitar/Bass/Amps",
+    "description": "Great guitar for kids.Nice color.",
+    "created_on": "2021-11-28T05:53:12.438Z",
+    "price": 150,
+    "location": "James Street, Liverpool",
+    "city": "Liverpool",
+    "sold": false,
+    "saved": []
+  }
+},
+{
+  "model": "ads.ad",
+  "pk": 3,
+  "fields": {
+    "title": "Nice Tama drumkit",
+    "slug": "nice-tama-drumkit",
+    "seller": 11,
+    "image": "depositphotos_209175650-stock-photo-drum-kit.jpg",
+    "category": "Drums/Symbals",
+    "description": "Great sounding drums for a nice price.",
+    "created_on": "2021-11-28T05:55:11.906Z",
+    "price": 250,
+    "location": "Bournemouth Square, Bournemouth",
+    "city": "Bournemouth",
+    "sold": false,
+    "saved": [
+      16
+    ]
+  }
+},
+{
+  "model": "ads.ad",
+  "pk": 4,
+  "fields": {
+    "title": "G H Muller Oboe with lovely sound",
+    "slug": "g-h-muller-oboe-with-lovely-sound",
+    "seller": 12,
+    "image": "Oboe_3.jpg",
+    "category": "Woodwind",
+    "description": "A wonderful instrument to play for all players. Several mouthpieces included.",
+    "created_on": "2021-11-28T06:10:21.840Z",
+    "price": 450,
+    "location": "Glassford Street, Glasgow",
+    "city": "Glasgow",
+    "sold": false,
+    "saved": []
+  }
+},
+{
+  "model": "ads.ad",
+  "pk": 5,
+  "fields": {
+    "title": "Conn Bass Trombone",
+    "slug": "conn-bass-trombone",
+    "seller": 13,
+    "image": "F_bass.jpg",
+    "category": "Brass",
+    "description": "Beautiful Trombone with silver mouthpiece. Sounds like a dream!",
+    "created_on": "2021-11-28T07:30:16.291Z",
+    "price": 550,
+    "location": "Groomsport Road, Bangor",
+    "city": "Bangor",
+    "sold": false,
+    "saved": []
+  }
+},
+{
+  "model": "ads.ad",
+  "pk": 6,
+  "fields": {
+    "title": "Beyerdynamic D990 headphones",
+    "slug": "beyerdynamic-d990-headphones",
+    "seller": 14,
+    "image": "Beyerdynamic_DT-990_Pro_Headphones_top.jpg",
+    "category": "Studio Equipment",
+    "description": "Great headphones for this price. Uses sparcely.",
+    "created_on": "2021-11-28T07:47:45.627Z",
+    "price": 100,
+    "location": "Herford Way, Hinckley",
+    "city": "Burbage",
+    "sold": false,
+    "saved": [
+      16
+    ]
+  }
+},
+{
+  "model": "ads.ad",
+  "pk": 7,
+  "fields": {
+    "title": "Munich Violin",
+    "slug": "munich-violin",
+    "seller": 15,
+    "image": "Vienna-strings-munich-violin-4-4.jpg",
+    "category": "Bowed Instruments",
+    "description": "Great violin for beginners, lovely colour. Without bow.",
+    "created_on": "2021-11-28T07:53:07.412Z",
+    "price": 100,
+    "location": "Tonge Moor Road, Bolton",
+    "city": "Bolton",
+    "sold": false,
+    "saved": []
+  }
+},
+{
+  "model": "ads.ad",
+  "pk": 8,
+  "fields": {
+    "title": "Short Necked Banjo",
+    "slug": "short-necked-banjo",
+    "seller": 15,
+    "image": "NYD_2013_Short_Neck_Banjo.jpg",
+    "category": "Other..",
+    "description": "Rare but great instrument, needs service but a lovely complement to anyones home studio/home. Free extra strings.",
+    "created_on": "2021-11-28T07:56:04.852Z",
+    "price": 130,
+    "location": "Newcraighall Road, Edinburgh",
+    "city": "Edinburgh",
+    "sold": false,
+    "saved": []
+  }
+},
+{
+  "model": "ads.ad",
+  "pk": 11,
+  "fields": {
+    "title": "Grand Piano - Bechstein",
+    "slug": "grand-piano-bechstein",
+    "seller": 16,
+    "image": "Bechstein_576_Grand_piano_Franz_Liszt_-_Wooden_frame_H0ikLJy.jpg",
+    "category": "Pianos/keyboards",
+    "description": "Lovely grand in a great colour. Needs tuning.",
+    "created_on": "2021-11-28T13:16:39.109Z",
+    "price": 900,
+    "location": "Grand Avenue, Worthing",
+    "city": "Worthing",
+    "sold": false,
+    "saved": []
+  }
+}
+]

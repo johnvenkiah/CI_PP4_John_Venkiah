@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */ 
+
 // This sample uses the Places Autocomplete widget to:
 // 1. Help the user select a place
 // 2. Retrieve the address components associated with that place
@@ -11,7 +13,7 @@ let address1Field;
 
 function initAutocomplete() {
   address1Field = document.querySelector("#id_location");
-  console.log(address1Field)
+  console.log(address1Field);
 
   // Create the autocomplete object, restricting the search predictions to
   // addresses in the US and Canada.
@@ -56,7 +58,7 @@ function fillInAddress() {
 
             case "country": {
                 address1 += ` ${component.long_name}${country}`;
-                break
+                break;
             }
         }
 
