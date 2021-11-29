@@ -7,7 +7,7 @@
 
 **Covered by feature 1: The Navbar**
 
-![User story 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/features/navbar.png)
+![User story 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/features/navbar.png)
 
 
 - **Action** - *User scrolls up to top*
@@ -95,7 +95,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 7](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/sign_in.png)
+![User story 7](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/sign_in.png)
 
 ### Testing of User Story 8
 
@@ -109,9 +109,9 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 8, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/edit_ad_button.png)
+![User story 8, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/edit_ad_button.png)
 
-![User story 8, 2](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/not_editable_ad.png)
+![User story 8, 2](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/not_editable_ad.png)
 
 
 ### Testing of User Story 9
@@ -126,7 +126,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 9](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/password_reset_image.png)
+![User story 9](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/password_reset_image.png)
 
 
 ### Testing of User Story 10
@@ -154,7 +154,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 11](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/others_profile.png)
+![User story 11](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/others_profile.png)
 
 
 ### Testing of User Story 12
@@ -169,7 +169,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 12](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/not_editable_ad.png)
+![User story 12](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/not_editable_ad.png)
 
 
 
@@ -194,7 +194,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/location_field.png)
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/location_field.png)
 
 ### Testing of User Story 16
 
@@ -208,7 +208,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/edit_profile_image.png)
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/edit_profile_image.png)
 
 
 ### Testing of User Story 17
@@ -223,7 +223,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/others_profile.png)
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/others_profile.png)
 
 
 
@@ -239,6 +239,98 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/ad_detail_image.png)
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/ad_detail_image.png)
 
 
+
+### Testing of User Story 19
+
+**"19. As a registered user, I can view options to post and edit ads, so that I can create, read, update and delete my ad"**
+
+**Covered by Feature 4: Ad Post, Edit and Remove, and Feature 5: The Ad Detail Page**
+
+- **Action** - *User sees the Post Ad button in the navbar, or clicks the edit button in the ad detail page*
+
+- **Expected Result** - *The user can view, post, update and delete an ad*
+
+- **Actual Result** - *Works as intended*
+
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/edit_profile_image.png)
+
+
+
+### Testing of User Story 20
+
+**"20. As a logged in user, I can mark my item as sold, so that other users are aware of this"**
+
+**Covered by Feature 4: Ad Post, Edit and Remove, and Feature 5: The Ad Detail Page**
+
+- **Action** - *User clicks the sold checkbox in the edit ad page*
+
+- **Expected Result** - *The ad is now marled as sold for all users*
+
+- **Actual Result** - *Works as intended*
+
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/edit_profile_image.png)
+
+
+
+### Testing of User Story 21
+
+**"21. As a user, I can click a share button in the ad detail page, so that I can share it on social media platforms"**
+
+**Covered by Feature 5: The Ad Detail Page**
+
+- **Action** - *User clicks the share button in the ad detail page*
+
+- **Expected Result** - *A popup modal with share links appears*
+
+- **Actual Result** - *Works as intended*
+
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/share.png)
+
+
+
+### Testing of User Story 22
+
+**"22. As a user, I can view a contact page so that I can easily contact the site owner if needed, whether I am registered or not"**
+
+**Covered by Feature 7: The Contact Page**
+
+- **Action** - *User clicks the contact link in the navbar*
+
+- **Expected Result** - *A contact form appears for users to fill in their contact detatils and messag*
+
+- **Actual Result** - *Works as intended*
+
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/contact_image.png)
+
+
+
+### Testing of User Story 23
+
+**"23. As a site owner, I can access an admin page, where I can view all ads and profiles, and delete them if necessary"**
+
+**Covered by Feature 8: The Contact Page**
+
+- **Action** - *User clicks the admin link at the bottom of the page*
+
+- **Expected Result** - *The admin page is displayed and the site owner can log in*
+
+- **Actual Result** - *Works as intended*
+
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/admin_immage.png)
+
+
+
+### Testing of User Story 24
+
+**"24. As a site owner, I receive an email when users submit the contact form, so that I can reply to them"**
+
+**Covered by Feature 7: The Contact Page**
+
+- **Action** - *User fills in and sends the contact form*
+
+- **Expected Result** - *The admin has now recieved an email fromm the user*
+
+- **Actual Result** - *Works as intended*
