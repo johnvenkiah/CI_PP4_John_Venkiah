@@ -492,6 +492,8 @@ and pushed to Github.
 
 - [Heroku](https://www.heroku.com) - Used to deploy the application.
 
+- [AWS S3 Bucket](https://aws.amazon.com/s3/) - Used to host media and static(CSS and JavaScript) files for the site.
+
 - [Gitpod](https://gitpod.com/) - All code was written and tested with the Gitpod web-based IDE.
 
 - - [Google Cloud Platform](https://console.cloud.google.com/) was used for the location autocomplete functionality via the Google Javascript and Google Geocoding API's.
@@ -528,7 +530,7 @@ The CSS on the website passed the [W3C CSS Jigsaw](https://jigsaw.w3.org/css-val
 
 ### Devices
 
-Testing was done using a MacBook Pro and Google Chromes device simulator for smartphone (iPhoneSE), Tablet (iPad) and desktop views. All devices were successful in display and functionality.
+Testing was done using a MacBook Pro and Google Chromes device simulator for smartphone (iPhone SE), Tablet (iPad) and desktop views. All devices were successful in display and functionality.
 
 ## Testing of User Stories
 
@@ -545,68 +547,53 @@ User stories are tested with the features that cover them. All user stories pass
     <summary>View bugs here</summary>
 ___
 
-**Bug**: Page not loading, GET error and django loads the wrong page
+**Bug**: Page not loading, GET error and django wants to load wrong page
 
-**Fix**: 
-**Bug**: User can navigate with arrows anywhere in the terminal window, entering input here renders the printed text in a false manner.
+**Fix**: Change precedence of urls in urls.py, so Django doesn't think that I'm using a non-existent slug
 
-**Fix**: Print message to users not to use this function in the application. No fix for the bug as of yet.
+___
+
+**Bug**: Autocomplete in location field doesn't work.
+
+**Fix**: .
 ___
 
 
-**Bug**: Error when entering month "oct" in patient booking system
+**Bug**: Images not loading
 
-**Fix**: Correct typo "Okt" in month dictionary, create try and except to catch time format value errors
+**Fix**: Incorrectly configured directory and reference in HTML-file
 ___
 
-**Bug**: Error ``code: 500, APIerror`` when calling the sheets API
+**Bug**: Search not providing any results
 
-**Fix**: Only happened once, difficult to recreate. Created a "try", "except" to catch API errors when calling the sheets API
+**Fix**: Conflict with ad Django object and HTML class with same name. Remove class.
 ___
 
-**Bug**: Checking schedule displayed twice
+**Bug**: Page not displaying properly
 
-**Fix**: Change code so things happen in correct order
+**Fix**: Stray <div> tag, removal fixed it
 ___
 
-**Bug**: Password hiding library import stdiomsk doesn't work on terminal in Heroku and produced ``termios.error: 25, 'Inappropriate ioctl for device'``
+**Bug**: Image flowing outside the ad element covering the whole page
 
-**Fix**: Remove stdiomsk and let password entered be shown
+**Fix**: Contain it with CSS
 ___
 
-**Bug**: Datetime parsing not working, returning errors
+**Bug**: Loading wrong page
 
-**Fix**: Create TimeFConverter class, convert formats with that
+**Fix**: Slug issue again, wrongly configured
 ___
 
-**Bug**: Says date incorrect although it is correct
+**Bug**: Images not loading on deployed version
 
-**Fix**: Fix while loop and indentation in get date function
+**Fix**: Correct syntax for displaying media in Django for AWS S3 bucket
 ___
 
-**Bug**: Sheets updating wrong cell when user exists
+**Bug**: All ads appearing as liked
 
-**Fix** code at end of sheet.py; use update_cell sheets method
+**Fix**: Wrongly configured logic, remove visibility for likes except in ad detail
 ___
 
-**Bug**: Schedule displaying wrong weeks when navigating through weeks, out of schedule back in and then showing next week again
-
-**Fix**: Add initialize method to IncDecWeek class, so when user exits, the weeks count resets
-___
-
-**Bug**: Some lines appearing without space below
-
-**Fix**: Add new line to print and input strings where relevant
-___
-
-**Bug**: "e" didn't let user exit
-
-**Fix**: Add paretheses to e_to_edit function
-___
-
-**Bug**: Error when selecting date in month that has passed
-
-**Fix**: Changed datetime method to year that was wrongly named as variable "yr"
 
 </details>
 
@@ -648,6 +635,19 @@ This application has been deployed from Github using Heroku. Here's how:
 10. If desired, click on "Enable Automatic Deploys", which keeps the app up to date with your Github repository
 11. All done!
 
+### AWS S3
+
+The deployed version of this website has static(CSS and JavaScript) and media files hosted to it via a web based service called Amazon Web Services S3 Bucket.
+
+The steps to take are:
+
+1. Create an account at aws.amazon.com
+2. Navigate to the IAM application and create a user and group
+3. Set the AmazonS3FullAccess for the user and copy the AWS ACCESS and SECRET keys as config vars to your workspace and deployment environment
+4. Create a new Bucket within the S3 application with an appropriate name.
+5. Enable public access for your bucket so users can access and use the services on your website (upload, view, download, etc). More info can be read in the official documentation: https://aws.amazon.com/s3/
+
+
 ### Google API
 
 Here's how you can set up your own API:
@@ -657,40 +657,74 @@ Here's how you can set up your own API:
 3. Add Project name and details
 4. Under API's and services, enable the relevant API for your project (in this case Google Drive, Sheets and Calendar)
 5. IF the API requires, create a credential (service account in this case) for your project
-6. Download the credential and upload it to your workspace a a json-file
+6. Save the API key as a secret in config vars in your workspace and deployment environment
 7. Under API's and services, enable the relevant API for your project (in this case Google Drive, Sheets and Calendar)
-8. Search for the needed tasks to be performed in the documentation for the specific API, for example here for the calendar API: [Google Calendar API Reference](https://developers.google.com/calendar/api/v3/reference?hl=en)
+8. Search for the needed tasks to be performed in the documentation for the specific API, for example here for the calendar API: [Google Maps API Reference](https://developers.google.com/maps/documentation/javascript/overview)
 9. Add them to your code.
 
 
 ## Credits
 
-Here are links to sites that answered a lot of my questions on coding and the Python language.
+### Copywrites
+
+* Images:
+
+Instrument category icons: https://www.flaticon.com/authors/flat-icons, https://www.freepik.com
+
+Home page images are from https://pixabay.com
+
+Ad images are from https://commons.wikimedia.org, https://www.sequential.com/, private image.
+
 
 ### Coding tips and tricks
 
-Overriding false errors when Flake and Pylint validate code:
+Thess links have helped me getting it all to work, and learn more about the Django framework.
 
-[StackOverflow, pyflakes](https://stackoverflow.com/questions/8427701/how-to-ignore-pyflakes-errors-imported-but-unused-in-the-init-py-file)
 
-[StackOverflow, pylint](https://stackoverflow.com/questions/26657265/hide-some-maybe-no-member-pylint-errors)
+Django social share:
+https://studygyaan.com/uncategorised/adding-a-social-share-button-to-your-django-website
 
-Creating a class to increment and decrement a number free from functions: [Stack Overflow](https://stackoverflow.com/questions/47697945/python-how-to-increment-number-and-store-in-variable-every-time-function-runs/47698278)
+Ellipsis Overflow:
+https://stackoverflow.com/questions/20552957/fluid-width-with-text-overflow-ellipsis
 
-Using the dictionary zip function to join two lists: [StackOverflow](https://stackoverflow.com/questions/209840/how-do-i-convert-two-lists-into-a-dictionary)
+Delete user:
+https://stackoverflow.com/questions/38047408/how-to-allow-user-to-delete-account-in-django-allauth
 
-Creating a user login:[StackExchange](https://codereview.stackexchange.com/questions/164359/python-username-and-password-program)
+Geocoding:
+https://www.codingforentrepreneurs.com/blog/python-tutorial-google-geocoding-
 
-Using the python datetime library: [docs.python.org](https://docs.python.org/3/library/datetime.html)
+Hide ugly arrows from integer input:
+https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box
 
-Calculating a leap Year with a conditional statement: [geeksforgeeks.org](https://www.geeksforgeeks.org/program-check-given-year-leap-year/)
+Being able to display other users than the one logged in:
+https://stackoverflow.com/questions/64379294/make-user-profile-visible-to-all-users-include-anonymouseuser-on-django
 
-Regular expression for validating email: [Stack Overflow](https://stackoverflow.com/questions/8022530/how-to-check-for-valid-email-address)
+User linked profile with two forms:
+https://rohitlakhotia.com/blog/django-custom-user-model/
 
-Using the isnumeric function: [delftstack.com](https://www.delftstack.com/howto/python/user-input-int-python/)
+get_initial:
+https://gist.github.com/rodo/8560557
+
+Add slug to Django CreateView:
+https://kodnito.com/posts/slugify-urls-django/
+
+Using CreateView:
+https://www.agiliq.com/blog/2019/01/django-createview/#using-createview
+DetailView
+https://www.agiliq.com/blog/2019/01/django-when-and-how-use-detailview/
+
+Building a custom user profile:
+https://www.ordinarycoders.com/django-custom-user-profile
+
+CORS configs in AWS S3:
+https://stackoverflow.com/questions/65133018/i-need-to-configure-cors-in-s3-bucket-the-code-i-have-isnt-a-valid-json
+
+
+Geocoding example:
+https://www.codingforentrepreneurs.com/blog/python-tutorial-google-geocoding-api
 
 ### Acknowledgments
 
-This project was created from a template made by [Code Institute](https://codeinstitute.net/) to recreate the terminal in a regular web browser.
+This project was created from a GitHub template made by [Code Institute](https://codeinstitute.net/) to recreate the terminal in a regular web browser.
 
-The tutors Scott and Sean and my mentor Mo Shami at Code Institute, have helped me in times of trouble. Many thanks to them, and of course to the comprehensive course material from Code Institute.
+The tutors Jo, Scott, John, Johann and Sean and my mentor Mo Shami at Code Institute, have helped me tremendously with this project. Also my good friend Daniel, who has guided me in understanding the basic concepts of OOP and data. Many thanks to them, and of course to the comprehensive course material from Code Institute.
