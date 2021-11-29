@@ -64,9 +64,9 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 2, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/profile_link.png)
+![User story 5, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/profile_link.png)
 
-![User story 2, 3](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/sign_in_image.png)
+![User story 5, 3](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/sign_in_image.png)
 
 
 ### Testing of User Story 6
@@ -95,7 +95,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 6](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/sign_in.png)
+![User story 7](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/sign_in.png)
 
 ### Testing of User Story 8
 
@@ -109,9 +109,9 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 8](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/edit_ad_button.png)
+![User story 8, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/edit_ad_button.png)
 
-![User story 8](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/not_editable_ad.png)
+![User story 8, 2](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/not_editable_ad.png)
 
 
 ### Testing of User Story 9
@@ -126,7 +126,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 8](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/password_reset_image.png)
+![User story 9](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/password_reset_image.png)
 
 
 ### Testing of User Story 10
@@ -154,7 +154,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 8](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/others_profile.png)
+![User story 11](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/others_profile.png)
 
 
 ### Testing of User Story 12
@@ -169,7 +169,7 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 8](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/not_editable_ad.png)
+![User story 12](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/not_editable_ad.png)
 
 
 
@@ -194,4 +194,51 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 8](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/location_field.png)
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/location_field.png)
+
+### Testing of User Story 16
+
+**"16. As a registered user, I can create edit or remove a user profile, so that I and others can easily view my ads and personal info"**
+
+**Covered by Feature 3: The User Profile, Feature 4: Ad Post, Edit and Remove**
+
+- **Action** - *User enters their profile and clicks Edit Profile*
+
+- **Expected Result** - *The Edit Profile Page is displayed and the user can update and remove all details*
+
+- **Actual Result** - *Works as intended*
+
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/edit_profile_image.png)
+
+
+### Testing of User Story 17
+
+**"17. As a registered user, I can view other sellers ads on their profiles"**
+
+**Covered by Feature 3: The User Profile, Feature 4: Ad Post, Edit and Remove**
+
+- **Action** - *User clicks on the sellers name in the ad detail page*
+
+- **Expected Result** - *The users profile is displayed with their ads*
+
+- **Actual Result** - *Works as intended*
+
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/others_profile.png)
+
+
+
+### Testing of User Story 18
+
+**"18. As a user, I can view a picture and a description of the item on the Ad Detail page"**
+
+**Covered by Feature 5: The Ad Detail Page**
+
+- **Action** - *User enters the ad detail pagee*
+
+- **Expected Result** - *A picture and a description is displayedin on the page*
+
+- **Actual Result** - *Works as intended*
+
+![User story 16](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/screenshots/ad_detail_image.png)
+
+

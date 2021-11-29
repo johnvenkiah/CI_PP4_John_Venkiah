@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */ 
 
 // This sample uses the Places Autocomplete widget to:
 // 1. Help the user select a place
@@ -13,7 +12,6 @@ let address1Field;
 
 function initAutocomplete() {
   address1Field = document.querySelector("#id_location");
-  console.log(address1Field);
 
   // Create the autocomplete object, restricting the search predictions to
   // addresses in the US and Canada.
