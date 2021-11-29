@@ -1,0 +1,20 @@
+[
+      {
+            "model": "ads.ad",
+            "pk": 20,
+            "fields": {
+                  "title": "Julian Lloyd Webber",
+                  "slug": "julian-lloyd-webber",
+                  "seller": 11,
+                  "image": "https://live.staticflickr.com/5122/5264886972_3234d62748.jpg",
+                  "category": "Bowed Instruments",
+                  "description": "Great guitar for kids.Nice color.",
+                  "created_on": "1985-07-31T12:55:09",
+                  "price": 127656,
+                  "location": "598 Rogers walk\nNew Peterton\nFY0E 3DS",
+                  "city": "Knighttown",
+                  "sold": true,
+                  "saved": []
+            }
+      }
+]

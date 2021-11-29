@@ -587,6 +587,10 @@ input.bg-secondary:hover {
     height: 100%;
 }
 
+.modal-dialog {
+    top: 25%;
+}
+
 .cat-icons:hover, footer svg:hover {
     transform: scale(1.1);
     transform-origin: center;

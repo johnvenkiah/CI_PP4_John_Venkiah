@@ -194,11 +194,7 @@ class Command(BaseCommand):
 
         start_date = datetime.date(year=2015, month=1, day=1)
         
-        old_ads = []
-        with open('ads_tmp.json') as f:
-            for line in f:
-                old_ads.append(json.loads(line.strip()))
-
+        pk = 20
         new_ads = []
         for p in range(number_of_ads):
             category = fake.app_category()
@@ -210,10 +206,9 @@ class Command(BaseCommand):
             sold = bool(random.getrandbits(1))
             location = fake.address()
             image = self.get_image_url(title)
-            # TODO: set pk key
             ad = {
                     "model": "ads.ad",
-                    "pk": 2,
+                    "pk": p+pk,
                     "fields": {
                         "title": f"{title}",
                         "slug": f"{slug.lower()}",
@@ -230,24 +225,6 @@ class Command(BaseCommand):
                     }
                 }
             new_ads.append(ad)
-        
 
-"""
-    {
-        "client_id":"YiFw0DsX8ovHLuEEN2SVFGbcZdwEv5Gmg3Vvg8Fc",
-        "client_secret":"YkAzrDhk7kNZUJeMkb4Mz874js7c4eEKQI3pIE9GPAUpuxyGG4ItVXJiRoi55O9ThG2Zt0PeiUd4bg57FmB14YAmAac10g0lZ5bJuhMPcdsRDbBgesWAfPj2UpvzTXjH","
-        name":"Blocket",
-        "msg":"Check your email for a verification link."
-    }
-
-    curl -X POST -d "client_id=YiFw0DsX8ovHLuEEN2SVFGbcZdwEv5Gmg3Vvg8Fc&client_secret=YkAzrDhk7kNZUJeMkb4Mz874js7c4eEKQI3pIE9GPAUpuxyGG4ItVXJiRoi55O9ThG2Zt0PeiUd4bg57FmB14YAmAac10g0lZ5bJuhMPcdsRDbBgesWAfPj2UpvzTXjH&grant_type=client_credentials" https://api.creativecommons.engineering/v1/auth_tokens/token/
-
-    {
-        "access_token": "h2XUajejV5SM6f9rsHXk6QMRMTnxoZ", 
-        "expires_in": 36000, 
-        "token_type": "Bearer", 
-        "scope": "read write"
-    }
-
-    curl -H "Authorization: Bearer h2XUajejV5SM6f9rsHXk6QMRMTnxoZ" https://api.creativecommons.engineering/v1/images?q=test
-"""
+        with open('new_ads.json', 'w') as f:
+            json.dump(new_ads, f, indent=6)

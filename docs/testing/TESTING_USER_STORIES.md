@@ -17,7 +17,7 @@
 - **Actual result** - *Works as intended*
 
 
-### Testing of User Story 2, 3
+### Testing of User Story 2 and 3
 
 **1. "As a user, I can perform a search so that a list of items for sale is generated"**
 
@@ -31,29 +31,40 @@
 
 - **Actual Result** - *Works as intended*
 
-![User story 2, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/search.png)
+![User story 2](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/search.png)
 
 
-![User story 2, 2](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/search_result.png)
+![User story 3](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/search_result.png)
 
 
+### Testing of User Story 4
 
-### Testing of User Story 3
+**"As a user, I can click on an item so that I can view its details"**
 
+**Covered by feature 3: The User Profile**
 
+- **Action** - *User performs a search and gets the ad results and clicks on an ad*
 
-
-**Covered by feature 2: The Home Page / Search**
-
-- **Action** - *User navigates to the home page and performs a search in the search form*
-
-- **Expected Result** - *Search result are displayed according to the users search criteria*
+- **Expected Result** - *The relevant ad is displayed*
 
 - **Actual Result** - *Works as intended*
 
-![User story 2, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/search.png)
+![User story 4, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/ad_detail_image.png)
 
 
-![User story 2, 2](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/search_result.png)
+### Testing of User Story 5
 
+**"As a user, If I am not signed in, I am redirected to sign in/up if I click on any of the links or buttons restricted to logged in users"**
+
+**Covered by feature 3: The User Profile**
+
+- **Action** - *User is not logged in and click on the profile, or post as link*
+
+- **Expected Result** - *User is redirected to the Sign In Page*
+
+- **Actual Result** - *Works as intended*
+
+![User story 2, 1](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/profile_link.png)
+
+![User story 2, 3](https://github.com/johnvenkiah/CI_PP4_John_Venkiah/blob/main/docs/testing/sign_in_image.png)
 
