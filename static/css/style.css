@@ -1,19 +1,36 @@
+/* Bootstrap has been used as I prefer to style all elements myself,
+so quite a few adjustments have been made. */
+
 html, body {
     margin: 0;
     padding: 0;
 }
 
+/* Color for whole website background  */
 .main-container {
     background: linear-gradient(45deg, #fff7f0, #fbeaff42);
+}
+
+/* Typograpghy  */
+
+.navbar-brand, h1 {
+    font-family: 'Comforter Brush', cursive;
+    font-size: 2rem;
+    padding: .8rem .3rem 0;
+    text-shadow: -2px -1px 12px #b78539;
 }
 
 p, span, a, h2, h3, h4, h5 {
     font-family: 'PT Sans', sans-serif;
 }
 
-
 p, span, a {
     font-weight: 400;
+}
+
+a {
+    color: #412f1c;
+    text-decoration: none;
 }
 
 h2 {
@@ -21,6 +38,7 @@ h2 {
     color: #636363;
 }
 
+/* States  */
 a:active {
     color:rgb(141, 96, 0)
 }
@@ -29,15 +47,11 @@ a:hover {
     color:rgb(175, 120, 0)
 }
 
+/* Elements on everal pages */
 footer {
     background: linear-gradient(transparent, #bba68f);
     /* position: absolute;
     width: 100%; */
-}
-
-a {
-    color: #412f1c;
-    text-decoration: none;
 }
 
 .banner, .banner-2, .banner-3 {
@@ -61,13 +75,6 @@ a {
     45deg, #f3dfdf, transparent);
 }
 
-.navbar-brand, h1 {
-    font-family: 'Comforter Brush', cursive;
-    font-size: 2rem;
-    padding: .8rem .3rem 0;
-    text-shadow: -2px -1px 12px #b78539;
-}
-
 .custom-text-shadow {
     text-shadow: 0 0 15px #6a7b8391, 0px 0px 15px #adb5bd00;
 }
@@ -84,8 +91,10 @@ a {
     padding: 16px;
 }
 
+/* Main image on home page */
+
 .hero-img-home {
-    background-image: url('/media/main_background.jpeg');
+    background-image: url('/media/piano_background.jpg');
     height: 80vh;
     margin-top: 5px;
     background-size: cover;
@@ -101,9 +110,6 @@ a {
 }
 
 .navbar {
-    /* position: sticky;
-    position: -webkit-sticky;
-    top: 0; */
     background: linear-gradient(#ffd9cf, #fff8ea, #fef9fa80);
     padding: 0 .5rem;
     z-index: 1;
@@ -171,11 +177,11 @@ footer svg, .cat-icons {
 }
 
 #feature-img-2 {
-    background-image: url("/media/child_ukulele.png");
+    background-image: url("/media/toddler-guitar.jpg");
 }
 
 #feature-img-3 {
-    background-image: url("/media/girl_keyboards.png");
+    background-image: url("/media/concert-dj.jpg");
 }
 
 .orange-text-shadow {
@@ -183,7 +189,11 @@ footer svg, .cat-icons {
 }
 
 .dark-text-shadow {
-    text-shadow: -2px 2px 10px #000000f2, 2px -3px 10px #382b45;
+    text-shadow:
+        -12px 8px 10px #000000f2,
+        12px -9px 10px #382b45,
+        -10px -9px 10px #382b45,
+        11px 9px 10px #382b45;
 }
 
 .card {
@@ -197,7 +207,6 @@ footer svg, .cat-icons {
 
 .btn {
     display: block;
-    /* width: 100%; */
 }
 
 .btn-success {
@@ -214,7 +223,7 @@ footer svg, .cat-icons {
 }
 
 .btn-main {
-    background-color: rgb(182, 135, 64);
+    background-color: rgb(102, 76, 36);
     border: rgb(167, 123, 42);
     color: #fff;
     
@@ -231,8 +240,11 @@ footer svg, .cat-icons {
 .btn-main:hover {
     background-color: rgb(211, 146, 49);
     border: rgb(139, 105, 41);
-    font-weight: 500;
-    
+    font-weight: 500
+}
+
+.btn-light:hover {
+    color: white;
 }
 
 .post-ad-form .bg-secondary {
@@ -265,9 +277,8 @@ li .btn-main {
     padding: 1rem 1rem;
     top: 10%;
     left: 50%;
-    width: 20%;
+    width: fit-content;
     margin-left: -10%;
-    padding: 15px;
     text-align: center;
     background-color: rgba(125, 192, 0, 0.39);
 }
@@ -347,7 +358,7 @@ li .btn-main {
     font-family: 'PT Sans', sans-serif;
 }
 
-/* AUTOCOMPLETE STRALDGE */
+/* LOCATION FIELD GOOGLE AUTOCOMPLETE */
  
 .title {
 width: 100%;
@@ -534,6 +545,8 @@ top: 1px;
     border: 1px solid rgb(228, 172, 68);
 }
 
+/* Font Awesome Icons */
+
 .fa-instagram {
     color: #dc2743;
 }
@@ -546,10 +559,13 @@ top: 1px;
     color: #ff0100;
 }
 
+/* Ad sold makes the price become stiken through */
 
 .sold {
     text-decoration: line-through;
 }
+
+/* Sold label and checkbox */
 
 label[for="id_sold"] {
 display: inline;
@@ -605,6 +621,8 @@ input.bg-secondary:hover {
     width: 45px;
 }
 
+/* Media queries */
+
 @media only screen and (min-width: 768px) {
     .hero-img-home {
         height: 50vh;
@@ -624,6 +642,10 @@ input.bg-secondary:hover {
 }
 
 @media only screen and (min-width: 1024px) {
+
+    .hero-img-home {
+        height: 40vh;
+    }
     .navbar .btn {
         margin-top: 9px;
     }
