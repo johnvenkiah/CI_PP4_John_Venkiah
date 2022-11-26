@@ -20,7 +20,7 @@ def get_lat_long_by_address(valid_address):
         results = r.json()['results'][0]
         lat = results['geometry']['location']['lat']
         lng = results['geometry']['location']['lng']
-    except:
+    except Exception:
         pass
     return [lat, lng]
 
