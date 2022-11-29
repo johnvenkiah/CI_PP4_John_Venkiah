@@ -22,6 +22,8 @@ def get_lat_long_by_address(valid_address):
         lng = results['geometry']['location']['lng']
     except Exception:
         pass
+
+    # g = geocoder.google(valid_address)
     return [lat, lng]
 
 
