@@ -16,7 +16,7 @@ function initAutocomplete() {
     // Create the autocomplete object, restricting the search predictions to
     // addresses in the US and Canada.
     autocomplete = new google.maps.places.Autocomplete(address1Field, {
-        componentRestrictions: { country: ["gb"] },
+        componentRestrictions: { country: ["uk"] },
         fields: ["address_components", "geometry"],
         types: ["address"],
     });
@@ -55,7 +55,7 @@ function fillInAddress() {
             }
             
             case "country": {
-                address1 += ` ${component.long_name}${component.country}`;
+                address1 += ' UK';
                 break;
             }
         }
@@ -63,4 +63,3 @@ function fillInAddress() {
         address1Field.value = address1;
         
     }
-}
