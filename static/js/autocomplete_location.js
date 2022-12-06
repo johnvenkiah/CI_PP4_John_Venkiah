@@ -55,7 +55,7 @@ function fillInAddress() {
             }
             
             case "country": {
-                address1 += ` ${component.long_name}${country}`;
+                address1 += ` ${component.long_name}${component.country}`;
                 break;
             }
         }
