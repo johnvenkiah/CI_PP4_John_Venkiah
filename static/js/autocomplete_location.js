@@ -50,7 +50,7 @@ function fillInAddress() {
             }
             
             case "postal_town": {
-                address1 += ` ${component.long_name}`;
+                address1 += ` ${component.long_name},`;
                 break;
             }
             
