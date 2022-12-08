@@ -102,23 +102,14 @@
                     </div>
                     <div class="modal-body mx-auto">
                         <div class="row share-div">
-                            <div class="col-4 align-center">
-                                <button class="btn btn-light">
-                                    {% post_to_facebook object_or_url "Facebook" %}
-                                    <i class="fab fa-facebook"></i>
-                                </button>
+                            <div class="col-4">
+                                {% post_to_facebook object_or_url '<i class="fa-brands fa-facebook-f"></i>' "Facebook" %}
                             </div>
                             <div class="col-4">
-                                <button class="btn btn-light">
-                                    {% post_to_whatsapp object_or_url "WhatsApp" %}
-                                    <i class="fab fa-whatsapp"></i>
-                                </button>
+                                {% post_to_gplus object_or_url '<i class="fa-brands fa-google-plus-g"></i>' "Google+" %}
                             </div>
                             <div class="col-4">
-                                <button class="btn btn-light">
-                                    {% post_to_reddit object_or_url "Reddit" %}
-                                    <i class="fab fa-reddit"></i>
-                                </button>
+                                {% post_to_whatsapp object_or_url '<i class="fa-brands fa-whatsapp"></i>' "WhatsApp" %}
                             </div>
                         </div>
                     </div>
@@ -131,5 +122,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

@@ -528,16 +528,22 @@ top: 1px;
     text-align: center;
 }
 
-.fa-facebook {
+.fa-facebook, .fa-facebook-f {
     color: #139bf6;
 }
 
-.fa-reddit {
-    color: #fb6515;
+.fa-facebook-f {
+    font-size: 30px;
+}
+
+a > .fa-google-plus-g {
+    color: #ff4d36;
+    font-size: 30px;
 }
 
 .fa-whatsapp {
     color: #4dcb5a;
+    font-size: 30px;
 }
 
 .btn-light {
