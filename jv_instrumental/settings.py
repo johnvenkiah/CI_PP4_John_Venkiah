@@ -38,9 +38,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ['localhost', 'wave.webaim.org']
+    ALLOWED_HOSTS = ['localhost']
 else:
-    ALLOWED_HOSTS = ['instru-mental.herokuapp.com', 'wave.webaim.org']
+    ALLOWED_HOSTS = ['instru-mental.onrender.com']
 
 # Add Render.com URL to allowed hosts
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')

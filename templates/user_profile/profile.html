@@ -83,53 +83,55 @@
         </div>
     </div>
     {% endif %}
-    {% if saved_ads %}
-    <div class="row justify-content-center">
-        <div class="col col-lg-8 banner mt-2 ps-md-5">
-            <h4 class="custom-text-shadow pt-2">Saved Ads</h4>
-        </div>
-    </div>
-        {% for ad in saved_ads %}
-        <div class="row">
-            <div class="col col-md-8 mx-md-auto">
-                <a class="card mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
-                    <div class="row">
-                        <div class="col-4">
-                            <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">
-                        </div>
-                        <div class="col-8">
-                            <small class="text-small ms-auto">Posted on {{ ad.created_on }}</small>
-                            <p class="card-title">{{ ad.title }}</p>
-                            <div class="elips-container">
-                                <small class="card-text elips-text">
-                                    {{ ad.description }}
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                    {% if ad.sold %}
-                            <p class="card-text sold my-1">£{{ ad.price }}</p>
-                        </div>
-                        <div class="col-8">
-                            <p class="card-text text-danger mt-1">SOLD</p>
-                        </div>
-                    {% else %}
-                            <p class="card-text my-1">£{{ ad.price }}</p>
-                        </div>
-                        {% endif %}
-                    </div>
-                </a>
+    {% if user == request.user %}
+        {% if saved_ads %}
+        <div class="row justify-content-center">
+            <div class="col col-lg-8 banner mt-2 ps-md-5">
+                <h4 class="custom-text-shadow pt-2">Saved Ads</h4>
             </div>
         </div>
-        {% endfor %}
-        {% else %}
-    <div class="row">
-        <div class="col banner-3 mt-2 ps-md-5">
-            <h4 class="custom-text-shadow pt-2">No Ads Saved</h4>
+            {% for ad in saved_ads %}
+            <div class="row">
+                <div class="col col-md-8 mx-md-auto">
+                    <a class="card mt-3 pad-16" href="{% url 'ads:ad_detail' ad.seller ad.slug %}">
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="card thmbn-img" src="{{ ad.image.url }}" alt="">
+                            </div>
+                            <div class="col-8">
+                                <small class="text-small ms-auto">Posted on {{ ad.created_on }}</small>
+                                <p class="card-title">{{ ad.title }}</p>
+                                <div class="elips-container">
+                                    <small class="card-text elips-text">
+                                        {{ ad.description }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                        {% if ad.sold %}
+                                <p class="card-text sold my-1">£{{ ad.price }}</p>
+                            </div>
+                            <div class="col-8">
+                                <p class="card-text text-danger mt-1">SOLD</p>
+                            </div>
+                        {% else %}
+                                <p class="card-text my-1">£{{ ad.price }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+        <div class="row">
+            <div class="col banner-3 mt-2 ps-md-5">
+                <h4 class="custom-text-shadow pt-2">No Ads Saved</h4>
+            </div>
         </div>
-    </div>
         {% endif %}
+    {% endif %}
 </div>
 {% endblock %}
