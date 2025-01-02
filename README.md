@@ -6,7 +6,7 @@
 
 **InstruMental - a forum for users to buy and sell used musical instruments and gear.**
 
-[Click here](https://instru-mental.herokuapp.com/) to visit the deployed site.
+[Click here](https://instru-mental.onrender.com) to visit the deployed site.
 
 ## Contents
 
